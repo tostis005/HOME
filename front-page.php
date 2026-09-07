@@ -8,7 +8,7 @@ $latest_posts = get_posts([
     'ignore_sticky_posts' => true,
 ]);
 
-$category_sprite_url = get_template_directory_uri() . '/assets/generated/home-category-sprite.jpg';
+$category_sprite_url = get_template_directory_uri() . '/assets/generated/home-category-sprite-v2.jpg?v=3';
 $category_sprite_positions = [
     'cleaning'        => '0% 0%',
     'laundry'         => '33.333% 0%',
@@ -62,17 +62,15 @@ if (in_array($month, [12, 1, 2], true)) {
                 <a class="home-v2-primary-button" href="#home-categories"><?php esc_html_e('Explore all categories', 'home'); ?><span aria-hidden="true">→</span></a>
                 <a class="home-v2-text-button" href="#latest-guides"><?php esc_html_e('See latest guides', 'home'); ?></a>
             </div>
-            <div class="home-v2-hero-search">
-                <?php get_search_form(); ?>
-            </div>
+            <div class="home-v2-hero-search"><?php get_search_form(); ?></div>
         </div>
 
         <div class="home-v2-room" aria-hidden="true" style="background:none;">
             <img
-                src="<?php echo esc_url(get_template_directory_uri() . '/assets/generated/hero-living-room.jpg'); ?>"
+                src="<?php echo esc_url(get_template_directory_uri() . '/assets/generated/hero-living-room-v2.jpg?v=3'); ?>"
                 alt=""
-                width="640"
-                height="420"
+                width="960"
+                height="640"
                 fetchpriority="high"
                 decoding="async"
                 style="position:absolute;inset:0;z-index:20;width:100%;height:100%;object-fit:cover;display:block;"
