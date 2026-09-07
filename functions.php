@@ -8,6 +8,7 @@ require_once get_template_directory() . '/inc/categories.php';
 require_once get_template_directory() . '/inc/content-language.php';
 require_once get_template_directory() . '/inc/root-url.php';
 require_once get_template_directory() . '/inc/content-curation.php';
+require_once get_template_directory() . '/inc/publication-guard.php';
 require_once get_template_directory() . '/inc/pagination.php';
 
 function home_theme_setup(): void {
