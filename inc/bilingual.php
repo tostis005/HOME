@@ -32,11 +32,8 @@ function home_register_language_rewrites(): void {
     add_rewrite_tag('%home_front%', '1');
     add_rewrite_tag('%home_slug%', '([^&]+)');
 
-    // English homepage.
     add_rewrite_rule('^en/?$', 'index.php?home_lang=en&home_front=1', 'top');
 
-    // Localized category archives. Public slugs are translated; WordPress keeps
-    // stable internal category slugs so both languages can share taxonomy logic.
     foreach (home_category_definitions() as $definition) {
         add_rewrite_rule(
             '^categoria/' . preg_quote($definition['slug_es'], '#') . '/?$',
@@ -50,8 +47,6 @@ function home_register_language_rewrites(): void {
         );
     }
 
-    // English articles are exactly one slug below /en/. Keeping this to one
-    // path segment prevents it from swallowing /en/category/... routes.
     add_rewrite_rule('^en/([^/]+)/?$', 'index.php?home_slug=$matches[1]&home_lang=en', 'top');
 }
 add_action('init', 'home_register_language_rewrites', 20);
@@ -97,7 +92,7 @@ function home_resolve_english_slug(array $query_vars): array {
 add_filter('request', 'home_resolve_english_slug', 5);
 
 function home_maybe_flush_rewrites(): void {
-    $version = 'home-bilingual-2026-09-07-v4';
+    $version = 'home-bilingual-2026-09-07-v5';
     if (get_option('home_rewrite_version') !== $version) {
         flush_rewrite_rules(false);
         update_option('home_rewrite_version', $version, false);
@@ -105,7 +100,6 @@ function home_maybe_flush_rewrites(): void {
 }
 add_action('init', 'home_maybe_flush_rewrites', 99);
 
-// Virtual localized routes must not be canonicalized back to a WordPress URL.
 add_filter('redirect_canonical', static function($redirect_url, $requested_url) {
     if ((string) get_query_var('home_front') === '1' || get_query_var('home_lang') || preg_match('#^/en(?:/|$)|^/categoria/#', (string) wp_parse_url((string) $requested_url, PHP_URL_PATH))) {
         return false;
