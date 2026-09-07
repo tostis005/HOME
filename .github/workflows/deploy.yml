@@ -120,5 +120,16 @@ jobs:
           "${DOCKER[@]}" exec home-wp sh -lc "chown -R www-data:www-data '$TARGET' && find '$TARGET' -type d -exec chmod 755 {} + && find '$TARGET' -type f -exec chmod 644 {} +"
           "${DOCKER[@]}" exec home-wp sh -lc "test -f '$TARGET/style.css' && test -f '$TARGET/functions.php'"
 
+          # Validate the exact visual assets used by the HOME production page.
+          "${DOCKER[@]}" exec home-wp sh -lc "test -s '$TARGET/assets/css/home-v2.css' && test -s '$TARGET/assets/generated/hero-living-room-v2.jpg' && test -s '$TARGET/assets/generated/home-category-sprite-v2.jpg'"
+          "${DOCKER[@]}" exec home-wp php -r '$files=["/var/www/html/wp-content/themes/home/assets/generated/hero-living-room-v2.jpg","/var/www/html/wp-content/themes/home/assets/generated/home-category-sprite-v2.jpg"]; foreach($files as $f){$i=@getimagesize($f); if(!$i){fwrite(STDERR,"Invalid image: $f\n"); exit(1);} echo basename($f)." => ".$i[0]."x".$i[1]."\n";}'
+
+          # Verify Apache can actually serve the assets through HOME's published port.
+          if command -v curl >/dev/null 2>&1; then
+            curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/css/home-v2.css?v=4"
+            curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/generated/hero-living-room-v2.jpg?v=4"
+            curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/generated/home-category-sprite-v2.jpg?v=4"
+          fi
+
           echo "HOME desplegado correctamente en home-wp:$TARGET"
           REMOTE
