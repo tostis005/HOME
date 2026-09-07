@@ -8,21 +8,6 @@ $latest_posts = get_posts([
     'ignore_sticky_posts' => true,
 ]);
 
-// Root-relative asset URLs deliberately keep HOME on the current host/port.
-// This avoids WordPress site_url/home_url mismatches while the site runs on :8081.
-$theme_asset_base = '/wp-content/themes/home/assets/generated';
-$category_sprite_url = $theme_asset_base . '/home-category-sprite-v2.jpg?v=5';
-$category_sprite_positions = [
-    'cleaning'        => '0% 0%',
-    'laundry'         => '33.333% 0%',
-    'kitchen'         => '66.667% 0%',
-    'bathroom'        => '100% 0%',
-    'appliances'      => '0% 100%',
-    'plumbing'        => '33.333% 100%',
-    'pests'           => '66.667% 100%',
-    'heating-cooling' => '100% 100%',
-];
-
 $month = (int) wp_date('n');
 if (in_array($month, [12, 1, 2], true)) {
     $season_label = __('Winter at home', 'home');
@@ -55,7 +40,7 @@ if (in_array($month, [12, 1, 2], true)) {
 }
 ?>
 
-<section class="home-v2-hero">
+<section class="home-v2-hero home-premium-hero">
     <div class="container home-v2-hero-grid">
         <div class="home-v2-hero-copy">
             <span class="home-v2-eyebrow"><?php esc_html_e('Practical advice. Real solutions. A brighter home.', 'home'); ?></span>
@@ -68,17 +53,17 @@ if (in_array($month, [12, 1, 2], true)) {
             <div class="home-v2-hero-search"><?php get_search_form(); ?></div>
         </div>
 
-        <div class="home-v2-room" aria-hidden="true" style="background:none;">
+        <figure class="home-v2-room home-premium-hero-media">
             <img
-                src="<?php echo esc_url($theme_asset_base . '/hero-living-room-v2.jpg?v=5'); ?>"
-                alt=""
-                width="960"
-                height="640"
+                src="<?php echo esc_url(home_hero_image_url()); ?>"
+                alt="<?php esc_attr_e('Warm, welcoming living room in natural light', 'home'); ?>"
+                width="1800"
+                height="1200"
                 fetchpriority="high"
                 decoding="async"
-                style="position:absolute;inset:0;z-index:20;width:100%;height:100%;object-fit:cover;display:block;"
             >
-        </div>
+            <figcaption class="home-premium-photo-note"><?php esc_html_e('A calmer home starts with clear answers.', 'home'); ?></figcaption>
+        </figure>
     </div>
 </section>
 
@@ -100,7 +85,7 @@ if (in_array($month, [12, 1, 2], true)) {
 </section>
 
 <section class="home-v2-category-section" id="home-categories">
-    <div class="container home-v2-category-panel">
+    <div class="container home-v2-category-panel home-premium-category-panel">
         <div class="home-v2-section-head">
             <div>
                 <span class="home-v2-kicker"><?php esc_html_e('Explore the house', 'home'); ?></span>
@@ -109,20 +94,16 @@ if (in_array($month, [12, 1, 2], true)) {
             <p><?php esc_html_e('Choose the area that needs attention. Each category brings together fixes, maintenance, cleaning and prevention.', 'home'); ?></p>
         </div>
 
-        <div class="home-v2-category-grid">
+        <div class="home-v2-category-grid home-premium-category-grid">
             <?php foreach (home_category_pillars() as $slug => $pillar) : ?>
-                <?php
-                $sprite_position = $category_sprite_positions[$slug] ?? '0% 0%';
-                $photo_style = sprintf(
-                    'display:block;width:100%%;height:100%%;min-height:100%%;background-image:url(%s);background-size:400%% 200%%;background-position:%s;background-repeat:no-repeat;background-color:%s;',
-                    esc_url($category_sprite_url),
-                    $sprite_position,
-                    $pillar['tone']
-                );
-                ?>
-                <a class="home-v2-category-card" href="<?php echo esc_url(home_category_url($slug)); ?>">
-                    <div class="home-v2-category-art">
-                        <span class="home-v2-category-photo home-v2-category-photo--<?php echo esc_attr($slug); ?>" aria-hidden="true" style="<?php echo esc_attr($photo_style); ?>"></span>
+                <?php $category_image = home_category_image_url($slug); ?>
+                <a class="home-v2-category-card home-premium-category-card" href="<?php echo esc_url(home_category_url($slug)); ?>">
+                    <div class="home-v2-category-art home-premium-category-art" style="background-color:<?php echo esc_attr($pillar['tone']); ?>">
+                        <?php if ($category_image) : ?>
+                            <img src="<?php echo esc_url($category_image); ?>" alt="<?php echo esc_attr($pillar['label']); ?>" loading="lazy" decoding="async">
+                        <?php else : ?>
+                            <?php echo home_category_art($slug, $pillar['tone']); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                        <?php endif; ?>
                     </div>
                     <div class="home-v2-category-card-copy">
                         <div>
@@ -150,13 +131,16 @@ if (in_array($month, [12, 1, 2], true)) {
             <div class="home-v2-featured-main">
                 <?php if (!empty($latest_posts)) : ?>
                     <?php foreach (array_slice($latest_posts, 0, 3) as $post) : setup_postdata($post); ?>
-                        <article class="home-v2-article-card">
+                        <?php $article_image = home_category_image_url(home_post_category_key()); ?>
+                        <article class="home-v2-article-card home-premium-article-card">
                             <a href="<?php the_permalink(); ?>">
                                 <div class="home-v2-article-media">
                                     <?php if (has_post_thumbnail()) : ?>
                                         <?php the_post_thumbnail('large'); ?>
+                                    <?php elseif ($article_image) : ?>
+                                        <img src="<?php echo esc_url($article_image); ?>" alt="" loading="lazy" decoding="async">
                                     <?php else : ?>
-                                        <div class="home-v2-article-placeholder"><?php echo home_category_art(sanitize_title(home_primary_category_name()), '#e7e1d5'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+                                        <div class="home-v2-article-placeholder"><?php echo home_category_art(home_post_category_key(), '#e7e1d5'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
                                     <?php endif; ?>
                                 </div>
                                 <div class="home-v2-article-copy">
@@ -173,7 +157,7 @@ if (in_array($month, [12, 1, 2], true)) {
                 <?php endif; ?>
             </div>
 
-            <aside class="home-v2-seasonal">
+            <aside class="home-v2-seasonal home-premium-seasonal">
                 <span class="home-v2-kicker"><?php echo esc_html($season_label); ?></span>
                 <h3><?php esc_html_e('A few useful things to check now.', 'home'); ?></h3>
                 <div class="home-v2-seasonal-list">
@@ -200,7 +184,7 @@ if (in_array($month, [12, 1, 2], true)) {
 
 <section class="home-v2-cta">
     <div class="container">
-        <div class="home-v2-cta-box">
+        <div class="home-v2-cta-box home-premium-cta-box">
             <div class="home-v2-cta-leaves" aria-hidden="true"><i></i><i></i><i></i></div>
             <div>
                 <span class="home-v2-kicker"><?php esc_html_e('Make home feel easier', 'home'); ?></span>
