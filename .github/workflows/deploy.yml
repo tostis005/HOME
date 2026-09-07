@@ -122,9 +122,8 @@ jobs:
           "${DOCKER[@]}" exec home-wp sh -lc "test -s '$TARGET/style.css' && test -s '$TARGET/functions.php' && test -s '$TARGET/assets/css/home-v2.css' && test -s '$TARGET/assets/generated/hero-living-room-v2.jpg' && test -s '$TARGET/assets/generated/home-category-sprite-v2.jpg'"
           "${DOCKER[@]}" exec home-wp php -r '$expect=["/var/www/html/wp-content/themes/home/assets/generated/hero-living-room-v2.jpg"=>[960,640],"/var/www/html/wp-content/themes/home/assets/generated/home-category-sprite-v2.jpg"=>[1040,390]]; foreach($expect as $f=>$dims){$i=@getimagesize($f); if(!$i){fwrite(STDERR,"Invalid image: $f\n"); exit(1);} if($i[0]!==$dims[0] || $i[1]!==$dims[1]){fwrite(STDERR,"Unexpected dimensions for $f\n"); exit(1);}}'
 
-          # The previous production .htaccess contained an empty WordPress block,
-          # so Apache returned its own 404 before WordPress saw pretty URLs.
-          # Install the standard front-controller rules explicitly.
+          # Apache must forward every pretty URL to WordPress. The production
+          # container previously had an empty WordPress .htaccess block.
           cat > /tmp/home-wordpress.htaccess <<'HTACCESS'
           # BEGIN WordPress
           <IfModule mod_rewrite.c>
@@ -142,7 +141,7 @@ jobs:
           "${DOCKER[@]}" exec home-wp sh -lc 'chown www-data:www-data /var/www/html/.htaccess && chmod 644 /var/www/html/.htaccess'
 
           "${DOCKER[@]}" exec home-wp php -r 'require "/var/www/html/wp-load.php"; if(function_exists("home_ensure_core_categories")){home_ensure_core_categories();} flush_rewrite_rules(false); echo "PERMALINK_STRUCTURE=".get_option("permalink_structure")."\n";'
-          "${DOCKER[@]}" exec home-wp sh -lc 'echo "--- APACHE MODULES ---"; apache2ctl -M 2>/dev/null | grep rewrite; echo "--- HTACCESS ---"; cat /var/www/html/.htaccess'
+          "${DOCKER[@]}" exec home-wp sh -lc 'apache2ctl -M 2>/dev/null | grep rewrite >/dev/null; test -s /var/www/html/.htaccess'
 
           if command -v curl >/dev/null 2>&1; then
             curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/css/home-v2.css?v=6"
@@ -157,17 +156,45 @@ jobs:
               "/en/category/appliances/" "/en/category/plumbing/" "/en/category/pests/" "/en/category/heating-cooling/"
             do
               echo "Smoke test ${path}"
-              if ! curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081${path}"; then
-                echo "--- FAILED RESPONSE ${path} ---"
-                curl --silent --show-error --max-time 10 -i "http://127.0.0.1:8081${path}" | head -n 40 || true
-                exit 1
-              fi
+              body="$(curl --fail --silent --show-error --max-time 15 "http://127.0.0.1:8081${path}")"
+              case "$path" in
+                /en/*|/en/) expected="home-lang-en" ;;
+                *) expected="home-lang-es" ;;
+              esac
+              printf '%s' "$body" | grep -q "$expected" || { echo "Wrong language shell for ${path}: expected ${expected}"; exit 1; }
             done
 
-            ES_SLUG="$("${DOCKER[@]}" exec home-wp php -r 'require "/var/www/html/wp-load.php"; $ids=get_posts(["post_type"=>"post","post_status"=>"publish","posts_per_page"=>1,"fields"=>"ids","meta_key"=>"_home_language","meta_value"=>"es","suppress_filters"=>true]); if($ids){echo get_post_field("post_name",$ids[0]);}')"
-            EN_SLUG="$("${DOCKER[@]}" exec home-wp php -r 'require "/var/www/html/wp-load.php"; $ids=get_posts(["post_type"=>"post","post_status"=>"publish","posts_per_page"=>1,"fields"=>"ids","meta_key"=>"_home_language","meta_value"=>"en","suppress_filters"=>true]); if($ids){echo get_post_field("post_name",$ids[0]);}')"
-            [ -z "$ES_SLUG" ] || curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/${ES_SLUG}/"
-            [ -z "$EN_SLUG" ] || curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/en/${EN_SLUG}/"
+            # Validate EVERY currently published article, not just a sample. Any
+            # new broken slug or language prefix will make the deployment fail.
+            PUBLISHED_ARTICLES="$("${DOCKER[@]}" exec home-wp php -r '
+              require "/var/www/html/wp-load.php";
+              $posts=get_posts(["post_type"=>"post","post_status"=>"publish","posts_per_page"=>-1,"orderby"=>"ID","order"=>"ASC","suppress_filters"=>true]);
+              foreach($posts as $post){
+                $lang=get_post_meta($post->ID,"_home_language",true)==="en" ? "en" : "es";
+                echo $lang."\t".$post->post_name."\n";
+              }
+            ')"
+
+            ARTICLE_COUNT=0
+            ES_COUNT=0
+            EN_COUNT=0
+            while IFS=$'\t' read -r lang slug; do
+              [ -z "$slug" ] && continue
+              ARTICLE_COUNT=$((ARTICLE_COUNT + 1))
+              if [ "$lang" = "en" ]; then
+                EN_COUNT=$((EN_COUNT + 1))
+                path="/en/${slug}/"
+                expected="home-lang-en"
+              else
+                ES_COUNT=$((ES_COUNT + 1))
+                path="/${slug}/"
+                expected="home-lang-es"
+              fi
+              echo "Article URL test ${lang}: ${path}"
+              body="$(curl --fail --silent --show-error --max-time 15 "http://127.0.0.1:8081${path}")"
+              printf '%s' "$body" | grep -q "$expected" || { echo "Wrong language shell for article ${path}: expected ${expected}"; exit 1; }
+            done <<< "$PUBLISHED_ARTICLES"
+            echo "ARTICLE_URLS_OK total=${ARTICLE_COUNT} es=${ES_COUNT} en=${EN_COUNT}"
           fi
 
           echo "HOME desplegado correctamente en home-wp:$TARGET"
