@@ -1,0 +1,60 @@
+name: Diagnose HOME routing
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/diagnose-home-routing.yml'
+  workflow_dispatch:
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure SSH
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/home_diag_key
+          chmod 600 ~/.ssh/home_diag_key
+          ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
+
+      - name: Diagnose routes and category state
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/home_diag_key "$VPS_USER@$VPS_HOST" 'bash -s' <<'REMOTE'
+          set -euo pipefail
+          if docker inspect home-wp >/dev/null 2>&1; then D=(docker); else D=(sudo -n docker); fi
+
+          for path in / /categoria/cocina/ /categoria/plagas/ /en/category/pests/ /categoria/plagas/page/2/; do
+            echo "===== ${path} ====="
+            curl -sS -D /tmp/home-headers -o /tmp/home-body --max-time 15 "http://127.0.0.1:8081${path}" || true
+            sed -n '1,20p' /tmp/home-headers
+            printf 'BODY_CLASSES: '
+            grep -o 'body class="[^"]*"' /tmp/home-body | head -n1 || true
+            printf 'TITLE: '
+            grep -o '<title>[^<]*</title>' /tmp/home-body | head -n1 || true
+            printf 'CANONICAL: '
+            grep -o '<link rel="canonical"[^>]*>' /tmp/home-body | head -n1 || true
+          done
+
+          echo '===== WP CATEGORY STATE ====='
+          "${D[@]}" exec home-wp php -r '
+            $_SERVER["REQUEST_URI"]="/categoria/plagas/";
+            require "/var/www/html/wp-load.php";
+            foreach(["cleaning","kitchen","bathroom","laundry","appliances","plumbing","pests","heating-cooling"] as $slug){
+              $term=get_category_by_slug($slug);
+              if(!$term){echo "$slug MISSING\n"; continue;}
+              $es=get_posts(["post_type"=>"post","post_status"=>"publish","posts_per_page"=>-1,"fields"=>"ids","category"=>$term->term_id,"home_skip_language_filter"=>1,"meta_key"=>"_home_language","meta_value"=>"es"]);
+              $en=get_posts(["post_type"=>"post","post_status"=>"publish","posts_per_page"=>-1,"fields"=>"ids","category"=>$term->term_id,"home_skip_language_filter"=>1,"meta_key"=>"_home_language","meta_value"=>"en"]);
+              echo "$slug term_id={$term->term_id} count={$term->count} es=".count($es)." en=".count($en)."\n";
+            }
+            echo "curation_version=".get_option("home_content_curation_version")."\n";
+          '
+          REMOTE
