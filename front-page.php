@@ -11,7 +11,7 @@ $latest_posts = get_posts([
 // Root-relative asset URLs deliberately keep HOME on the current host/port.
 // This avoids WordPress site_url/home_url mismatches while the site runs on :8081.
 $theme_asset_base = '/wp-content/themes/home/assets/generated';
-$category_sprite_url = $theme_asset_base . '/home-category-sprite-v2.jpg?v=4';
+$category_sprite_url = $theme_asset_base . '/home-category-sprite-v2.jpg?v=5';
 $category_sprite_positions = [
     'cleaning'        => '0% 0%',
     'laundry'         => '33.333% 0%',
@@ -70,7 +70,7 @@ if (in_array($month, [12, 1, 2], true)) {
 
         <div class="home-v2-room" aria-hidden="true" style="background:none;">
             <img
-                src="<?php echo esc_url($theme_asset_base . '/hero-living-room-v2.jpg?v=4'); ?>"
+                src="<?php echo esc_url($theme_asset_base . '/hero-living-room-v2.jpg?v=5'); ?>"
                 alt=""
                 width="960"
                 height="640"
