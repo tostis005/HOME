@@ -16,18 +16,23 @@ function home_filter_queries_by_language(WP_Query $query): void {
 }
 add_action('pre_get_posts', 'home_filter_queries_by_language', 20);
 
+/**
+ * Public article URLs are intentionally independent from the site's WordPress
+ * permalink setting: Spanish lives at /slug-es/ and English at /en/slug-en/.
+ */
 function home_localize_post_link(string $permalink, WP_Post $post): string {
-    if ($post->post_type === 'post' && get_post_meta($post->ID, '_home_language', true) === 'en') {
-        return home_url('/en/' . $post->post_name . '/');
-    }
-    return $permalink;
+    if ($post->post_type !== 'post') { return $permalink; }
+    $language = get_post_meta($post->ID, '_home_language', true) === 'en' ? 'en' : 'es';
+    return $language === 'en'
+        ? home_site_root_url() . 'en/' . $post->post_name . '/'
+        : home_site_root_url() . $post->post_name . '/';
 }
 add_filter('post_link', 'home_localize_post_link', 10, 2);
 
 function home_localize_page_link(string $link, int $post_id): string {
     $page = get_post($post_id);
     if ($page instanceof WP_Post && $page->post_type === 'page' && get_post_meta($post_id, '_home_language', true) === 'en') {
-        return home_url('/en/' . trim(get_page_uri($post_id), '/') . '/');
+        return home_site_root_url() . 'en/' . trim(get_page_uri($post_id), '/') . '/';
     }
     return $link;
 }
