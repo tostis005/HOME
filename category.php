@@ -55,7 +55,12 @@ $category_image = home_category_image_url($category_key);
                         </a>
                     </article>
                 <?php endwhile; ?>
-                <div class="pagination"><?php the_posts_pagination(['mid_size' => 1]); ?></div>
+                <?php $pagination = home_category_pagination($category_key); ?>
+                <?php if ($pagination) : ?>
+                    <nav class="pagination" aria-label="<?php echo esc_attr(home_is_english() ? 'Category pages' : 'Páginas de la categoría'); ?>">
+                        <?php echo wp_kses_post($pagination); ?>
+                    </nav>
+                <?php endif; ?>
             </div>
         <?php else : ?>
             <div class="empty-state">
