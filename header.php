@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php wp_head(); ?>
     <link rel="stylesheet" href="/wp-content/themes/home/assets/css/home-v2.css?v=4.1.0">
-    <link rel="stylesheet" href="/wp-content/themes/home/assets/css/home-premium.css?v=1.1.0">
+    <link rel="stylesheet" href="/wp-content/themes/home/assets/css/home-premium.css?v=1.2.0">
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
