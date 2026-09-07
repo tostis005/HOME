@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'content/.staging/home-071-080.tar.xz'
+      - '.github/workflows/materialize-071-080.yml'
 
 permissions:
   contents: write
@@ -19,19 +20,31 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Materialize and validate article batch
+        id: batch
         shell: bash
         run: |
           set -euo pipefail
           ARCHIVE="content/.staging/home-071-080.tar.xz"
           if [ ! -f "$ARCHIVE" ]; then
             echo "Staging archive is no longer present."
+            echo "present=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          tar -xJf "$ARCHIVE"
+
+          # The staging file is Base64 text containing the original XZ archive.
+          base64 --decode "$ARCHIVE" > /tmp/home-071-080.tar.xz
+          xz -t /tmp/home-071-080.tar.xz
+          tar -xJf /tmp/home-071-080.tar.xz
+
           python3 - <<'PY'
           import json
           from pathlib import Path
-          required = {'schema_version','id','article_number','translation_group','language','locale','market_context','title','slug','seo','excerpt','taxonomy','content_html','faq','sources','image','status'}
+
+          required = {
+              'schema_version','id','article_number','translation_group','language',
+              'locale','market_context','title','slug','seo','excerpt','taxonomy',
+              'content_html','faq','sources','image','status'
+          }
           pairs = {}
           for lang in ('es','en'):
               selected = []
@@ -42,30 +55,33 @@ jobs:
                       assert not missing, (path, missing)
                       assert data['language'] == lang, path
                       assert data['status'] == 'publish', path
+                      assert data['content_html'].strip(), path
                       selected.append((path, data))
                       pairs[(data['article_number'], lang)] = data['translation_group']
               assert len(selected) == 10, (lang, len(selected))
           for n in range(71, 81):
-              assert pairs[(n,'es')] == pairs[(n,'en')], (n, pairs.get((n,'es')), pairs.get((n,'en')))
+              assert pairs[(n,'es')] == pairs[(n,'en')], (
+                  n, pairs.get((n,'es')), pairs.get((n,'en'))
+              )
           print("Validated HOME articles 071-080 in ES and EN")
           PY
+
           rm -f "$ARCHIVE"
+          echo "present=true" >> "$GITHUB_OUTPUT"
 
       - name: Commit article JSON
+        if: steps.batch.outputs.present == 'true'
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content/articles/es content/articles/en content/.staging
-          if git diff --cached --quiet; then
-            echo "No article changes to commit."
-            exit 0
-          fi
           git commit -m "Add HOME articles 071-080 in ES and EN"
           git push
 
       - name: Dispatch production import for 071-080
+        if: steps.batch.outputs.present == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
