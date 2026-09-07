@@ -91,17 +91,34 @@ function home_resolve_english_slug(array $query_vars): array {
 }
 add_filter('request', 'home_resolve_english_slug', 5);
 
-function home_maybe_flush_rewrites(): void {
-    $version = 'home-bilingual-2026-09-07-v5';
-    if (get_option('home_rewrite_version') !== $version) {
-        flush_rewrite_rules(false);
+/**
+ * HOME requires pretty permalinks for /en/, localized category archives and
+ * language-specific article slugs. Persist the structure and perform a hard
+ * rewrite flush so Apache's .htaccess is updated as well as WordPress options.
+ */
+function home_ensure_bilingual_permalinks(): void {
+    $desired = '/%postname%/';
+    $version = 'home-bilingual-2026-09-07-v6';
+    $structure_changed = (string) get_option('permalink_structure') !== $desired;
+
+    if ($structure_changed) {
+        update_option('permalink_structure', $desired);
+        global $wp_rewrite;
+        if ($wp_rewrite instanceof WP_Rewrite) {
+            $wp_rewrite->permalink_structure = $desired;
+        }
+    }
+
+    if ($structure_changed || get_option('home_rewrite_version') !== $version) {
+        flush_rewrite_rules(true);
         update_option('home_rewrite_version', $version, false);
     }
 }
-add_action('init', 'home_maybe_flush_rewrites', 99);
+add_action('init', 'home_ensure_bilingual_permalinks', 99);
 
 add_filter('redirect_canonical', static function($redirect_url, $requested_url) {
-    if ((string) get_query_var('home_front') === '1' || get_query_var('home_lang') || preg_match('#^/en(?:/|$)|^/categoria/#', (string) wp_parse_url((string) $requested_url, PHP_URL_PATH))) {
+    $path = (string) wp_parse_url((string) $requested_url, PHP_URL_PATH);
+    if ((string) get_query_var('home_front') === '1' || get_query_var('home_lang') || preg_match('#^/en(?:/|$)|^/categoria/#', $path)) {
         return false;
     }
     return $redirect_url;
@@ -135,6 +152,5 @@ add_action('pre_get_posts', static function(WP_Query $query): void {
         $query->is_home = false;
         $query->is_page = true;
         $query->is_404 = false;
-        $query->set('posts_per_page', 0);
     }
 }, 1);
