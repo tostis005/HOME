@@ -2,7 +2,7 @@
 if (!defined('ABSPATH')) { exit; }
 
 function home_filter_queries_by_language(WP_Query $query): void {
-    if (is_admin() || $query->get('post_type') === 'attachment') { return; }
+    if (is_admin() || $query->get('post_type') === 'attachment' || $query->get('home_skip_language_filter')) { return; }
     $post_type = $query->get('post_type');
     if ($post_type && $post_type !== 'post' && !(is_array($post_type) && in_array('post', $post_type, true))) { return; }
 
@@ -74,12 +74,38 @@ function home_render_primary_menu(string $menu_class = ''): void {
     home_fallback_menu();
 }
 
+function home_translation_post_id(int $post_id, string $target): int {
+    $target = $target === 'en' ? 'en' : 'es';
+    $explicit = (int) get_post_meta($post_id, '_home_translation_' . $target, true);
+    if ($explicit > 0 && get_post_status($explicit) === 'publish') { return $explicit; }
+
+    $group = trim((string) get_post_meta($post_id, '_home_translation_group', true));
+    if ($group === '') { return 0; }
+
+    $ids = get_posts([
+        'post_type'                 => get_post_type($post_id) ?: 'post',
+        'post_status'               => 'publish',
+        'posts_per_page'            => 1,
+        'fields'                    => 'ids',
+        'no_found_rows'             => true,
+        'suppress_filters'          => false,
+        'home_skip_language_filter' => 1,
+        'meta_query'                => [
+            'relation' => 'AND',
+            ['key'=>'_home_translation_group','value'=>$group,'compare'=>'='],
+            ['key'=>'_home_language','value'=>$target,'compare'=>'='],
+        ],
+    ]);
+
+    return $ids ? (int) $ids[0] : 0;
+}
+
 function home_language_url(string $target): string {
     $target = $target === 'en' ? 'en' : 'es';
     if (is_singular(['post','page'])) {
         $id = get_queried_object_id();
-        $pair = (int) get_post_meta($id, '_home_translation_' . $target, true);
-        if ($pair > 0 && get_post_status($pair) === 'publish') { return get_permalink($pair); }
+        $pair = home_translation_post_id($id, $target);
+        if ($pair > 0) { return get_permalink($pair); }
         $current = get_post_meta($id, '_home_language', true) === 'en' ? 'en' : 'es';
         return $current === $target ? get_permalink($id) : home_localized_home_url($target);
     }
