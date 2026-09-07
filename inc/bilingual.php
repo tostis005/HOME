@@ -91,14 +91,9 @@ function home_resolve_english_slug(array $query_vars): array {
 }
 add_filter('request', 'home_resolve_english_slug', 5);
 
-/**
- * HOME requires pretty permalinks for /en/, localized category archives and
- * language-specific article slugs. Persist the structure and perform a hard
- * rewrite flush so Apache's .htaccess is updated as well as WordPress options.
- */
 function home_ensure_bilingual_permalinks(): void {
     $desired = '/%postname%/';
-    $version = 'home-bilingual-2026-09-07-v6';
+    $version = 'home-bilingual-2026-09-07-v7';
     $structure_changed = (string) get_option('permalink_structure') !== $desired;
 
     if ($structure_changed) {
