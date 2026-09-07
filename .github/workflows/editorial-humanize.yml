@@ -1,0 +1,49 @@
+name: HOME editorial humanization cleanup
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'content/tools/editorial-humanize-cleanup.py'
+      - '.github/workflows/editorial-humanize.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply reviewed cleanup
+        run: python content/tools/editorial-humanize-cleanup.py
+      - name: Validate all article JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          files = sorted(Path('content/articles').glob('*/*.json'))
+          assert len(files) >= 140, f'Expected at least 140 JSONs, found {len(files)}'
+          seen=set()
+          for p in files:
+              d=json.loads(p.read_text(encoding='utf-8'))
+              key=(d['article_number'],d['language'])
+              assert key not in seen, f'Duplicate {key}'
+              seen.add(key)
+          print(f'Validated {len(files)} article JSON files')
+          PY
+      - name: Commit reviewed cleanup
+        run: |
+          if git diff --quiet -- content/articles; then
+            echo 'No cleanup changes required.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add content/articles
+          git commit -m 'Polish HOME article language [skip ci]'
+          git push
