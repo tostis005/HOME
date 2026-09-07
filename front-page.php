@@ -8,6 +8,18 @@ $latest_posts = get_posts([
     'ignore_sticky_posts' => true,
 ]);
 
+$category_sprite_url = get_template_directory_uri() . '/assets/generated/home-category-sprite.jpg';
+$category_sprite_positions = [
+    'cleaning'        => '0% 0%',
+    'laundry'         => '33.333% 0%',
+    'kitchen'         => '66.667% 0%',
+    'bathroom'        => '100% 0%',
+    'appliances'      => '0% 100%',
+    'plumbing'        => '33.333% 100%',
+    'pests'           => '66.667% 100%',
+    'heating-cooling' => '100% 100%',
+];
+
 $month = (int) wp_date('n');
 if (in_array($month, [12, 1, 2], true)) {
     $season_label = __('Winter at home', 'home');
@@ -55,20 +67,16 @@ if (in_array($month, [12, 1, 2], true)) {
             </div>
         </div>
 
-        <div class="home-v2-room" aria-hidden="true">
-            <div class="home-v2-window"><span></span></div>
-            <div class="home-v2-room-plant"><i></i><i></i><i></i><i></i><i></i><b></b></div>
-            <div class="home-v2-sofa">
-                <span class="home-v2-cushion one"></span>
-                <span class="home-v2-cushion two"></span>
-                <span class="home-v2-throw"></span>
-            </div>
-            <div class="home-v2-table">
-                <span class="home-v2-books"></span>
-                <span class="home-v2-mug"></span>
-                <span class="home-v2-vase"><i></i><i></i><i></i></span>
-            </div>
-            <span class="home-v2-hand-note"><?php esc_html_e('Good homes, happier days.', 'home'); ?></span>
+        <div class="home-v2-room" aria-hidden="true" style="background:none;">
+            <img
+                src="<?php echo esc_url(get_template_directory_uri() . '/assets/generated/hero-living-room.jpg'); ?>"
+                alt=""
+                width="640"
+                height="420"
+                fetchpriority="high"
+                decoding="async"
+                style="position:absolute;inset:0;z-index:20;width:100%;height:100%;object-fit:cover;display:block;"
+            >
         </div>
     </div>
 </section>
@@ -102,8 +110,19 @@ if (in_array($month, [12, 1, 2], true)) {
 
         <div class="home-v2-category-grid">
             <?php foreach (home_category_pillars() as $slug => $pillar) : ?>
+                <?php
+                $sprite_position = $category_sprite_positions[$slug] ?? '0% 0%';
+                $photo_style = sprintf(
+                    'display:block;width:100%%;height:100%%;min-height:100%%;background-image:url(%s);background-size:400%% 200%%;background-position:%s;background-repeat:no-repeat;background-color:%s;',
+                    esc_url($category_sprite_url),
+                    $sprite_position,
+                    $pillar['tone']
+                );
+                ?>
                 <a class="home-v2-category-card" href="<?php echo esc_url(home_category_url($slug)); ?>">
-                    <div class="home-v2-category-art"><?php echo home_category_art($slug, $pillar['tone']); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+                    <div class="home-v2-category-art">
+                        <span class="home-v2-category-photo home-v2-category-photo--<?php echo esc_attr($slug); ?>" aria-hidden="true" style="<?php echo esc_attr($photo_style); ?>"></span>
+                    </div>
                     <div class="home-v2-category-card-copy">
                         <div>
                             <h3><?php echo esc_html($pillar['label']); ?></h3>
