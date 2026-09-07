@@ -8,7 +8,10 @@ $latest_posts = get_posts([
     'ignore_sticky_posts' => true,
 ]);
 
-$category_sprite_url = get_template_directory_uri() . '/assets/generated/home-category-sprite-v2.jpg?v=3';
+// Root-relative asset URLs deliberately keep HOME on the current host/port.
+// This avoids WordPress site_url/home_url mismatches while the site runs on :8081.
+$theme_asset_base = '/wp-content/themes/home/assets/generated';
+$category_sprite_url = $theme_asset_base . '/home-category-sprite-v2.jpg?v=4';
 $category_sprite_positions = [
     'cleaning'        => '0% 0%',
     'laundry'         => '33.333% 0%',
@@ -67,7 +70,7 @@ if (in_array($month, [12, 1, 2], true)) {
 
         <div class="home-v2-room" aria-hidden="true" style="background:none;">
             <img
-                src="<?php echo esc_url(get_template_directory_uri() . '/assets/generated/hero-living-room-v2.jpg?v=3'); ?>"
+                src="<?php echo esc_url($theme_asset_base . '/hero-living-room-v2.jpg?v=4'); ?>"
                 alt=""
                 width="960"
                 height="640"
