@@ -122,16 +122,14 @@ jobs:
           "${DOCKER[@]}" exec home-wp sh -lc "test -s '$TARGET/style.css' && test -s '$TARGET/functions.php' && test -s '$TARGET/assets/css/home-v2.css' && test -s '$TARGET/assets/generated/hero-living-room-v2.jpg' && test -s '$TARGET/assets/generated/home-category-sprite-v2.jpg'"
           "${DOCKER[@]}" exec home-wp php -r '$expect=["/var/www/html/wp-content/themes/home/assets/generated/hero-living-room-v2.jpg"=>[960,640],"/var/www/html/wp-content/themes/home/assets/generated/home-category-sprite-v2.jpg"=>[1040,390]]; foreach($expect as $f=>$dims){$i=@getimagesize($f); if(!$i){fwrite(STDERR,"Invalid image: $f\n"); exit(1);} if($i[0]!==$dims[0] || $i[1]!==$dims[1]){fwrite(STDERR,"Unexpected dimensions for $f\n"); exit(1);}}'
 
-          # Force the production rewrite table to include the bilingual routes and
-          # ensure the theme-owned category taxonomy exists before URL smoke tests.
-          "${DOCKER[@]}" exec home-wp php -r 'require "/var/www/html/wp-load.php"; if(function_exists("home_ensure_core_categories")){home_ensure_core_categories();} flush_rewrite_rules(false); echo "HOME rewrite rules refreshed\n";'
+          "${DOCKER[@]}" exec home-wp php -r 'require "/var/www/html/wp-load.php"; if(function_exists("home_ensure_core_categories")){home_ensure_core_categories();} flush_rewrite_rules(true); echo "PERMALINK_STRUCTURE=".get_option("permalink_structure")."\n"; $rules=(array)get_option("rewrite_rules",[]); foreach($rules as $regex=>$query){if(strpos($regex,"en")===0 || strpos($regex,"categoria")===0){echo "RULE {$regex} => {$query}\n";}}'
+          "${DOCKER[@]}" exec home-wp sh -lc 'echo "--- APACHE MODULES ---"; (apache2ctl -M 2>/dev/null | grep rewrite || true); echo "--- HTACCESS ---"; if [ -f /var/www/html/.htaccess ]; then cat /var/www/html/.htaccess; else echo MISSING; fi'
 
           if command -v curl >/dev/null 2>&1; then
             curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/css/home-v2.css?v=6"
             curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/generated/hero-living-room-v2.jpg?v=6"
             curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/generated/home-category-sprite-v2.jpg?v=6"
 
-            # These public routes must never ship as 404s.
             for path in \
               "/" "/en/" \
               "/categoria/limpieza/" "/categoria/cocina/" "/categoria/bano/" "/categoria/lavanderia/" \
@@ -140,7 +138,11 @@ jobs:
               "/en/category/appliances/" "/en/category/plumbing/" "/en/category/pests/" "/en/category/heating-cooling/"
             do
               echo "Smoke test ${path}"
-              curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081${path}"
+              if ! curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081${path}"; then
+                echo "--- FAILED RESPONSE ${path} ---"
+                curl --silent --show-error --max-time 10 -i "http://127.0.0.1:8081${path}" | head -n 40 || true
+                exit 1
+              fi
             done
 
             ES_SLUG="$("${DOCKER[@]}" exec home-wp php -r 'require "/var/www/html/wp-load.php"; $ids=get_posts(["post_type"=>"post","post_status"=>"publish","posts_per_page"=>1,"fields"=>"ids","meta_key"=>"_home_language","meta_value"=>"es","suppress_filters"=>true]); if($ids){echo get_post_field("post_name",$ids[0]);}')"
