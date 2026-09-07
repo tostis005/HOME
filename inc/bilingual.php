@@ -58,30 +58,22 @@ add_filter('query_vars', static function(array $vars): array {
     return $vars;
 });
 
+function home_resolve_post_slug_for_language(string $slug, string $language): ?WP_Post {
+    $post = get_page_by_path($slug, OBJECT, 'post');
+    if (!$post instanceof WP_Post || $post->post_status !== 'publish') { return null; }
+    $post_language = get_post_meta($post->ID, '_home_language', true) === 'en' ? 'en' : 'es';
+    return $post_language === $language ? $post : null;
+}
+
 function home_resolve_english_slug(array $query_vars): array {
     if (empty($query_vars['home_slug'])) { return $query_vars; }
     $slug = trim(sanitize_title((string) $query_vars['home_slug']), '/');
     unset($query_vars['home_slug']);
 
-    $posts = get_posts([
-        'post_type'        => 'post',
-        'post_status'      => 'publish',
-        'name'             => $slug,
-        'posts_per_page'   => 1,
-        'suppress_filters' => true,
-        'meta_key'         => '_home_language',
-        'meta_value'       => 'en',
-    ]);
-    if (!empty($posts) && $posts[0] instanceof WP_Post) {
-        $query_vars['name'] = $posts[0]->post_name;
+    $post = home_resolve_post_slug_for_language($slug, 'en');
+    if ($post instanceof WP_Post) {
+        $query_vars['name'] = $post->post_name;
         $query_vars['post_type'] = 'post';
-        return $query_vars;
-    }
-
-    $page = get_page_by_path($slug, OBJECT, 'page');
-    if ($page instanceof WP_Post && get_post_meta($page->ID, '_home_language', true) === 'en') {
-        $query_vars['pagename'] = $slug;
-        $query_vars['post_type'] = 'page';
         return $query_vars;
     }
 
@@ -91,9 +83,58 @@ function home_resolve_english_slug(array $query_vars): array {
 }
 add_filter('request', 'home_resolve_english_slug', 5);
 
+/**
+ * Fallback router for production environments where WordPress rewrite_rules
+ * were not regenerated correctly. Apache only needs to send the request to
+ * index.php; this router then resolves all HOME public URLs deterministically.
+ */
+function home_route_localized_request(WP $wp): void {
+    $uri = isset($_SERVER['REQUEST_URI']) ? (string) wp_unslash($_SERVER['REQUEST_URI']) : '/';
+    $path = trim((string) wp_parse_url($uri, PHP_URL_PATH), '/');
+
+    if ($path === 'en') {
+        $wp->query_vars = array_merge($wp->query_vars, ['home_lang'=>'en','home_front'=>'1']);
+        unset($wp->query_vars['error'], $wp->query_vars['name'], $wp->query_vars['pagename']);
+        return;
+    }
+
+    foreach (home_category_definitions() as $definition) {
+        if ($path === 'categoria/' . $definition['slug_es']) {
+            $wp->query_vars = array_merge($wp->query_vars, ['category_name'=>$definition['wp_slug'],'home_lang'=>'es']);
+            unset($wp->query_vars['error'], $wp->query_vars['name'], $wp->query_vars['pagename']);
+            return;
+        }
+        if ($path === 'en/category/' . $definition['slug_en']) {
+            $wp->query_vars = array_merge($wp->query_vars, ['category_name'=>$definition['wp_slug'],'home_lang'=>'en']);
+            unset($wp->query_vars['error'], $wp->query_vars['name'], $wp->query_vars['pagename']);
+            return;
+        }
+    }
+
+    if (preg_match('#^en/([^/]+)$#', $path, $matches)) {
+        $slug = sanitize_title($matches[1]);
+        $post = home_resolve_post_slug_for_language($slug, 'en');
+        if ($post instanceof WP_Post) {
+            $wp->query_vars = array_merge($wp->query_vars, ['name'=>$post->post_name,'post_type'=>'post','home_lang'=>'en']);
+            unset($wp->query_vars['error'], $wp->query_vars['pagename']);
+        }
+        return;
+    }
+
+    if ($path !== '' && strpos($path, '/') === false) {
+        $slug = sanitize_title($path);
+        $post = home_resolve_post_slug_for_language($slug, 'es');
+        if ($post instanceof WP_Post) {
+            $wp->query_vars = array_merge($wp->query_vars, ['name'=>$post->post_name,'post_type'=>'post','home_lang'=>'es']);
+            unset($wp->query_vars['error'], $wp->query_vars['pagename']);
+        }
+    }
+}
+add_action('parse_request', 'home_route_localized_request', 1);
+
 function home_ensure_bilingual_permalinks(): void {
     $desired = '/%postname%/';
-    $version = 'home-bilingual-2026-09-07-v7';
+    $version = 'home-bilingual-2026-09-07-v8';
     $structure_changed = (string) get_option('permalink_structure') !== $desired;
 
     if ($structure_changed) {
@@ -105,7 +146,7 @@ function home_ensure_bilingual_permalinks(): void {
     }
 
     if ($structure_changed || get_option('home_rewrite_version') !== $version) {
-        flush_rewrite_rules(true);
+        flush_rewrite_rules(false);
         update_option('home_rewrite_version', $version, false);
     }
 }
