@@ -7,63 +7,32 @@ $latest_posts = get_posts([
     'numberposts'         => 6,
     'ignore_sticky_posts' => true,
 ]);
-
-$month = (int) wp_date('n');
-if (in_array($month, [12, 1, 2], true)) {
-    $season_label = __('Winter at home', 'home');
-    $season_items = [
-        ['heating', __('Keep heating working efficiently', 'home')],
-        ['condensation mold', __('Stay ahead of condensation and mold', 'home')],
-        ['frozen pipes', __('Protect plumbing in cold weather', 'home')],
-    ];
-} elseif (in_array($month, [3, 4, 5], true)) {
-    $season_label = __('Spring reset', 'home');
-    $season_items = [
-        ['spring cleaning', __('Build a room-by-room cleaning reset', 'home')],
-        ['pests prevent', __('Close the door on seasonal pests', 'home')],
-        ['air conditioner maintenance', __('Get cooling ready before hot days', 'home')],
-    ];
-} elseif (in_array($month, [6, 7, 8], true)) {
-    $season_label = __('Summer at home', 'home');
-    $season_items = [
-        ['air conditioner cooling', __('Keep rooms cooler and airflow moving', 'home')],
-        ['fruit flies ants', __('Handle warm-weather kitchen pests', 'home')],
-        ['refrigerator temperature', __('Help the fridge through hotter days', 'home')],
-    ];
-} else {
-    $season_label = __('Fall home reset', 'home');
-    $season_items = [
-        ['heating maintenance', __('Check heating before colder weather', 'home')],
-        ['dryer vent', __('Clean lint and dryer vent buildup', 'home')],
-        ['mice prevent', __('Seal common pest entry points', 'home')],
-    ];
-}
 ?>
 
 <section class="home-v2-hero home-premium-hero">
-    <div class="container home-v2-hero-grid">
-        <div class="home-v2-hero-copy">
-            <span class="home-v2-eyebrow"><?php esc_html_e('Practical advice. Real solutions. A brighter home.', 'home'); ?></span>
-            <h1><?php esc_html_e('Home advice', 'home'); ?><br><em><?php esc_html_e('for real life.', 'home'); ?></em></h1>
-            <p><?php esc_html_e('Simple, trustworthy guidance for cleaning, fixing, maintaining and understanding the place you live — without turning every small problem into a project.', 'home'); ?></p>
-            <div class="home-v2-hero-actions">
-                <a class="home-v2-primary-button" href="#home-categories"><?php esc_html_e('Explore all categories', 'home'); ?><span aria-hidden="true">→</span></a>
-                <a class="home-v2-text-button" href="#latest-guides"><?php esc_html_e('See latest guides', 'home'); ?></a>
+    <div class="container home-premium-hero-wrap">
+        <div class="home-premium-hero-card">
+            <figure class="home-premium-hero-media" aria-hidden="true">
+                <img
+                    src="<?php echo esc_url(home_hero_image_url()); ?>"
+                    alt=""
+                    width="1800"
+                    height="1200"
+                    fetchpriority="high"
+                    decoding="async"
+                >
+            </figure>
+            <div class="home-v2-hero-copy home-premium-hero-copy">
+                <span class="home-v2-eyebrow"><?php esc_html_e('Practical advice. Real solutions. A brighter home.', 'home'); ?></span>
+                <h1><?php esc_html_e('Home advice', 'home'); ?><br><em><?php esc_html_e('for real life.', 'home'); ?></em></h1>
+                <p><?php esc_html_e('Simple, trustworthy guidance for cleaning, fixing, maintaining and understanding the place you live — without turning every small problem into a project.', 'home'); ?></p>
+                <div class="home-v2-hero-actions">
+                    <a class="home-v2-primary-button" href="#home-categories"><?php esc_html_e('Explore all categories', 'home'); ?><span aria-hidden="true">→</span></a>
+                    <a class="home-v2-text-button" href="#latest-guides"><?php esc_html_e('See latest guides', 'home'); ?></a>
+                </div>
+                <div class="home-v2-hero-search"><?php get_search_form(); ?></div>
             </div>
-            <div class="home-v2-hero-search"><?php get_search_form(); ?></div>
         </div>
-
-        <figure class="home-v2-room home-premium-hero-media">
-            <img
-                src="<?php echo esc_url(home_hero_image_url()); ?>"
-                alt="<?php esc_attr_e('Warm, welcoming living room in natural light', 'home'); ?>"
-                width="1800"
-                height="1200"
-                fetchpriority="high"
-                decoding="async"
-            >
-            <figcaption class="home-premium-photo-note"><?php esc_html_e('A calmer home starts with clear answers.', 'home'); ?></figcaption>
-        </figure>
     </div>
 </section>
 
@@ -118,74 +87,66 @@ if (in_array($month, [12, 1, 2], true)) {
     </div>
 </section>
 
-<section class="home-v2-featured" id="latest-guides">
+<section class="home-v2-featured home-premium-featured" id="latest-guides">
     <div class="container">
         <div class="home-v2-section-head compact">
             <div>
                 <span class="home-v2-kicker"><?php esc_html_e('Fresh from HOME', 'home'); ?></span>
-                <h2><?php esc_html_e('Featured guides & timely fixes.', 'home'); ?></h2>
+                <h2><?php esc_html_e('Featured guides & practical fixes.', 'home'); ?></h2>
             </div>
         </div>
 
-        <div class="home-v2-featured-layout">
-            <div class="home-v2-featured-main">
-                <?php if (!empty($latest_posts)) : ?>
-                    <?php foreach (array_slice($latest_posts, 0, 3) as $post) : setup_postdata($post); ?>
-                        <?php $article_image = home_category_image_url(home_post_category_key()); ?>
-                        <article class="home-v2-article-card home-premium-article-card">
-                            <a href="<?php the_permalink(); ?>">
-                                <div class="home-v2-article-media">
-                                    <?php if (has_post_thumbnail()) : ?>
-                                        <?php the_post_thumbnail('large'); ?>
-                                    <?php elseif ($article_image) : ?>
-                                        <img src="<?php echo esc_url($article_image); ?>" alt="" loading="lazy" decoding="async">
-                                    <?php else : ?>
-                                        <div class="home-v2-article-placeholder"><?php echo home_category_art(home_post_category_key(), '#e7e1d5'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="home-v2-article-copy">
-                                    <span class="home-v2-article-category"><?php echo esc_html(home_primary_category_name()); ?></span>
-                                    <h3><?php the_title(); ?></h3>
-                                    <p><?php echo esc_html(get_the_excerpt()); ?></p>
-                                    <span class="home-v2-read-more"><?php esc_html_e('Read guide', 'home'); ?> <span aria-hidden="true">→</span></span>
-                                </div>
-                            </a>
-                        </article>
-                    <?php endforeach; wp_reset_postdata(); ?>
-                <?php else : ?>
-                    <div class="home-v2-empty"><?php esc_html_e('Published WordPress articles will appear here automatically.', 'home'); ?></div>
-                <?php endif; ?>
+        <?php if (!empty($latest_posts)) : ?>
+            <div class="home-v2-featured-main home-premium-featured-grid">
+                <?php foreach (array_slice($latest_posts, 0, 3) as $post) : setup_postdata($post); ?>
+                    <?php $article_image = home_category_image_url(home_post_category_key()); ?>
+                    <article class="home-v2-article-card home-premium-article-card">
+                        <a href="<?php the_permalink(); ?>">
+                            <div class="home-v2-article-media">
+                                <?php if (has_post_thumbnail()) : ?>
+                                    <?php the_post_thumbnail('large'); ?>
+                                <?php elseif ($article_image) : ?>
+                                    <img src="<?php echo esc_url($article_image); ?>" alt="" loading="lazy" decoding="async">
+                                <?php else : ?>
+                                    <div class="home-v2-article-placeholder"><?php echo home_category_art(home_post_category_key(), '#e7e1d5'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="home-v2-article-copy">
+                                <span class="home-v2-article-category"><?php echo esc_html(home_primary_category_name()); ?></span>
+                                <h3><?php the_title(); ?></h3>
+                                <p><?php echo esc_html(get_the_excerpt()); ?></p>
+                                <span class="home-v2-read-more"><?php esc_html_e('Read guide', 'home'); ?> <span aria-hidden="true">→</span></span>
+                            </div>
+                        </a>
+                    </article>
+                <?php endforeach; wp_reset_postdata(); ?>
             </div>
 
-            <aside class="home-v2-seasonal home-premium-seasonal">
-                <span class="home-v2-kicker"><?php echo esc_html($season_label); ?></span>
-                <h3><?php esc_html_e('A few useful things to check now.', 'home'); ?></h3>
-                <div class="home-v2-seasonal-list">
-                    <?php foreach ($season_items as $index => $item) : ?>
-                        <a href="<?php echo esc_url(add_query_arg('s', $item[0], home_url('/'))); ?>">
-                            <span class="home-v2-seasonal-number">0<?php echo esc_html((string) ($index + 1)); ?></span>
-                            <strong><?php echo esc_html($item[1]); ?></strong>
-                            <span aria-hidden="true">→</span>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
-                <?php if (count($latest_posts) > 3) : ?>
-                    <div class="home-v2-more-guides">
-                        <span><?php esc_html_e('Also new', 'home'); ?></span>
+            <?php if (count($latest_posts) > 3) : ?>
+                <div class="home-premium-more-guides">
+                    <div class="home-premium-more-guides-head">
+                        <span class="home-v2-kicker"><?php esc_html_e('More from HOME', 'home'); ?></span>
+                    </div>
+                    <div class="home-premium-more-guides-grid">
                         <?php foreach (array_slice($latest_posts, 3, 3) as $post) : ?>
-                            <a href="<?php echo esc_url(get_permalink($post)); ?>"><?php echo esc_html(get_the_title($post)); ?></a>
+                            <a href="<?php echo esc_url(get_permalink($post)); ?>">
+                                <span><?php echo esc_html(home_primary_category_name($post->ID)); ?></span>
+                                <strong><?php echo esc_html(get_the_title($post)); ?></strong>
+                                <i aria-hidden="true">→</i>
+                            </a>
                         <?php endforeach; ?>
                     </div>
-                <?php endif; ?>
-            </aside>
-        </div>
+                </div>
+            <?php endif; ?>
+        <?php else : ?>
+            <div class="home-v2-empty"><?php esc_html_e('Published WordPress articles will appear here automatically.', 'home'); ?></div>
+        <?php endif; ?>
     </div>
 </section>
 
-<section class="home-v2-cta">
+<section class="home-v2-cta home-premium-cta">
     <div class="container">
         <div class="home-v2-cta-box home-premium-cta-box">
-            <div class="home-v2-cta-leaves" aria-hidden="true"><i></i><i></i><i></i></div>
             <div>
                 <span class="home-v2-kicker"><?php esc_html_e('Make home feel easier', 'home'); ?></span>
                 <h2><?php esc_html_e('One clear answer can save a lot of guessing.', 'home'); ?></h2>
