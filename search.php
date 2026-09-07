@@ -11,9 +11,16 @@
 <div class="container content-grid">
     <?php if (have_posts()) : ?>
         <?php while (have_posts()) : the_post(); ?>
+            <?php $article_image = home_category_image_url(home_post_category_key()); ?>
             <article class="article-card">
                 <a href="<?php the_permalink(); ?>">
-                    <div class="article-thumb"><?php if (has_post_thumbnail()) : the_post_thumbnail('large'); else : ?><div class="article-placeholder"></div><?php endif; ?></div>
+                    <div class="article-thumb">
+                        <?php if ($article_image) : ?>
+                            <img src="<?php echo esc_url($article_image); ?>" alt="<?php echo esc_attr(home_primary_category_name()); ?>" loading="lazy" decoding="async">
+                        <?php else : ?>
+                            <div class="article-placeholder"></div>
+                        <?php endif; ?>
+                    </div>
                     <div class="article-body">
                         <div class="article-meta"><span><?php echo esc_html(home_primary_category_name()); ?></span><span>•</span><span><?php echo esc_html(home_reading_time()); ?></span></div>
                         <h3><?php the_title(); ?></h3>
