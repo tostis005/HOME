@@ -52,8 +52,7 @@ add_filter('get_the_archive_title', static function(string $title): string {
 
 function home_primary_menu_location(): string {
     if (home_is_english()) { return has_nav_menu('primary_en') ? 'primary_en' : ''; }
-    if (has_nav_menu('primary_es')) { return 'primary_es'; }
-    return has_nav_menu('primary') ? 'primary' : '';
+    return has_nav_menu('primary_es') ? 'primary_es' : '';
 }
 
 function home_fallback_menu(): void {
