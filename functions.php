@@ -47,7 +47,17 @@ function home_theme_image_exists(string $relative_path): bool {
 
 function home_theme_image_url(string $relative_path): string {
     $relative_path = ltrim($relative_path, '/');
-    return '/wp-content/themes/home/' . $relative_path;
+    $absolute_path = get_template_directory() . '/' . $relative_path;
+    $url = '/wp-content/themes/home/' . $relative_path;
+
+    if (is_file($absolute_path)) {
+        $version = (string) filemtime($absolute_path);
+        if ($version !== '') {
+            $url .= '?v=' . rawurlencode($version);
+        }
+    }
+
+    return $url;
 }
 
 function home_hero_image_url(): string {
@@ -55,7 +65,7 @@ function home_hero_image_url(): string {
     if (home_theme_image_exists($premium)) {
         return home_theme_image_url($premium);
     }
-    return home_theme_image_url('assets/generated/hero-living-room-v2.jpg') . '?v=6';
+    return home_theme_image_url('assets/generated/hero-living-room-v2.jpg');
 }
 
 function home_category_image_url(string $category_key): string {
