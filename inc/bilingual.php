@@ -134,7 +134,7 @@ add_action('parse_request', 'home_route_localized_request', 1);
 
 function home_ensure_bilingual_permalinks(): void {
     $desired = '/%postname%/';
-    $version = 'home-bilingual-2026-09-07-v9';
+    $version = 'home-bilingual-2026-09-07-v10';
     $structure_changed = (string) get_option('permalink_structure') !== $desired;
 
     if ($structure_changed) {
