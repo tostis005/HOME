@@ -1,0 +1,61 @@
+name: HOME editorial humanization
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'content/tools/editorial-humanize.py'
+      - '.github/workflows/editorial-humanize.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  humanize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Apply editorial pass
+        run: python content/tools/editorial-humanize.py
+
+      - name: Validate article JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          files = sorted(Path('content/articles').glob('*/*.json'))
+          assert len(files) >= 140, f'Expected at least 140 article JSON files, found {len(files)}'
+          seen = set()
+          for path in files:
+              data = json.loads(path.read_text(encoding='utf-8'))
+              key = (data['article_number'], data['language'])
+              if key in seen:
+                  raise SystemExit(f'Duplicate article/language pair: {key}')
+              seen.add(key)
+              for required in ('translation_group','slug','content_html','faq','sources','status'):
+                  if required not in data:
+                      raise SystemExit(f'Missing {required} in {path}')
+          print(f'Validated {len(files)} article JSON files')
+          PY
+
+      - name: Commit editorial changes
+        run: |
+          if git diff --quiet -- content/articles; then
+            echo 'No article changes required.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add content/articles
+          git commit -m 'Humanize HOME article language [skip ci]'
+          git push
