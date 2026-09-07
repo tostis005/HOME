@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php wp_head(); ?>
     <link rel="stylesheet" href="/wp-content/themes/home/assets/css/home-v2.css?v=4.1.0">
-    <link rel="stylesheet" href="/wp-content/themes/home/assets/css/home-premium.css?v=1.0.0">
+    <link rel="stylesheet" href="/wp-content/themes/home/assets/css/home-premium.css?v=1.1.0">
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
@@ -34,12 +34,9 @@
             <a class="header-search home-v2-search-button" href="<?php echo esc_url(add_query_arg('s', '', home_localized_home_url())); ?>" aria-label="<?php esc_attr_e('Search HOME', 'home'); ?>">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="2"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </a>
-            <button class="home-language-trigger" type="button" data-home-open="language" aria-controls="home-language-overlay" aria-expanded="false" aria-label="<?php esc_attr_e('Choose language', 'home'); ?>">
+            <button class="home-language-trigger home-language-trigger--flag-only" type="button" data-home-open="language" aria-controls="home-language-overlay" aria-expanded="false" aria-label="<?php esc_attr_e('Choose language', 'home'); ?>">
                 <span class="home-language-flag" aria-hidden="true"><?php echo home_is_english() ? '🇺🇸' : '🇪🇸'; ?></span>
-                <span class="home-language-code"><?php echo home_is_english() ? 'EN' : 'ES'; ?></span>
-                <svg viewBox="0 0 12 8" aria-hidden="true"><path d="m1 1.5 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <a class="home-v2-header-cta" href="#home-categories"><?php esc_html_e('Explore HOME', 'home'); ?></a>
             <button class="home-mobile-menu-trigger" type="button" data-home-open="menu" aria-controls="home-mobile-overlay" aria-expanded="false" aria-label="<?php esc_attr_e('Menu', 'home'); ?>"><span></span><span></span></button>
         </div>
     </div>
