@@ -5,6 +5,7 @@ if (!defined('ABSPATH')) { exit; }
 require_once get_template_directory() . '/inc/bilingual.php';
 require_once get_template_directory() . '/inc/translations.php';
 require_once get_template_directory() . '/inc/categories.php';
+require_once get_template_directory() . '/inc/content-language.php';
 
 function home_theme_setup(): void {
     load_theme_textdomain('home', get_template_directory() . '/languages');
