@@ -31,16 +31,30 @@ function home_register_language_rewrites(): void {
     add_rewrite_tag('%home_lang%', '(es|en)');
     add_rewrite_tag('%home_front%', '1');
     add_rewrite_tag('%home_slug%', '([^&]+)');
+
+    // English homepage.
     add_rewrite_rule('^en/?$', 'index.php?home_lang=en&home_front=1', 'top');
 
+    // Localized category archives. Public slugs are translated; WordPress keeps
+    // stable internal category slugs so both languages can share taxonomy logic.
     foreach (home_category_definitions() as $definition) {
-        add_rewrite_rule('^categoria/' . preg_quote($definition['slug_es'], '#') . '/?$', 'index.php?category_name=' . $definition['wp_slug'] . '&home_lang=es', 'top');
-        add_rewrite_rule('^en/category/' . preg_quote($definition['slug_en'], '#') . '/?$', 'index.php?category_name=' . $definition['wp_slug'] . '&home_lang=en', 'top');
+        add_rewrite_rule(
+            '^categoria/' . preg_quote($definition['slug_es'], '#') . '/?$',
+            'index.php?category_name=' . $definition['wp_slug'] . '&home_lang=es',
+            'top'
+        );
+        add_rewrite_rule(
+            '^en/category/' . preg_quote($definition['slug_en'], '#') . '/?$',
+            'index.php?category_name=' . $definition['wp_slug'] . '&home_lang=en',
+            'top'
+        );
     }
 
-    add_rewrite_rule('^en/(.+?)/?$', 'index.php?home_slug=$matches[1]&home_lang=en', 'top');
+    // English articles are exactly one slug below /en/. Keeping this to one
+    // path segment prevents it from swallowing /en/category/... routes.
+    add_rewrite_rule('^en/([^/]+)/?$', 'index.php?home_slug=$matches[1]&home_lang=en', 'top');
 }
-add_action('init', 'home_register_language_rewrites');
+add_action('init', 'home_register_language_rewrites', 20);
 
 add_filter('query_vars', static function(array $vars): array {
     $vars[] = 'home_lang';
@@ -51,12 +65,20 @@ add_filter('query_vars', static function(array $vars): array {
 
 function home_resolve_english_slug(array $query_vars): array {
     if (empty($query_vars['home_slug'])) { return $query_vars; }
-    $slug = trim(sanitize_text_field((string) $query_vars['home_slug']), '/');
+    $slug = trim(sanitize_title((string) $query_vars['home_slug']), '/');
     unset($query_vars['home_slug']);
 
-    $post = get_page_by_path($slug, OBJECT, 'post');
-    if ($post instanceof WP_Post && get_post_meta($post->ID, '_home_language', true) === 'en') {
-        $query_vars['name'] = $post->post_name;
+    $posts = get_posts([
+        'post_type'        => 'post',
+        'post_status'      => 'publish',
+        'name'             => $slug,
+        'posts_per_page'   => 1,
+        'suppress_filters' => true,
+        'meta_key'         => '_home_language',
+        'meta_value'       => 'en',
+    ]);
+    if (!empty($posts) && $posts[0] instanceof WP_Post) {
+        $query_vars['name'] = $posts[0]->post_name;
         $query_vars['post_type'] = 'post';
         return $query_vars;
     }
@@ -75,7 +97,7 @@ function home_resolve_english_slug(array $query_vars): array {
 add_filter('request', 'home_resolve_english_slug', 5);
 
 function home_maybe_flush_rewrites(): void {
-    $version = 'home-bilingual-2026-09-07-v3';
+    $version = 'home-bilingual-2026-09-07-v4';
     if (get_option('home_rewrite_version') !== $version) {
         flush_rewrite_rules(false);
         update_option('home_rewrite_version', $version, false);
@@ -83,18 +105,42 @@ function home_maybe_flush_rewrites(): void {
 }
 add_action('init', 'home_maybe_flush_rewrites', 99);
 
+// Virtual localized routes must not be canonicalized back to a WordPress URL.
+add_filter('redirect_canonical', static function($redirect_url, $requested_url) {
+    if ((string) get_query_var('home_front') === '1' || get_query_var('home_lang') || preg_match('#^/en(?:/|$)|^/categoria/#', (string) wp_parse_url((string) $requested_url, PHP_URL_PATH))) {
+        return false;
+    }
+    return $redirect_url;
+}, 10, 2);
+
 add_filter('template_include', static function(string $template): string {
     if ((string) get_query_var('home_front') === '1') {
+        global $wp_query;
+        if ($wp_query instanceof WP_Query) {
+            $wp_query->is_404 = false;
+            $wp_query->is_home = false;
+            $wp_query->is_page = true;
+        }
+        status_header(200);
         $front = get_theme_file_path('front-page.php');
         if (is_readable($front)) { return $front; }
     }
     return $template;
 }, 99);
 
+add_action('template_redirect', static function(): void {
+    if ((string) get_query_var('home_front') === '1') {
+        global $wp_query;
+        if ($wp_query instanceof WP_Query) { $wp_query->is_404 = false; }
+        status_header(200);
+    }
+}, 0);
+
 add_action('pre_get_posts', static function(WP_Query $query): void {
     if ((string) $query->get('home_front') === '1') {
         $query->is_home = false;
-        $query->is_page = false;
+        $query->is_page = true;
         $query->is_404 = false;
+        $query->set('posts_per_page', 0);
     }
 }, 1);
