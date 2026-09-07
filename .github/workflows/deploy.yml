@@ -122,8 +122,6 @@ jobs:
           "${DOCKER[@]}" exec home-wp sh -lc "test -s '$TARGET/style.css' && test -s '$TARGET/functions.php' && test -s '$TARGET/assets/css/home-v2.css' && test -s '$TARGET/assets/generated/hero-living-room-v2.jpg' && test -s '$TARGET/assets/generated/home-category-sprite-v2.jpg'"
           "${DOCKER[@]}" exec home-wp php -r '$expect=["/var/www/html/wp-content/themes/home/assets/generated/hero-living-room-v2.jpg"=>[960,640],"/var/www/html/wp-content/themes/home/assets/generated/home-category-sprite-v2.jpg"=>[1040,390]]; foreach($expect as $f=>$dims){$i=@getimagesize($f); if(!$i){fwrite(STDERR,"Invalid image: $f\n"); exit(1);} if($i[0]!==$dims[0] || $i[1]!==$dims[1]){fwrite(STDERR,"Unexpected dimensions for $f\n"); exit(1);}}'
 
-          # Apache must forward every pretty URL to WordPress. The production
-          # container previously had an empty WordPress .htaccess block.
           cat > /tmp/home-wordpress.htaccess <<'HTACCESS'
           # BEGIN WordPress
           <IfModule mod_rewrite.c>
@@ -143,13 +141,28 @@ jobs:
           "${DOCKER[@]}" exec home-wp php -r 'require "/var/www/html/wp-load.php"; if(function_exists("home_ensure_core_categories")){home_ensure_core_categories();} flush_rewrite_rules(false); echo "PERMALINK_STRUCTURE=".get_option("permalink_structure")."\n";'
           "${DOCKER[@]}" exec home-wp sh -lc 'apache2ctl -M 2>/dev/null | grep rewrite >/dev/null; test -s /var/www/html/.htaccess'
 
+          # Editorial integrity: one HOME category per published managed article,
+          # and food-only legacy topics must stay unpublished.
+          "${DOCKER[@]}" exec home-wp php -r '
+            $_SERVER["REQUEST_URI"]="/";
+            require "/var/www/html/wp-load.php";
+            $posts=get_posts(["post_type"=>"post","post_status"=>"any","posts_per_page"=>-1,"fields"=>"ids","home_skip_language_filter"=>1,"meta_key"=>"_home_managed_article","meta_value"=>1]);
+            $bad=[];
+            foreach($posts as $id){
+              $status=get_post_status($id); $number=(int)get_post_meta($id,"_home_article_number",true); $scope=(string)get_post_meta($id,"_home_editorial_scope",true);
+              if($status==="publish" && count(wp_get_post_categories($id))!==1){$bad[]="post $id has ".count(wp_get_post_categories($id))." categories";}
+              if($status==="publish" && ($scope==="food-specific" || in_array($number,[34,35,37,40,43,44,55,56],true))){$bad[]="food-only post $id (#$number) is published";}
+            }
+            if($bad){fwrite(STDERR,implode("\n",$bad)."\n"); exit(1);} echo "EDITORIAL_TAXONOMY_OK managed=".count($posts)."\n";
+          '
+
           if command -v curl >/dev/null 2>&1; then
             curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/css/home-v2.css?v=6"
             curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/generated/hero-living-room-v2.jpg?v=6"
             curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/generated/home-category-sprite-v2.jpg?v=6"
 
             for path in \
-              "/" "/en/" \
+              "/" "/en/" "/page/2/" \
               "/categoria/limpieza/" "/categoria/cocina/" "/categoria/bano/" "/categoria/lavanderia/" \
               "/categoria/electrodomesticos/" "/categoria/fontaneria/" "/categoria/plagas/" "/categoria/climatizacion/" \
               "/en/category/cleaning/" "/en/category/kitchen/" "/en/category/bathroom/" "/en/category/laundry/" \
@@ -161,14 +174,13 @@ jobs:
                 /en/*|/en/) expected="home-lang-en" ;;
                 *) expected="home-lang-es" ;;
               esac
-              printf '%s' "$body" | grep -q "$expected" || { echo "Wrong language shell for ${path}: expected ${expected}"; exit 1; }
+              grep -q "$expected" <<< "$body" || { echo "Wrong language shell for ${path}: expected ${expected}"; exit 1; }
             done
 
-            # Validate EVERY currently published article, not just a sample. Any
-            # new broken slug or language prefix will make the deployment fail.
             PUBLISHED_ARTICLES="$("${DOCKER[@]}" exec home-wp php -r '
+              $_SERVER["REQUEST_URI"]="/";
               require "/var/www/html/wp-load.php";
-              $posts=get_posts(["post_type"=>"post","post_status"=>"publish","posts_per_page"=>-1,"orderby"=>"ID","order"=>"ASC","suppress_filters"=>true]);
+              $posts=get_posts(["post_type"=>"post","post_status"=>"publish","posts_per_page"=>-1,"orderby"=>"ID","order"=>"ASC","home_skip_language_filter"=>1]);
               foreach($posts as $post){
                 $lang=get_post_meta($post->ID,"_home_language",true)==="en" ? "en" : "es";
                 echo $lang."\t".$post->post_name."\n";
@@ -192,7 +204,7 @@ jobs:
               fi
               echo "Article URL test ${lang}: ${path}"
               body="$(curl --fail --silent --show-error --max-time 15 "http://127.0.0.1:8081${path}")"
-              printf '%s' "$body" | grep -q "$expected" || { echo "Wrong language shell for article ${path}: expected ${expected}"; exit 1; }
+              grep -q "$expected" <<< "$body" || { echo "Wrong language shell for article ${path}: expected ${expected}"; exit 1; }
             done <<< "$PUBLISHED_ARTICLES"
             echo "ARTICLE_URLS_OK total=${ARTICLE_COUNT} es=${ES_COUNT} en=${EN_COUNT}"
           fi
