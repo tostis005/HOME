@@ -22,7 +22,7 @@ jobs:
           chmod 600 ~/.ssh/home_diag_key
           ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
 
-      - name: Diagnose routes and listing state
+      - name: Diagnose pages navigation and listings
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
@@ -32,7 +32,7 @@ jobs:
           set -euo pipefail
           if docker inspect home-wp >/dev/null 2>&1; then D=(docker); else D=(sudo -n docker); fi
 
-          echo '===== WP OPTIONS ====='
+          echo '===== WP OPTIONS / PAGES / MENUS ====='
           "${D[@]}" exec home-wp php -r '
             $_SERVER["REQUEST_URI"]="/";
             require "/var/www/html/wp-load.php";
@@ -41,6 +41,11 @@ jobs:
             echo "page_on_front={$front} permalink=".($front ? get_permalink($front) : "-")."\n";
             echo "page_for_posts={$posts} permalink=".($posts ? get_permalink($posts) : "-")."\n";
             echo "posts_per_page=".get_option("posts_per_page")."\n";
+            foreach(get_pages(["post_status"=>"publish"]) as $page){echo "PAGE {$page->ID} {$page->post_title} ".get_permalink($page)."\n";}
+            foreach(wp_get_nav_menus() as $menu){
+              echo "MENU {$menu->name}\n";
+              foreach(wp_get_nav_menu_items($menu->term_id) ?: [] as $item){echo "  ITEM {$item->title} => {$item->url}\n";}
+            }
           '
 
           for path in / /page/2/ /articles/ /articles/page/2/ /articulos/ /articulos/page/2/ /blog/ /blog/page/2/ /categoria/cocina/ /categoria/plagas/ /en/category/pests/; do
