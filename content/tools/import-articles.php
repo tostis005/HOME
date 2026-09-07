@@ -63,35 +63,74 @@ function home_import_ensure_categories() {
     }
     return $ids;
 }
+/**
+ * HOME has eight mutually-exclusive editorial categories. The JSON taxonomy is
+ * richer than WordPress categories, but every public article must resolve to
+ * exactly one primary HOME category. Secondary concepts remain in _home_taxonomy.
+ */
 function home_import_category_slugs( $taxonomy ) {
-    $family = isset( $taxonomy['food_family'] ) ? strtolower( (string) $taxonomy['food_family'] ) : '';
+    $family = isset( $taxonomy['food_family'] ) ? strtolower( trim( (string) $taxonomy['food_family'] ) ) : '';
     $subs = ! empty( $taxonomy['food_subcategories'] ) && is_array( $taxonomy['food_subcategories'] ) ? implode( ' ', $taxonomy['food_subcategories'] ) : '';
     $types = ! empty( $taxonomy['article_types'] ) && is_array( $taxonomy['article_types'] ) ? implode( ' ', $taxonomy['article_types'] ) : '';
     $hay = strtolower( $family . ' ' . $subs . ' ' . $types );
-    $map = array(
-        'bathroom-plumbing'=>array('bathroom','plumbing'), 'kitchen-appliances'=>array('kitchen','appliances'),
-        'laundry-appliances'=>array('laundry','appliances'), 'laundry-textiles'=>array('laundry'), 'pest-prevention'=>array('pests'),
-        'food-safety'=>array('kitchen'), 'water-quality'=>array('plumbing'), 'plumbing'=>array('plumbing'),
-        'hvac'=>array('heating-cooling','appliances'), 'heating-cooling'=>array('heating-cooling'), 'cleaning'=>array('cleaning')
+
+    $direct = array(
+        'cleaning'=>'cleaning',
+        'kitchen'=>'kitchen',
+        'bathroom'=>'bathroom',
+        'laundry'=>'laundry',
+        'appliances'=>'appliances',
+        'plumbing'=>'plumbing',
+        'pests'=>'pests',
+        'pest-prevention'=>'pests',
+        'heating-cooling'=>'heating-cooling',
+        'hvac'=>'heating-cooling',
+        'laundry-appliances'=>'laundry',
+        'laundry-textiles'=>'laundry',
+        'food-safety'=>'kitchen',
+        'water-quality'=>'plumbing',
     );
-    $slugs = isset( $map[$family] ) ? $map[$family] : array();
+    if ( isset( $direct[$family] ) ) { return array( $direct[$family] ); }
+
+    if ( 'bathroom-plumbing' === $family ) {
+        foreach ( array('plumb','pipe','leak','clog','drain','faucet','water-pressure','water-heater','hard-water') as $needle ) {
+            if ( false !== strpos( $hay, $needle ) ) { return array('plumbing'); }
+        }
+        return array('bathroom');
+    }
+
+    if ( 'kitchen-appliances' === $family ) {
+        foreach ( array('dishwasher','refrigerator','fridge','freezer','oven','microwave','air-fryer','coffee-maker','appliance') as $needle ) {
+            if ( false !== strpos( $hay, $needle ) ) { return array('appliances'); }
+        }
+        return array('kitchen');
+    }
+
     $rules = array(
-        'laundry'=>array('laundry','washer','washing-machine','dryer','clothing','textile','pillow','bedding','duvet','stain'),
+        'pests'=>array('pest','ant','cockroach','roach','mouse','mice','bedbug','bed-bug','termite','flea','spider','silverfish','fly','gnat','mosquito'),
+        'heating-cooling'=>array('hvac','air-condition','heating','cooling','furnace','thermostat','ventilation'),
+        'laundry'=>array('laundry','washer','washing-machine','dryer','clothing','textile','pillow','bedding','duvet'),
+        'plumbing'=>array('plumb','pipe','leak','clog','drain','faucet','water-pressure','water-heater','hard-water','water-quality'),
         'bathroom'=>array('bathroom','toilet','shower','grout','bathtub'),
-        'plumbing'=>array('plumb','drain','sink','faucet','toilet','water-pressure','water-heater','hard-water','water-quality'),
-        'kitchen'=>array('kitchen','dishwasher','refrigerator','freezer','oven','microwave','air-fryer','coffee-maker','food-safety','leftover','pasta','meat','chicken'),
-        'appliances'=>array('appliance','washer','dryer','dishwasher','refrigerator','freezer','oven','microwave','air-fryer','coffee-maker'),
-        'pests'=>array('pest','ant','cockroach','mouse','mice','bedbug','bed-bug','termite','flea','spider','silverfish','fly','gnat','mosquito'),
-        'heating-cooling'=>array('hvac','air-condition','heating','cooling','furnace','thermostat'),
-        'cleaning'=>array('clean','mold','mould','carpet','sofa','mattress','window','odor','odour')
+        'appliances'=>array('appliance','dishwasher','refrigerator','fridge','freezer','oven','microwave','air-fryer','coffee-maker'),
+        'kitchen'=>array('kitchen','food-safety','leftover','pasta','meat','chicken','countertop'),
+        'cleaning'=>array('clean','mold','mould','carpet','sofa','mattress','window','odor','odour','stain'),
     );
-    foreach ( $rules as $slug=>$needles ) { foreach ( $needles as $needle ) { if ( false !== strpos( $hay, $needle ) ) { $slugs[] = $slug; break; } } }
-    return array_values( array_unique( empty( $slugs ) ? array('cleaning') : $slugs ) );
+    foreach ( $rules as $slug=>$needles ) {
+        foreach ( $needles as $needle ) {
+            if ( false !== strpos( $hay, $needle ) ) { return array( $slug ); }
+        }
+    }
+    return array('cleaning');
 }
 function home_import_apply_taxonomies( $post_id, $taxonomy, $category_ids ) {
-    $assigned = array();
-    foreach ( home_import_category_slugs( $taxonomy ) as $slug ) { if ( isset( $category_ids[$slug] ) ) { $assigned[] = $category_ids[$slug]; } }
-    if ( $assigned ) { wp_set_post_categories( $post_id, array_values( array_unique( $assigned ) ), false ); }
+    $slugs = home_import_category_slugs( $taxonomy );
+    $slug = ! empty( $slugs ) ? (string) $slugs[0] : 'cleaning';
+    if ( ! isset( $category_ids[$slug] ) ) { $slug = 'cleaning'; }
+    if ( isset( $category_ids[$slug] ) ) {
+        wp_set_post_categories( $post_id, array( (int) $category_ids[$slug] ), false );
+        update_post_meta( $post_id, '_home_primary_category', $slug );
+    }
     update_post_meta( $post_id, '_home_taxonomy', $taxonomy );
     update_post_meta( $post_id, '_home_primary_article_type', isset( $taxonomy['primary_article_type'] ) ? (string) $taxonomy['primary_article_type'] : '' );
 }
