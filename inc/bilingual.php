@@ -1,2 +1,100 @@
 <?php
-// HOME bilingual module placeholder. Implementation follows in subsequent commit.
+if (!defined('ABSPATH')) { exit; }
+
+function home_current_language(): string {
+    $uri = isset($_SERVER['REQUEST_URI']) ? (string) wp_unslash($_SERVER['REQUEST_URI']) : '/';
+    $path = (string) wp_parse_url($uri, PHP_URL_PATH);
+    return preg_match('#^/en(?:/|$)#i', $path) ? 'en' : 'es';
+}
+
+function home_is_english(): bool { return home_current_language() === 'en'; }
+function home_site_root_url(): string { return trailingslashit((string) get_option('home')); }
+function home_localized_home_url(?string $language = null): string {
+    $language = $language ?: home_current_language();
+    return $language === 'en' ? home_site_root_url() . 'en/' : home_site_root_url();
+}
+
+function home_language_attributes(string $output): string {
+    $lang = home_is_english() ? 'en-US' : 'es-ES';
+    if (preg_match('/lang=("|\')[^"\']*("|\')/i', $output)) {
+        return (string) preg_replace('/lang=("|\')[^"\']*("|\')/i', 'lang="' . esc_attr($lang) . '"', $output, 1);
+    }
+    return trim($output . ' lang="' . esc_attr($lang) . '"');
+}
+add_filter('language_attributes', 'home_language_attributes');
+add_filter('body_class', static function(array $classes): array {
+    $classes[] = 'home-lang-' . home_current_language();
+    return $classes;
+});
+
+function home_register_language_rewrites(): void {
+    add_rewrite_tag('%home_lang%', '(es|en)');
+    add_rewrite_tag('%home_front%', '1');
+    add_rewrite_tag('%home_slug%', '([^&]+)');
+    add_rewrite_rule('^en/?$', 'index.php?home_lang=en&home_front=1', 'top');
+
+    foreach (home_category_definitions() as $definition) {
+        add_rewrite_rule('^categoria/' . preg_quote($definition['slug_es'], '#') . '/?$', 'index.php?category_name=' . $definition['wp_slug'] . '&home_lang=es', 'top');
+        add_rewrite_rule('^en/category/' . preg_quote($definition['slug_en'], '#') . '/?$', 'index.php?category_name=' . $definition['wp_slug'] . '&home_lang=en', 'top');
+    }
+
+    add_rewrite_rule('^en/(.+?)/?$', 'index.php?home_slug=$matches[1]&home_lang=en', 'top');
+}
+add_action('init', 'home_register_language_rewrites');
+
+add_filter('query_vars', static function(array $vars): array {
+    $vars[] = 'home_lang';
+    $vars[] = 'home_front';
+    $vars[] = 'home_slug';
+    return $vars;
+});
+
+function home_resolve_english_slug(array $query_vars): array {
+    if (empty($query_vars['home_slug'])) { return $query_vars; }
+    $slug = trim(sanitize_text_field((string) $query_vars['home_slug']), '/');
+    unset($query_vars['home_slug']);
+
+    $post = get_page_by_path($slug, OBJECT, 'post');
+    if ($post instanceof WP_Post && get_post_meta($post->ID, '_home_language', true) === 'en') {
+        $query_vars['name'] = $post->post_name;
+        $query_vars['post_type'] = 'post';
+        return $query_vars;
+    }
+
+    $page = get_page_by_path($slug, OBJECT, 'page');
+    if ($page instanceof WP_Post && get_post_meta($page->ID, '_home_language', true) === 'en') {
+        $query_vars['pagename'] = $slug;
+        $query_vars['post_type'] = 'page';
+        return $query_vars;
+    }
+
+    $query_vars['name'] = '__home_missing_english_content__';
+    $query_vars['post_type'] = 'post';
+    return $query_vars;
+}
+add_filter('request', 'home_resolve_english_slug', 5);
+
+function home_maybe_flush_rewrites(): void {
+    $version = 'home-bilingual-2026-09-07-v3';
+    if (get_option('home_rewrite_version') !== $version) {
+        flush_rewrite_rules(false);
+        update_option('home_rewrite_version', $version, false);
+    }
+}
+add_action('init', 'home_maybe_flush_rewrites', 99);
+
+add_filter('template_include', static function(string $template): string {
+    if ((string) get_query_var('home_front') === '1') {
+        $front = get_theme_file_path('front-page.php');
+        if (is_readable($front)) { return $front; }
+    }
+    return $template;
+}, 99);
+
+add_action('pre_get_posts', static function(WP_Query $query): void {
+    if ((string) $query->get('home_front') === '1') {
+        $query->is_home = false;
+        $query->is_page = false;
+        $query->is_404 = false;
+    }
+}, 1);
