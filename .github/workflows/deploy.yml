@@ -119,20 +119,16 @@ jobs:
           "${DOCKER[@]}" cp "$STAGE/." "home-wp:$TARGET/"
           "${DOCKER[@]}" exec home-wp sh -lc "chown -R www-data:www-data '$TARGET' && find '$TARGET' -type d -exec chmod 755 {} + && find '$TARGET' -type f -exec chmod 644 {} +"
 
-          # Rebuild the category JPEG from its text-safe base64 source. This avoids
-          # binary corruption when visual assets are committed through the connector.
-          "${DOCKER[@]}" exec home-wp php -r '$source="/var/www/html/wp-content/themes/home/assets/generated/home-category-sprite-v4.b64"; $target="/var/www/html/wp-content/themes/home/assets/generated/home-category-sprite-v2.jpg"; $b64=trim((string)file_get_contents($source)); $raw=base64_decode($b64,true); if($raw===false || file_put_contents($target,$raw)===false){fwrite(STDERR,"Could not rebuild category image\n"); exit(1);}'
-          "${DOCKER[@]}" exec home-wp sh -lc "chown www-data:www-data '$TARGET/assets/generated/home-category-sprite-v2.jpg' && chmod 644 '$TARGET/assets/generated/home-category-sprite-v2.jpg'"
-
-          # Validate the exact assets used in production.
+          # Validate the exact assets used in production. Binary files are committed
+          # directly to GitHub; the deploy must never reconstruct or mutate them.
           "${DOCKER[@]}" exec home-wp sh -lc "test -s '$TARGET/style.css' && test -s '$TARGET/functions.php' && test -s '$TARGET/assets/css/home-v2.css' && test -s '$TARGET/assets/generated/hero-living-room-v2.jpg' && test -s '$TARGET/assets/generated/home-category-sprite-v2.jpg'"
-          "${DOCKER[@]}" exec home-wp php -r '$files=["/var/www/html/wp-content/themes/home/assets/generated/hero-living-room-v2.jpg","/var/www/html/wp-content/themes/home/assets/generated/home-category-sprite-v2.jpg"]; foreach($files as $f){$i=@getimagesize($f); if(!$i){fwrite(STDERR,"Invalid image: $f\n"); exit(1);} echo basename($f)." => ".$i[0]."x".$i[1]."\n";}'
+          "${DOCKER[@]}" exec home-wp php -r '$expect=["/var/www/html/wp-content/themes/home/assets/generated/hero-living-room-v2.jpg"=>[960,640],"/var/www/html/wp-content/themes/home/assets/generated/home-category-sprite-v2.jpg"=>[1040,390]]; foreach($expect as $f=>$dims){$i=@getimagesize($f); if(!$i){fwrite(STDERR,"Invalid image: $f\n"); exit(1);} echo basename($f)." => ".$i[0]."x".$i[1]."\n"; if($i[0]!==$dims[0] || $i[1]!==$dims[1]){fwrite(STDERR,"Unexpected dimensions for $f\n"); exit(1);}}'
 
           # Verify Apache serves HOME's CSS and photography through port 8081.
           if command -v curl >/dev/null 2>&1; then
-            curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/css/home-v2.css?v=4"
-            curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/generated/hero-living-room-v2.jpg?v=5"
-            curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/generated/home-category-sprite-v2.jpg?v=5"
+            curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/css/home-v2.css?v=6"
+            curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/generated/hero-living-room-v2.jpg?v=6"
+            curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/generated/home-category-sprite-v2.jpg?v=6"
           fi
 
           echo "HOME desplegado correctamente en home-wp:$TARGET"
