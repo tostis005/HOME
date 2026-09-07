@@ -113,7 +113,7 @@ function home_apply_editorial_curation(int $post_id, ?array $taxonomy = null): v
 }
 
 function home_curate_existing_managed_articles(): void {
-    $version = 'home-curation-2026-09-07-v3';
+    $version = 'home-curation-2026-09-07-v4';
     if (get_option('home_content_curation_version') === $version) { return; }
 
     $ids = get_posts([
@@ -122,6 +122,7 @@ function home_curate_existing_managed_articles(): void {
         'posts_per_page' => -1,
         'fields' => 'ids',
         'suppress_filters' => true,
+        'home_skip_language_filter' => 1,
         'meta_key' => '_home_managed_article',
         'meta_value' => 1,
     ]);
