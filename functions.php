@@ -35,3 +35,41 @@ add_action('wp_enqueue_scripts', 'home_theme_assets');
 
 add_filter('excerpt_length', static fn(int $length): int => 24, 999);
 add_filter('excerpt_more', static fn(string $more): string => '…');
+
+/**
+ * Theme-owned premium image pack helpers.
+ * Root-relative URLs are intentional while HOME is served on :8081.
+ */
+function home_theme_image_exists(string $relative_path): bool {
+    $relative_path = ltrim($relative_path, '/');
+    return is_file(get_template_directory() . '/' . $relative_path);
+}
+
+function home_theme_image_url(string $relative_path): string {
+    $relative_path = ltrim($relative_path, '/');
+    return '/wp-content/themes/home/' . $relative_path;
+}
+
+function home_hero_image_url(): string {
+    $premium = 'assets/images/home/hero.jpg';
+    if (home_theme_image_exists($premium)) {
+        return home_theme_image_url($premium);
+    }
+    return home_theme_image_url('assets/generated/hero-living-room-v2.jpg') . '?v=6';
+}
+
+function home_category_image_url(string $category_key): string {
+    $relative = 'assets/images/categories/' . sanitize_file_name($category_key) . '.jpg';
+    return home_theme_image_exists($relative) ? home_theme_image_url($relative) : '';
+}
+
+function home_post_category_key(?int $post_id = null): string {
+    $categories = get_the_category($post_id ?: get_the_ID());
+    if (!empty($categories)) {
+        $key = home_category_key_from_wp_slug($categories[0]->slug);
+        if ($key) {
+            return $key;
+        }
+    }
+    return 'cleaning';
+}
