@@ -9,29 +9,28 @@ $latest_posts = get_posts([
 ]);
 ?>
 
-<section class="home-v2-hero home-premium-hero">
-    <div class="container home-premium-hero-wrap">
-        <div class="home-premium-hero-card">
-            <figure class="home-premium-hero-media" aria-hidden="true">
-                <img
-                    src="<?php echo esc_url(home_hero_image_url()); ?>"
-                    alt=""
-                    width="1800"
-                    height="1200"
-                    fetchpriority="high"
-                    decoding="async"
-                >
-            </figure>
-            <div class="home-v2-hero-copy home-premium-hero-copy">
-                <span class="home-v2-eyebrow"><?php esc_html_e('Practical advice. Real solutions. A brighter home.', 'home'); ?></span>
-                <h1><?php esc_html_e('Home advice', 'home'); ?><br><em><?php esc_html_e('for real life.', 'home'); ?></em></h1>
-                <p><?php esc_html_e('Simple, trustworthy guidance for cleaning, fixing, maintaining and understanding the place you live — without turning every small problem into a project.', 'home'); ?></p>
-                <div class="home-v2-hero-actions">
-                    <a class="home-v2-primary-button" href="#home-categories"><?php esc_html_e('Explore all categories', 'home'); ?><span aria-hidden="true">→</span></a>
-                    <a class="home-v2-text-button" href="#latest-guides"><?php esc_html_e('See latest guides', 'home'); ?></a>
-                </div>
-                <div class="home-v2-hero-search"><?php get_search_form(); ?></div>
+<section class="home-premium-hero-full">
+    <figure class="home-premium-hero-full-media" aria-hidden="true">
+        <img
+            src="<?php echo esc_url(home_hero_image_url()); ?>"
+            alt=""
+            width="1800"
+            height="1200"
+            fetchpriority="high"
+            decoding="async"
+        >
+    </figure>
+    <div class="home-premium-hero-full-overlay" aria-hidden="true"></div>
+    <div class="container home-premium-hero-full-inner">
+        <div class="home-v2-hero-copy home-premium-hero-full-copy">
+            <span class="home-v2-eyebrow"><?php esc_html_e('Practical advice. Real solutions. A brighter home.', 'home'); ?></span>
+            <h1><?php esc_html_e('Home advice', 'home'); ?><br><em><?php esc_html_e('for real life.', 'home'); ?></em></h1>
+            <p><?php esc_html_e('Simple, trustworthy guidance for cleaning, fixing, maintaining and understanding the place you live — without turning every small problem into a project.', 'home'); ?></p>
+            <div class="home-v2-hero-actions">
+                <a class="home-v2-primary-button" href="#home-categories"><?php esc_html_e('Explore all categories', 'home'); ?><span aria-hidden="true">→</span></a>
+                <a class="home-v2-text-button" href="#latest-guides"><?php esc_html_e('See latest guides', 'home'); ?></a>
             </div>
+            <div class="home-v2-hero-search"><?php get_search_form(); ?></div>
         </div>
     </div>
 </section>
@@ -103,10 +102,8 @@ $latest_posts = get_posts([
                     <article class="home-v2-article-card home-premium-article-card">
                         <a href="<?php the_permalink(); ?>">
                             <div class="home-v2-article-media">
-                                <?php if (has_post_thumbnail()) : ?>
-                                    <?php the_post_thumbnail('large'); ?>
-                                <?php elseif ($article_image) : ?>
-                                    <img src="<?php echo esc_url($article_image); ?>" alt="" loading="lazy" decoding="async">
+                                <?php if ($article_image) : ?>
+                                    <img src="<?php echo esc_url($article_image); ?>" alt="<?php echo esc_attr(home_primary_category_name()); ?>" loading="lazy" decoding="async">
                                 <?php else : ?>
                                     <div class="home-v2-article-placeholder"><?php echo home_category_art(home_post_category_key(), '#e7e1d5'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
                                 <?php endif; ?>
