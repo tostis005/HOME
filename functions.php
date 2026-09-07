@@ -7,6 +7,8 @@ require_once get_template_directory() . '/inc/translations.php';
 require_once get_template_directory() . '/inc/categories.php';
 require_once get_template_directory() . '/inc/content-language.php';
 require_once get_template_directory() . '/inc/root-url.php';
+require_once get_template_directory() . '/inc/content-curation.php';
+require_once get_template_directory() . '/inc/pagination.php';
 
 function home_theme_setup(): void {
     load_theme_textdomain('home', get_template_directory() . '/languages');
@@ -74,7 +76,13 @@ function home_category_image_url(string $category_key): string {
 }
 
 function home_post_category_key(?int $post_id = null): string {
-    $categories = get_the_category($post_id ?: get_the_ID());
+    $post_id = $post_id ?: get_the_ID();
+    $curated = sanitize_key((string) get_post_meta($post_id, '_home_primary_category', true));
+    if ($curated && isset(home_category_definitions()[$curated])) {
+        return $curated;
+    }
+
+    $categories = get_the_category($post_id);
     if (!empty($categories)) {
         $key = home_category_key_from_wp_slug($categories[0]->slug);
         if ($key) {
