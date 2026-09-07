@@ -1,0 +1,81 @@
+name: Materialize HOME articles 081-090
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/.staging/home-081-090.tar.gz.b64'
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Decode, materialize and validate article batch
+        id: unpack
+        shell: bash
+        run: |
+          set -euo pipefail
+          ARCHIVE='content/.staging/home-081-090.tar.gz.b64'
+          if [ ! -f "$ARCHIVE" ]; then
+            echo 'present=false' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          base64 --decode "$ARCHIVE" > /tmp/home-081-090.tar.gz
+          tar -tzf /tmp/home-081-090.tar.gz >/dev/null
+          tar -xzf /tmp/home-081-090.tar.gz
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          required={'schema_version','id','article_number','translation_group','language','locale','market_context','title','slug','seo','excerpt','taxonomy','content_html','faq','sources','image','status'}
+          pairs={}
+          for lang in ('es','en'):
+              selected=[]
+              for path in sorted(Path('content/articles',lang).glob('*.json')):
+                  data=json.loads(path.read_text(encoding='utf-8'))
+                  n=int(data.get('article_number',0))
+                  if 81 <= n <= 90:
+                      missing=required-data.keys()
+                      assert not missing,(path,missing)
+                      assert data['language']==lang,path
+                      assert data['status']=='publish',path
+                      assert isinstance(data['content_html'],str) and data['content_html'].strip(),path
+                      selected.append(path)
+                      pairs[(n,lang)]=data['translation_group']
+              assert len(selected)==10,(lang,len(selected))
+          for n in range(81,91):
+              assert pairs[(n,'es')]==pairs[(n,'en')],(n,pairs.get((n,'es')),pairs.get((n,'en')))
+          print('Validated HOME articles 081-090 in ES and EN')
+          PY
+          echo 'present=true' >> "$GITHUB_OUTPUT"
+
+      - name: Commit article JSON and remove staging helper
+        if: steps.unpack.outputs.present == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add content/articles/es content/articles/en
+          git rm -f content/.staging/home-081-090.tar.gz.b64 .github/workflows/materialize-081-090.yml
+          git commit -m 'Add HOME articles 081-090 in ES and EN'
+          git push
+
+      - name: Dispatch production import for 081-090
+        if: steps.unpack.outputs.present == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh workflow run import-articles.yml --ref main -f language=all -f from=81 -f to=90 -f status=json -f force=false
+          echo 'Dispatched production import for articles 081-090.'
