@@ -2,7 +2,7 @@
 if (!defined('ABSPATH')) { exit; }
 
 function home_filter_queries_by_language(WP_Query $query): void {
-    if (is_admin() || $query->get('post_type') === 'attachment' || $query->get('home_skip_language_filter')) { return; }
+    if (is_admin() || $query->get('suppress_filters') || $query->get('post_type') === 'attachment' || $query->get('home_skip_language_filter')) { return; }
     $post_type = $query->get('post_type');
     if ($post_type && $post_type !== 'post' && !(is_array($post_type) && in_array('post', $post_type, true))) { return; }
 
