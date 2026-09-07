@@ -1,0 +1,234 @@
+name: Import HOME JSON articles
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/articles/es/*.json'
+      - 'content/articles/en/*.json'
+      - 'content/tools/import-articles.php'
+      - '.github/workflows/import-articles.yml'
+  workflow_dispatch:
+    inputs:
+      language:
+        description: 'Language to import'
+        required: true
+        type: choice
+        options: [es, en, all]
+        default: all
+      from:
+        description: 'First article number'
+        required: true
+        default: '1'
+      to:
+        description: 'Last article number'
+        required: true
+        default: '999999'
+      status:
+        description: 'WordPress status override'
+        required: true
+        type: choice
+        options: [publish, draft, json]
+        default: json
+      force:
+        description: 'Force rewrite even when JSON hash is unchanged'
+        required: true
+        type: boolean
+        default: false
+
+concurrency:
+  group: home-json-article-import
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    env:
+      IMPORT_LANGUAGE: ${{ inputs.language || 'all' }}
+      IMPORT_FROM: ${{ inputs.from || '1' }}
+      IMPORT_TO: ${{ inputs.to || '999999' }}
+      IMPORT_STATUS: ${{ inputs.status || 'json' }}
+      IMPORT_FORCE: ${{ inputs.force || false }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate importer and JSON
+        run: |
+          set -euo pipefail
+          php -l content/tools/import-articles.php
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          required = {'schema_version','id','article_number','translation_group','language','locale','market_context','title','slug','seo','excerpt','taxonomy','content_html','faq','sources','image','status'}
+          files = sorted(Path('content/articles').glob('*/*.json'))
+          if not files:
+              raise SystemExit('No article JSON files found')
+          ids = set(); pairs = set()
+          for path in files:
+              data = json.loads(path.read_text(encoding='utf-8'))
+              missing = required - data.keys()
+              if missing:
+                  raise SystemExit(f'{path}: missing {sorted(missing)}')
+              lang = data['language']
+              if lang not in {'es','en'} or path.parent.name != lang:
+                  raise SystemExit(f'{path}: invalid language/directory')
+              if data['id'] in ids:
+                  raise SystemExit(f"{path}: duplicate id {data['id']}")
+              ids.add(data['id'])
+              pair = (int(data['article_number']), lang)
+              if pair in pairs:
+                  raise SystemExit(f'{path}: duplicate article/language {pair}')
+              pairs.add(pair)
+              if not isinstance(data['content_html'], str) or not data['content_html'].strip():
+                  raise SystemExit(f'{path}: empty content_html')
+          print(f'Validated {len(files)} article JSON files')
+          PY
+
+      - name: Configure SSH
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/home_import_key
+          chmod 600 ~/.ssh/home_import_key
+          ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
+
+      - name: Verify HOME WordPress container
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/home_import_key -o BatchMode=yes "$VPS_USER@$VPS_HOST" '
+            set -e
+            if docker inspect home-wp >/dev/null 2>&1; then D="docker"; else D="sudo -n docker"; fi
+            $D inspect home-wp >/dev/null
+            $D exec home-wp sh -lc "test -r /var/www/html/wp-load.php && command -v php >/dev/null"
+          '
+
+      - name: Copy importer to VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          scp -i ~/.ssh/home_import_key content/tools/import-articles.php "$VPS_USER@$VPS_HOST:/tmp/home-import-articles-${GITHUB_RUN_ID}.php"
+
+      - name: Read production import state
+        id: state
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          set -euo pipefail
+          OUTPUT="$(ssh -i ~/.ssh/home_import_key "$VPS_USER@$VPS_HOST" "RUN_ID='$GITHUB_RUN_ID' bash -s" <<'REMOTE'
+          set -euo pipefail
+          if docker inspect home-wp >/dev/null 2>&1; then D=(docker); else D=(sudo -n docker); fi
+          "${D[@]}" cp "/tmp/home-import-articles-${RUN_ID}.php" home-wp:/tmp/home-import-articles.php
+          "${D[@]}" exec home-wp php /tmp/home-import-articles.php /var/www/html /tmp --state=read
+          REMOTE
+          )"
+          printf '%s\n' "$OUTPUT"
+          SHA="$(printf '%s\n' "$OUTPUT" | sed -n 's/^IMPORT_STATE_SHA=//p' | tail -n1 | tr -d '\r\n')"
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Select articles and build package
+        id: select
+        env:
+          LAST_SHA: ${{ steps.state.outputs.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          TARGET="$(git rev-parse HEAD)"
+          rm -rf /tmp/home-package
+          mkdir -p /tmp/home-package/content/articles/es /tmp/home-package/content/articles/en
+          : > /tmp/home-selected.txt
+          FORCE="$IMPORT_FORCE"
+
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            python3 - <<'PY' > /tmp/home-selected.txt
+          import json, os
+          from pathlib import Path
+          langs = ('es','en') if os.environ['IMPORT_LANGUAGE'] == 'all' else (os.environ['IMPORT_LANGUAGE'],)
+          lo, hi = int(os.environ['IMPORT_FROM']), int(os.environ['IMPORT_TO'])
+          for lang in langs:
+              for path in sorted(Path('content/articles', lang).glob('*.json')):
+                  n = int(json.loads(path.read_text(encoding='utf-8'))['article_number'])
+                  if lo <= n <= hi:
+                      print(path.as_posix())
+          PY
+            SUCCESS_SHA=""
+          elif [ -n "$LAST_SHA" ] && git cat-file -e "${LAST_SHA}^{commit}" 2>/dev/null && git merge-base --is-ancestor "$LAST_SHA" "$TARGET"; then
+            INFRA="$(git diff --name-only "$LAST_SHA" "$TARGET" -- content/tools/import-articles.php .github/workflows/import-articles.yml || true)"
+            if [ -n "$INFRA" ]; then
+              git ls-tree -r --name-only "$TARGET" | grep -E '^content/articles/(es|en)/[^/]+\.json$' > /tmp/home-selected.txt || true
+              FORCE=true
+              echo 'Importer/workflow changed: forcing complete inventory.'
+            else
+              git diff --name-only --diff-filter=AMR "$LAST_SHA" "$TARGET" -- ':(glob)content/articles/es/*.json' ':(glob)content/articles/en/*.json' \
+                | while IFS= read -r file; do [ -f "$file" ] && printf '%s\n' "$file"; done > /tmp/home-selected.txt
+            fi
+            SUCCESS_SHA="$TARGET"
+          else
+            git ls-tree -r --name-only "$TARGET" | grep -E '^content/articles/(es|en)/[^/]+\.json$' > /tmp/home-selected.txt || true
+            SUCCESS_SHA="$TARGET"
+            echo 'No valid production state: selecting complete current inventory.'
+          fi
+
+          sort -u /tmp/home-selected.txt -o /tmp/home-selected.txt
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            mkdir -p "/tmp/home-package/$(dirname "$file")"
+            cp "$file" "/tmp/home-package/$file"
+          done < /tmp/home-selected.txt
+          COUNT="$(sed '/^$/d' /tmp/home-selected.txt | wc -l | tr -d ' ')"
+          echo "Selected $COUNT article JSON file(s)."
+          [ "$COUNT" -eq 0 ] || cat /tmp/home-selected.txt
+          tar -C /tmp/home-package -czf /tmp/home-articles.tgz content/articles
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "successful_sha=$SUCCESS_SHA" >> "$GITHUB_OUTPUT"
+          echo "force=$FORCE" >> "$GITHUB_OUTPUT"
+
+      - name: Copy article package to VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          scp -i ~/.ssh/home_import_key /tmp/home-articles.tgz "$VPS_USER@$VPS_HOST:/tmp/home-articles-${GITHUB_RUN_ID}.tgz"
+
+      - name: Import into WordPress
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          SUCCESS_SHA: ${{ steps.select.outputs.successful_sha }}
+          FORCE: ${{ steps.select.outputs.force }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/home_import_key "$VPS_USER@$VPS_HOST" "RUN_ID='$GITHUB_RUN_ID' SUCCESS_SHA='$SUCCESS_SHA' IMPORT_STATUS='$IMPORT_STATUS' FORCE='$FORCE' bash -s" <<'REMOTE'
+          set -euo pipefail
+          if docker inspect home-wp >/dev/null 2>&1; then D=(docker); else D=(sudo -n docker); fi
+          cleanup() {
+            rm -f "/tmp/home-import-articles-${RUN_ID}.php" "/tmp/home-articles-${RUN_ID}.tgz"
+            "${D[@]}" exec home-wp sh -lc 'rm -rf /tmp/home-article-package /tmp/home-import-articles.php /tmp/home-articles.tgz' >/dev/null 2>&1 || true
+          }
+          trap cleanup EXIT
+          "${D[@]}" cp "/tmp/home-import-articles-${RUN_ID}.php" home-wp:/tmp/home-import-articles.php
+          "${D[@]}" cp "/tmp/home-articles-${RUN_ID}.tgz" home-wp:/tmp/home-articles.tgz
+          "${D[@]}" exec home-wp sh -lc 'rm -rf /tmp/home-article-package && mkdir -p /tmp/home-article-package && tar -xzf /tmp/home-articles.tgz -C /tmp/home-article-package'
+          ARGS=(--language=all --from=1 --to=999999 "--status=${IMPORT_STATUS}" "--force=${FORCE}")
+          [ -z "$SUCCESS_SHA" ] || ARGS+=("--successful-sha=${SUCCESS_SHA}")
+          "${D[@]}" exec home-wp php /tmp/home-import-articles.php /var/www/html /tmp/home-article-package/content/articles "${ARGS[@]}"
+          "${D[@]}" exec home-wp php -r '
+            require "/var/www/html/wp-load.php";
+            $all=count(get_posts(["post_type"=>"post","post_status"=>"any","posts_per_page"=>-1,"fields"=>"ids","meta_key"=>"_home_managed_article","meta_value"=>1]));
+            $es=count(get_posts(["post_type"=>"post","post_status"=>"any","posts_per_page"=>-1,"fields"=>"ids","meta_key"=>"_home_language","meta_value"=>"es"]));
+            $en=count(get_posts(["post_type"=>"post","post_status"=>"any","posts_per_page"=>-1,"fields"=>"ids","meta_key"=>"_home_language","meta_value"=>"en"]));
+            echo "HOME_MANAGED_POSTS=$all ES=$es EN=$en\n";
+          '
+          REMOTE
