@@ -12,31 +12,30 @@
     ?>
 
     <article class="single-premium-article">
-        <header class="single-premium-hero">
-            <div class="container">
-                <div class="single-premium-hero-card">
-                    <div class="single-premium-hero-copy">
-                        <div class="single-breadcrumb">
-                            <a href="<?php echo esc_url(home_localized_home_url()); ?>"><?php esc_html_e('HOME', 'home'); ?></a>
-                            <span aria-hidden="true">/</span>
-                            <a href="<?php echo esc_url($category_url); ?>"><?php echo esc_html($category_name); ?></a>
-                        </div>
+        <header class="single-premium-hero-full">
+            <?php if ($category_image) : ?>
+                <figure class="single-premium-hero-full-media" aria-hidden="true">
+                    <img src="<?php echo esc_url($category_image); ?>" alt="" width="1536" height="1024" fetchpriority="high" decoding="async">
+                </figure>
+            <?php endif; ?>
+            <div class="single-premium-hero-full-overlay" aria-hidden="true"></div>
 
-                        <a class="single-premium-category" href="<?php echo esc_url($category_url); ?>"><?php echo esc_html($category_name); ?></a>
-                        <h1 class="single-title"><?php the_title(); ?></h1>
-                        <?php if (has_excerpt()) : ?>
-                            <p class="single-deck"><?php echo esc_html(get_the_excerpt()); ?></p>
-                        <?php endif; ?>
-                        <div class="single-meta single-premium-meta">
-                            <span><?php echo esc_html(home_reading_time()); ?></span>
-                        </div>
+            <div class="container single-premium-hero-full-inner">
+                <div class="single-premium-hero-full-copy">
+                    <div class="single-breadcrumb">
+                        <a href="<?php echo esc_url(home_localized_home_url()); ?>"><?php esc_html_e('HOME', 'home'); ?></a>
+                        <span aria-hidden="true">/</span>
+                        <a href="<?php echo esc_url($category_url); ?>"><?php echo esc_html($category_name); ?></a>
                     </div>
 
-                    <?php if ($category_image) : ?>
-                        <figure class="single-premium-hero-media">
-                            <img src="<?php echo esc_url($category_image); ?>" alt="<?php echo esc_attr($category_name); ?>" width="1536" height="1024" fetchpriority="high" decoding="async">
-                        </figure>
+                    <a class="single-premium-category" href="<?php echo esc_url($category_url); ?>"><?php echo esc_html($category_name); ?></a>
+                    <h1 class="single-title"><?php the_title(); ?></h1>
+                    <?php if (has_excerpt()) : ?>
+                        <p class="single-deck"><?php echo esc_html(get_the_excerpt()); ?></p>
                     <?php endif; ?>
+                    <div class="single-meta single-premium-meta">
+                        <span><?php echo esc_html(home_reading_time()); ?></span>
+                    </div>
                 </div>
             </div>
         </header>
