@@ -1,12 +1,12 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
 
-/** Keep archive grids complete: 3 columns × 4 rows on desktop. */
+/** Keep listing grids complete: 3 columns × 4 rows on desktop. */
 function home_set_listing_page_size(WP_Query $query): void {
     if (is_admin() || !$query->is_main_query()) { return; }
     if ((string) $query->get('home_front') === '1') { return; }
 
-    if ($query->is_category() || $query->is_archive() || $query->is_search() || $query->get('category_name')) {
+    if ($query->is_home() || $query->is_category() || $query->is_archive() || $query->is_search() || $query->get('category_name')) {
         $query->set('posts_per_page', 12);
     }
 }
