@@ -13,6 +13,22 @@ function home_category_definitions(): array {
         'heating-cooling'=>['wp_slug'=>'heating-cooling','slug_es'=>'climatizacion','slug_en'=>'heating-cooling','label_es'=>'Climatización','label_en'=>'Heating & air','description_es'=>'Confort, ventilación, aire acondicionado y calefacción para una casa más saludable.','description_en'=>'Comfort, airflow, AC and heating basics for a healthier home.','tone'=>'#d6e3d6'],
     ];
 }
+
+/**
+ * The public URLs are localized, while WordPress uses stable internal taxonomy
+ * slugs. Create those taxonomy terms from the theme so category URLs never 404
+ * merely because no article import has run yet.
+ */
+function home_ensure_core_categories(): void {
+    if (!taxonomy_exists('category')) { return; }
+    foreach (home_category_definitions() as $definition) {
+        $term = get_category_by_slug($definition['wp_slug']);
+        if ($term instanceof WP_Term) { continue; }
+        wp_insert_term($definition['label_en'], 'category', ['slug'=>$definition['wp_slug']]);
+    }
+}
+add_action('init', 'home_ensure_core_categories', 5);
+
 function home_category_pillars(): array {
     $lang=home_current_language(); $result=[];
     foreach(home_category_definitions() as $key=>$d){ $result[$key]=['label'=>$d['label_'.$lang],'description'=>$d['description_'.$lang],'tone'=>$d['tone']]; }
@@ -25,7 +41,7 @@ function home_category_url(string $key, ?string $language=null): string {
     $defs=home_category_definitions(); if(!isset($defs[$key])){ $key=home_category_key_from_wp_slug($key) ?: $key; }
     if(!isset($defs[$key])){ return home_localized_home_url($language); }
     $language=$language ?: home_current_language(); $slug=$defs[$key]['slug_'.$language];
-    return $language==='en' ? home_url('/en/category/'.$slug.'/') : home_url('/categoria/'.$slug.'/');
+    return $language==='en' ? home_site_root_url().'en/category/'.$slug.'/' : home_site_root_url().'categoria/'.$slug.'/';
 }
 function home_category_count(string $key): int {
     $defs=home_category_definitions(); $term=get_category_by_slug($defs[$key]['wp_slug'] ?? $key); return $term instanceof WP_Term ? (int)$term->count : 0;
