@@ -1,0 +1,124 @@
+name: Deploy HOME theme to WordPress
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'content/**'
+      - 'docs/**'
+      - 'platform/**'
+      - '.github/**'
+      - 'AGENTS.md'
+      - 'README.md'
+  workflow_dispatch:
+
+concurrency:
+  group: home-production-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate WordPress theme
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f style.css
+          test -f functions.php
+          find . -type f -name '*.php' -not -path './content/*' -not -path './docs/*' -not -path './platform/*' -print0 | xargs -0 -r -n1 php -l
+
+      - name: Configure SSH
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/home_deploy_key
+          chmod 600 ~/.ssh/home_deploy_key
+          ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
+
+      - name: Test VPS and HOME container
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/home_deploy_key -o BatchMode=yes "$VPS_USER@$VPS_HOST" '
+            set -e
+            if docker inspect home-wp >/dev/null 2>&1; then
+              docker inspect home-wp >/dev/null
+            elif sudo -n docker inspect home-wp >/dev/null 2>&1; then
+              sudo -n docker inspect home-wp >/dev/null
+            else
+              echo "ERROR: No se puede acceder al contenedor home-wp con docker ni sudo docker."
+              exit 1
+            fi
+          '
+
+      - name: Package HOME theme
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar \
+            --exclude='./.git' \
+            --exclude='./.github' \
+            --exclude='./content' \
+            --exclude='./docs' \
+            --exclude='./platform' \
+            --exclude='./AGENTS.md' \
+            --exclude='./README.md' \
+            -czf /tmp/home-theme.tar.gz .
+
+      - name: Upload theme package
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          set -euo pipefail
+          scp -i ~/.ssh/home_deploy_key /tmp/home-theme.tar.gz "$VPS_USER@$VPS_HOST:/tmp/home-theme-${GITHUB_RUN_ID}.tar.gz"
+
+      - name: Deploy into home-wp container
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/home_deploy_key "$VPS_USER@$VPS_HOST" "GITHUB_RUN_ID='$GITHUB_RUN_ID' bash -s" <<'REMOTE'
+          set -euo pipefail
+
+          ARCHIVE="/tmp/home-theme-${GITHUB_RUN_ID}.tar.gz"
+          STAGE="/tmp/home-theme-${GITHUB_RUN_ID}"
+          TARGET="/var/www/html/wp-content/themes/home"
+
+          cleanup() {
+            rm -rf "$ARCHIVE" "$STAGE"
+          }
+          trap cleanup EXIT
+
+          if docker inspect home-wp >/dev/null 2>&1; then
+            DOCKER=(docker)
+          elif sudo -n docker inspect home-wp >/dev/null 2>&1; then
+            DOCKER=(sudo -n docker)
+          else
+            echo "ERROR: No se puede administrar el contenedor home-wp."
+            exit 1
+          fi
+
+          rm -rf "$STAGE"
+          mkdir -p "$STAGE"
+          tar -xzf "$ARCHIVE" -C "$STAGE"
+
+          "${DOCKER[@]}" exec home-wp sh -lc "rm -rf '$TARGET' && mkdir -p '$TARGET'"
+          "${DOCKER[@]}" cp "$STAGE/." "home-wp:$TARGET/"
+          "${DOCKER[@]}" exec home-wp sh -lc "chown -R www-data:www-data '$TARGET' && find '$TARGET' -type d -exec chmod 755 {} + && find '$TARGET' -type f -exec chmod 644 {} +"
+          "${DOCKER[@]}" exec home-wp sh -lc "test -f '$TARGET/style.css' && test -f '$TARGET/functions.php'"
+
+          echo "HOME desplegado correctamente en home-wp:$TARGET"
+          REMOTE
