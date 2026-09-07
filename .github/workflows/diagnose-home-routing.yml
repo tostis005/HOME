@@ -22,7 +22,7 @@ jobs:
           chmod 600 ~/.ssh/home_diag_key
           ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
 
-      - name: Diagnose routes and category state
+      - name: Diagnose routes and listing state
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
@@ -32,16 +32,27 @@ jobs:
           set -euo pipefail
           if docker inspect home-wp >/dev/null 2>&1; then D=(docker); else D=(sudo -n docker); fi
 
-          for path in / /categoria/cocina/ /categoria/plagas/ /en/category/pests/ /categoria/plagas/page/2/; do
+          echo '===== WP OPTIONS ====='
+          "${D[@]}" exec home-wp php -r '
+            $_SERVER["REQUEST_URI"]="/";
+            require "/var/www/html/wp-load.php";
+            $front=(int)get_option("page_on_front"); $posts=(int)get_option("page_for_posts");
+            echo "show_on_front=".get_option("show_on_front")."\n";
+            echo "page_on_front={$front} permalink=".($front ? get_permalink($front) : "-")."\n";
+            echo "page_for_posts={$posts} permalink=".($posts ? get_permalink($posts) : "-")."\n";
+            echo "posts_per_page=".get_option("posts_per_page")."\n";
+          '
+
+          for path in / /page/2/ /articles/ /articles/page/2/ /articulos/ /articulos/page/2/ /blog/ /blog/page/2/ /categoria/cocina/ /categoria/plagas/ /en/category/pests/; do
             echo "===== ${path} ====="
             curl -sS -D /tmp/home-headers -o /tmp/home-body --max-time 15 "http://127.0.0.1:8081${path}" || true
-            sed -n '1,20p' /tmp/home-headers
+            sed -n '1,12p' /tmp/home-headers
             printf 'BODY_CLASSES: '
             grep -o 'body class="[^"]*"' /tmp/home-body | head -n1 || true
             printf 'TITLE: '
             grep -o '<title>[^<]*</title>' /tmp/home-body | head -n1 || true
-            printf 'CANONICAL: '
-            grep -o '<link rel="canonical"[^>]*>' /tmp/home-body | head -n1 || true
+            printf 'ARTICLE_CARDS: '
+            grep -o 'class="article-card' /tmp/home-body | wc -l || true
           done
 
           echo '===== WP CATEGORY STATE ====='
