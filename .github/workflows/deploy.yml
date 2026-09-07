@@ -98,7 +98,7 @@ jobs:
           TARGET="/var/www/html/wp-content/themes/home"
 
           cleanup() {
-            rm -rf "$ARCHIVE" "$STAGE"
+            rm -rf "$ARCHIVE" "$STAGE" /tmp/home-wordpress.htaccess
           }
           trap cleanup EXIT
 
@@ -122,8 +122,27 @@ jobs:
           "${DOCKER[@]}" exec home-wp sh -lc "test -s '$TARGET/style.css' && test -s '$TARGET/functions.php' && test -s '$TARGET/assets/css/home-v2.css' && test -s '$TARGET/assets/generated/hero-living-room-v2.jpg' && test -s '$TARGET/assets/generated/home-category-sprite-v2.jpg'"
           "${DOCKER[@]}" exec home-wp php -r '$expect=["/var/www/html/wp-content/themes/home/assets/generated/hero-living-room-v2.jpg"=>[960,640],"/var/www/html/wp-content/themes/home/assets/generated/home-category-sprite-v2.jpg"=>[1040,390]]; foreach($expect as $f=>$dims){$i=@getimagesize($f); if(!$i){fwrite(STDERR,"Invalid image: $f\n"); exit(1);} if($i[0]!==$dims[0] || $i[1]!==$dims[1]){fwrite(STDERR,"Unexpected dimensions for $f\n"); exit(1);}}'
 
-          "${DOCKER[@]}" exec home-wp php -r 'require "/var/www/html/wp-load.php"; if(function_exists("home_ensure_core_categories")){home_ensure_core_categories();} flush_rewrite_rules(true); echo "PERMALINK_STRUCTURE=".get_option("permalink_structure")."\n"; $rules=(array)get_option("rewrite_rules",[]); foreach($rules as $regex=>$query){if(strpos($regex,"en")===0 || strpos($regex,"categoria")===0){echo "RULE {$regex} => {$query}\n";}}'
-          "${DOCKER[@]}" exec home-wp sh -lc 'echo "--- APACHE MODULES ---"; (apache2ctl -M 2>/dev/null | grep rewrite || true); echo "--- HTACCESS ---"; if [ -f /var/www/html/.htaccess ]; then cat /var/www/html/.htaccess; else echo MISSING; fi'
+          # The previous production .htaccess contained an empty WordPress block,
+          # so Apache returned its own 404 before WordPress saw pretty URLs.
+          # Install the standard front-controller rules explicitly.
+          cat > /tmp/home-wordpress.htaccess <<'HTACCESS'
+          # BEGIN WordPress
+          <IfModule mod_rewrite.c>
+          RewriteEngine On
+          RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+          RewriteBase /
+          RewriteRule ^index\.php$ - [L]
+          RewriteCond %{REQUEST_FILENAME} !-f
+          RewriteCond %{REQUEST_FILENAME} !-d
+          RewriteRule . /index.php [L]
+          </IfModule>
+          # END WordPress
+          HTACCESS
+          "${DOCKER[@]}" cp /tmp/home-wordpress.htaccess home-wp:/var/www/html/.htaccess
+          "${DOCKER[@]}" exec home-wp sh -lc 'chown www-data:www-data /var/www/html/.htaccess && chmod 644 /var/www/html/.htaccess'
+
+          "${DOCKER[@]}" exec home-wp php -r 'require "/var/www/html/wp-load.php"; if(function_exists("home_ensure_core_categories")){home_ensure_core_categories();} flush_rewrite_rules(false); echo "PERMALINK_STRUCTURE=".get_option("permalink_structure")."\n";'
+          "${DOCKER[@]}" exec home-wp sh -lc 'echo "--- APACHE MODULES ---"; apache2ctl -M 2>/dev/null | grep rewrite; echo "--- HTACCESS ---"; cat /var/www/html/.htaccess'
 
           if command -v curl >/dev/null 2>&1; then
             curl --fail --silent --show-error --max-time 10 -o /dev/null "http://127.0.0.1:8081/wp-content/themes/home/assets/css/home-v2.css?v=6"
