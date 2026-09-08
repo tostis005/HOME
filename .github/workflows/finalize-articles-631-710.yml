@@ -1,0 +1,48 @@
+name: Finalize HOME articles 631-710
+
+on:
+  push:
+    branches:
+      - quality-audit-631-710
+    paths:
+      - 'content/tools/batch-*.json'
+      - 'content/tools/generate-validate-631-710.py'
+      - '.github/workflows/finalize-articles-631-710.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: quality-audit-631-710
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate and validate
+        run: python content/tools/generate-validate-631-710.py
+
+      - name: Validate generated files again
+        run: python content/tools/generate-validate-631-710.py --validate-only
+
+      - name: Commit generated articles and audit
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A content/articles/es content/articles/en content/articles/QUALITY-AUDIT-631-710.md
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit"
+          else
+            git commit -m "Generate and validate HOME articles 631-710"
+            git push origin HEAD:quality-audit-631-710
+          fi
