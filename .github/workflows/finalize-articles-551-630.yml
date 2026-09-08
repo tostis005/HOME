@@ -35,31 +35,17 @@ jobs:
           from pathlib import Path
           p = Path('content/tools/generate-validate-551-630.py')
           s = p.read_text(encoding='utf-8')
-
           old = 'not any(exp in text for exp in expansions)'
           new = 'not any(exp.lower() in text.lower() for exp in expansions)'
           if old not in s:
               raise SystemExit('Expected acronym validator expression not found')
           s = s.replace(old, new)
-
           marker = 'SOURCE_MAP = {\n'
           if marker not in s:
               raise SystemExit('Expected SOURCE_MAP marker not found')
-          injection = '''SOURCE_MAP = {
-    "gas": {
-        "name": "U.S. Consumer Product Safety Commission — Winter Weather Safety Tips",
-        "url": "https://www.cpsc.gov/Newsroom/News-Releases/2026/CPSC-Issues-Winter-Weather-Safety-Tips-to-Prevent-Fires-and-Carbon-Monoxide-Poisoning",
-        "es_note": "Ante olor o sonido de una posible fuga de gas, salir de la vivienda y contactar al servicio de gas o emergencias desde fuera, evitando accionar dispositivos eléctricos antes de salir.",
-        "en_note": "If a gas leak is smelled or heard, leave the home and contact local gas authorities from outside without operating electronics before leaving."
-    },
-    "water_softener": {
-        "name": "U.S. Environmental Protection Agency WaterSense — Cation Exchange Water Softeners",
-        "url": "https://www.epa.gov/watersense/cation-exchange-water-softeners",
-        "es_note": "Funcionamiento, regeneración, consumo de sal y agua y mantenimiento de descalcificadores domésticos de intercambio catiónico.",
-        "en_note": "How cation-exchange water softeners work, regenerate, use salt and water, and can be maintained efficiently."
-    },
-'''
-          s = s.replace(marker, injection, 1)
+          gas = '    "gas": {\n        "name": "U.S. Consumer Product Safety Commission — Winter Weather Safety Tips",\n        "url": "https://www.cpsc.gov/Newsroom/News-Releases/2026/CPSC-Issues-Winter-Weather-Safety-Tips-to-Prevent-Fires-and-Carbon-Monoxide-Poisoning",\n        "es_note": "Ante olor o sonido de una posible fuga de gas, salir de la vivienda y contactar al servicio de gas o emergencias desde fuera, evitando accionar dispositivos eléctricos antes de salir.",\n        "en_note": "If a gas leak is smelled or heard, leave the home and contact local gas authorities from outside without operating electronics before leaving."\n    },\n'
+          softener = '    "water_softener": {\n        "name": "U.S. Environmental Protection Agency WaterSense — Cation Exchange Water Softeners",\n        "url": "https://www.epa.gov/watersense/cation-exchange-water-softeners",\n        "es_note": "Funcionamiento, regeneración, consumo de sal y agua y mantenimiento de descalcificadores domésticos de intercambio catiónico.",\n        "en_note": "How cation-exchange water softeners work, regenerate, use salt and water, and can be maintained efficiently."\n    },\n'
+          s = s.replace(marker, marker + gas + softener, 1)
           p.write_text(s, encoding='utf-8')
           PY
 
