@@ -39,6 +39,12 @@ jobs:
           s = s.replace("s = s.replace(', conocidos como frass,', ', también llamados gránulos fecales,')", "s = s.replace('frass', 'gránulos fecales')")
           s = s.replace("'puentea el sensor','bypass the sensor','abre la caldera','open the boiler','mide tensión con','test live voltage with'", "'puentea el sensor','bypass the sensor','mide tensión con','test live voltage with'")
           p.write_text(s, encoding='utf-8')
+
+          b = Path('content/tools/batch-671-680.json')
+          t = b.read_text(encoding='utf-8')
+          t = t.replace('No. Un calefactor eléctrico portátil debe conectarse', 'No: un calefactor eléctrico portátil debe conectarse')
+          t = t.replace('No. A portable electric space heater should be plugged', 'No: a portable electric space heater should be plugged')
+          b.write_text(t, encoding='utf-8')
           PY
 
       - name: Generate and validate
