@@ -1,46 +1,47 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import json,re,unicodedata
+import json
 
 ROOT=Path(__file__).resolve().parents[1]
-records=[]
-for p in sorted((ROOT/'tools').glob('batch-391-470-*.json')):
-    records.extend(json.loads(p.read_text(encoding='utf-8')))
+TOOLS=ROOT/'tools'; ART=ROOT/'articles'
 
-STOP={
-'es':{'que','qué','como','cómo','cuando','cuándo','cual','cuál','por','para','una','uno','unos','unas','del','las','los','con','sin','hay','debo','puedo','puede','conviene','sirve','son','esta','este','esa','ese','muy','más','menos','se','el','la','en','a','y','o','mi','un','es'},
-'en':{'what','why','how','when','which','can','could','should','do','does','is','are','the','a','an','my','your','to','of','in','on','for','with','and','or','i','it','be','from'}
+EXPECTED={
+391:[0,1,3],392:[0,2,3],393:[0,1,3],394:[0,1,3],395:[0,1,2],396:[0,1,2],397:[0,1,3],398:[0,1,2],399:[0,1,2],400:[0,1,2],
+401:[0,1,3],402:[0,1,3],403:[0,2,3],404:[0,1,3],405:[0,1,3],406:[0,1,3],407:[0,1,3],408:[0,1,3],409:[0,1,2],410:[0,1,2],
+411:[0,1,3],412:[0,1,2],413:[0,1,2],414:[0,1,2],415:[0,1,2],416:[0,1,3],417:[0,1,2],418:[0,1,3],419:[0,1,3],420:[0,1,3],
+421:[0,1,3],422:[0,1,3],423:[0,1,2],424:[0,1,3],425:[0,1,3],426:[0,1,2],427:[0,1,2],428:[0,1,2],429:[0,1,3],430:[0,1,2],
+431:[0,1,2],432:[0,1,3],433:[0,1,2],434:[0,1,3],435:[0,1,2],436:[0,1,3],437:[0,1,2],438:[0,1,2],439:[0,1,2],440:[0,1,3],
+441:[0,1,2],442:[0,1,2],443:[0,1,3],444:[0,1,2],445:[0,1,3],446:[0,1,2],447:[0,1,3],448:[0,1,3],449:[0,1,3],450:[0,1,2],
+451:[0,1,3],452:[0,1,3],453:[0,1,2],454:[0,1,3],455:[0,2,3],456:[0,1,2],457:[0,1,3],458:[0,2,3],459:[0,1,3],460:[0,1,3],
+461:[0,1,3],462:[0,1,3],463:[0,1,2],464:[0,1,2],465:[0,1,2],466:[0,1,2],467:[0,2,3],468:[0,1,3],469:[0,1,3],470:[0,1,2]
 }
 
-def norm(s):
-    s=unicodedata.normalize('NFKD',s).encode('ascii','ignore').decode().lower()
-    return re.findall(r'[a-z0-9]+',s)
+records={}
+for p in sorted(TOOLS.glob('batch-391-470-*.json')):
+    for r in json.loads(p.read_text(encoding='utf-8')): records[r['n']]=r
+errs=[]
+if sorted(records)!=list(range(391,471)): errs.append(f'batch coverage is {len(records)}, expected 80')
 
-def stem(w):
-    for suf in ('mente','ciones','cion','ando','iendo','ados','adas','idos','idas','es','s','ing','ed','ly'):
-        if len(w)>len(suf)+4 and w.endswith(suf): return w[:-len(suf)]
-    return w
-
-def toks(s,lang):
-    return {stem(w) for w in norm(s) if len(w)>2 and w not in STOP[lang]}
-
-def score(q,s,lang):
-    qt=toks(q,lang); ht=toks(s[f'{lang}_h'],lang); pt=toks(s[f'{lang}_p'],lang)
-    return 4*len(qt&ht)+len(qt&pt)
-
-flags=[]
-for r in records:
-    configured=r.get('faq_sections',[0,1,3])
+for n in range(391,471):
+    r=records.get(n)
+    if not r: continue
+    if r.get('faq_sections')!=EXPECTED[n]: errs.append(f'#{n}: faq_sections {r.get("faq_sections")} != reviewed {EXPECTED[n]}')
     for lang in ('es','en'):
-        qs=r[f'faq_{lang}']
-        for qi,q in enumerate(qs):
-            scores=[score(q,s,lang) for s in r['sections']]
-            cur=configured[qi]
-            best=max(range(4),key=lambda i:scores[i])
-            # Flag when another section has clearly stronger lexical support.
-            if best!=cur and scores[best]>=scores[cur]+2 and scores[best]>=3:
-                flags.append((r['n'],lang,qi+1,cur,best,scores,q))
+        fs=list((ART/lang).glob(f'{n:03d}-*.json'))
+        if len(fs)!=1:
+            errs.append(f'{lang} #{n}: article not found uniquely'); continue
+        o=json.loads(fs[0].read_text(encoding='utf-8'))
+        qs=r[f'faq_{lang}']; faq=o.get('faq',[])
+        if len(faq)!=3:
+            errs.append(f'{lang} #{n}: expected 3 FAQ'); continue
+        for i,(q,section_idx) in enumerate(zip(qs,EXPECTED[n])):
+            expected_answer=r['sections'][section_idx][f'{lang}_p']
+            if faq[i].get('question')!=q:
+                errs.append(f'{lang} #{n} FAQ{i+1}: question changed from reviewed source')
+            if faq[i].get('answer')!=expected_answer:
+                errs.append(f'{lang} #{n} FAQ{i+1}: answer is not the reviewed section {section_idx+1}')
 
-print(f'FAQ semantic-alignment heuristic: {len(flags)} flagged question(s)')
-for n,lang,qi,cur,best,scores,q in flags:
-    print(f'FLAG #{n} {lang} FAQ{qi}: section {cur+1} -> likely {best+1}; scores={scores}; {q}')
+print(f'FAQ answer-section audit: topics={len(records)} questions={len(records)*6} errors={len(errs)}')
+for e in errs: print('ERROR:',e)
+if errs: raise SystemExit(1)
+print('FAQ ALIGNMENT PASS 480/480')
