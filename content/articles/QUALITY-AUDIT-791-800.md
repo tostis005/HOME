@@ -11,7 +11,7 @@
 ## Depth metrics
 
 - Spanish body words: min **159**, median **184**, max **205**.
-- English body words: min **155**, median **182**, max **198**.
+- English body words: min **155**, median **182**, max **201**.
 - The 150-word floor is only an incomplete-output regression guard, not an editorial target.
 
 ## Cannibalization diagnostics
@@ -22,7 +22,7 @@
 - #795 vs #723: **0.149** maximum ES/EN token Jaccard.
 - #795 vs #724: **0.196** maximum ES/EN token Jaccard.
 - #796 vs #797: **0.137** maximum ES/EN token Jaccard.
-- #798 vs #799: **0.170** maximum ES/EN token Jaccard.
+- #798 vs #799: **0.168** maximum ES/EN token Jaccard.
 - #800 vs #728: **0.209** maximum ES/EN token Jaccard.
 - #800 vs #366: **0.224** maximum ES/EN token Jaccard.
 - #800 vs #367: **0.116** maximum ES/EN token Jaccard.
