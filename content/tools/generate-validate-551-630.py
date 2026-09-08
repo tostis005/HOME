@@ -229,8 +229,7 @@ def build_article(entry: dict, lang: str) -> dict:
 
 def load_entries():
     entries = []
-    batch_files = sorted(TOOLS.glob("batch-*.json"))
-    for path in batch_files:
+    for path in sorted(TOOLS.glob("batch-*.json")):
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
         except Exception as exc:
@@ -306,6 +305,12 @@ def generate(entries):
         source_key = entry.get("source", "")
         if source_key and source_key not in SOURCE_MAP:
             unknown_source_keys.add(source_key)
+        group = f"{n}-{slugify(clean_title_for_slug(entry['en_title']))}"
+        if group in existing_groups:
+            raise SystemExit(f"#{n} translation_group duplicates an existing published group: {group}")
+        if group in seen_groups:
+            raise SystemExit(f"Duplicate generated translation_group: {group}")
+        seen_groups.add(group)
         pair = {}
         for lang, directory in (("es", ES_DIR), ("en", EN_DIR)):
             article = build_article(entry, lang)
@@ -315,12 +320,6 @@ def generate(entries):
             if slug in seen_slugs[lang]:
                 raise SystemExit(f"Duplicate generated {lang} slug: {slug}")
             seen_slugs[lang].add(slug)
-            group = article["translation_group"]
-            if group in existing_groups:
-                raise SystemExit(f"#{n} translation_group duplicates an existing published group: {group}")
-            if group in seen_groups:
-                raise SystemExit(f"Duplicate generated translation_group: {group}")
-            seen_groups.add(group)
             pair[lang] = article
             out = directory / f"{n:03d}-{slug}.json"
             out.write_text(json.dumps(article, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
