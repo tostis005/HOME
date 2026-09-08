@@ -50,6 +50,11 @@ r['sections'][1][1]='Calculate kilowatt-hours (kWh) from actual heating time'
 r['faq_es'][0]='¿Cuántos kilovatios-hora (kWh) consume un calefactor de 1500 W en cuatro horas?'
 r['faq_en'][0]='How many kilowatt-hours (kWh) does a 1,500-watt heater use in four hours?'
 
+# Keep the reviewed cigarette-smoke FAQ wording in the canonical generation input.
+r=records[514]
+r['faq_es'][0]='¿Qué conviene retirar o lavar primero al quitar olor a tabaco?'
+r['faq_en'][0]='What should I remove or wash first when tackling cigarette smoke odor?'
+
 # Write each touched batch once.
 for p in sorted(set(paths.values())):
     data=json.loads(p.read_text(encoding='utf-8'))
