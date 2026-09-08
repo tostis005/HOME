@@ -29,7 +29,7 @@ REPL={
 ('en',411): [('Fabric, vinyl, PEVA, and specialty coatings','Fabric, vinyl, other plastic liners, and specialty coatings')],
 ('es',451): [('mueve la palanca afectada a OFF y después a ON una sola vez','mueve la palanca afectada a apagado (OFF) y después a encendido (ON) una sola vez')],
 ('en',451): [('check the circuit breaker or GFCI protection','check the circuit breaker or ground-fault circuit interrupter (GFCI) protection')],
-('es',460): [('No eches agua','No viertas agua'),('no eches agua','no viertas agua')],
+('es',460): [('No abras componentes eléctricos ni viertas agua sobre un aparato conectado o sobre aceite caliente.','No abras componentes eléctricos. No viertas agua sobre un aparato conectado ni sobre aceite caliente.')],
 ('en',461): [('circuit breaker or GFCI protection','circuit breaker or ground-fault circuit interrupter (GFCI) protection')],
 ('es',465): [('Bombillas LED no compatibles','Bombillas de diodos emisores de luz (LED) no compatibles')],
 ('en',465): [('LED lamps that are incompatible','Light-emitting diode (LED) lamps that are incompatible')],
