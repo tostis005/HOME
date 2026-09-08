@@ -22,11 +22,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Apply manual QA fixes to editorial source and validator
+      - name: Apply final editorial QA rules
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
+
           p=Path('content/tools/batch-791-800.json')
           data=json.loads(p.read_text(encoding='utf-8'))
           for e in data:
@@ -41,8 +42,19 @@ jobs:
 
           g=Path('content/tools/generate-validate-791-800.py')
           text=g.read_text(encoding='utf-8')
-          text=text.replace("if lang=='es':\n  if e['kind']=='diagnostics':", "if lang=='es':\n  if e['kind']=='identification-guide': return f'Reconocer si «{q}» está presente mediante señales observables, comprobarlo de forma segura y saber qué hacer después.'\n  if e['kind']=='diagnostics':")
-          text=text.replace("if e['kind']=='diagnostics': return f'Identify the most likely causes behind “{q},” use distinguishing clues, and decide what to check first and when to get help.'", "if e['kind']=='identification-guide': return f'Determine whether “{q}” applies using observable signs, check safely, and know what to do next.'\n if e['kind']=='diagnostics': return f'Identify the most likely causes behind “{q},” use distinguishing clues, and decide what to check first and when to get help.'")
+          text=text.replace(
+              "if lang=='es':\n  if e['kind']=='diagnostics']:",
+              "if lang=='es':\n  if e['kind']=='identification-guide': return 'Determinar si el filtro de la calefacción está sucio mediante señales observables, comprobarlo de forma segura y saber qué hacer después.'\n  if e['kind']=='diagnostics']:"
+          )
+          # Apply against the actual source form used by the generator.
+          text=text.replace(
+              "if lang=='es':\n  if e['kind']=='diagnostics':",
+              "if lang=='es':\n  if e['kind']=='identification-guide': return 'Determinar si el filtro de la calefacción está sucio mediante señales observables, comprobarlo de forma segura y saber qué hacer después.'\n  if e['kind']=='diagnostics':"
+          )
+          text=text.replace(
+              "if e['kind']=='diagnostics': return f'Identify the most likely causes behind “{q},” use distinguishing clues, and decide what to check first and when to get help.'",
+              "if e['kind']=='identification-guide': return 'Determine whether a furnace filter is dirty using observable signs, check safely, and know what to do next.'\n if e['kind']=='diagnostics': return f'Identify the most likely causes behind “{q},” use distinguishing clues, and decide what to check first and when to get help.'"
+          )
           g.write_text(text,encoding='utf-8')
           PY
       - name: Generate and validate
