@@ -31,14 +31,30 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Normalize temporary generator quote
+      - name: Normalize temporary generator inputs
         run: |
           python - <<'PY'
           from pathlib import Path
-          p = Path('content/tools/generate-validate-711-790.py')
-          s = p.read_text(encoding='utf-8')
+          import json, re
+
+          script = Path('content/tools/generate-validate-711-790.py')
+          s = script.read_text(encoding='utf-8')
           s = s.replace("children's reach.", "children reach.")
-          p.write_text(s, encoding='utf-8')
+          script.write_text(s, encoding='utf-8')
+
+          topics = {}
+          for line in Path('content/topics/TOPICS-701-800.md').read_text(encoding='utf-8').splitlines():
+              m = re.match(r'^(\d+)\.\s+(.+)$', line.strip())
+              if m:
+                  topics[int(m.group(1))] = m.group(2).strip()
+
+          for start in range(711, 791, 10):
+              p = Path(f'content/tools/batch-{start}-{start+9}.json')
+              rows = json.loads(p.read_text(encoding='utf-8'))
+              for row in rows:
+                  if row['n'] in topics:
+                      row['es_title'] = topics[row['n']]
+              p.write_text(json.dumps(rows, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           PY
           python -m py_compile content/tools/generate-validate-711-790.py
       - name: Generate and validate 711-790
