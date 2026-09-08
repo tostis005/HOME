@@ -9,6 +9,8 @@
 - Explicit exclusions: **#635 → #561** and **#659 → #260** to preserve one canonical URL per search intent.
 - Schema, language/locale, IDs, slugs, translation groups, SEO fields, status, four H2 sections, three FAQs, image metadata, acronym rules, metadiscourse checks, safety anti-patterns and batch depth all pass.
 - Meta descriptions are validated as complete editorial sentences; character truncation is not permitted.
+- Final reproducible validation run: **34262301742 — PASS**, including the independent second validation and final language-regression checks.
+- Blocking errors: **0**. Final warnings: **0**.
 
 ## Depth metrics
 
@@ -67,6 +69,17 @@
 - Topic pairs intentionally published without a structured source because no directly supporting source was mapped: **19**.
 - No non-empty source key is silently treated as authoritative when it lacks a mapping.
 
+## Manual cold-read review
+
+- Reviewed high-risk and overlap-sensitive samples in both the generated output and their FAQ mappings, including **#631/#706, #649, #652, #656/#675, #667/#674, #684, #699/#700, #705 and #710**.
+- #652 keeps the fuel-gas response first: evacuate, avoid switches/flames/phones indoors, contact the gas utility or emergency service from outside, and do not re-enter until cleared.
+- #667 distinguishes brief orange flicker from persistent poor-combustion signs and does not encourage gas-system adjustment.
+- #674 requires direct wall-outlet connection for a portable space heater and preserves clearance/overheating boundaries.
+- #699 follows wet/disinfect-first rodent-dropping cleanup rather than dry sweeping or vacuuming.
+- #700 distinguishes drywood-termite pellets from other debris without encouraging destructive probing of structural wood.
+- Spanish question-title metadata was normalized so `search_intent` and image concepts do not retain an unmatched opening `¿`.
+- Final language regressions block residual `HVAC`, `pellets`, incomplete Spanish question quoting and the specific awkward phrases found during cold reading.
+
 ## Final editorial safeguards
 
 - Spanish and English use separately authored bilingual source paragraphs rather than literal machine translation.
@@ -74,4 +87,4 @@
 - Safety boundaries include no live electrical testing, gas-system adjustment, bypassing safety devices, unsafe spring/cable work, hazardous chemical mixing, or unsafe structural access.
 - Pest articles prioritize exclusion, sanitation, moisture control and professional escalation over indiscriminate chemical treatment.
 - Exact slug, ID and translation-group collisions with already published articles are rejected.
-- Temporary generator, batch files and workflow must be removed before merge to `main`.
+- Temporary generator, all eight batch files and the temporary workflow were removed before PR review.
