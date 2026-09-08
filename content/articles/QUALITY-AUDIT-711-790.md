@@ -8,6 +8,14 @@
 - FAQ answer-to-section mappings: **426/426 PASS**.
 - Blocking errors: **0**. Warnings: **0**.
 
+## Validation evidence
+
+- Full generation + editorial validation: GitHub Actions run **34269702965** — PASS with `entries=71 articles=142 faq=426 errors=0 warnings=0`.
+- Manual review covered safety-sensitive HVAC/gas/electrical/wet-area, microwave/food-storage, pest and household-chemical articles plus first/last samples and watched overlap pairs.
+- Manual FAQ review found one semantic weakness in **#737**: the refrigerator-temperature FAQ originally described using a thermometer without stating the requested temperature. ES and EN were corrected to state **4 °C or less / 40°F (4°C) or below** directly.
+- Independent read-only final audit: GitHub Actions run **34270217989** — PASS with `entries=71 articles=142 faq=426 errors=0 warnings=0`.
+- The independent inventory check also confirmed exactly **71 intents / 142 articles**, all nine exclusions absent, ES/EN translation groups paired, `status: publish`, and the #737 semantic FAQ fix present in both languages.
+
 ## Canonical exclusions
 
 - **#726 → #277:** Exact duplicate: finding the source of a bad smell in the home is already #277.
@@ -70,4 +78,4 @@
 - Gas, electrical, water, garage-door, microwave and structural content keeps clear stop points and avoids live testing, bypasses, unsafe spring/cable work or opening fuel-burning equipment.
 - Pest and plant-pest pages prioritize identification, isolation, exclusion, sanitation, physical control and labeled lower-risk options before escalation.
 - Exact slug, ID and translation-group collisions against the existing library are rejected.
-- Temporary batch files, generator and workflow must be removed before merge to `main`.
+- Temporary batch files, generator and workflow are excluded from the final PR and merge to `main`.
