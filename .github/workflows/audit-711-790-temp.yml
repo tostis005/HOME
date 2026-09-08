@@ -1,0 +1,46 @@
+name: Temporary HOME 711-790 generation audit
+
+on:
+  push:
+    branches:
+      - quality-audit-711-790
+    paths:
+      - '.github/workflows/audit-711-790-temp.yml'
+      - 'content/tools/generate-validate-711-790.py'
+      - 'content/tools/batch-711-720.json'
+      - 'content/tools/batch-721-730.json'
+      - 'content/tools/batch-731-740.json'
+      - 'content/tools/batch-741-750.json'
+      - 'content/tools/batch-751-760.json'
+      - 'content/tools/batch-761-770.json'
+      - 'content/tools/batch-771-780.json'
+      - 'content/tools/batch-781-790.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-and-validate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: quality-audit-711-790
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate and validate 711-790
+        run: python content/tools/generate-validate-711-790.py
+      - name: Commit generated articles and report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add content/articles/es content/articles/en content/articles/QUALITY-AUDIT-711-790.md
+          if git diff --cached --quiet; then
+            echo 'No generated changes to commit.'
+          else
+            git commit -m 'Generate and validate HOME articles 711-790'
+            git push origin HEAD:quality-audit-711-790
+          fi
