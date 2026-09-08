@@ -33,6 +33,9 @@ jobs:
       - name: Deepen compact article versions
         run: python content/tools/editorial-uplift-151-230.py
 
+      - name: Localize Spanish acronyms
+        run: python content/tools/localize-acronyms-151-230.py
+
       - name: Audit Spanish acronym expansion
         run: python content/tools/scan-spanish-acronyms-151-230.py
 
