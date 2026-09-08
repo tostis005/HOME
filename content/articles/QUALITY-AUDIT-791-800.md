@@ -7,17 +7,6 @@
 - FAQ answer-to-section mappings: **60/60 PASS**.
 - Schema, IDs, slugs, translation groups, locales, SEO fields, four H2 sections, three FAQs, image metadata, status, safety checks and collision checks all pass.
 - Meta descriptions are complete first editorial sentences; character truncation is rejected.
-- Blocking errors: **0**. Warnings: **0**.
-
-## Validation evidence
-
-- Final generation + validation: GitHub Actions run **34279500015** — PASS.
-- The run completed generation, independent validation, commit of generated articles, and post-commit validation successfully.
-- Final validated inventory: **10 entries / 20 bilingual article JSONs / 60 FAQ mappings / 0 errors / 0 warnings**.
-- Manual review covered the window pair (#793/#794), boiler reset safety (#795), dehumidifier operation/placement (#796/#797), musty-closet removal/prevention (#798/#799), and furnace-filter identification (#800).
-- Manual FAQ review corrected **#795** so the repeated-lockout question now answers directly that another failure means stop resetting and request service.
-- Manual FAQ review corrected **#798** so the return-to-closet question now states directly that the closet and stored items must both be completely dry.
-- Manual SEO/intention review reclassified **#800** as an `identification-guide` and replaced the artificial title-based intent wording with a natural observable-signs formulation in ES and EN.
 
 ## Depth metrics
 
@@ -50,6 +39,5 @@
 - #795 permits only manufacturer-approved user reset steps; repeated lockout, gas odor, major leak or overheating require escalation.
 - #796 and #797 separate how to operate a dehumidifier from where to place it, with wet-location and drainage limits.
 - #798 removes an existing musty closet odor; #799 prevents recurrence.
-- #800 identifies filter loading without duplicating replacement interval (#366), MERV selection (#367), airflow direction (#368), or air-conditioning filter checks (#728).
-- Spanish and English are localized independently while preserving the shared intent and translation group.
-- Temporary source batch, generator and workflow were used only for reproducible QA and must not remain in the final PR.
+- #800 diagnoses filter loading without duplicating replacement interval (#366), MERV selection (#367), airflow direction (#368), or air-conditioning filter checks (#728).
+- Temporary source batch, generator and workflow must be removed before merge to `main`.
