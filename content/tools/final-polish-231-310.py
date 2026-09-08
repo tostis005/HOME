@@ -55,6 +55,9 @@ for lang in ('es','en'):
     elif lang=='en' and title.lower().startswith('how to '):
         action=title[7:].strip().lower()
         o['seo']['search_intent']=f'Use a practical, safe method to {action}, avoiding mistakes that damage materials or equipment, create hazards, or allow the problem to return.'
+    if lang=='es' and n==310:
+        o['content_html']=o['content_html'].replace('<h2>Un topper cambia comodidad, no estructura</h2>','<h2>Un sobrecolchón cambia comodidad, no estructura</h2>').replace('Una capa superior puede reducir sensación de desnivel leve','Un sobrecolchón o capa superior puede reducir la sensación de desnivel leve')
+        o['image']['concept']=o['image']['concept'].replace('Un topper cambia comodidad, no estructura','Un sobrecolchón cambia comodidad, no estructura')
     hs=re.findall(r'<h2>(.*?)</h2>',o['content_html'])
     picks=[hs[0],hs[1],hs[3]]
     for f,h in zip(o['faq'],picks): f['question']=q_es(h) if lang=='es' else q_en(h)
@@ -64,4 +67,4 @@ for lang in ('es','en'):
     if lang=='es' and n==307:
         o['seo']['search_intent']=re.sub(r'\bgfci\b','GFCI',o['seo']['search_intent'],flags=re.I)
     p.write_text(json.dumps(o,ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf-8')
-print('Applied final natural-language and acronym polish to 231-310')
+print('Applied final natural-language, acronym, and Spanish terminology polish to 231-310')
