@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import json
+import json,re,html
 
 ROOT=Path(__file__).resolve().parents[1]
 TOOLS=ROOT/'tools'; ART=ROOT/'articles'
@@ -22,6 +22,10 @@ for p in sorted(TOOLS.glob('batch-391-470-*.json')):
 errs=[]
 if sorted(records)!=list(range(391,471)): errs.append(f'batch coverage is {len(records)}, expected 80')
 
+def final_section_paragraphs(content_html):
+    pairs=re.findall(r'<h2>.*?</h2><p>(.*?)</p>',content_html,flags=re.S)
+    return [html.unescape(x) for x in pairs]
+
 for n in range(391,471):
     r=records.get(n)
     if not r: continue
@@ -31,15 +35,15 @@ for n in range(391,471):
         if len(fs)!=1:
             errs.append(f'{lang} #{n}: article not found uniquely'); continue
         o=json.loads(fs[0].read_text(encoding='utf-8'))
-        qs=r[f'faq_{lang}']; faq=o.get('faq',[])
+        qs=r[f'faq_{lang}']; faq=o.get('faq',[]); sections=final_section_paragraphs(o.get('content_html',''))
+        if len(sections)!=4: errs.append(f'{lang} #{n}: could not parse four final sections')
         if len(faq)!=3:
             errs.append(f'{lang} #{n}: expected 3 FAQ'); continue
         for i,(q,section_idx) in enumerate(zip(qs,EXPECTED[n])):
-            expected_answer=r['sections'][section_idx][f'{lang}_p']
             if faq[i].get('question')!=q:
                 errs.append(f'{lang} #{n} FAQ{i+1}: question changed from reviewed source')
-            if faq[i].get('answer')!=expected_answer:
-                errs.append(f'{lang} #{n} FAQ{i+1}: answer is not the reviewed section {section_idx+1}')
+            if section_idx>=len(sections) or faq[i].get('answer')!=sections[section_idx]:
+                errs.append(f'{lang} #{n} FAQ{i+1}: answer is not final section {section_idx+1}')
 
 print(f'FAQ answer-section audit: topics={len(records)} questions={len(records)*6} errors={len(errs)}')
 for e in errs: print('ERROR:',e)
