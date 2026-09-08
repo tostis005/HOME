@@ -22,6 +22,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Apply editorial preflight fixes
+        run: python content/tools/preflight-fix-471-550.py
       - name: Apply runner-only validator correction
         run: sed -i "s/'desenchúfalo'/'desenchufa'/g" content/tools/generate-validate-471-550.py
       - name: Generate and validate article JSON
