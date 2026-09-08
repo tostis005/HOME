@@ -38,12 +38,32 @@ jobs:
           s = s.replace("s = s.replace('water, HVAC, alarms', 'water, heating and cooling, alarms')", "s = s.replace('water, HVAC, alarms', 'water, heating and cooling, alarms')\n        s = s.replace('HVAC', 'heating and cooling')")
           s = s.replace("s = s.replace(', conocidos como frass,', ', también llamados gránulos fecales,')", "s = s.replace('frass', 'gránulos fecales')")
           s = s.replace("'puentea el sensor','bypass the sensor','abre la caldera','open the boiler','mide tensión con','test live voltage with'", "'puentea el sensor','bypass the sensor','mide tensión con','test live voltage with'")
+          s = s.replace('.rstrip(\"¿?\")', '.strip(\"¿?\")')
+          s = s.replace(".rstrip('¿?')", ".strip('¿?')")
           p.write_text(s, encoding='utf-8')
+
+          b = Path('content/tools/batch-651-660.json')
+          t = b.read_text(encoding='utf-8')
+          t = t.replace('Aires portátiles, microondas', 'Aires acondicionados portátiles, microondas')
+          b.write_text(t, encoding='utf-8')
 
           b = Path('content/tools/batch-671-680.json')
           t = b.read_text(encoding='utf-8')
           t = t.replace('No. Un calefactor eléctrico portátil debe conectarse', 'No: un calefactor eléctrico portátil debe conectarse')
           t = t.replace('No. A portable electric space heater should be plugged', 'No: a portable electric space heater should be plugged')
+          b.write_text(t, encoding='utf-8')
+
+          b = Path('content/tools/batch-691-700.json')
+          t = b.read_text(encoding='utf-8')
+          t = t.replace('pequeños gránulos fecales duros, conocidos como frass,', 'pequeños gránulos fecales duros')
+          t = t.replace('pequeños gránulos fecales duros, conocidos como gránulos fecales,', 'pequeños gránulos fecales duros')
+          t = t.replace('montones de pellets', 'montones de gránulos')
+          b.write_text(t, encoding='utf-8')
+
+          b = Path('content/tools/batch-701-710.json')
+          t = b.read_text(encoding='utf-8')
+          t = t.replace('Usar demasiado detergente no limpia mejor. Puede crear exceso de espuma, dejar residuos en fibras y máquina, atrapar suciedad, dificultar el aclarado y favorecer olores.', 'Usar demasiado detergente no limpia mejor y puede crear exceso de espuma, dejar residuos en fibras y máquina, atrapar suciedad, dificultar el aclarado y favorecer olores.')
+          t = t.replace('Using too much laundry detergent does not clean better. It can create excess suds, leave residue in fabric and the machine, trap soil, make rinsing harder, and contribute to odors.', 'Using too much laundry detergent does not clean better and can create excess suds, leave residue in fabric and the machine, trap soil, make rinsing harder, and contribute to odors.')
           b.write_text(t, encoding='utf-8')
           PY
 
