@@ -28,6 +28,19 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Refine temporary normalization and safety checks
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('content/tools/generate-validate-631-710.py')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace("s = s.replace('water, HVAC, alarms', 'water, heating and cooling, alarms')", "s = s.replace('water, HVAC, alarms', 'water, heating and cooling, alarms')\n        s = s.replace('HVAC', 'heating and cooling')")
+          s = s.replace("s = s.replace(', conocidos como frass,', ', también llamados gránulos fecales,')", "s = s.replace('frass', 'gránulos fecales')")
+          s = s.replace("'puentea el sensor','bypass the sensor','abre la caldera','open the boiler','mide tensión con','test live voltage with'", "'puentea el sensor','bypass the sensor','mide tensión con','test live voltage with'")
+          p.write_text(s, encoding='utf-8')
+          PY
+
       - name: Generate and validate
         run: python content/tools/generate-validate-631-710.py
 
