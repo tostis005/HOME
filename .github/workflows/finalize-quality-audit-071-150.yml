@@ -1,0 +1,37 @@
+name: Finalize quality audit 071-150
+
+on:
+  push:
+    branches:
+      - quality-audit-071-150
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: quality-audit-071-150
+          fetch-depth: 0
+
+      - name: Apply targeted editorial fixes and validate
+        run: python3 content/tools/finalize-quality-audit-071-150.py --apply
+
+      - name: Commit audit fixes and report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/articles/es content/articles/en content/articles/QUALITY-AUDIT-071-150.md
+          if git diff --cached --quiet; then
+            echo "No article/report changes to commit."
+          else
+            git commit -m "Finalize editorial audit 071-150 [skip ci]"
+            git push origin HEAD:quality-audit-071-150
+          fi
+
+      - name: Re-run validator on finalized contents
+        run: python3 content/tools/finalize-quality-audit-071-150.py
