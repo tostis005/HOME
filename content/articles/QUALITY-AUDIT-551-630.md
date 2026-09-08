@@ -43,3 +43,10 @@
 - Safety boundaries remain in the authored source copy: no live electrical testing, refrigerant handling, hazardous chemical mixing, unsafe structural access, wildlife handling, or bypassing safety devices.
 - Exact slug and translation-group collisions with already published articles are rejected before generation.
 - Temporary generator, batch files and workflow must be removed before merge to `main`.
+
+## Post-merge meta-description stabilization
+
+- Re-audited all **158/158** bilingual article meta descriptions after final publication.
+- Replaced character-truncated descriptions with the complete first editorial sentence from each article excerpt; **17** JSON files required correction.
+- Semantic validation now requires every meta description to equal a complete sentence ending in punctuation.
+- Result: **158/158 PASS**.
