@@ -30,6 +30,9 @@ jobs:
           python content/tools/generate-191-210.py
           python content/tools/generate-211-230.py
 
+      - name: Deepen compact article versions
+        run: python content/tools/editorial-uplift-151-230.py
+
       - name: Apply final editorial fixes and validate
         run: python content/tools/finalize-151-230.py --apply
 
