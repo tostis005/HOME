@@ -32,8 +32,13 @@ jobs:
       - name: Polish final article output
         run: python content/tools/polish-output-231-310.py
 
+      - name: Apply final natural-language polish
+        run: python content/tools/final-polish-231-310.py
+
       - name: Validate polished output
-        run: python content/tools/validate-output-231-310.py
+        run: |
+          python content/tools/validate-output-231-310.py
+          python content/tools/scan-final-language-231-310.py
 
       - name: Commit generated articles and report
         run: |
@@ -44,5 +49,7 @@ jobs:
           git commit -m "Generate and validate HOME articles 231-310 [skip ci]"
           git push origin HEAD:quality-audit-231-310
 
-      - name: Re-run final-output validator on committed state
-        run: python content/tools/validate-output-231-310.py
+      - name: Re-run final validators on committed state
+        run: |
+          python content/tools/validate-output-231-310.py
+          python content/tools/scan-final-language-231-310.py
