@@ -31,6 +31,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Normalize temporary generator quote
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('content/tools/generate-validate-711-790.py')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace("children's reach.", "children reach.")
+          p.write_text(s, encoding='utf-8')
+          PY
+          python -m py_compile content/tools/generate-validate-711-790.py
       - name: Generate and validate 711-790
         run: python content/tools/generate-validate-711-790.py
       - name: Commit generated articles and report
