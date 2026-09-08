@@ -48,6 +48,9 @@ jobs:
                       row['intro_en'] = "Bites alone do not confirm bed bugs, so early detection depends on finding physical evidence around sleeping areas. Look for live bugs, dark fecal spots, small rusty stains, eggs, and shed skins around mattress seams, the box spring, headboard, and nearby cracks. The U.S. Environmental Protection Agency (EPA) notes that low-level infestations are harder to find but much easier to manage when identified early."
                   if row['n'] == 722:
                       row['sections'][2][3] = "Tricks that involve spinning a fan with an object or trying to override electrical control components expose you to moving parts and stored energy. A swollen capacitor or stalled motor requires diagnosis with the equipment isolated by a competent technician."
+                  if row['n'] == 737:
+                      row['sections'][0][2] = "Debe mantenerse a 4 °C o menos. Usa un termómetro de aparato para comprobar la temperatura real en vez de confiar solo en el número del dial. No sobrecargues el refrigerador hasta bloquear la circulación de aire, porque eso puede crear zonas más calientes."
+                      row['sections'][0][3] = "Keep it at 40°F (4°C) or below. Use an appliance thermometer to verify actual temperature rather than relying only on the dial number. Do not pack the refrigerator so tightly that air circulation is blocked, because that can create warmer areas."
               p.write_text(json.dumps(rows, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           PY
           python -m py_compile content/tools/generate-validate-711-790.py
