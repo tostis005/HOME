@@ -1,30 +1,52 @@
-# Quality audit — articles 071–150
+# Quality audit 071–150 — final validation
 
-Audit completed against `EDITORIAL-STANDARD.md`, using articles from the first 70 (especially complex diagnostic pieces) as the quality benchmark.
+This report is generated from the branch contents after the editorial pass. Word counts refer to visible words in `content_html`; they are diagnostic, not length targets.
 
-## Method
+## Validation
 
-The audit combined full-library structural checks with editorial spot-reading across every generation band. Checks included body word count, section structure, FAQ/source coverage, ES/EN pairing, metadata completeness, generic-template language, body similarity/cannibalization, cold-reader clarity, safety boundaries, localization and the second-search test.
+- JSON files checked: **160** (80 ES + 80 EN expected)
+- Structural/editorial validation: **PASS**
+- Targeted final corrections applied in this pass: **18** field-level changes
 
-Word count was used only as a diagnostic signal. HOME has no target article length: a narrow question can be fully resolved in 300–450 words, while a multi-cause troubleshooting article may need much more.
+## Quantitative profile
 
-## Findings
+| Range | ES words | ES H2 | ES FAQ | ES sources | EN words | EN H2 | EN FAQ | EN sources |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 071-100 | 785.4 | 9.3 | 4.0 | 1.6 | 704.6 | 9.5 | 4.0 | 1.6 |
+| 101-114 | 585.2 | 7.6 | 3.7 | 1.3 | 541.1 | 7.6 | 3.7 | 1.2 |
+| 115-120 | 595.2 | 10.2 | 3.0 | 1.2 | 549.5 | 10.2 | 3.0 | 1.2 |
+| 121-130 | 408.9 | 6.7 | 3.0 | 1.3 | 383.0 | 6.7 | 3.0 | 1.3 |
+| 131-150 | 376.1 | 6.9 | 3.0 | 1.8 | 353.2 | 6.9 | 3.0 | 1.8 |
 
-- **071–100: pass at benchmark level.** Average body depth is about 786 words in Spanish and 711 in English. The articles generally branch by real symptoms, explain why steps matter and preserve clear safety boundaries.
-- **101–110: pass, more concise.** Average depth drops to roughly 585 ES / 546 EN, but sampled cleaning, energy and troubleshooting articles still pass the cold-reader and second-search tests. No systematic rewrite is justified purely to increase length.
-- **111–120: content passes; metadata needed repair.** Bodies remain substantial (roughly 595 ES / 553 EN for 115–120), but articles 111–119 contained meta descriptions cut with an ellipsis, and the batch used generic search-intent/image wording. Those defects were corrected in both languages.
-- **121–130: concise but mostly complete.** Average depth is about 409 ES / 385 EN. Manual review of representative laundry, door-repair and filter articles found coherent reasoning and specific next steps. They are shorter because the intents are narrower, not because they omit a common second search.
-- **131–150: bodies are compact but generally sound; editorial metadata was too generic.** Diagnostic samples correctly distinguish causes, explain jargon and stop before refrigerant, high-voltage, gas or unsafe mold work. Search intents were rewritten to be topic-specific, and generic image concepts in 141–150 were replaced.
-- **140/141 needed intent separation.** `140` now explicitly covers household fabrics/textiles such as curtains, covers and upholstery; `141` explicitly covers washable clothing. Titles, excerpts, taxonomy and opening guidance were adjusted so the two pages answer different searches.
-- **Cannibalization check:** the only body pair above the audit similarity threshold was 72/73 (oil vs grease stains), at a modest score. Their intents remain distinguishable and do not justify consolidation.
+The lower averages in later blocks were reviewed editorially rather than treated as automatic failures. Compact articles were retained when they fully resolve the intent; troubleshooting and safety topics were checked for decision branches, distinguishing signals, stop conditions, and escalation points.
 
-## Objective defects corrected
+## Intent-overlap watchlist
 
-1. Truncated meta descriptions in 111–119, ES and EN.
-2. Generic search-intent metadata in 111–120 and 131–150, ES and EN.
-3. Generic image concepts in 111–120 and 141–150, ES and EN.
-4. Overlap between 140 (general household textiles) and 141 (clothing).
+Sequence similarity and vocabulary Jaccard are diagnostics only. Each listed pair was also read for intent separation.
 
-## Final standard
+| Lang | Pair | Sequence similarity | Vocabulary Jaccard |
+|---|---|---:|---:|
+| ES | #72 / #73 | 0.296 | 0.271 |
+| EN | #72 / #73 | 0.338 | 0.346 |
+| ES | #132 / #133 | 0.269 | 0.202 |
+| EN | #132 / #133 | 0.256 | 0.239 |
+| ES | #135 / #136 | 0.136 | 0.220 |
+| EN | #135 / #136 | 0.169 | 0.216 |
+| ES | #140 / #141 | 0.245 | 0.248 |
+| EN | #140 / #141 | 0.287 | 0.300 |
+| ES | #144 / #145 | 0.178 | 0.149 |
+| EN | #144 / #145 | 0.196 | 0.173 |
+| ES | #148 / #150 | 0.198 | 0.258 |
+| EN | #148 / #150 | 0.245 | 0.273 |
+| ES | #149 / #150 | 0.268 | 0.191 |
+| EN | #149 / #150 | 0.268 | 0.208 |
 
-Articles are not padded to imitate the length of an earlier piece. A piece passes when it gives the answer early, explains unfamiliar terms, develops the real decision path, states safe limits, reads naturally in its language, and leaves no obvious follow-up search needed to act.
+Editorial review confirmed distinct intents for oil vs food grease (#72/#73), cause vs reduction of humidity (#132/#133), cause vs prevention of window condensation (#135/#136), household fabrics vs clothing (#140/#141), storage duration vs spoilage checks for eggs (#144/#145), and microwave compatibility/no-heat/sparking diagnostics (#148/#149/#150).
+
+## Final editorial notes
+
+- #103 and #105–108 retain their existing depth: the troubleshooting/energy intent is already resolved without padding.
+- #121–130 were reviewed individually; concise procedures were not expanded where they already passed the second-search test.
+- #131–150 were reviewed individually in both languages. Safety-critical appliance topics state what is safe, what to check, when to stop using the appliance, and what the user should not open or repair.
+- EN source-note metadata in #111–120 was localized to English; truncated SEO titles were completed; Spanish climatization wording was normalized where required.
+- `status: publish`, article numbers, translation groups, slugs, and JSON structure were preserved.
