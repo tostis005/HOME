@@ -7,8 +7,11 @@
 - JSON checked: **154 / 154** (77 ES + 77 EN).
 - Structural/editorial validation: **PASS**.
 - Explicit FAQ validation: **PASS 462 / 462**.
+- Hand-reviewed FAQ answer-section alignment: **PASS 462 / 462**.
+- Final metadata/localization regression validation: **PASS**.
 - Blocking errors: **0**.
 - Non-blocking warnings: **0**.
+- Dedicated final audit run before cleanup: **34243990615**.
 
 ## Canonical duplicate exceptions
 
@@ -22,8 +25,9 @@ These numbers remain documented in the canonical inventory and in this audit; th
 
 - Spanish and English share article number and translation group while using independently localized prose.
 - FAQ questions are explicit editorial inputs and each answer is grounded in the article body.
+- Every one of the **462 FAQ** was reviewed against the exact article section supplying its answer. Manual review caught and corrected real mismatches in #484, #489, #498, #500, #512, #514, #515, #520, #531 and #542 before release.
 - Electrical, gas, appliance, food, wildlife and water-quality pages include concrete stop conditions and escalation boundaries.
-- Search-intent metadata is checked for natural ES/EN syntax.
+- Search-intent metadata is checked for natural ES/EN syntax, including regressions such as `Identify why are…`, `Decide whether can…` and `para cómo…`.
 - Close topics are separated by reader decision and next action rather than superficial wording.
 
 ## Quantitative profile
@@ -59,7 +63,7 @@ These numbers remain documented in the canonical inventory and in this audit; th
 
 ## Manual review priorities
 
-Read both languages for #471–482, #488–490, #501, #507–530, #534–550. Reject any page that encourages live electrical work, repeated breaker resets, unsafe gas troubleshooting, tasting questionable food, opening refrigerant circuits, sealing active wildlife nests, or treating unknown water contamination by appearance alone.
+Both languages were reviewed for water-quality, wildlife/pests, smoke/odor, electrical/gas, food-safety, heating/cooling and appliance topics. Reject any page that encourages live electrical work, repeated breaker resets, unsafe gas troubleshooting, tasting questionable food, opening refrigerant circuits, sealing active wildlife nests, or treating unknown water contamination by appearance alone.
 
 ## Warnings
 
