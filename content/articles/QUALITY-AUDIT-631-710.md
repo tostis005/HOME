@@ -75,8 +75,3 @@
 - Pest articles prioritize exclusion, sanitation, moisture control and professional escalation over indiscriminate chemical treatment.
 - Exact slug, ID and translation-group collisions with already published articles are rejected.
 - Temporary generator, batch files and workflow must be removed before merge to `main`.
-
-## Non-blocking notes
-
-- #674 es: unusually short meta (3 chars)
-- #674 en: unusually short meta (3 chars)
