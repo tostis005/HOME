@@ -26,8 +26,9 @@ def save(q,data):
 
 normalize_batches()
 q,d,x=load(331); x['sections'][2][2]=x['sections'][2][2].replace('Equipos inverter o de velocidad variable','Los equipos de velocidad variable'); save(q,d)
-q,d,x=load(367); x['es_intro']='MERV es una escala de eficiencia de filtración cuyo nombre viene del inglés Minimum Efficiency Reporting Value. Una cifra más alta retiene partículas más pequeñas, pero también puede aumentar la resistencia al aire si el sistema no está diseñado para ese filtro.'; save(q,d)
-q,d,x=load(372); x['sections'][0][2]=x['sections'][0][2].replace('En LED, un regulador incompatible','En bombillas LED (diodos emisores de luz), un regulador incompatible'); save(q,d)
+q,d,x=load(367); x['es_intro']='MERV es una escala de eficiencia de filtración cuyo nombre viene del inglés Minimum Efficiency Reporting Value. Una cifra más alta retiene partículas más pequeñas, pero también puede aumentar la resistencia al aire si el sistema no está diseñado para ese filtro.'; x['sections'][2][2]=x['sections'][2][2].replace('El filtro HVAC','El filtro del sistema de climatización'); save(q,d)
+q,d,x=load(372); x['sections'][0][2]=x['sections'][0][2].replace('En LED, un regulador incompatible','En bombillas LED (diodos emisores de luz), un regulador incompatible'); x['sections'][2][2]=x['sections'][2][2].replace('Evita abrir el cuadro para buscarlo.','No retires la placa ni la tapa del cuadro para buscarlo: esa comprobación corresponde a un electricista cualificado.'); save(q,d)
 q,d,x=load(385); x['es_intro']=x['es_intro'].replace('porque Bacillus cereus','porque la bacteria Bacillus cereus'); save(q,d)
 q,d,x=load(388); x['es_intro']='Un enchufe con protección diferencial de tipo GFCI (interruptor de circuito por falla a tierra, habitual en Norteamérica) se rearma con su botón RESET cuando la condición que provocó el disparo ya no está presente. Si no se rearma o vuelve a saltar, no lo puentes ni insistas repetidamente.'; save(q,d)
-print('Applied batch normalization and Spanish terminology preflight for 311-390')
+q,d,x=load(389); x['sections'][3][2]=x['sections'][3][2].replace('apaga ese circuito y pide revisión eléctrica.','apaga ese circuito y llama a un electricista cualificado.'); save(q,d)
+print('Applied batch normalization, Spanish terminology, and safety preflight for 311-390')
