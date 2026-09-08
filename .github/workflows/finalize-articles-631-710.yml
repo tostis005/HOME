@@ -64,6 +64,7 @@ jobs:
           t = b.read_text(encoding='utf-8')
           t = t.replace('Usar demasiado detergente no limpia mejor. Puede crear exceso de espuma, dejar residuos en fibras y máquina, atrapar suciedad, dificultar el aclarado y favorecer olores.', 'Usar demasiado detergente no limpia mejor y puede crear exceso de espuma, dejar residuos en fibras y máquina, atrapar suciedad, dificultar el aclarado y favorecer olores.')
           t = t.replace('Using too much laundry detergent does not clean better. It can create excess suds, leave residue in fabric and the machine, trap soil, make rinsing harder, and contribute to odors.', 'Using too much laundry detergent does not clean better and can create excess suds, leave residue in fabric and the machine, trap soil, make rinsing harder, and contribute to odors.')
+          t = t.replace('identifica la habitación más fresca y sabe dónde ir', 'identifica la habitación más fresca y ten claro dónde ir')
           b.write_text(t, encoding='utf-8')
           PY
 
@@ -72,6 +73,33 @@ jobs:
 
       - name: Validate generated files again
         run: python content/tools/generate-validate-631-710.py --validate-only
+
+      - name: Final language regressions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          bad = []
+          forbidden_es = ['«¿', 'pellets', 'HVAC', 'Aires portátiles', ' y sabe dónde ir']
+          for lang in ('es','en'):
+              for p in (Path('content/articles')/lang).glob('*.json'):
+                  try:
+                      d=json.loads(p.read_text(encoding='utf-8'))
+                  except Exception:
+                      continue
+                  n=d.get('article_number')
+                  if not isinstance(n,int) or not 631 <= n <= 710:
+                      continue
+                  text=p.read_text(encoding='utf-8')
+                  if lang=='es':
+                      for token in forbidden_es:
+                          if token in text:
+                              bad.append(f'{p}: forbidden {token!r}')
+          if bad:
+              raise SystemExit('\n'.join(bad))
+          print('PASS: final language regressions clean for HOME 631-710')
+          PY
 
       - name: Commit generated articles and audit
         shell: bash
