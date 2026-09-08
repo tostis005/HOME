@@ -1,6 +1,9 @@
 name: Build and audit HOME articles 471-550
 
 on:
+  push:
+    branches:
+      - quality-audit-471-550
   workflow_dispatch:
 
 permissions:
