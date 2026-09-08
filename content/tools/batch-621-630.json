@@ -1,0 +1,192 @@
+[
+  {
+    "n": 621,
+    "es_title": "¿Por qué no descarga el inodoro?",
+    "en_title": "Why Won't My Toilet Flush?",
+    "family": "plumbing",
+    "kind": "diagnostics",
+    "source": "water",
+    "intro_es": "Un inodoro que no descarga puede tener la cisterna sin agua, una cadena o mecanismo desconectado, una válvula que no levanta o un atasco que impide evacuar. Antes de repetir la descarga, mira el nivel de agua de la taza y la cisterna para evitar un desbordamiento.",
+    "intro_en": "A toilet that will not flush may have an empty tank, a disconnected chain or mechanism, a flapper that does not lift, or a clog that prevents drainage. Before flushing repeatedly, check the bowl and tank water levels so a blockage does not turn into an overflow.",
+    "sections": [
+      ["Si la taza está alta, no sigas descargando", "If the bowl is high, do not keep flushing", "Una taza que ya está cerca del borde indica que el agua no sale con normalidad. Cierra la llave de paso del inodoro si el nivel sigue subiendo y trata el atasco antes de volver a accionar la cisterna.", "A bowl already close to the rim indicates that water is not leaving normally. Close the toilet shutoff valve if the level keeps rising and address the clog before triggering another flush."],
+      ["Si la cisterna está vacía, revisa el llenado", "If the tank is empty, check the fill system", "Comprueba que la llave de paso esté abierta y que el flotador no quede atascado. Si no entra agua pese a tener suministro, una válvula de llenado o alimentación puede necesitar limpieza o sustitución.", "Make sure the shutoff valve is open and the float is not stuck. If no water enters despite available supply, the fill valve or supply connection may need cleaning or replacement."],
+      ["Si hay agua pero la palanca no hace nada, mira cadena y válvula", "If the tank is full but the handle does nothing, inspect the chain and flapper", "Retira la tapa con cuidado y observa si la palanca mueve la cadena y levanta la válvula de descarga. Una cadena suelta, demasiado larga o una pieza rota suele ser visible y puede repararse sin tocar el desagüe.", "Carefully remove the tank lid and see whether the handle moves the chain and lifts the flush valve or flapper. A detached or overly long chain or a broken lever is usually visible and can be repaired without working on the drain."],
+      ["Una descarga débil con mecanismo normal apunta al paso del agua", "A weak flush with normal tank parts points toward flow restriction", "Si la cisterna funciona pero el agua apenas baja, puede haber un atasco parcial o depósitos en los orificios de descarga. No sigas añadiendo químicos; usa métodos mecánicos apropiados y pide ayuda si varios desagües también están lentos.", "If the tank operates normally but bowl water barely moves, a partial clog or blocked rim jets may be involved. Do not keep adding chemicals; use appropriate mechanical methods and get help when multiple drains are also slow."]
+    ],
+    "faq_es": ["¿Qué debo hacer si el nivel del inodoro sube al intentar descargar?", "¿Qué puede impedir que se llene la cisterna?", "¿Qué significa que la palanca se mueva pero el inodoro no descargue bien?"],
+    "faq_en": ["What should I do if the toilet bowl rises when I try to flush?", "What can keep a toilet tank from filling?", "What does it mean if the handle works but the toilet still flushes poorly?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 622,
+    "es_title": "Cómo descubrir por dónde entran las hormigas",
+    "en_title": "How to Find Where Ants Are Getting Into the House",
+    "family": "pests",
+    "kind": "how-to",
+    "source": "ipm",
+    "intro_es": "Para encontrar por dónde entran las hormigas es más útil seguir el recorrido entre alimento, agua y exterior que rociar la fila inmediatamente. Observar durante unos minutos puede revelar una junta, hueco de tubería, marco de ventana o grieta que luego se puede sellar después de controlar la actividad.",
+    "intro_en": "Finding an ant entry point is easier when you follow the route between food, water, and the outdoors instead of spraying the trail immediately. A few minutes of observation can reveal a seam, pipe gap, window frame, or crack that can later be sealed after the activity is controlled.",
+    "sections": [
+      ["Sigue la fila en ambos sentidos", "Follow the trail in both directions", "Observa dónde se dispersan para buscar comida y dónde convergen hacia una pared, zócalo o ventana. Marca el punto sin bloquearlo todavía si necesitas ver si es realmente la entrada principal.", "Watch where ants spread out to forage and where they converge toward a wall, baseboard, or window. Mark the point without immediately blocking it if you still need to confirm that it is the main entry."],
+      ["Busca humedad y alimento cerca de la ruta", "Look for moisture and food near the route", "Migajas, comida de mascota, basura y condensación pueden mantener una ruta activa. Limpiar esos recursos reduce actividad y ayuda a distinguir una entrada exterior de una colonia que está aprovechando humedad dentro de la estructura.", "Crumbs, pet food, trash, and condensation can keep a trail active. Removing those resources reduces activity and helps distinguish an outdoor entry from a colony exploiting moisture inside the structure."],
+      ["Inspecciona juntas y penetraciones desde el exterior", "Inspect exterior seams and penetrations", "Revisa alrededor de tuberías, cables, puertas, ventanas y encuentros de revestimiento a la altura donde viste actividad. No selles respiraderos ni huecos diseñados para drenaje o ventilación; usa material compatible con el tipo de junta.", "Check around pipes, cables, doors, windows, and siding transitions at the height where activity was observed. Do not seal vents or openings designed for drainage or ventilation; use a material compatible with the specific joint."],
+      ["Sella después de reducir la actividad", "Seal after the active route is understood", "Cerrar una ruta sin eliminar alimento o sin saber si hay un nido interior puede hacer que las hormigas busquen otra salida. Combina saneamiento, exclusión y control dirigido, y pide ayuda si hay actividad extensa en madera o paredes.", "Closing one route without removing food or understanding whether a nest is indoors can make ants find another exit. Combine sanitation, exclusion, and targeted control, and seek help for extensive activity in walls or structural wood."]
+    ],
+    "faq_es": ["¿Conviene rociar una fila de hormigas antes de seguirla?", "¿Qué recursos dentro de casa mantienen activa una ruta?", "¿Cuándo conviene sellar el punto de entrada?"],
+    "faq_en": ["Should an ant trail be sprayed before trying to follow it?", "Which indoor resources keep an ant trail active?", "When should an ant entry point be sealed?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 623,
+    "es_title": "¿Por qué hay pececillos de plata en el baño?",
+    "en_title": "Why Are There Silverfish in My Bathroom?",
+    "family": "pests",
+    "kind": "diagnostics",
+    "source": "ipm",
+    "intro_es": "Los pececillos de plata aparecen con frecuencia en baños porque encuentran humedad, refugios estrechos y materiales con almidón o celulosa. Ver uno no significa que el baño esté sucio; la pista más útil es si hay humedad persistente, fugas o condensación que mantienen el ambiente favorable.",
+    "intro_en": "Silverfish often appear in bathrooms because they find moisture, narrow shelter, and materials containing starch or cellulose. Seeing one does not mean the bathroom is dirty; the most useful clue is whether persistent humidity, leaks, or condensation keep the space favorable.",
+    "sections": [
+      ["Busca humedad que dura más allá de la ducha", "Look for moisture that lingers after showers", "Comprueba ventilación, condensación en paredes, juntas húmedas y agua alrededor de lavabo o inodoro. Si el baño tarda horas en secarse, reducir humedad suele tener más impacto que tratar cada insecto que aparece.", "Check ventilation, wall condensation, damp joints, and water around sinks or toilets. If the bathroom takes hours to dry, reducing moisture often matters more than treating each insect that appears."],
+      ["Revisa grietas y huecos donde puedan refugiarse", "Inspect cracks and gaps used as shelter", "Zócalos separados, pasos de tubería y huecos bajo muebles ofrecen oscuridad y protección. Sella juntas no funcionales después de corregir humedad, sin bloquear ventilación ni accesos necesarios.", "Separated baseboards, pipe penetrations, and gaps below cabinets provide darkness and shelter. Seal nonfunctional gaps after moisture is corrected without blocking ventilation or required access."],
+      ["Reduce cartón, papel y polvo acumulado", "Reduce cardboard, paper, and accumulated debris", "Papel almacenado, cajas húmedas, adhesivos y residuos orgánicos pueden servir de alimento. Mantén textiles secos y evita guardar cartón directamente sobre un suelo húmedo o dentro de un mueble con condensación.", "Stored paper, damp boxes, adhesives, and organic debris can provide food. Keep textiles dry and avoid storing cardboard directly on a damp floor or inside a cabinet with condensation."],
+      ["Actividad persistente puede indicar humedad oculta", "Persistent activity can point to hidden moisture", "Si aparecen muchos ejemplares en distintas habitaciones o la humedad visible está controlada, revisa fugas detrás de paredes y zonas próximas. Un tratamiento químico sin resolver agua y refugio suele dar resultados temporales.", "If many silverfish appear across rooms after visible moisture is controlled, inspect for hidden leaks and nearby damp areas. Chemical treatment without correcting water and shelter usually provides only temporary results."]
+    ],
+    "faq_es": ["¿Por qué los pececillos de plata aparecen tanto en baños?", "¿Qué refugios conviene revisar?", "¿Qué significa que sigan apareciendo pese a ventilar bien?"],
+    "faq_en": ["Why are silverfish common in bathrooms?", "Which hiding places should I inspect?", "What does persistent silverfish activity suggest after humidity is controlled?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 624,
+    "es_title": "Cómo quitar olor a mofeta alrededor de la casa",
+    "en_title": "How to Remove Skunk Odor Around the House",
+    "family": "pests",
+    "kind": "how-to",
+    "source": "ipm",
+    "intro_es": "El olor a mofeta puede entrar desde el exterior por puertas, ventanas y tomas de aire o quedar en una superficie rociada cerca de la vivienda. Primero confirma que el animal se haya ido y evita acercarte; después ventila y limpia solo materiales afectados con métodos compatibles, sin mezclar químicos domésticos.",
+    "intro_en": "Skunk odor can enter from outdoors through doors, windows, and air intakes or remain on a surface sprayed near the home. First make sure the animal has left and avoid approaching it; then ventilate and clean only affected materials with compatible methods without mixing household chemicals.",
+    "sections": [
+      ["Evita acercarte a la mofeta o bloquear su salida", "Do not approach or block the skunk's exit", "Mantén personas y mascotas dentro y deja una ruta de escape. No intentes atraparla debajo de porches o estructuras; si está herida, atrapada o entra repetidamente en un espacio, contacta control de fauna.", "Keep people and pets indoors and leave the animal a route away. Do not try to trap it under decks or structures; if it is injured, trapped, or repeatedly entering a space, contact wildlife control."],
+      ["Ventila la vivienda desde el lado menos afectado", "Ventilate from the cleaner side of the house", "Cierra temporalmente ventanas o tomas cercanas al punto rociado y abre otras cuando el aire exterior esté mejor. Cambia filtros si capturaron olor intenso y el fabricante permite reemplazo, pero no rocíes perfume dentro de conductos.", "Temporarily close windows or intakes nearest the sprayed area and open others when outdoor air is better. Replace filters that captured heavy odor when appropriate, but do not spray fragrance into ductwork."],
+      ["Lava superficies exteriores según el material", "Wash affected exterior surfaces according to material", "Revestimiento, hormigón, madera y tejidos toleran productos distintos. Empieza por detergente suave y usa un desodorizante específico solo si es compatible; prueba primero y protege plantas y drenajes.", "Siding, concrete, wood, and fabrics tolerate different products. Start with mild detergent and use a specific deodorizer only when compatible; test first and protect plants and storm drains."],
+      ["No mezcles fórmulas caseras con lejía u otros limpiadores", "Do not mix homemade formulas with bleach or other cleaners", "Algunas recetas populares generan reacciones químicas o pueden dañar superficies si se combinan. Usa una sola fórmula a la vez, sigue instrucciones y mantén mezclas reactivas en recipientes abiertos solo cuando una guía segura lo indique, nunca almacenadas a presión.", "Some popular recipes react chemically or can damage surfaces when combined. Use one formula at a time, follow instructions, and never store reactive mixtures in sealed containers where pressure can build."]
+    ],
+    "faq_es": ["¿Qué debo hacer mientras la mofeta sigue cerca de casa?", "¿Cómo conviene ventilar si el olor entra desde un lado de la vivienda?", "¿Se pueden mezclar varios productos para quitar olor a mofeta?"],
+    "faq_en": ["What should I do while a skunk is still near the house?", "How should I ventilate when the odor is strongest on one side of the home?", "Can multiple cleaners be mixed to remove skunk odor?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 625,
+    "es_title": "Cómo identificar excrementos de insectos en casa",
+    "en_title": "How to Identify Insect Droppings in the House",
+    "family": "pests",
+    "kind": "diagnostics",
+    "source": "ipm",
+    "intro_es": "Los excrementos por sí solos rara vez permiten identificar un insecto con certeza. Tamaño, forma y ubicación ayudan, pero hay que combinarlos con alas, mudas, daños, insectos vivos y el lugar donde aparecen; además conviene evitar tocar o barrer en seco material desconocido.",
+    "intro_en": "Droppings alone rarely identify an insect with certainty. Size, shape, and location help, but they should be combined with shed skins, wings, damage, live insects, and where the material appears; unknown debris should also not be handled bare-handed or dry-swept into the air.",
+    "sections": [
+      ["Observa forma y ubicación sin tocar", "Observe shape and location without handling it", "Haz fotos con una regla o moneda cercana para escala y anota dónde apareció. Material bajo un mueble de cocina, dentro de madera o cerca de una ventana ofrece pistas distintas; usa guantes si necesitas retirar una muestra.", "Take photos with a ruler or coin nearby for scale and record where it appeared. Material beneath a kitchen cabinet, inside wood, or near a window provides different clues; wear gloves if a sample must be handled."],
+      ["Busca señales que acompañen al residuo", "Look for evidence that accompanies the debris", "Mudas, huevos, alas desprendidas, galerías en madera, manchas o insectos vivos son más específicos que un punto oscuro aislado. Inspecciona alrededor con luz sin desmontar estructuras ni introducir la mano en huecos.", "Shed skins, eggs, discarded wings, wood galleries, staining, or live insects are more specific than one dark speck. Inspect nearby with a light without dismantling structures or reaching into cavities."],
+      ["No confundas frass con polvo o restos de madera", "Do not assume frass is always insect waste", "Serrín de trabajos recientes, aislante, semillas y polvo pueden parecer residuos de plaga. Limpia una pequeña zona y observa si el material reaparece; la recurrencia y el punto exacto ayudan a confirmar actividad.", "Recent sawdust, insulation, seeds, and household debris can resemble pest waste. Clean a small area and see whether material returns; recurrence and exact location help confirm active activity."],
+      ["Material abundante o incierto merece identificación profesional", "Heavy or uncertain evidence deserves professional identification", "Si hay gran cantidad, posible contacto con alimentos, daños en madera o no puedes distinguir insecto de roedor, conserva fotos y pide identificación. Evita aplicar pesticidas al azar sin saber qué organismo estás tratando.", "If there is a large amount, possible food contamination, wood damage, or uncertainty between insect and rodent evidence, save photos and seek identification. Avoid applying pesticides blindly without knowing what organism is involved."]
+    ],
+    "faq_es": ["¿Se puede identificar un insecto solo por sus excrementos?", "¿Qué otras señales ayudan a confirmar la plaga?", "¿Cómo puedo comprobar si un residuo vuelve a aparecer?"],
+    "faq_en": ["Can an insect be identified from droppings alone?", "Which other signs help confirm the pest?", "How can I tell whether suspicious debris is recurring?"],
+    "faq_sections": [0, 1, 2]
+  },
+  {
+    "n": 626,
+    "es_title": "Qué hacer si aparecen hormigas carpinteras y cómo proteger la madera de la casa",
+    "en_title": "What to Do About Carpenter Ants and How to Protect Wood in the House",
+    "family": "pests",
+    "kind": "safety-guide",
+    "source": "ipm",
+    "intro_es": "Las hormigas carpinteras excavan galerías en madera pero no la comen como las termitas. Su presencia puede estar asociada a madera húmeda o dañada, así que la respuesta útil combina identificar actividad, corregir humedad, localizar la colonia y reparar la madera afectada en vez de limitarse a matar las obreras visibles.",
+    "intro_en": "Carpenter ants excavate galleries in wood but do not eat it the way termites do. Their presence can be associated with damp or damaged wood, so an effective response combines confirming activity, correcting moisture, locating the colony, and repairing affected wood rather than only killing visible workers.",
+    "sections": [
+      ["Confirma actividad con hormigas y material expulsado", "Confirm activity with ants and excavated debris", "Busca obreras grandes, recorridos nocturnos y pequeños montones de virutas o restos expulsados desde una grieta. No identifiques una colonia solo por una hormiga aislada que pudo entrar desde el exterior.", "Look for large workers, nighttime trails, and small piles of wood-like debris pushed from a crack. Do not diagnose an indoor colony from one isolated ant that may have wandered in from outside."],
+      ["Corrige humedad antes de reparar madera", "Correct moisture before repairing wood", "Revisa fugas, condensación y madera en contacto prolongado con agua. Sustituir un marco o revestimiento sin eliminar la fuente de humedad puede recrear el mismo ambiente favorable a la colonia.", "Check for leaks, condensation, and wood exposed to prolonged moisture. Replacing trim or framing without eliminating the moisture source can recreate the same favorable environment for the colony."],
+      ["Sigue rutas para acercarte al nido sin abrir al azar", "Follow trails to narrow the nest location without random demolition", "Observa hacia dónde vuelven después de alimentarse y escucha actividad en madera hueca solo desde superficies accesibles. Una colonia puede estar en pared, cubierta o árbol cercano; abrir acabados a ciegas aumenta daños.", "Watch where workers return after feeding and listen for activity only from accessible surfaces. A colony may be in a wall, roof area, or nearby tree; opening finishes blindly increases damage."],
+      ["Daño estructural o colonia inaccesible requiere profesional", "Structural damage or an inaccessible nest calls for professional help", "Si la madera ha perdido sección, hay actividad extensa en muros o no puedes localizar el nido de forma segura, pide inspección de plagas y, si hace falta, de estructura. Prioriza exclusión y humedad antes de tratamientos indiscriminados.", "If wood has lost significant section, activity is extensive inside walls, or the nest cannot be safely located, arrange pest inspection and structural assessment when needed. Prioritize moisture correction and exclusion over indiscriminate treatment."]
+    ],
+    "faq_es": ["¿Qué señales apoyan que sean hormigas carpinteras activas?", "¿Por qué es importante corregir humedad?", "¿Cuándo conviene pedir una inspección profesional?"],
+    "faq_en": ["Which signs support active carpenter ants?", "Why is moisture correction important?", "When should carpenter-ant activity be professionally inspected?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 627,
+    "es_title": "Cómo reparar un agujero grande en una pared de pladur o yeso",
+    "en_title": "How to Repair a Large Hole in Drywall or Plaster",
+    "family": "walls",
+    "kind": "how-to",
+    "source": "",
+    "intro_es": "Un agujero grande necesita soporte y un parche del mismo espesor, no solo masilla. Antes de cortar, hay que comprobar que detrás no haya cableado, tuberías o humedad; en pladur suele usarse respaldo y placa nueva, mientras yeso tradicional puede requerir una reparación compatible con listones o base existente.",
+    "intro_en": "A large wall hole needs support and a patch of matching thickness rather than filler alone. Before cutting, check for wiring, plumbing, or moisture behind the surface; drywall often uses backing and new board, while traditional plaster may require a repair compatible with the existing lath or base.",
+    "sections": [
+      ["Comprueba qué hay detrás antes de ampliar el agujero", "Check what is behind the wall before enlarging the hole", "Mira desde la abertura existente con luz y usa métodos de detección adecuados. No introduzcas sierra donde pueda haber cable, tubería o conducto; si el daño viene de una fuga, repara y seca antes de cerrar.", "Inspect through the existing opening with a light and use appropriate detection methods. Do not put a saw where wiring, plumbing, or ductwork may be present; if the damage came from a leak, repair and dry it before closing the wall."],
+      ["En pladur, crea bordes firmes y un respaldo", "For drywall, create firm edges and backing", "Recorta solo hasta material sano y con forma manejable, añade listones de respaldo o utiliza montantes existentes y atornilla un parche del mismo espesor. Evita dejar bordes flotantes sin soporte que se agrieten al mínimo movimiento.", "Cut only back to sound material in a manageable shape, add backing strips or use existing studs, and screw in a patch of matching thickness. Avoid unsupported floating edges that crack with minor movement."],
+      ["En yeso, conserva la base que siga firme", "For plaster, preserve any sound base", "Si el listón o soporte está estable, puede servir para un parche compatible; yeso suelto alrededor necesita fijación o retirada hasta bordes sólidos. No rellenes un hueco profundo de una sola capa con un producto pensado solo para acabado fino.", "If the lath or base is stable, it can support a compatible patch; loose plaster around the hole needs securing or removal back to sound edges. Do not fill a deep cavity in one layer with material intended only for thin finish work."],
+      ["Encinta, nivela y termina en capas", "Tape, level, and finish in stages", "Trata juntas según el sistema, deja secar entre capas y extiende el acabado más allá del parche para perder el borde. Lija con control de polvo y usa imprimación antes de pintar cuando el compuesto lo requiera.", "Treat joints according to the wall system, allow drying between coats, and feather the finish beyond the patch to hide the edge. Control dust while sanding and prime before painting when the repair compound requires it."]
+    ],
+    "faq_es": ["¿Qué hay que comprobar antes de cortar alrededor de un agujero grande?", "¿Por qué necesita respaldo un parche grande de pladur?", "¿Se repara igual un agujero en yeso tradicional?"],
+    "faq_en": ["What should be checked before cutting around a large wall hole?", "Why does a large drywall patch need backing?", "Is a large hole in traditional plaster repaired the same way?"],
+    "faq_sections": [0, 1, 2]
+  },
+  {
+    "n": 628,
+    "es_title": "¿Cuánto tarda en secar la silicona o sellador?",
+    "en_title": "How Long Does Caulk or Sealant Take to Dry?",
+    "family": "maintenance",
+    "kind": "decision-guide",
+    "source": "cleaning",
+    "intro_es": "La silicona o sellador puede formar piel en minutos pero necesitar muchas horas para curar por completo. El tiempo depende de química, grosor del cordón, temperatura, humedad y ventilación; la cifra de la etiqueta del producto concreto manda sobre cualquier regla general.",
+    "intro_en": "Caulk or sealant can skin over within minutes while still needing many hours to cure fully. Timing depends on chemistry, bead thickness, temperature, humidity, and ventilation; the specific product label matters more than any general rule.",
+    "sections": [
+      ["Distingue secado superficial de curado completo", "Separate surface drying from full cure", "Una junta puede dejar de pegar al tacto y seguir blanda en profundidad. No uses el tacto como única señal para mojar, pintar o someterla a movimiento; sigue el tiempo de curado indicado.", "A bead can stop feeling tacky while remaining soft deeper inside. Do not use touch as the only signal for getting it wet, painting it, or putting it under movement; follow the specified cure time."],
+      ["El espesor y el producto cambian el tiempo", "Bead thickness and chemistry change the timing", "Silicona, acrílico, poliuretano y selladores híbridos curan de forma distinta. Un cordón grueso o una junta profunda tarda más que una línea fina; aplica dimensiones dentro de lo que admite el producto.", "Silicone, acrylic, polyurethane, and hybrid sealants cure differently. A thick bead or deep joint takes longer than a thin line; use joint dimensions within the product's stated range."],
+      ["Temperatura y humedad también influyen", "Temperature and humidity also matter", "Algunos selladores de silicona necesitan humedad ambiental para curar, mientras frío extremo puede ralentizar muchos productos. Trabaja dentro del rango de aplicación de la etiqueta y evita lluvia o agua antes de tiempo.", "Some silicone sealants need ambient moisture to cure, while very cold conditions slow many products. Work within the label's application range and protect the bead from rain or water until permitted."],
+      ["No pintes un producto que no admita pintura", "Do not paint a sealant that is not paintable", "Silicona 100 % suele rechazar pintura, mientras otros selladores están formulados para pintarse después de cierto tiempo. Comprueba compatibilidad antes de aplicar para no tener que retirar una junta recién hecha.", "One-hundred-percent silicone commonly rejects paint, while other sealants are designed to be painted after a stated interval. Check compatibility before application so a fresh bead does not need to be removed later."]
+    ],
+    "faq_es": ["¿Que la silicona esté seca al tacto significa que ya está curada?", "¿Por qué un cordón grueso tarda más?", "¿Se puede pintar cualquier silicona o sellador?"],
+    "faq_en": ["Does dry-to-the-touch caulk mean it is fully cured?", "Why does a thick bead take longer to cure?", "Can every caulk or sealant be painted?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 629,
+    "es_title": "Cómo renovar las juntas de las baldosas",
+    "en_title": "How to Regrout Tile",
+    "family": "bathroom",
+    "kind": "how-to",
+    "source": "cleaning",
+    "intro_es": "Renovar juntas funciona cuando el mortero está desmenuzado, manchado de forma permanente o falta en tramos, pero no corrige movimiento del soporte ni sustituye una junta flexible. Hay que retirar material suelto hasta una base firme, limpiar polvo y aplicar el tipo de junta adecuado respetando curado.",
+    "intro_en": "Regrouting works when grout is crumbling, permanently stained, or missing in sections, but it does not correct substrate movement or replace flexible movement joints. Loose material must be removed back to a sound base, dust cleaned away, and the correct grout applied with proper curing.",
+    "sections": [
+      ["Distingue mortero de junta de una junta flexible", "Distinguish grout from a flexible movement joint", "Esquinas, encuentros bañera-pared y algunos cambios de plano suelen necesitar sellador flexible en vez de mortero rígido. Rejuntar esas zonas puede provocar nuevas grietas porque el soporte se mueve.", "Corners, tub-to-wall joints, and some changes of plane commonly need flexible sealant rather than rigid grout. Filling those areas with grout can lead to repeated cracking because the surfaces move."],
+      ["Retira material suelto hasta encontrar bordes firmes", "Remove loose grout back to sound edges", "Usa herramienta adecuada y controla profundidad para no dañar impermeabilización, cantos de baldosa o tuberías ocultas. No hace falta vaciar toda una junta sana si solo hay un tramo claramente deteriorado.", "Use an appropriate tool and control depth so waterproofing, tile edges, or hidden services are not damaged. There is no need to excavate an entire sound joint when only one section is clearly deteriorated."],
+      ["Aspira polvo y mezcla según el producto", "Remove dust and mix according to the product", "Una junta polvorienta reduce adherencia. Limpia, deja el grado de humedad que indique el fabricante y respeta proporción de agua; añadir más agua para hacer el mortero más fácil de extender puede debilitarlo o cambiar color.", "A dusty joint reduces adhesion. Clean it, leave the moisture condition required by the manufacturer, and respect the water ratio; adding extra water to make grout easier to spread can weaken it or change color."],
+      ["Protege del agua durante el curado", "Protect the new grout during curing", "Retira velo de la baldosa en el momento indicado y no mojes la zona antes del plazo del producto. Si la junta vuelve a agrietarse pronto, investiga movimiento, flexión o humedad en vez de aplicar otra capa encima.", "Remove haze from tile at the specified time and keep the area dry for the product's required interval. If the joint cracks again quickly, investigate movement, flexing, or moisture rather than applying another layer on top."]
+    ],
+    "faq_es": ["¿Se debe poner mortero de juntas en las esquinas de una ducha?", "¿Cuánto material viejo hay que retirar?", "¿Qué significa que la junta nueva vuelva a agrietarse pronto?"],
+    "faq_en": ["Should grout be used in shower corners?", "How much old grout needs to be removed?", "What does it mean if new grout cracks again quickly?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 630,
+    "es_title": "Lista de mantenimiento del hogar para otoño",
+    "en_title": "Fall Home Maintenance Checklist",
+    "family": "maintenance",
+    "kind": "checklist",
+    "source": "energy",
+    "intro_es": "El mantenimiento de otoño prepara la vivienda para lluvia, frío y más horas de calefacción. La lista útil prioriza agua lejos de la casa, equipos de calefacción, detectores, sellado de aire y protección contra heladas, dejando tejados, árboles altos y sistemas de combustión para profesionales cuando el acceso o la tarea no sean seguros.",
+    "intro_en": "Fall home maintenance prepares a house for rain, cold weather, and increased heating use. A useful checklist prioritizes moving water away from the home, heating equipment, alarms, air sealing, and freeze protection while leaving unsafe roof, tall-tree, and combustion-system work to qualified professionals.",
+    "sections": [
+      ["Empieza por tejado, canalones y drenaje desde un acceso seguro", "Start with roof drainage from a safe access point", "Observa tejas, canalones y bajantes desde el suelo o una plataforma segura, limpia hojas cuando puedas hacerlo sin riesgo y confirma que el agua descarga lejos de cimentación. No trabajes en tejado húmedo, empinado o cerca de líneas eléctricas.", "Inspect roofing, gutters, and downspouts from the ground or a safe platform, clear leaves only when access is safe, and make sure water discharges away from the foundation. Do not work on a wet or steep roof or near overhead power lines."],
+      ["Prepara calefacción y ventilación antes del frío", "Prepare heating and ventilation before cold weather", "Cambia o limpia filtros cuando corresponda, despeja rejillas y prueba calefacción antes de necesitarla a diario. Chimeneas, equipos de combustión, calderas y hornos con olor, humo o funcionamiento anormal necesitan servicio cualificado.", "Replace or clean filters when due, clear vents, and test heating before it is needed daily. Chimneys, combustion appliances, boilers, and furnaces with odor, smoke, or abnormal operation need qualified service."],
+      ["Prueba detectores y revisa preparación para emergencias", "Test alarms and review emergency readiness", "Prueba detectores de humo y monóxido de carbono según fabricante, revisa su edad y cambia pilas donde corresponda. Comprueba extintores, linternas y rutas de salida y actualiza contactos o suministros para cortes de energía.", "Test smoke and carbon monoxide alarms according to manufacturer instructions, check their age, and replace batteries where applicable. Review extinguishers, flashlights, exit routes, and supplies for power outages."],
+      ["Protege tuberías y cierra la temporada exterior", "Protect plumbing and close out the outdoor season", "Desconecta mangueras, vacía riego según el clima y protege tuberías vulnerables antes de heladas. Revisa burletes, ventanas y puertas, pero no selles rejillas de combustión ni ventilaciones que deben permanecer abiertas.", "Disconnect hoses, winterize irrigation as appropriate for the climate, and protect vulnerable pipes before freezing weather. Check weatherstripping, windows, and doors, but do not seal combustion air openings or required ventilation."]
+    ],
+    "faq_es": ["¿Qué conviene revisar primero antes de las lluvias de otoño?", "¿Qué mantenimiento de calefacción se puede hacer sin abrir el equipo?", "¿Qué elementos de seguridad conviene probar en otoño?"],
+    "faq_en": ["What should be checked before fall rains?", "Which heating maintenance can be done without opening equipment?", "Which home-safety items should be tested in fall?"],
+    "faq_sections": [0, 1, 2]
+  }
+]
