@@ -1,0 +1,39 @@
+name: Finalize HOME articles 711-800
+
+on:
+  push:
+    branches:
+      - quality-audit-711-800
+
+permissions:
+  contents: write
+
+jobs:
+  generate-validate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: quality-audit-711-800
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate and validate
+        run: python content/tools/generate-validate-711-800.py
+      - name: Validate generated files independently
+        run: python content/tools/generate-validate-711-800.py --validate-only
+      - name: Commit generated articles and audit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/articles/es content/articles/en content/articles/QUALITY-AUDIT-711-800.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate and validate HOME articles 711-800"
+            git push origin HEAD:quality-audit-711-800
+          fi
+      - name: Validate committed working tree again
+        run: python content/tools/generate-validate-711-800.py --validate-only
