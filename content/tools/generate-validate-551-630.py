@@ -15,8 +15,9 @@ EN_DIR = ARTICLES / "en"
 REPORT = ARTICLES / "QUALITY-AUDIT-551-630.md"
 START, END = 551, 630
 BLOCKED = {616: "Canonical duplicate of #537; keep #537 as the single URL for water hammer / banging pipes when water is shut off."}
-EXPECTED_SOURCE_NUMBERS = set(range(START, END + 1))
-EXPECTED_PUBLISHED_NUMBERS = EXPECTED_SOURCE_NUMBERS - set(BLOCKED)
+ALL_CANONICAL_NUMBERS = set(range(START, END + 1))
+EXPECTED_SOURCE_NUMBERS = ALL_CANONICAL_NUMBERS - set(BLOCKED)
+EXPECTED_PUBLISHED_NUMBERS = EXPECTED_SOURCE_NUMBERS
 
 SOURCE_MAP = {
     "ipm": {
@@ -165,8 +166,6 @@ def search_intent(kind: str, title: str, lang: str) -> str:
 
 def build_article(entry: dict, lang: str) -> dict:
     n = entry["n"]
-    title = entry[f"{lang}_title"] if f"{lang}_title" in entry else entry["es_title" if lang == "es" else "en_title"]
-    # Batch files use es_title/en_title; keep compatibility with either ordering.
     if lang == "es":
         title = entry["es_title"]
         intro = entry["intro_es"]
@@ -243,10 +242,14 @@ def load_entries():
                 entries.append(entry)
     nums = [e["n"] for e in entries]
     duplicates = sorted({n for n in nums if nums.count(n) > 1})
+    blocked_present = sorted(set(nums) & set(BLOCKED))
     missing = sorted(EXPECTED_SOURCE_NUMBERS - set(nums))
     extra = sorted(set(nums) - EXPECTED_SOURCE_NUMBERS)
-    if duplicates or missing or extra or len(entries) != len(EXPECTED_SOURCE_NUMBERS):
-        raise SystemExit(f"Input inventory mismatch: duplicates={duplicates}, missing={missing}, extra={extra}, count={len(entries)}")
+    if duplicates or blocked_present or missing or extra or len(entries) != len(EXPECTED_SOURCE_NUMBERS):
+        raise SystemExit(
+            f"Input inventory mismatch: duplicates={duplicates}, blocked_present={blocked_present}, "
+            f"missing={missing}, extra={extra}, count={len(entries)}"
+        )
     required = {"n", "es_title", "en_title", "family", "kind", "intro_es", "intro_en", "sections", "faq_es", "faq_en", "faq_sections"}
     for entry in entries:
         missing_keys = required - set(entry)
@@ -303,8 +306,6 @@ def generate(entries):
         source_key = entry.get("source", "")
         if source_key and source_key not in SOURCE_MAP:
             unknown_source_keys.add(source_key)
-        if n in BLOCKED:
-            continue
         pair = {}
         for lang, directory in (("es", ES_DIR), ("en", EN_DIR)):
             article = build_article(entry, lang)
@@ -317,6 +318,8 @@ def generate(entries):
             group = article["translation_group"]
             if group in existing_groups:
                 raise SystemExit(f"#{n} translation_group duplicates an existing published group: {group}")
+            if group in seen_groups:
+                raise SystemExit(f"Duplicate generated translation_group: {group}")
             seen_groups.add(group)
             pair[lang] = article
             out = directory / f"{n:03d}-{slug}.json"
@@ -449,7 +452,7 @@ def validate_files(entries):
 
 
 def make_report(entries, stats, faq_checks, unknown_source_keys):
-    source_entries_count = sum(1 for e in entries if e["n"] not in BLOCKED and e.get("source") in SOURCE_MAP and e.get("source"))
+    source_entries_count = sum(1 for e in entries if e.get("source") in SOURCE_MAP and e.get("source"))
     no_source_count = len(EXPECTED_PUBLISHED_NUMBERS) - source_entries_count
     groups = [(551, 570), (571, 590), (591, 610), (611, 630)]
     lines = [
@@ -457,8 +460,9 @@ def make_report(entries, stats, faq_checks, unknown_source_keys):
         "",
         "## Result",
         "",
-        f"- Canonical topic intents reviewed: **80/80**.",
-        f"- Published unique intents: **79**; bilingual article JSON files: **158/158 PASS**.",
+        "- Canonical topic intents reviewed: **80/80**.",
+        "- Editorial source entries validated: **79/79**; #616 is an intentional canonical exclusion.",
+        "- Published unique intents: **79**; bilingual article JSON files: **158/158 PASS**.",
         f"- FAQ answer-to-section mappings: **{faq_checks}/{len(EXPECTED_PUBLISHED_NUMBERS)*2*3} PASS**.",
         "- Explicit canonical exclusion: **#616 is not published** because it duplicates #537; #537 remains the single URL for that intent.",
         "- Schema, language/locale, IDs, slugs, translation groups, SEO fields, status, four H2 sections, three FAQs, image metadata, acronym rules, metadiscourse checks and minimum batch depth all pass.",
@@ -488,7 +492,7 @@ def make_report(entries, stats, faq_checks, unknown_source_keys):
         "",
         "## Sources",
         "",
-        f"- Articles whose source key resolved to a structured reference: **{source_entries_count}** bilingual topic pairs.",
+        f"- Topic pairs whose source key resolved to a structured reference: **{source_entries_count}**.",
         f"- Topic pairs intentionally published without a structured source because the editorial source field was blank or unmapped: **{no_source_count}**.",
     ]
     if unknown_source_keys:
@@ -520,7 +524,7 @@ def main():
     stats, faq_checks = validate_files(entries)
     if not args.validate_only:
         make_report(entries, stats, faq_checks, unknown)
-    print(f"PASS: 80 source intents reviewed; 79 unique intents published; 158 article JSON files; {faq_checks}/474 FAQ mappings valid.")
+    print(f"PASS: 80 canonical intents reviewed; 79 source entries validated; 79 unique intents published; 158 article JSON files; {faq_checks}/474 FAQ mappings valid.")
     print(f"ES words min/median/max: {min(stats['es'])}/{int(statistics.median(stats['es']))}/{max(stats['es'])}")
     print(f"EN words min/median/max: {min(stats['en'])}/{int(statistics.median(stats['en']))}/{max(stats['en'])}")
     if unknown:
