@@ -32,13 +32,15 @@ jobs:
         run: python content/tools/polish-final-471-550.py
       - name: Validate final published state
         run: python content/tools/validate-final-471-550.py
-      - name: Commit generated articles and report
+      - name: Build FAQ alignment review aid
+        run: python content/tools/build-faq-review-471-550.py
+      - name: Commit generated articles, report and FAQ review aid
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/articles/es content/articles/en content/articles/QUALITY-AUDIT-471-550.md
+          git add content/articles/es content/articles/en content/articles/QUALITY-AUDIT-471-550.md content/tools/FAQ-REVIEW-471-550.md
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Finalize and validate HOME articles 471-550 [skip ci]"
+          git commit -m "Finalize and review HOME articles 471-550 [skip ci]"
           git push origin HEAD:quality-audit-471-550
       - name: Revalidate committed article state
         run: |
