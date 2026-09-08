@@ -29,6 +29,12 @@ jobs:
       - name: Generate and validate articles
         run: python content/tools/build-231-310.py
 
+      - name: Polish final article output
+        run: python content/tools/polish-output-231-310.py
+
+      - name: Validate polished output
+        run: python content/tools/validate-output-231-310.py
+
       - name: Commit generated articles and report
         run: |
           git config user.name "github-actions[bot]"
@@ -38,7 +44,5 @@ jobs:
           git commit -m "Generate and validate HOME articles 231-310 [skip ci]"
           git push origin HEAD:quality-audit-231-310
 
-      - name: Re-run validator on committed state
-        run: |
-          python content/tools/uplift-231-310.py
-          python content/tools/build-231-310.py
+      - name: Re-run final-output validator on committed state
+        run: python content/tools/validate-output-231-310.py
