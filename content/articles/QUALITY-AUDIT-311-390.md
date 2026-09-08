@@ -94,3 +94,10 @@
 
 Representative manual reads should include #312–316, #322–325, #331–340, #353–372, #377–390 in both languages.
 Reject safety-sensitive pages if they encourage flame on frozen pipes, live electrical work, repeated breaker/GFCI resets, opening boiler gas components, tasting questionable food, or continuing to use overheated electrical devices.
+
+
+## Final FAQ editorial pass
+
+- All **480 FAQ questions** were rewritten as topic-specific reader questions after PR review exposed grammatical and template-like transformations.
+- Existing validated FAQ answers were preserved in their original slots so each question remains tied to the supporting article section.
+- Final FAQ-map validation checks exact ES/EN coverage, uniqueness, grammar-pattern regressions and committed-state consistency.
