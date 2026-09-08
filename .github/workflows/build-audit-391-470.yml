@@ -23,6 +23,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Apply hand-reviewed FAQ map
+        run: python content/tools/apply-faq-map-391-470.py
+
       - name: Generate article JSON
         run: python content/tools/generate-391-470.py
 
@@ -44,5 +47,7 @@ jobs:
           git commit -m "Generate and validate HOME articles 391-470 [skip ci]"
           git push origin HEAD:quality-audit-391-470
 
-      - name: Re-run validation on committed state
-        run: python content/tools/validate-391-470.py
+      - name: Re-run validators on generated state
+        run: |
+          python content/tools/audit-faq-alignment-391-470.py
+          python content/tools/validate-391-470.py
