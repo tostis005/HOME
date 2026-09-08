@@ -1,0 +1,192 @@
+[
+  {
+    "n": 681,
+    "es_title": "¿Por qué el inodoro descarga con poca fuerza?",
+    "en_title": "Why Does My Toilet Flush Weakly?",
+    "family": "plumbing",
+    "kind": "diagnostics",
+    "source": "plumbing",
+    "intro_es": "Una descarga débil puede venir de poco nivel de agua en la cisterna, una compuerta que se cierra demasiado pronto, orificios del borde con depósitos o una obstrucción parcial en la taza o desagüe. Si el inodoro sí descarga pero necesita dos intentos, conviene revisar primero cuánto agua libera realmente antes de usar productos desatascadores.",
+    "intro_en": "A weak toilet flush can come from low tank water, a flapper that closes too soon, mineral buildup in rim jets, or a partial blockage in the bowl or drain. If the toilet does flush but often needs two attempts, first check how much water is actually released before reaching for drain chemicals.",
+    "sections": [
+      ["Comprueba el nivel de agua de la cisterna", "Check the tank water level", "Con la tapa retirada con cuidado, el agua debería alcanzar la marca o nivel indicado por el fabricante. Si queda muy baja, revisa el ajuste accesible de la válvula de llenado y confirma que la llave de suministro esté completamente abierta.", "With the tank lid removed carefully, water should reach the manufacturer's marked or specified level. If it is well below that point, check the accessible fill-valve adjustment and make sure the supply valve is fully open."],
+      ["Observa si la compuerta se cierra demasiado pronto", "Watch whether the flapper closes too early", "Al accionar la descarga, la compuerta debe permanecer abierta el tiempo suficiente para liberar el volumen previsto. Una cadena demasiado floja, demasiado tensa o una goma deformada puede recortar la descarga.", "During a flush, the flapper should stay open long enough to release the intended volume. A chain that is too loose or tight, or a distorted flapper, can shorten the flush."],
+      ["Revisa depósitos en los orificios de descarga", "Check for mineral buildup in the flush jets", "Si el agua sale débil o desigual alrededor del borde, la cal puede estar reduciendo los orificios. Limpia solo con un método compatible con la porcelana y no uses objetos metálicos que puedan dañar superficies o piezas internas.", "If water flows weakly or unevenly around the rim, mineral deposits may be restricting the jets. Clean only with a porcelain-safe method and do not use metal objects that can damage surfaces or internal parts."],
+      ["Una obstrucción parcial cambia el patrón de la taza", "A partial clog changes bowl behavior", "Si el agua sube mucho antes de bajar, burbujea o otros desagües reaccionan, puede haber restricción en la salida. Usa un desatascador adecuado y evita mezclar productos químicos; varios accesorios afectados apuntan a una obstrucción más general.", "If bowl water rises high before draining, bubbles, or other fixtures react, there may be a restriction downstream. Use an appropriate plunger and avoid mixing drain chemicals; multiple affected fixtures point to a broader blockage." ]
+    ],
+    "faq_es": ["¿Qué debo revisar primero si el inodoro descarga con poca fuerza?", "¿Cómo afecta una compuerta que se cierra pronto?", "¿Qué señales apuntan a una obstrucción parcial?"],
+    "faq_en": ["What should I check first when a toilet flush is weak?", "How does a flapper that closes too early affect the flush?", "What signs point to a partial clog?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 682,
+    "es_title": "¿Por qué el desagüe hace gorgoteos?",
+    "en_title": "Why Is My Drain Gurgling?",
+    "family": "plumbing",
+    "kind": "diagnostics",
+    "source": "plumbing",
+    "intro_es": "Un gorgoteo aparece cuando aire y agua no circulan con normalidad por el sistema de desagüe. Si ocurre solo en un accesorio, puede haber una obstrucción cercana; si varios lavabos, ducha o inodoro reaccionan entre sí, hay que pensar en ventilación sanitaria o una restricción más profunda del desagüe principal.",
+    "intro_en": "Gurgling occurs when air and water are not moving normally through the drain system. If it happens at only one fixture, a nearby restriction may be involved; if several sinks, a shower, or a toilet react to one another, plumbing venting or a deeper main-drain restriction becomes more likely.",
+    "sections": [
+      ["Averigua si afecta a un solo desagüe o a varios", "Find out whether one drain or several are affected", "Haz una prueba sencilla usando un accesorio cada vez y escucha los demás. Un gorgoteo aislado tras vaciar un lavabo apunta más cerca de ese sifón; varios puntos conectados amplían el problema.", "Run one fixture at a time and listen to the others. A gurgle isolated to one sink after it drains points closer to that trap or branch, while several interacting fixtures broaden the problem."],
+      ["Un drenaje lento y gorgoteo juntos sugieren restricción", "Slow drainage plus gurgling suggests a restriction", "Cabello, grasa, jabón u otros residuos pueden dejar pasar algo de agua pero obligar al aire a burbujear. Limpia sifones o elementos accesibles según el tipo de accesorio antes de usar químicos agresivos.", "Hair, grease, soap, or other buildup can allow some water through while forcing air to bubble. Clean traps or accessible components appropriate to the fixture before using harsh drain chemicals."],
+      ["Gorgoteo entre varios accesorios puede apuntar a ventilación o línea principal", "Multiple fixtures gurgling can point to venting or the main line", "Si el inodoro burbujea cuando desagua la lavadora o un lavabo gorgotea al usar la ducha, el sistema puede estar buscando aire a través de otro sifón. Una ventilación bloqueada o una tubería principal restringida necesita diagnóstico más amplio.", "If a toilet bubbles when the washer drains or a sink gurgles when the shower runs, the system may be pulling air through another trap. A blocked vent or restricted main line needs broader diagnosis."],
+      ["Aguas residuales o varios desagües lentos requieren actuar pronto", "Sewage backup or several slow drains needs prompt action", "Deja de usar agua si empieza a subir por duchas o desagües de suelo. Evita abrir registros con presión detrás o entrar en contacto con aguas residuales; una obstrucción principal puede requerir equipo profesional.", "Stop using water if wastewater begins rising through showers or floor drains. Avoid opening cleanouts that may be pressurized or contacting sewage; a main-line blockage can require professional equipment." ]
+    ],
+    "faq_es": ["¿Qué diferencia hay entre un solo desagüe que gorgotea y varios?", "¿Qué indica que el desagüe también vaya lento?", "¿Cuándo debo dejar de usar agua en casa?"],
+    "faq_en": ["What is the difference between one gurgling drain and several?", "What does it suggest if the drain is also slow?", "When should I stop using water in the house?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 683,
+    "es_title": "¿Por qué hay poca presión de agua caliente pero la fría sale bien?",
+    "en_title": "Why Is Hot Water Pressure Low but Cold Water Pressure Fine?",
+    "family": "plumbing",
+    "kind": "diagnostics",
+    "source": "plumbing",
+    "intro_es": "Cuando la presión fría es normal pero la caliente es baja, la restricción está probablemente en el circuito de agua caliente: una válvula parcialmente cerrada, sedimentos, un aireador mezclador, una tubería obstruida o el propio calentador. La comparación entre varios grifos ayuda a saber si el problema es de un solo punto o de toda la casa.",
+    "intro_en": "When cold pressure is normal but hot pressure is low, the restriction is probably on the hot-water side: a partly closed valve, sediment, a mixing cartridge or aerator, a restricted pipe, or the water heater itself. Comparing several fixtures helps show whether the issue is local or house-wide.",
+    "sections": [
+      ["Compara varios grifos y duchas", "Compare several faucets and showers", "Si solo falla un lavabo, empieza por su aireador, mangueras y cartucho. Si todos los puntos tienen poco caudal caliente, la causa está más cerca del calentador o de la distribución principal.", "If only one sink is affected, start with its aerator, supply lines, and cartridge. If every fixture has low hot flow, the cause is more likely near the water heater or main hot-water distribution."],
+      ["Revisa válvulas accesibles que puedan estar parcialmente cerradas", "Check accessible valves that may be partly closed", "Una válvula de salida del calentador o una llave de aislamiento manipulada durante una reparación puede quedar a medio abrir. No fuerces válvulas antiguas corroídas ni trabajes sobre conexiones calientes o presurizadas.", "A water-heater outlet valve or isolation valve moved during service can be left partly closed. Do not force old corroded valves or work on hot, pressurized connections."],
+      ["Sedimentos pueden reducir el caudal con el tiempo", "Sediment can restrict flow over time", "Cal y partículas pueden acumularse en aireadores, cartuchos, tuberías y algunos calentadores. Si el problema apareció gradualmente y afecta a toda la vivienda, el historial de agua dura y mantenimiento del equipo es una pista útil.", "Scale and debris can accumulate in aerators, cartridges, piping, and some water heaters. If the problem developed gradually throughout the home, hard-water history and heater maintenance are useful clues."],
+      ["Un calentador con ruido, fuga o temperatura anormal necesita servicio", "A noisy, leaking, or abnormally hot water heater needs service", "No desmontes un calentador de gas o eléctrico para buscar una restricción interna. Si hay fuga, descarga de seguridad, olor a gas, cableado dañado o cambios de temperatura peligrosos, deja de usarlo y pide revisión.", "Do not open a gas or electric water heater to search for an internal restriction. If there is leakage, relief-valve discharge, gas odor, damaged wiring, or unsafe temperature changes, stop using it and arrange service." ]
+    ],
+    "faq_es": ["¿Cómo sé si la baja presión caliente afecta a un solo grifo?", "¿Puede una válvula medio cerrada reducir el agua caliente?", "¿Qué señales del calentador requieren servicio?"],
+    "faq_en": ["How can I tell whether low hot-water pressure is limited to one faucet?", "Can a partly closed valve reduce hot-water flow?", "Which water-heater signs require service?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 684,
+    "es_title": "¿Por qué la ducha sigue goteando después de cerrarla?",
+    "en_title": "Why Does the Shower Keep Dripping After You Turn It Off?",
+    "family": "plumbing",
+    "kind": "diagnostics",
+    "source": "plumbing",
+    "intro_es": "Unas pocas gotas justo después de cerrar pueden ser agua que queda en la alcachofa o tubería, pero un goteo que continúa durante minutos u horas suele indicar que la válvula no sella por completo. Depósitos, un cartucho gastado o juntas dañadas son causas frecuentes y se distinguen por duración y punto de salida.",
+    "intro_en": "A few drops immediately after shutoff can simply be water draining from the showerhead or pipe, but dripping that continues for minutes or hours usually means the valve is not sealing completely. Mineral deposits, a worn cartridge, or damaged seals are common causes, and duration and location help distinguish them.",
+    "sections": [
+      ["Cronometra cuánto dura el goteo", "Time how long the dripping continues", "Si termina en menos de unos minutos y no reaparece, puede ser drenaje residual del cabezal. Si mantiene un ritmo constante mucho después de cerrar, la válvula está dejando pasar agua y necesita revisión.", "If dripping stops within a few minutes and does not return, residual drainage from the showerhead may explain it. If it continues at a steady rate long after shutoff, the valve is passing water and needs attention."],
+      ["Comprueba si gotea por el cabezal o por otra unión", "Confirm whether water comes from the showerhead or another joint", "Agua desde la conexión de la alcachofa, brazo o manguera apunta a una junta o rosca; agua que sigue saliendo por los orificios con el mando cerrado apunta más al control de la ducha.", "Water from the showerhead connection, arm, or hose points toward a seal or threaded joint; water that continues from the spray holes with the control off points more toward the shower valve."],
+      ["Depósitos pueden impedir que piezas móviles sellen bien", "Mineral deposits can prevent moving parts from sealing", "En zonas de agua dura, cal en el cartucho o válvula puede impedir el cierre completo. Limpiar piezas externas no arregla siempre el interior; sigue el despiece y procedimiento del fabricante si el cartucho es de mantenimiento doméstico.", "In hard-water areas, scale on a cartridge or valve can prevent full closure. Cleaning external parts does not always fix the internal seal; follow the manufacturer's service procedure if the cartridge is intended for homeowner maintenance."],
+      ["Cierra el agua antes de desmontar la válvula", "Shut off water before disassembling the valve", "Una reparación de cartucho trabaja directamente sobre una tubería presurizada. Localiza la llave adecuada, verifica que el flujo haya cesado y no abras pared o válvula si no puedes aislar el suministro con seguridad.", "A cartridge repair opens a pressurized water path. Locate the proper shutoff, verify flow has stopped, and do not open the wall or valve if the supply cannot be isolated safely." ]
+    ],
+    "faq_es": ["¿Cuánto tiempo de goteo puede ser solo agua residual?", "¿Qué indica que el agua siga saliendo por los orificios del cabezal?", "¿Qué debo hacer antes de sacar un cartucho de ducha?"],
+    "faq_en": ["How long can post-shower dripping simply be residual water?", "What does it mean if water keeps coming from the spray holes?", "What should I do before removing a shower cartridge?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 685,
+    "es_title": "Cómo limpiar un cubo de basura",
+    "en_title": "How to Clean a Trash Can",
+    "family": "cleaning",
+    "kind": "how-to",
+    "source": "cleaning",
+    "intro_es": "Un cubo de basura se limpia mejor retirando primero residuos sólidos y grasa, lavando con agua y detergente y desinfectando solo cuando haga falta y con un producto compatible. La parte más importante para evitar olor es secar por completo antes de poner una bolsa nueva.",
+    "intro_en": "A trash can cleans best when solid debris and grease are removed first, followed by washing with water and detergent and disinfection only when needed with a compatible product. The most important step for preventing odor is letting the bin dry completely before adding a fresh liner.",
+    "sections": [
+      ["Vacía y retira residuos pegados", "Empty the bin and remove stuck debris", "Usa guantes si hay líquidos o restos de comida y elimina material sólido con papel o una espátula no destinada a cocina. No empieces a desinfectar una superficie todavía cubierta de suciedad.", "Wear gloves when there are liquids or food residues and remove solids with paper or a tool not used for food preparation. Do not begin disinfecting while the surface is still covered with soil."],
+      ["Lava con detergente antes de desinfectar", "Wash with detergent before disinfecting", "Agua y jabón eliminan grasa y materia orgánica que pueden proteger microorganismos. Frota tapa, bisagras y esquinas, aclara y decide después si necesitas un desinfectante por derrames de alimentos crudos u otra contaminación.", "Soap and water remove grease and organic matter that can shield microorganisms. Scrub the lid, hinges, and corners, rinse, and then decide whether disinfection is warranted because of raw-food spills or other contamination."],
+      ["Si desinfectas, sigue etiqueta y no mezcles productos", "If disinfecting, follow the label and never mix products", "Respeta dilución y tiempo de contacto del producto y ventila. No combines lejía con amoníaco, ácidos, vinagre ni otros limpiadores; usa un solo método compatible cada vez.", "Follow the product's dilution and contact-time instructions and ventilate. Never mix bleach with ammonia, acids, vinegar, or other cleaners; use one compatible method at a time."],
+      ["Seca completamente antes de colocar otra bolsa", "Dry completely before adding a new liner", "La humedad atrapada bajo una bolsa favorece olor y suciedad pegajosa. Deja el cubo abierto hasta que tapa, fondo y uniones estén secos y limpia cualquier derrame nuevo antes de que se acumule.", "Moisture trapped beneath a liner encourages odor and sticky buildup. Leave the bin open until the lid, bottom, and seams are dry, and clean new spills before they accumulate." ]
+    ],
+    "faq_es": ["¿Hay que desinfectar antes o después de lavar el cubo?", "¿Qué productos no deben mezclarse al limpiar?", "¿Por qué importa dejar el cubo completamente seco?"],
+    "faq_en": ["Should a trash can be disinfected before or after washing?", "Which products should never be mixed during cleaning?", "Why does the bin need to dry completely?"],
+    "faq_sections": [1, 2, 3]
+  },
+  {
+    "n": 686,
+    "es_title": "Cómo limpiar el contenedor de reciclaje de casa",
+    "en_title": "How to Clean a Household Recycling Bin",
+    "family": "cleaning",
+    "kind": "how-to",
+    "source": "cleaning",
+    "intro_es": "El contenedor de reciclaje acumula líquidos de latas, envases y botellas incluso cuando los residuos parecen limpios. Vaciarlo, retirar etiquetas o restos sueltos, lavar con detergente y secar evita olor y plagas. Conviene además mejorar cómo entran los envases para no tener que lavar el contenedor tan a menudo.",
+    "intro_en": "A recycling bin collects liquid from cans, cartons, and bottles even when the items appear clean. Emptying it, removing loose labels or residue, washing with detergent, and drying helps prevent odor and pests. Better preparation of recyclables also reduces how often the bin needs a deep clean.",
+    "sections": [
+      ["Vacía por completo y separa residuos no reciclables", "Empty the bin completely and remove nonrecyclables", "Retira bolsas, tapas o restos que no correspondan según las normas locales. Vidrio roto y bordes de latas requieren guantes y manipulación cuidadosa; no metas la mano a ciegas en el fondo.", "Remove bags, caps, or other items that do not belong under local recycling rules. Broken glass and sharp can edges require gloves and careful handling; do not reach blindly into the bottom."],
+      ["Lava líquidos y suciedad con agua jabonosa", "Wash residue with soapy water", "Frota fondo, esquinas y tapa con un cepillo destinado a limpieza doméstica. Para suciedad normal no hace falta un cóctel de productos; detergente y aclarado suelen eliminar la materia que causa olor.", "Scrub the bottom, corners, and lid with a brush reserved for household cleaning. Ordinary soil does not require a mixture of chemicals; detergent and rinsing usually remove the material causing odor."],
+      ["Desinfecta solo cuando la contaminación lo justifique", "Disinfect only when contamination warrants it", "Si hubo líquidos de alimentos crudos, excrementos de plagas u otra contaminación relevante, usa un desinfectante apropiado según etiqueta después de limpiar. No mezcles limpiadores ni descargues soluciones concentradas donde puedan dañar superficies o drenajes.", "If there were raw-food liquids, pest droppings, or another significant contamination, use an appropriate disinfectant according to its label after cleaning. Do not mix cleaners or dump concentrated solutions where they can damage surfaces or drains."],
+      ["Enjuaga envases sucios antes de reciclarlos cuando las normas lo permitan", "Reduce future mess by emptying containers well", "Vacía líquidos y raspa restos de comida antes de depositar envases, siguiendo las reglas locales. No hace falta gastar grandes cantidades de agua para dejar todo impecable; quitar residuos principales ya reduce olor y goteos.", "Empty liquids and remove major food residue before placing containers in the bin, following local rules. There is no need to use large amounts of water to make every item spotless; removing the main residue already reduces odor and drips." ]
+    ],
+    "faq_es": ["¿Cómo manejo vidrio roto dentro del contenedor?", "¿Hace falta desinfectar el contenedor cada vez que se lava?", "¿Cómo puedo evitar que vuelva a oler rápido?"],
+    "faq_en": ["How should broken glass in a recycling bin be handled?", "Does the recycling bin need disinfecting every time it is washed?", "How can I keep it from smelling again quickly?"],
+    "faq_sections": [0, 2, 3]
+  },
+  {
+    "n": 687,
+    "es_title": "Cómo limpiar y desinfectar una tabla de cortar",
+    "en_title": "How to Clean and Sanitize a Cutting Board",
+    "family": "kitchen-safety",
+    "kind": "safety-how-to",
+    "source": "food-safety",
+    "intro_es": "Una tabla de cortar debe lavarse después de cada uso con agua caliente y jabón, y necesita una desinfección más cuidadosa después de carne, aves o pescado crudos o cuando exista contaminación. Usa un método apto para el material, evita mezclar productos y sustituye tablas con surcos profundos que ya no se puedan limpiar bien.",
+    "intro_en": "A cutting board should be washed after each use with hot soapy water and needs more careful sanitizing after raw meat, poultry, or seafood or other contamination. Use a method compatible with the board material, never mix cleaners, and replace boards with deep grooves that can no longer be cleaned effectively.",
+    "sections": [
+      ["Retira restos y lava inmediatamente", "Remove food residue and wash promptly", "Raspa restos al cubo y lava ambas caras, bordes y ranuras con agua caliente y detergente. Dejar jugos de carne secarse sobre la tabla hace más difícil limpiar después.", "Scrape food into the trash and wash both faces, edges, and grooves with hot water and detergent. Letting raw-meat juices dry on the board makes later cleaning more difficult."],
+      ["Desinfecta después de contaminación de alto riesgo", "Sanitize after high-risk contamination", "Tras carne, aves o pescado crudos, usa un método de desinfección recomendado para el material y sigue concentración y tiempo de contacto de la etiqueta. No mezcles lejía con vinagre, amoníaco ni otros limpiadores.", "After raw meat, poultry, or seafood, use a sanitizing method recommended for the material and follow label concentration and contact time. Never mix bleach with vinegar, ammonia, or other cleaners."],
+      ["Seca de forma que circule aire", "Dry with good airflow", "Una tabla guardada húmeda puede desarrollar olor, deformarse o favorecer crecimiento. Deja escurrir y seca en vertical o con ambas caras expuestas antes de guardarla.", "A board stored wet can develop odor, warp, or support growth. Let it drain and dry upright or with both faces exposed before storage."],
+      ["Sustituye tablas muy dañadas", "Replace heavily damaged boards", "Surcos profundos, grietas abiertas y zonas que ya no pueden fregarse bien pueden retener residuos. Lijar puede ser adecuado en algunas tablas de madera, pero una tabla plástica profundamente cortada suele ser mejor sustituirla.", "Deep grooves, open cracks, and areas that can no longer be scrubbed effectively can retain residue. Sanding may be suitable for some wood boards, but deeply scored plastic boards are often better replaced." ]
+    ],
+    "faq_es": ["¿Hay que lavar las dos caras de una tabla?", "¿Cuándo hace falta desinfectar además de lavar?", "¿Cuándo conviene sustituir una tabla de cortar?"],
+    "faq_en": ["Should both sides of a cutting board be washed?", "When is sanitizing needed in addition to washing?", "When should a cutting board be replaced?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 688,
+    "es_title": "Cómo limpiar una tabla de cortar de madera",
+    "en_title": "How to Clean a Wooden Cutting Board",
+    "family": "kitchen-safety",
+    "kind": "how-to",
+    "source": "food-safety",
+    "intro_es": "Una tabla de madera se limpia con agua caliente, detergente y frotado, pero no debe quedarse en remojo ni guardarse húmeda. El exceso de agua puede hinchar fibras y abrir juntas; secar rápido y mantener la superficie lisa prolonga la vida útil sin sacrificar higiene.",
+    "intro_en": "A wooden cutting board is cleaned with hot water, detergent, and scrubbing, but it should not be left soaking or stored wet. Excess water can swell fibers and open joints; prompt drying and a smooth surface extend board life without sacrificing hygiene.",
+    "sections": [
+      ["Lava pronto sin dejarla sumergida", "Wash promptly without soaking", "Frota ambas caras y cantos con detergente y agua caliente, aclarando después. No la dejes dentro del fregadero lleno porque una absorción desigual puede curvar o agrietar la madera.", "Scrub both faces and edges with detergent and hot water, then rinse. Do not leave the board sitting in a full sink because uneven water absorption can warp or crack the wood."],
+      ["Desinfecta con un método compatible cuando haga falta", "Use a wood-compatible sanitizing method when needed", "Después de alimentos crudos de alto riesgo, aplica la solución recomendada para tablas y respeta el tiempo de contacto. No combines distintos desinfectantes ni asumas que vinagre doméstico sustituye cualquier procedimiento sanitario indicado.", "After high-risk raw foods, use a sanitizing method recommended for boards and observe the contact time. Do not combine disinfectants or assume household vinegar replaces any required sanitizing procedure."],
+      ["Seca de canto para exponer ambas caras", "Dry on edge so both faces can breathe", "Retira exceso de agua con un paño limpio y coloca la tabla vertical o elevada. Guardarla plana y húmeda contra una encimera mantiene una cara mojada durante más tiempo.", "Remove excess water with a clean towel and place the board upright or raised. Storing it flat and wet against a counter keeps one face damp much longer."],
+      ["Lija surcos ligeros y sustituye si hay grietas profundas", "Sand light wear and replace deeply cracked boards", "Una superficie áspera puede reacondicionarse según tipo de madera y acabado, seguida de aceite apto para contacto alimentario cuando corresponda. Grietas profundas o juntas abiertas que retienen comida son una señal para sustituir.", "A rough surface can be refinished according to the wood and finish, followed by food-safe board oil when appropriate. Deep cracks or open joints that trap food are a reason to replace the board." ]
+    ],
+    "faq_es": ["¿Se puede dejar una tabla de madera en remojo?", "¿Cómo conviene secarla después de lavar?", "¿Qué daños indican que una tabla de madera debe sustituirse?"],
+    "faq_en": ["Can a wooden cutting board be left soaking?", "How should a wooden board be dried after washing?", "What damage means a wooden cutting board should be replaced?"],
+    "faq_sections": [0, 2, 3]
+  },
+  {
+    "n": 689,
+    "es_title": "Cómo limpiar una licuadora o batidora de vaso",
+    "en_title": "How to Clean a Blender",
+    "family": "cleaning",
+    "kind": "how-to",
+    "source": "cleaning",
+    "intro_es": "Una batidora de vaso se limpia más fácil justo después de usarla, antes de que restos se sequen alrededor de cuchillas y junta. Desconecta la base, desmonta solo las piezas que el manual permite, lava jarra y accesorios y mantén motor y conexiones eléctricas fuera del agua.",
+    "intro_en": "A blender is easiest to clean immediately after use, before residue dries around the blades and gasket. Unplug the base, disassemble only the parts the manual allows, wash the jar and accessories, and keep the motor base and electrical connections out of water.",
+    "sections": [
+      ["Enjuaga la jarra antes de que se seque la comida", "Rinse the jar before food dries", "Retira restos grandes y añade agua tibia con una gota de detergente. Algunos modelos permiten un ciclo corto de autolimpieza con la tapa puesta; sigue el manual y no llenes demasiado porque puede generar espuma y presión.", "Remove large residue and add warm water with a small drop of detergent. Some models allow a brief self-cleaning blend with the lid secured; follow the manual and do not overfill because foam and pressure can build."],
+      ["Desconecta antes de tocar cuchillas o desmontar", "Unplug before handling blades or disassembling", "Las cuchillas siguen siendo afiladas aunque el aparato esté apagado. Desenchufa la base, usa el sistema de desmontaje previsto y manipula el conjunto por zonas seguras, no pasando los dedos por los filos.", "Blades remain sharp even when the appliance is off. Unplug the base, use the intended disassembly method, and handle the blade assembly by safe surfaces rather than running fingers along edges."],
+      ["Limpia juntas y roscas donde se esconde residuo", "Clean gaskets and threads where residue hides", "Batidos espesos pueden entrar bajo juntas o anillos desmontables. Lava y seca esas piezas según el fabricante; una junta deformada o agrietada puede causar fugas y conviene sustituirla.", "Thick blends can work under removable gaskets or collars. Wash and dry those parts as directed; a distorted or cracked gasket can leak and is better replaced."],
+      ["No sumerjas la base del motor", "Do not immerse the motor base", "Limpia el exterior con un paño apenas húmedo y seca enseguida. Si entra líquido por controles o ventilaciones, desenchufa y deja de usar hasta que el fabricante o servicio indique que es seguro.", "Wipe the exterior with a barely damp cloth and dry promptly. If liquid enters controls or ventilation openings, unplug the blender and stop using it until the manufacturer or service provider confirms it is safe." ]
+    ],
+    "faq_es": ["¿Conviene limpiar la jarra justo después de usarla?", "¿Qué precaución hay que tomar antes de tocar las cuchillas?", "¿Se puede meter la base del motor bajo el grifo?"],
+    "faq_en": ["Is it better to clean the blender jar immediately after use?", "What should I do before handling blender blades?", "Can the motor base be rinsed under a faucet?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 690,
+    "es_title": "Cómo cortar el agua de toda la casa",
+    "en_title": "How to Shut Off Water to the Whole House",
+    "family": "plumbing",
+    "kind": "safety-how-to",
+    "source": "plumbing",
+    "intro_es": "Para cortar el agua de toda la casa necesitas la llave de paso general del suministro interior o, en algunas viviendas, una válvula junto al contador. En una fuga importante, cierra la válvula accesible girándola en la dirección prevista, abre un grifo para comprobar que baja el caudal y evita forzar válvulas corroídas que podrían romperse.",
+    "intro_en": "Shutting off water to the whole house means operating the main indoor supply valve or, in some homes, a valve near the meter. During a major leak, close the accessible valve in its intended direction, open a faucet to confirm flow falls, and do not force a corroded valve that could break.",
+    "sections": [
+      ["Usa la llave general interior si es accesible", "Use the accessible indoor main shutoff when available", "Suele estar donde entra la tubería de agua a la vivienda, cerca del contador, sótano, garaje o cuarto técnico. Una válvula de palanca normalmente cierra con un cuarto de vuelta hasta quedar perpendicular a la tubería; una de rueda gira varias vueltas.", "It is often located where the water service enters the home, near a meter, basement, garage, or utility area. A lever valve typically closes with a quarter-turn until perpendicular to the pipe, while a wheel valve takes several turns."],
+      ["Cierra con firmeza pero sin forzar una válvula agarrotada", "Close the valve firmly without forcing a seized valve", "Si no se mueve con presión razonable, no uses una barra o herramienta grande que pueda partir el vástago. En una emergencia, llama al servicio de agua o a un fontanero si la llave general no funciona.", "If the valve will not move with reasonable hand pressure, do not use a large lever that could snap the stem. During an emergency, call the water utility or a plumber if the main shutoff does not work."],
+      ["Abre un grifo para confirmar que el suministro está cortado", "Open a faucet to confirm the supply is off", "El caudal debería disminuir a medida que se vacía presión de la instalación. Puede quedar agua en tuberías y depósitos; un flujo que continúa con fuerza indica que cerraste otra válvula o que la general no sella.", "Flow should fall as pressure drains from the plumbing. Water can remain in pipes and tanks; strong continuing flow suggests the wrong valve was closed or the main valve is not sealing."],
+      ["Corta energía de equipos si una fuga los alcanza", "Address appliance energy sources if a leak reaches equipment", "Si el agua afecta a calentadores, calderas o componentes eléctricos, no te acerques a conexiones mojadas. Corta energía solo desde un punto seco y seguro y pide ayuda si el agua está cerca del cuadro o cableado energizado.", "If water reaches water heaters, boilers, or electrical equipment, do not approach wet connections. Shut off energy only from a dry, safe location and get help if water is near the panel or energized wiring." ]
+    ],
+    "faq_es": ["¿Cómo se cierra una llave general de palanca?", "¿Qué hago si la llave está agarrotada?", "¿Cómo compruebo que realmente he cortado el agua?"],
+    "faq_en": ["How do you close a lever-style main water valve?", "What should I do if the main valve is seized?", "How can I confirm that the water is actually shut off?"],
+    "faq_sections": [0, 1, 2]
+  }
+]
