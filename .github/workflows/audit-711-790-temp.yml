@@ -1,4 +1,4 @@
-name: Temporary HOME 711-790 generation audit
+name: Temporary HOME 711-790 final audit
 
 on:
   push:
@@ -6,23 +6,13 @@ on:
       - quality-audit-711-790
     paths:
       - '.github/workflows/audit-711-790-temp.yml'
-      - 'content/tools/generate-validate-711-790.py'
-      - 'content/tools/batch-711-720.json'
-      - 'content/tools/batch-721-730.json'
-      - 'content/tools/batch-731-740.json'
-      - 'content/tools/batch-741-750.json'
-      - 'content/tools/batch-751-760.json'
-      - 'content/tools/batch-761-770.json'
-      - 'content/tools/batch-771-780.json'
-      - 'content/tools/batch-781-790.json'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  generate-and-validate:
-    if: github.actor != 'github-actions[bot]'
+  validate-only:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,7 +21,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Normalize temporary generator inputs
+      - name: Normalize temporary validation inputs in runner only
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -61,16 +51,48 @@ jobs:
               p.write_text(json.dumps(rows, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           PY
           python -m py_compile content/tools/generate-validate-711-790.py
-      - name: Generate and validate 711-790
-        run: python content/tools/generate-validate-711-790.py
-      - name: Commit generated articles and report
+      - name: Run editorial validator without regeneration
+        run: python content/tools/generate-validate-711-790.py --validate-only
+      - name: Verify final JSON inventory and manual FAQ fix
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add content/articles/es content/articles/en content/articles/QUALITY-AUDIT-711-790.md
-          if git diff --cached --quiet; then
-            echo 'No generated changes to commit.'
-          else
-            git commit -m 'Generate and validate HOME articles 711-790'
-            git push origin HEAD:quality-audit-711-790
-          fi
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          excluded = {726,733,735,736,739,749,771,772,788}
+          expected = set(range(711,791)) - excluded
+          root = Path('content/articles')
+          found = {'es': {}, 'en': {}}
+          for lang in ('es','en'):
+              for p in (root/lang).glob('*.json'):
+                  try:
+                      d = json.loads(p.read_text(encoding='utf-8'))
+                  except Exception:
+                      continue
+                  n = d.get('article_number')
+                  if isinstance(n,int) and 711 <= n <= 790:
+                      if n in found[lang]:
+                          raise SystemExit(f'duplicate #{n} in {lang}')
+                      found[lang][n] = (p,d)
+              if set(found[lang]) != expected:
+                  raise SystemExit(f'{lang} inventory mismatch missing={sorted(expected-set(found[lang]))} extra={sorted(set(found[lang])-expected)}')
+
+          for n in sorted(expected):
+              es = found['es'][n][1]; en = found['en'][n][1]
+              if es['translation_group'] != en['translation_group']:
+                  raise SystemExit(f'translation group mismatch #{n}')
+              if es.get('status') != 'publish' or en.get('status') != 'publish':
+                  raise SystemExit(f'non-publish status #{n}')
+              if len(es.get('faq',[])) < 3 or len(en.get('faq',[])) < 3:
+                  raise SystemExit(f'FAQ count failure #{n}')
+
+          es737 = found['es'][737][1]['faq'][0]['answer']
+          en737 = found['en'][737][1]['faq'][0]['answer']
+          if '4 °C o menos' not in es737:
+              raise SystemExit('ES #737 temperature FAQ fix missing')
+          if '40°F (4°C) or below' not in en737:
+              raise SystemExit('EN #737 temperature FAQ fix missing')
+
+          print(f'FINAL JSON AUDIT PASS: {len(expected)} intents, {len(expected)*2} articles, exclusions={sorted(excluded)}')
+          print('FAQ #737 semantic temperature check PASS in ES and EN')
+          PY
