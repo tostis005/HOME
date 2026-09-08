@@ -1,0 +1,45 @@
+name: Build and audit HOME articles 391-470
+
+on:
+  push:
+    branches:
+      - quality-audit-391-470
+
+permissions:
+  contents: write
+
+jobs:
+  build-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: quality-audit-391-470
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate article JSON
+        run: python content/tools/generate-391-470.py
+
+      - name: Apply editorial polish
+        run: python content/tools/polish-391-470.py
+
+      - name: Validate article state
+        run: python content/tools/validate-391-470.py
+
+      - name: Commit generated articles and report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/articles/es content/articles/en content/articles/QUALITY-AUDIT-391-470.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Generate and validate HOME articles 391-470 [skip ci]"
+          git push origin HEAD:quality-audit-391-470
+
+      - name: Re-run validation on committed state
+        run: python content/tools/validate-391-470.py
