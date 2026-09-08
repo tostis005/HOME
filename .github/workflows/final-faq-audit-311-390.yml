@@ -26,18 +26,21 @@ jobs:
       - name: Apply explicit editorial FAQ map
         run: python content/tools/apply-final-faq-311-390.py
 
+      - name: Polish search-intent metadata and final Spanish wording
+        run: python content/tools/polish-final-metadata-311-390.py
+
       - name: Validate final article state
         run: |
           python content/tools/validate-final-state-311-390.py
           python content/tools/validate-final-faq-311-390.py
 
-      - name: Commit FAQ polish and audit report
+      - name: Commit final editorial polish and audit report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content/articles/es content/articles/en content/articles/QUALITY-AUDIT-311-390.md
           git diff --cached --quiet && exit 0
-          git commit -m "Polish final FAQ questions for HOME 311-390 [skip ci]"
+          git commit -m "Apply final editorial polish for HOME 311-390 [skip ci]"
           git push origin HEAD:quality-audit-311-390
 
       - name: Re-run validators on committed state
