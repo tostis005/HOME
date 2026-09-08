@@ -93,3 +93,10 @@ Similarity is diagnostic only; final separation depends on distinct search inten
 
 Representative reads should include #231–233, #236, #245–248, #258, #262–263, #276, #278–280, #281–289, #290–295, #297–300, #303–307 and #310 in both languages.
 Safety-sensitive pages should be rejected if they encourage live electrical work, repeated breaker/GFCI resets, unsafe ladder or roof access, combustion-system disassembly, ignoring a carbon-monoxide alarm, or food-safety decisions based only on smell or taste.
+
+## Final-output polish validation
+
+- Final-output validation: **PASS**.
+- Repetitive generic FAQ prompts: **removed**.
+- Generic image-concept placeholders: **removed**.
+- Spanish search-intent punctuation and required acronym checks: **PASS**.
