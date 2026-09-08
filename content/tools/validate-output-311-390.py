@@ -7,6 +7,8 @@ def words(h): return re.findall(r"[A-Za-zÀ-ÿ0-9]+(?:['’][A-Za-zÀ-ÿ]+)?",re
 by={}
 ES_BAD=re.compile(r'^¿Qué (?:indica|debo saber sobre) (?:confirma|empieza|usa|evita|comprueba|revisa|mira|busca|retira|limpia|trabaja|seca|deja|abre|cierra|añade|reduce|controla|observa|distingue|identifica|protege|guarda|lava|aclara|enfría|congela|descongela|recalienta|mantén|pulsa|desconecta|apaga|marca|localiza|sigue|aspira|aplica|reserva|pon|separa|agrupa)\b',re.I)
 EN_BAD=re.compile(r'^What (?:does|should I know about) (?:first confirm|start|use|avoid|check|inspect|look|remove|clean|work|dry|leave|open|close|add|reduce|control|watch|separate|identify|protect|store|wash|rinse|cool|freeze|thaw|reheat|keep|press|unplug|turn|mark|locate|follow|vacuum|apply|reserve|put|group)\b',re.I)
+ES_AFTER_COMMA=re.compile(r',\s*(?:busca|revisa|usa|limpia|seca|retira|comprueba|observa|identifica|desconecta|apaga|llama|evita|mantén|abre|cierra)\b',re.I)
+EN_AFTER_COMMA=re.compile(r',\s*(?:check|look|use|clean|dry|remove|inspect|identify|disconnect|turn|call|avoid|keep|open|close|diagnose)\b',re.I)
 for lang in ('es','en'):
  d=ART/lang
  for n in range(311,391):
@@ -30,8 +32,8 @@ for lang in ('es','en'):
    if len(words(a))<8: errs.append(f'{lang} #{n}: short FAQ answer')
    if lang=='es' and ES_BAD.search(q): errs.append(f'ES #{n}: mechanical FAQ wording: {q}')
    if lang=='en' and EN_BAD.search(q): errs.append(f'EN #{n}: mechanical FAQ wording: {q}')
-   if '¿Qué hago si ' in q and ',' in q: errs.append(f'ES #{n}: FAQ copied a command after condition: {q}')
-   if q.startswith('What should I do if ') and ',' in q: errs.append(f'EN #{n}: FAQ copied a command after condition: {q}')
+   if q.startswith('¿Qué debo hacer si ') and ES_AFTER_COMMA.search(q): errs.append(f'ES #{n}: FAQ copied a command after condition: {q}')
+   if q.startswith('What should I do if ') and EN_AFTER_COMMA.search(q): errs.append(f'EN #{n}: FAQ copied a command after condition: {q}')
   seo=o.get('seo',{})
   if not seo.get('title') or not seo.get('meta_description') or not seo.get('search_intent'): errs.append(f'{lang} #{n}: incomplete SEO')
   if '…' in seo.get('title','') or seo.get('title','').endswith('...'): errs.append(f'{lang} #{n}: truncated SEO title')
