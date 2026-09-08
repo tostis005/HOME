@@ -29,6 +29,9 @@ jobs:
       - name: Generate and audit articles
         run: python content/tools/build-311-390.py
 
+      - name: Humanize FAQ questions
+        run: python content/tools/humanize-faq-311-390.py
+
       - name: Validate final files
         run: python content/tools/validate-output-311-390.py
 
