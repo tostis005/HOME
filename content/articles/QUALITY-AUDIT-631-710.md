@@ -12,7 +12,7 @@
 
 ## Depth metrics
 
-- Spanish body words: min **191**, median **215**, max **246**.
+- Spanish body words: min **191**, median **215**, max **247**.
 - English body words: min **183**, median **207**, max **233**.
 - The editorial standard has no fixed word-count target; the 160-word floor is only a guard against accidentally incomplete output.
 
