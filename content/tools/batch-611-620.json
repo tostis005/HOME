@@ -1,0 +1,173 @@
+[
+  {
+    "n": 611,
+    "es_title": "Cómo limpiar una aspiradora",
+    "en_title": "How to Clean a Vacuum Cleaner",
+    "family": "cleaning",
+    "kind": "how-to",
+    "source": "cleaning",
+    "intro_es": "Una aspiradora limpia mantiene caudal, reduce olores y evita que pelo o polvo obliguen al motor a trabajar con más resistencia. La rutina debe hacerse desenchufada o con batería retirada cuando sea posible y separar depósito, cepillo, manguera y filtros según lo que el fabricante permita lavar.",
+    "intro_en": "A clean vacuum maintains airflow, reduces odors, and keeps hair or dust from making the motor work against extra resistance. Routine cleaning should be done unplugged or with the battery removed when possible, treating the bin, brushroll, hose, and filters according to what the manufacturer allows to be washed.",
+    "sections": [
+      ["Vacía bolsa o depósito antes de que se llene demasiado", "Empty the bag or bin before it is overfilled", "Una bolsa saturada o depósito lleno reduce caudal y puede hacer que polvo pase a otras zonas. Sigue la marca de llenado y vacía en un lugar ventilado; las personas sensibles al polvo pueden necesitar mascarilla durante esta tarea.", "An overfilled bag or bin reduces airflow and can push dust into other areas. Follow the fill line and empty it in a ventilated location; people sensitive to dust may benefit from a mask during this step."],
+      ["Retira pelo del cepillo con el equipo sin alimentación", "Remove hair from the brushroll with power disconnected", "Saca hilos y pelo cortándolos con cuidado donde el diseño lo permita, sin dañar cerdas, correa o cables. Comprueba que el rodillo gire libremente antes de volver a montarlo.", "Remove thread and hair carefully where the design allows without damaging bristles, belts, or wiring. Make sure the brushroll turns freely before reassembly."],
+      ["Revisa manguera y conductos accesibles", "Check the hose and accessible air paths", "Una obstrucción puede quedar en codos y provocar pérdida de succión. Desmonta solo las piezas previstas y empuja residuos con una herramienta roma y larga cuando el manual lo permita; no perfores la manguera con objetos afilados.", "A blockage can lodge in bends and cause suction loss. Remove only serviceable parts and push debris with a long blunt tool when the manual permits; do not puncture the hose with sharp objects."],
+      ["Trata cada filtro según su etiqueta", "Treat each filter according to its label", "Algunos filtros son lavables y otros deben sustituirse. Nunca reinstales un filtro húmedo y no laves un filtro de alta eficiencia si el fabricante lo prohíbe; humedad y deformación pueden reducir rendimiento o dañar el equipo.", "Some filters are washable while others must be replaced. Never reinstall a damp filter and do not wash a high-efficiency filter when the manufacturer prohibits it; moisture and deformation can reduce performance or damage the vacuum."]
+    ],
+    "faq_es": ["¿Cuándo conviene vaciar el depósito o cambiar la bolsa?", "¿Cómo se quita pelo del cepillo de forma segura?", "¿Se puede lavar cualquier filtro de aspiradora?"],
+    "faq_en": ["When should a vacuum bin be emptied or bag replaced?", "How should hair be removed from a vacuum brushroll safely?", "Can every vacuum filter be washed?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 612,
+    "es_title": "Cómo limpiar un robot aspirador",
+    "en_title": "How to Clean a Robot Vacuum",
+    "family": "cleaning",
+    "kind": "how-to",
+    "source": "cleaning",
+    "intro_es": "Un robot aspirador acumula pelo en cepillos y ruedas, polvo en sensores y suciedad en contactos de carga. La limpieza periódica debe hacerse apagado y con herramientas suaves, sin mojar electrónica ni sensores ópticos y respetando qué filtros son lavables.",
+    "intro_en": "A robot vacuum collects hair around brushes and wheels, dust on sensors, and grime on charging contacts. Routine cleaning should be done with the unit powered off and gentle tools, keeping moisture away from electronics and optical sensors and respecting which filters are washable.",
+    "sections": [
+      ["Apaga el robot y vacía el depósito", "Power the robot off and empty the bin", "Retira el depósito sobre una papelera y limpia polvo de su junta y entrada. No soples polvo hacia la cámara de sensores ni uses aire a alta presión que pueda empujarlo más adentro.", "Remove the bin over a trash container and clean dust from its seal and inlet. Do not blow debris toward sensor cavities or use high-pressure air that can drive particles deeper inside."],
+      ["Retira pelo de cepillos y ejes", "Remove hair from brushes and axles", "Saca el rodillo y cepillos laterales si el diseño lo permite y corta pelo con la herramienta incluida o tijeras con cuidado. Revisa extremos y cojinetes, donde suele enrollarse material que aumenta resistencia.", "Remove the main roller and side brushes if the design allows and cut hair away with the supplied tool or scissors carefully. Check the ends and bearings where strands often wrap and increase resistance."],
+      ["Limpia sensores y contactos en seco", "Clean sensors and charging contacts dry", "Pasa un paño suave y seco por sensores de caída, cámara o lidar y contactos de carga según manual. No rocíes limpiador directamente y evita pulimentos que dejen película sobre superficies ópticas o eléctricas.", "Wipe cliff sensors, camera or lidar windows, and charging contacts with a soft dry cloth according to the manual. Do not spray cleaner directly and avoid polishes that leave film on optical or electrical surfaces."],
+      ["Mantén filtro, ruedas y base de carga", "Maintain the filter, wheels, and charging dock", "Limpia o sustituye el filtro según su tipo y deja secar por completo cualquier pieza lavable. Retira hilos de ruedas y polvo de la base con alimentación desconectada; si una rueda no gira o el robot no carga tras limpiar, necesita diagnóstico.", "Clean or replace the filter according to its type and fully dry any washable part. Remove threads from wheels and dust from the dock with power disconnected; if a wheel remains stuck or the robot still will not charge, it needs diagnosis."]
+    ],
+    "faq_es": ["¿Qué conviene hacer antes de limpiar un robot aspirador?", "¿Cómo se limpian los sensores del robot?", "¿Qué partes necesitan mantenimiento además del depósito?"],
+    "faq_en": ["What should I do before cleaning a robot vacuum?", "How should robot-vacuum sensors be cleaned?", "Which parts need maintenance besides the dust bin?"],
+    "faq_sections": [0, 2, 3]
+  },
+  {
+    "n": 613,
+    "es_title": "Cómo limpiar el filtro de la aspiradora",
+    "en_title": "How to Clean a Vacuum Filter",
+    "family": "cleaning",
+    "kind": "how-to",
+    "source": "cleaning",
+    "intro_es": "Limpiar un filtro de aspiradora solo es correcto cuando ese filtro está diseñado para lavarse o sacudirse. Algunos medios de alta eficiencia y filtros plisados son desechables; mojarlos puede deformarlos, reducir filtración y enviar humedad al motor.",
+    "intro_en": "Cleaning a vacuum filter is appropriate only when that filter is designed to be washed or tapped clean. Some high-efficiency media and pleated filters are disposable; wetting them can deform the filter, reduce filtration, and send moisture toward the motor.",
+    "sections": [
+      ["Identifica tipo y número de filtro", "Identify the filter type and part number", "Consulta símbolos, manual o referencia de pieza antes de mojar nada. Un prefiltro de espuma puede ser lavable mientras el filtro principal del mismo aparato no lo es, por lo que no conviene aplicar la misma rutina a ambos.", "Check symbols, the manual, or part number before wetting anything. A foam prefilter may be washable while the main filter in the same vacuum is not, so the same routine should not be applied to both."],
+      ["Retira polvo suelto sin dañar el medio", "Remove loose dust without damaging the media", "Hazlo al aire libre o sobre una bolsa y usa golpecitos suaves o cepillo solo si el fabricante lo indica. Comprimir pliegues o usar aire a alta presión puede abrir canales que dejan pasar partículas.", "Work outdoors or over a bag and use gentle tapping or a brush only when the manufacturer recommends it. Crushing pleats or using high-pressure air can open channels that allow particles through."],
+      ["Lava solo filtros marcados como lavables", "Wash only filters marked washable", "Aclara con agua a la temperatura indicada y evita detergente salvo autorización. No retuerzas espuma ni frotes membranas delicadas; el objetivo es retirar polvo sin cambiar forma ni estructura.", "Rinse with water at the specified temperature and avoid detergent unless approved. Do not wring foam or scrub delicate media; the goal is to remove dust without changing the filter's shape or structure."],
+      ["Deja secar completamente antes de reinstalar", "Let the filter dry completely before reinstalling", "Un filtro que parece seco por fuera puede conservar humedad interna. Respeta el tiempo recomendado y no aceleres con secador o radiador; colocar un filtro húmedo puede favorecer olor, moho o daño del motor.", "A filter that feels dry outside can still hold moisture internally. Follow the recommended drying time and do not speed it with a hair dryer or radiator; reinstalling a damp filter can cause odor, mold, or motor damage."]
+    ],
+    "faq_es": ["¿Cómo sé si el filtro de mi aspiradora es lavable?", "¿Se puede usar aire comprimido para limpiar un filtro?", "¿Por qué debe secarse completamente antes de colocarlo?"],
+    "faq_en": ["How can I tell whether a vacuum filter is washable?", "Can compressed air be used to clean a vacuum filter?", "Why must a washed filter dry completely before installation?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 614,
+    "es_title": "Cómo limpiar el cabezal de la mopa o fregona",
+    "en_title": "How to Clean a Mop Head",
+    "family": "cleaning",
+    "kind": "how-to",
+    "source": "cleaning",
+    "intro_es": "Un cabezal de mopa o fregona acumula suciedad y humedad que pueden dejar olor y volver a repartir residuos por el suelo. La limpieza depende de si es microfibra, algodón, esponja o recambio desechable, pero siempre conviene aclarar pronto y secar por completo.",
+    "intro_en": "A mop head collects soil and moisture that can develop odor and spread residue back onto floors. Cleaning depends on whether it is microfiber, cotton, sponge, or disposable, but prompt rinsing and complete drying are consistently important.",
+    "sections": [
+      ["Aclara la suciedad inmediatamente después de usar", "Rinse soil out immediately after use", "Enjuaga hasta que el agua salga razonablemente clara y retira pelo o fibras atrapadas. Dejar el cabezal húmedo con suciedad durante horas facilita olor y hace que las manchas se fijen.", "Rinse until the water runs reasonably clear and remove trapped hair or fibers. Leaving a dirty mop head wet for hours encourages odor and lets soil become harder to remove."],
+      ["Lava según el material y la etiqueta", "Wash according to the material and label", "Los recambios de microfibra pueden admitir lavadora pero suelen rendir mejor sin suavizante, que recubre las fibras. Algodón, esponja y sistemas con adhesivos pueden tener límites de temperatura distintos.", "Microfiber pads may be machine washable but often perform better without fabric softener, which coats the fibers. Cotton, sponge, and adhesive-backed systems can have different temperature limits."],
+      ["No mezcles químicos para desinfectar", "Do not mix chemicals to disinfect", "Si el uso requiere desinfección, emplea un producto compatible y una sola química siguiendo dilución y tiempo de contacto. Nunca combines lejía con vinagre, amoníaco u otros limpiadores.", "If the use calls for disinfection, use one compatible product and follow its dilution and contact time. Never mix bleach with vinegar, ammonia, or other cleaners."],
+      ["Seca extendido y sustituye cuando el material se degrade", "Dry fully and replace worn material", "Cuelga o extiende el cabezal donde circule aire, no dentro de un cubo cerrado. Si queda olor tras lavar, las fibras están apelmazadas o el recambio ya no limpia bien, sustituirlo evita repartir suciedad.", "Hang or spread the mop head where air can circulate rather than leaving it in a closed bucket. If odor remains after washing, fibers are matted, or the pad no longer cleans well, replacement prevents spreading soil."]
+    ],
+    "faq_es": ["¿Por qué conviene aclarar la fregona justo después de usarla?", "¿Se debe usar suavizante con una mopa de microfibra?", "¿Cómo debe secarse el cabezal?"],
+    "faq_en": ["Why should a mop head be rinsed right after use?", "Should fabric softener be used on a microfiber mop pad?", "How should a mop head be dried?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 615,
+    "es_title": "Cómo limpiar una escoba",
+    "en_title": "How to Clean a Broom",
+    "family": "cleaning",
+    "kind": "how-to",
+    "source": "cleaning",
+    "intro_es": "Una escoba sucia vuelve a repartir pelo, polvo y grasa por el suelo. El mantenimiento empieza retirando residuos atrapados entre cerdas, continúa con un lavado solo si el material lo tolera y termina con secado completo para que el cabezal no conserve olor ni se deforme.",
+    "intro_en": "A dirty broom spreads hair, dust, and grease back across the floor. Maintenance starts by removing debris trapped in the bristles, continues with washing only when the material tolerates it, and finishes with full drying so the head does not hold odor or deform.",
+    "sections": [
+      ["Retira pelo y hilos de las cerdas", "Remove hair and string from the bristles", "Usa peine viejo, guantes o una herramienta roma para sacar material desde la base hacia las puntas. No tires con tanta fuerza que arranques grupos de cerdas o aflojes su anclaje.", "Use an old comb, gloves, or a blunt tool to pull debris from the base toward the tips. Do not pull so hard that clusters of bristles are torn out or loosened from the head."],
+      ["Lava solo un cabezal que admita agua", "Wash only a broom head that tolerates water", "Plástico sintético suele soportar agua tibia y detergente suave, mientras madera, fibras naturales o uniones pegadas pueden deformarse. Consulta fabricante y evita remojar el mango o casquillo si no están diseñados para ello.", "Synthetic plastic bristles often tolerate warm water and mild soap, while wood, natural fibers, or glued joints can distort. Check the manufacturer and avoid soaking the handle or ferrule unless designed for it."],
+      ["Aclara bien para no dejar película", "Rinse thoroughly so no film remains", "El detergente residual hace que polvo se adhiera más rápido. Aclara hasta que no haya espuma y sacude el exceso de agua sin golpear el cabezal contra una superficie dura.", "Detergent residue makes dust stick faster. Rinse until suds are gone and shake off excess water without striking the broom head against a hard surface."],
+      ["Seca con las cerdas sin soportar peso", "Dry without putting weight on the bristles", "Cuelga la escoba o apoya el cabezal de forma que las cerdas no queden dobladas mientras secan. Si el mango está flojo, la base agrietada o las cerdas se desprenden, sustituye o repara antes de seguir usando.", "Hang the broom or position it so the bristles do not bear weight while drying. If the handle is loose, the head cracked, or bristles are shedding, repair or replace it before continued use."]
+    ],
+    "faq_es": ["¿Cómo se quita pelo atrapado en las cerdas?", "¿Se puede lavar cualquier escoba con agua?", "¿Cómo conviene secar una escoba para no deformarla?"],
+    "faq_en": ["How should hair be removed from broom bristles?", "Can every broom be washed with water?", "How should a broom be dried without bending the bristles?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 617,
+    "es_title": "¿Qué es el golpe de ariete y cómo se evita?",
+    "en_title": "What Is Water Hammer and How Can You Prevent It?",
+    "family": "plumbing",
+    "kind": "decision-guide",
+    "source": "water",
+    "intro_es": "El golpe de ariete es una onda de presión que aparece cuando el agua en movimiento se detiene muy rápido, por ejemplo al cerrar una electroválvula de lavadora. Se reconoce por un golpe coincidente con el cierre; prevenirlo requiere controlar velocidad de cierre, presión y absorción de la onda, no sujetar tuberías al azar.",
+    "intro_en": "Water hammer is a pressure wave created when moving water stops very quickly, such as when a washing-machine solenoid valve closes. It is recognized by a bang that coincides with shutoff; prevention involves valve-closing behavior, pressure, and absorbing the pressure wave rather than randomly fastening pipes.",
+    "sections": [
+      ["Confirma que el golpe ocurre justo al cerrar el agua", "Confirm that the bang happens exactly at shutoff", "Un golpe instantáneo al cerrar un grifo rápido o cuando termina de llenar un electrodoméstico encaja con martillo hidráulico. Ruidos que aparecen al calentarse tuberías o durante flujo continuo pueden tener otra causa.", "An immediate bang when a fast valve closes or an appliance finishes filling fits water hammer. Noises that occur as pipes heat up or during steady flow may have a different cause."],
+      ["Comprueba si la presión de la vivienda es excesiva", "Check whether household water pressure is excessive", "Presión alta aumenta energía de la onda y también desgaste de grifos y válvulas. Mide con un manómetro adecuado o pide revisión; no ajustes una válvula reductora de presión sin saber el valor objetivo y el procedimiento.", "High pressure increases the energy of the wave and wear on fixtures and valves. Measure with an appropriate gauge or have it checked; do not adjust a pressure-reducing valve without knowing the target and procedure."],
+      ["Un arrestador funciona mejor cerca de la válvula rápida", "A hammer arrestor works best near the fast-closing valve", "Lavadoras, lavavajillas y otras electroválvulas pueden beneficiarse de un arrestador dimensionado e instalado para esa línea. No sustituyas el dispositivo por una cámara de aire improvisada sin conocer requisitos de fontanería y mantenimiento.", "Washing machines, dishwashers, and other solenoid valves can benefit from a properly sized arrestor installed for that branch. Do not substitute an improvised air chamber without understanding plumbing requirements and maintenance."],
+      ["Tuberías sueltas pueden amplificar el ruido aunque no sean la causa", "Loose pipes can amplify the noise without causing the pressure wave", "Una onda moderada puede hacer que un tubo sin soporte golpee madera o metal. Corrige soportes desde zonas accesibles sin comprimir tubería ni acercarte a cableado; si los golpes son generalizados, revisa primero presión y causa hidráulica.", "A moderate pressure wave can make an unsupported pipe strike framing or metal. Correct accessible supports without crushing pipe or approaching wiring; when banging is widespread, investigate water pressure and the hydraulic cause first."]
+    ],
+    "faq_es": ["¿Cómo se reconoce un golpe de ariete?", "¿Por qué la presión alta puede empeorarlo?", "¿Dónde suele colocarse un arrestador de golpe de ariete?"],
+    "faq_en": ["How can water hammer be recognized?", "Why can high water pressure make water hammer worse?", "Where is a water-hammer arrestor usually installed?"],
+    "faq_sections": [0, 1, 2]
+  },
+  {
+    "n": 618,
+    "es_title": "Cómo detectar una fuga de agua oculta en casa",
+    "en_title": "How to Detect a Hidden Water Leak at Home",
+    "family": "plumbing",
+    "kind": "diagnostics",
+    "source": "water",
+    "intro_es": "Una fuga oculta puede aparecer primero como aumento de consumo, humedad, olor, moho o movimiento del contador sin agua en uso. La forma más útil de investigarla es confirmar que existe consumo no explicado y después aislar zonas sin demoler paredes a ciegas.",
+    "intro_en": "A hidden leak may first appear as higher water use, dampness, odor, mold, or meter movement when no water is intentionally running. The most useful approach is to confirm unexplained water use and then isolate areas rather than opening walls blindly.",
+    "sections": [
+      ["Descarta primero consumos visibles y aparatos", "Rule out visible water use and appliances first", "Cierra grifos y no uses lavadora, lavavajillas, riego ni máquinas de hielo durante la prueba. Revisa inodoros, porque una válvula que deja pasar agua puede mover el contador sin dejar charco visible.", "Turn off faucets and avoid using the washer, dishwasher, irrigation, or ice maker during the test. Check toilets because a leaking fill or flush valve can move the meter without leaving a visible puddle."],
+      ["Observa el contador durante un periodo sin consumo", "Watch the water meter during a no-use period", "Anota lectura o indicador de flujo y espera sin usar agua. Movimiento persistente sugiere consumo oculto; confirma que ningún equipo automático se haya activado antes de concluir que existe una fuga.", "Record the meter reading or flow indicator and wait without using water. Persistent movement suggests hidden use; make sure no automatic equipment cycled before concluding that a leak exists."],
+      ["Busca humedad, olor y cambios de material", "Look for moisture, odor, and material changes", "Pintura abombada, rodapié hinchado, suelo caliente o húmedo, olor a moho y manchas que crecen ayudan a localizar zona. Un medidor de humedad puede comparar áreas, pero no identifica por sí solo qué tubería pierde.", "Bubbling paint, swollen trim, a warm or damp floor, musty odor, and expanding stains can narrow the location. A moisture meter can compare areas but does not by itself identify which pipe is leaking."],
+      ["Aísla circuitos antes de abrir acabados", "Isolate branches before opening finishes", "Cerrar una llave identificada de riego, calentador o zona puede mostrar si el contador se detiene. Si la fuga sigue sin localizarse, una empresa con equipos acústicos o térmicos puede reducir demolición; agua cerca de electricidad exige cortar energía desde un punto seco.", "Closing an identified irrigation, water-heater, or branch valve can show whether meter movement stops. If the leak remains hidden, acoustic or thermal leak detection can reduce demolition; water near electricity requires power isolation from a dry location."]
+    ],
+    "faq_es": ["¿Cómo puedo usar el contador para buscar una fuga oculta?", "¿Qué señales en paredes o suelo pueden ayudar a localizarla?", "¿Conviene abrir la pared en cuanto sospecho una fuga?"],
+    "faq_en": ["How can a water meter be used to look for a hidden leak?", "Which wall or floor signs can help locate it?", "Should I open a wall as soon as I suspect a hidden leak?"],
+    "faq_sections": [1, 2, 3]
+  },
+  {
+    "n": 619,
+    "es_title": "Cómo saber si hay una tubería con fuga detrás de la pared",
+    "en_title": "How to Tell If a Pipe Is Leaking Behind a Wall",
+    "family": "plumbing",
+    "kind": "diagnostics",
+    "source": "water",
+    "intro_es": "Una tubería que pierde detrás de una pared suele dejar un patrón localizado: mancha que crece, pintura o pladur blando, olor a humedad, sonido de agua o contador moviéndose sin consumo. Conviene confirmar primero si la humedad coincide con tuberías y si aumenta cuando se usa un grifo o ducha cercanos.",
+    "intro_en": "A pipe leaking behind a wall usually creates a localized pattern: an expanding stain, soft paint or drywall, musty odor, water sound, or meter movement with no intended use. First confirm whether the damp area follows plumbing and whether it changes when a nearby fixture is used.",
+    "sections": [
+      ["Relaciona la mancha con el uso de agua cercano", "Relate the stain to nearby water use", "Marca el borde de la humedad y observa si cambia después de usar ducha, lavabo o aparato de la misma pared. Una fuga de suministro puede continuar sin uso; una fuga de desagüe suele aparecer cuando corre agua.", "Mark the edge of dampness and see whether it changes after using a shower, sink, or appliance on the same wall. A supply leak may continue without use; a drain leak more often appears while water is flowing."],
+      ["Comprueba si el material está blando, hinchado o frío", "Check for soft, swollen, or unusually cool material", "Pladur que cede, pintura que forma burbujas o madera hinchada indican humedad que lleva tiempo presente. No presiones un techo muy mojado ni retires material si puede caer o si hay cableado detrás.", "Drywall that gives way, bubbling paint, or swollen wood indicates moisture that has been present for some time. Do not press on a heavily wet ceiling or remove material when it may fall or wiring may be behind it."],
+      ["Usa el contador para apoyar la sospecha de una línea de suministro", "Use the meter to support a supply-line suspicion", "Con todos los consumos cerrados, movimiento del contador junto a una mancha que sigue creciendo aumenta la sospecha de agua presurizada. Un contador inmóvil no descarta una fuga de desagüe que solo aparece al usar el aparato.", "With all use stopped, meter movement plus a stain that keeps growing increases suspicion of a pressurized supply leak. A stationary meter does not rule out a drain leak that occurs only when a fixture is used."],
+      ["Corta agua si la fuga es activa y limita la apertura de la pared", "Shut water off for an active leak and limit wall opening", "Si la humedad aumenta rápidamente, cierra la llave del ramal o general identificada y solicita reparación. Abrir una pequeña zona puede ser necesario para secar y reparar, pero primero localiza tubería y electricidad para evitar causar otro daño.", "If moisture is increasing quickly, close the identified branch or main water valve and arrange repair. A small opening may be needed for drying and access, but locate plumbing and electricity first so the investigation does not create another hazard."]
+    ],
+    "faq_es": ["¿Cómo ayuda el momento en que aparece la mancha a distinguir suministro y desagüe?", "¿Qué señales indican que el material de la pared ya está mojado?", "¿Qué conviene hacer si la mancha crece rápidamente?"],
+    "faq_en": ["How does timing help separate a supply leak from a drain leak?", "Which signs show that wall material is already wet?", "What should I do if a wall stain is growing quickly?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 620,
+    "es_title": "¿Los termostatos inteligentes realmente ahorran dinero?",
+    "en_title": "Do Smart Thermostats Really Save Money?",
+    "family": "heating-cooling",
+    "kind": "decision-guide",
+    "source": "energy",
+    "intro_es": "Un termostato inteligente puede ahorrar dinero cuando reduce calefacción o refrigeración en horas en que no hace falta y evita ajustes manuales ineficientes. El ahorro no está garantizado: depende del clima, sistema, horarios, aislamiento y de si realmente cambia la temperatura respecto a tus hábitos actuales.",
+    "intro_en": "A smart thermostat can save money when it reduces heating or cooling during times it is not needed and prevents inefficient manual settings. Savings are not guaranteed; they depend on climate, equipment, schedules, insulation, and whether the thermostat actually changes temperatures compared with current habits.",
+    "sections": [
+      ["El ahorro viene del cambio de uso, no del wifi", "Savings come from changed operation, not from Wi-Fi itself", "Si ya programas bien un termostato convencional y mantienes ajustes eficientes, cambiar de dispositivo puede aportar poco ahorro adicional. La ventaja aparece cuando automatiza retrocesos que antes no ocurrían o reduce olvidos.", "If a conventional thermostat is already programmed well and settings are efficient, changing devices may add little extra savings. The advantage appears when automation creates setbacks that were not happening before or reduces forgotten adjustments."],
+      ["Clima y tipo de sistema cambian cuánto conviene variar", "Climate and equipment change how much setback makes sense", "Bombas de calor, calefacción radiante y sistemas con respaldo pueden responder de forma distinta a grandes cambios de temperatura. Usa estrategias compatibles con tu equipo para no activar resistencia auxiliar o tardar horas en recuperar confort.", "Heat pumps, radiant heating, and systems with backup heat can respond differently to large temperature changes. Use strategies compatible with the equipment so setbacks do not trigger expensive auxiliary heat or require hours to recover comfort."],
+      ["Funciones de presencia y aprendizaje solo ayudan si están bien configuradas", "Occupancy and learning features help only when configured well", "Geolocalización, sensores y horarios pueden reducir uso en una casa vacía, pero también enfriar o calentar en momentos equivocados si detectan mal la ocupación. Revisa datos y horarios durante las primeras semanas.", "Geofencing, sensors, and schedules can reduce operation in an empty home, but they can also heat or cool at the wrong times when occupancy is detected poorly. Review history and schedules during the first weeks."],
+      ["Compara consumo antes y después en periodos parecidos", "Compare energy use before and after under similar conditions", "Mira facturas o datos de consumo ajustando por clima cuando sea posible. Un mes más barato no demuestra por sí solo ahorro del termostato; la tendencia durante temporadas comparables da una respuesta más útil.", "Review bills or energy data while accounting for weather where possible. One cheaper month does not prove thermostat savings; trends across comparable parts of the season provide a more useful answer."]
+    ],
+    "faq_es": ["¿Un termostato inteligente ahorra aunque ya programe bien uno normal?", "¿Por qué el tipo de calefacción cambia la estrategia de ahorro?", "¿Cómo puedo comprobar si realmente está reduciendo mi consumo?"],
+    "faq_en": ["Will a smart thermostat save money if I already program a basic thermostat well?", "Why does heating-system type change the best setback strategy?", "How can I tell whether a smart thermostat is actually reducing energy use?"],
+    "faq_sections": [0, 1, 3]
+  }
+]
