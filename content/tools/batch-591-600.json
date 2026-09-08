@@ -1,0 +1,192 @@
+[
+  {
+    "n": 591,
+    "es_title": "¿Por qué está atascado el triturador de basura?",
+    "en_title": "Why Is My Garbage Disposal Jammed?",
+    "family": "appliances",
+    "kind": "diagnostics",
+    "source": "cleaning",
+    "intro_es": "Un triturador se atasca cuando objetos duros, fibras, comida compactada o una sobrecarga impiden que el mecanismo gire. El síntoma importa: un zumbido con motor intentando arrancar orienta a bloqueo mecánico; silencio total puede ser alimentación o protección térmica y no un atasco.",
+    "intro_en": "A garbage disposal jams when hard objects, fibrous food, packed debris, or overload prevents the mechanism from turning. The symptom matters: humming while the motor tries to start points toward a mechanical jam, while complete silence may be power or thermal protection rather than a jam.",
+    "sections": [
+      ["Zumbido sin giro apunta a bloqueo mecánico", "Humming without rotation points to a mechanical jam", "Apaga inmediatamente para no recalentar el motor y corta la alimentación real antes de inspeccionar. No metas la mano; objetos visibles se retiran con pinzas largas y cualquier liberación del giro debe hacerse por el acceso previsto por el fabricante.", "Switch it off immediately to avoid overheating the motor and disconnect real power before inspecting. Never put a hand inside; visible objects should be removed with long tongs and the mechanism should be freed only through manufacturer-designed access."],
+      ["Fibras, almidón y exceso de residuos pueden compactarse", "Fibers, starches, and too much waste can pack together", "Cáscaras fibrosas, grandes cantidades de arroz o pasta y mucha comida de golpe pueden formar una masa que frena giro o desagüe. Introduce residuos permitidos poco a poco y con el caudal de agua que indique el manual.", "Fibrous peels, large amounts of rice or pasta, and too much food at once can form a mass that restricts rotation or drainage. Feed only permitted waste gradually and use the water flow specified by the manual."],
+      ["Objetos duros pueden bloquear o dañar el mecanismo", "Hard objects can jam or damage the mechanism", "Cubiertos, vidrio, huesos grandes u objetos no alimentarios pueden quedar atrapados. Si no salen con una herramienta desde arriba y sin acercar las manos, no fuerces el motor ni golpees el cuerpo del triturador.", "Cutlery, glass, large bones, or nonfood objects can become trapped. If they cannot be removed from above with a tool while hands stay clear, do not force the motor or strike the disposal housing."],
+      ["Silencio tras sobrecarga puede ser protección térmica", "Silence after overload may be thermal protection", "Algunos modelos incorporan un botón de rearme que solo debe usarse después de enfriar y eliminar la causa. Si vuelve a dispararse, huele a quemado o el eje sigue bloqueado, detén el uso y solicita servicio.", "Some models have a reset button that should be used only after the unit cools and the cause is removed. If it trips again, smells burned, or the mechanism remains locked, stop using it and arrange service."]
+    ],
+    "faq_es": ["¿Qué significa que el triturador zumbe pero no gire?", "¿Qué alimentos pueden favorecer un atasco?", "¿Cuándo se puede usar el botón de rearme del triturador?"],
+    "faq_en": ["What does it mean when a disposal hums but will not turn?", "Which foods can contribute to a disposal jam?", "When should the disposal reset button be used?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 592,
+    "es_title": "¿Cuánto suele durar un refrigerador?",
+    "en_title": "How Long Does a Refrigerator Usually Last?",
+    "family": "appliances",
+    "kind": "decision-guide",
+    "source": "energy",
+    "intro_es": "No existe una vida útil exacta para todos los refrigeradores. Diseño, calidad, temperatura ambiente, limpieza, uso y tipo de avería influyen mucho; la edad sirve como contexto, pero una decisión de reparar o sustituir debe considerar también coste de la reparación, eficiencia y estado del sistema sellado.",
+    "intro_en": "There is no exact service life for every refrigerator. Design, build quality, ambient temperature, maintenance, use, and failure type all matter; age is useful context, but repair-versus-replace decisions should also consider repair cost, efficiency, and the condition of the sealed refrigeration system.",
+    "sections": [
+      ["Usa la edad como referencia, no como fecha de caducidad", "Use age as context, not an expiration date", "Un equipo bien mantenido puede superar la media y otro puede fallar antes. Anota modelo y fecha aproximada y compárala con garantía, historial de reparaciones y disponibilidad de piezas en lugar de sustituir solo porque ha cumplido cierto número de años.", "A well-maintained appliance can outlast an average while another may fail earlier. Record the model and approximate age and compare that with warranty, repair history, and parts availability instead of replacing it solely because it has reached a certain birthday."],
+      ["Averías pequeñas pesan distinto que un problema del sistema sellado", "Minor repairs are different from sealed-system failures", "Una junta de puerta, ventilador accesible o sensor puede justificar reparación en un aparato por lo demás sano. Compresor, fuga de refrigerante o múltiples averías caras cambian la economía y requieren técnico cualificado.", "A door gasket, accessible fan, or sensor can justify repair on an otherwise healthy appliance. A compressor, refrigerant leak, or several expensive failures change the economics and require qualified service."],
+      ["Compara consumo y rendimiento real", "Compare energy use and actual performance", "Un refrigerador antiguo que funciona sin parar, no mantiene 4 °C (40 °F) o consume mucho más que un modelo eficiente puede justificar sustitución aunque todavía enfríe. Primero descarta juntas sucias, ventilación bloqueada y serpentines accesibles con polvo.", "An older refrigerator that runs constantly, cannot hold 40°F (4°C), or uses far more energy than an efficient replacement may be worth replacing even if it still cools. First rule out dirty gaskets, blocked ventilation, and dusty accessible coils."],
+      ["Protege alimentos mientras decides", "Protect food while deciding", "Si la temperatura sube por encima del rango seguro, traslada alimentos perecederos a otro equipo o hielo adecuado y sigue criterios de tiempo y temperatura. No mantengas comida en riesgo mientras esperas a ver si una avería intermitente se corrige sola.", "If temperature rises above the safe range, move perishable food to another refrigerator or suitable ice storage and use time-and-temperature rules. Do not keep food at risk while waiting to see whether an intermittent fault fixes itself."]
+    ],
+    "faq_es": ["¿La edad por sí sola indica que hay que cambiar un refrigerador?", "¿Qué tipo de avería puede hacer menos rentable una reparación?", "¿Qué rendimiento conviene revisar antes de decidir?"],
+    "faq_en": ["Does age alone mean a refrigerator should be replaced?", "Which type of failure can make repair less economical?", "What performance should be checked before deciding?"],
+    "faq_sections": [0, 1, 2]
+  },
+  {
+    "n": 593,
+    "es_title": "¿Cuánto suele durar una lavadora?",
+    "en_title": "How Long Does a Washing Machine Usually Last?",
+    "family": "appliances",
+    "kind": "decision-guide",
+    "source": "cleaning",
+    "intro_es": "La duración de una lavadora depende más de ciclos, cargas, diseño, agua, mantenimiento y tipo de avería que de una cifra exacta. La edad ayuda a decidir, pero conviene combinarla con historial de reparaciones, estado del tambor y motor, disponibilidad de piezas y coste de una máquina equivalente.",
+    "intro_en": "Washer life depends more on cycle count, loading, design, water conditions, maintenance, and failure type than on one exact number. Age helps with decisions, but it should be combined with repair history, drum and motor condition, parts availability, and the cost of an equivalent replacement.",
+    "sections": [
+      ["Mira ciclos y uso, no solo años", "Consider cycles and use, not just years", "Una máquina usada a diario envejece más rápido que otra con pocas cargas semanales. Sobrecargas repetidas, desequilibrio y exceso de detergente también pueden aumentar desgaste de suspensión, rodamientos y bomba.", "A washer used daily accumulates wear faster than one running a few loads each week. Repeated overloading, imbalance, and detergent overdosing can also increase wear on suspension, bearings, and the pump."],
+      ["Las reparaciones pequeñas pueden alargar mucho la vida útil", "Small repairs can extend useful life", "Mangueras, bomba accesible, pestillo o válvula de entrada pueden ser reparaciones razonables si el resto está sólido. Una cuba, rodamiento integrado o control caro en una máquina muy gastada puede inclinar la balanza hacia sustitución.", "Hoses, an accessible pump, a latch, or an inlet valve can be reasonable repairs when the rest of the washer is sound. A tub, integrated bearing, or expensive control on a heavily worn machine may shift the decision toward replacement."],
+      ["El mantenimiento evita fallos prematuros", "Maintenance reduces premature failures", "Usa la dosis correcta de detergente, limpia filtros y juntas según manual y deja secar el interior cuando el diseño lo permita. Sustituye mangueras dañadas y corrige una máquina que camina o vibra antes de que el movimiento afecte conexiones.", "Use the correct detergent dose, clean filters and seals according to the manual, and let the interior dry when the design allows it. Replace damaged hoses and correct a washer that walks or vibrates before movement stresses connections."],
+      ["Compara coste total, no solo la factura del técnico", "Compare total cost, not just the repair quote", "Incluye antigüedad, consumo de agua y energía, otra avería reciente y garantía de la reparación. Una máquina estable con un fallo aislado merece una valoración distinta de otra que ya acumula fugas, ruido y problemas de centrifugado.", "Include age, water and energy use, recent failures, and repair warranty. A stable machine with one isolated fault deserves a different decision from one already accumulating leaks, noise, and spin problems."]
+    ],
+    "faq_es": ["¿Influye el número de lavados en la duración de una lavadora?", "¿Qué reparaciones pueden seguir siendo razonables en una máquina antigua?", "¿Qué factores conviene comparar al decidir reparar o sustituir?"],
+    "faq_en": ["Does the number of wash cycles affect washer lifespan?", "Which repairs can still make sense on an older washer?", "What should be compared when deciding between repair and replacement?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 594,
+    "es_title": "Cómo guardar cebollas para que duren más",
+    "en_title": "How to Store Onions So They Last Longer",
+    "family": "food-storage",
+    "kind": "how-to",
+    "source": "food",
+    "intro_es": "Las cebollas enteras duran mejor en un lugar fresco, seco, oscuro y ventilado. La humedad y las bolsas cerradas favorecen ablandamiento y moho, y almacenarlas junto a patatas puede acelerar deterioro; una cebolla cortada, en cambio, necesita refrigeración.",
+    "intro_en": "Whole onions last best in a cool, dry, dark, well-ventilated place. Moisture and sealed bags promote softening and mold, and storing them beside potatoes can speed deterioration; cut onion, however, belongs in the refrigerator.",
+    "sections": [
+      ["Da aire a las cebollas enteras", "Give whole onions airflow", "Usa una cesta, malla o recipiente ventilado en vez de una bolsa de plástico cerrada. Deja espacio para que el aire rodee los bulbos y retira enseguida cualquiera que esté blando, húmedo o con moho.", "Use a basket, mesh bag, or ventilated container rather than a sealed plastic bag. Leave space for air around the bulbs and promptly remove any onion that becomes soft, damp, or moldy."],
+      ["Elige un lugar oscuro y relativamente fresco", "Choose a dark, relatively cool location", "Luz y calor favorecen brotación y pérdida de calidad. Una despensa ventilada funciona mejor que una zona junto a horno, lavavajillas o ventana soleada; evita lugares húmedos como bajo un fregadero con condensación.", "Light and heat encourage sprouting and quality loss. A ventilated pantry works better than a spot beside the oven, dishwasher, or sunny window; avoid damp locations such as under a sink with condensation."],
+      ["Separa cebollas y patatas", "Store onions away from potatoes", "Ambos productos liberan humedad y compuestos que pueden acelerar deterioro cuando están juntos en un espacio cerrado. Mantén cestas separadas y revisa semanalmente para retirar piezas dañadas antes de que afecten a otras.", "Both foods release moisture and compounds that can speed deterioration when stored together in a confined area. Use separate baskets and check weekly so damaged produce is removed before affecting neighboring items."],
+      ["Refrigera la cebolla una vez cortada", "Refrigerate onion after it is cut", "Guarda mitades o trozos en un recipiente o envoltorio cerrado para reducir deshidratación y olores cruzados. Mantén el refrigerador a 4 °C (40 °F) o menos y desecha piezas viscosas, mohosas o con deterioro evidente.", "Store halves or pieces in a sealed container or wrap to reduce drying and odor transfer. Keep the refrigerator at 40°F (4°C) or below and discard pieces that become slimy, moldy, or clearly spoiled."]
+    ],
+    "faq_es": ["¿Por qué no conviene guardar cebollas enteras en una bolsa cerrada?", "¿Se pueden guardar cebollas y patatas juntas?", "¿Dónde debe guardarse una cebolla después de cortarla?"],
+    "faq_en": ["Why shouldn't whole onions be kept in a sealed plastic bag?", "Should onions and potatoes be stored together?", "Where should a cut onion be stored?"],
+    "faq_sections": [0, 2, 3]
+  },
+  {
+    "n": 595,
+    "es_title": "Cómo guardar patatas para que duren más",
+    "en_title": "How to Store Potatoes So They Last Longer",
+    "family": "food-storage",
+    "kind": "how-to",
+    "source": "food",
+    "intro_es": "Las patatas duran mejor en un lugar fresco, oscuro, seco y ventilado. La luz favorece verdor y aumento de glicoalcaloides, mientras bolsas cerradas retienen humedad; conviene además separarlas de cebollas y retirar piezas podridas o muy verdes.",
+    "intro_en": "Potatoes keep best in a cool, dark, dry, well-ventilated place. Light encourages greening and higher glycoalkaloid levels, while sealed bags trap moisture; potatoes should also be stored away from onions and damaged or heavily greened tubers removed.",
+    "sections": [
+      ["Protege las patatas de la luz", "Keep potatoes out of light", "Usa una despensa, caja ventilada o bolsa de papel en un lugar oscuro, no una encimera soleada. Una patata muy verde, amarga o deteriorada no debe usarse como si el color fuera solo un defecto cosmético.", "Use a pantry, ventilated box, or paper bag in a dark location rather than a sunny counter. A heavily greened, bitter, or spoiled potato should not be treated as if the color were only a cosmetic issue."],
+      ["Mantén ventilación y evita humedad atrapada", "Provide ventilation and avoid trapped moisture", "No cierres patatas húmedas en plástico. Deja circular aire y revisa condensación; una pieza blanda o podrida debe salir de la cesta para evitar que el deterioro se extienda.", "Do not seal damp potatoes in plastic. Allow air movement and watch for condensation; a soft or rotting potato should be removed so deterioration does not spread."],
+      ["Separa patatas de cebollas", "Keep potatoes separate from onions", "Aunque suelen usarse juntas, almacenarlas juntas puede acelerar brotación y deterioro. Usa zonas o cestas separadas y compra cantidades que puedas consumir antes de que aparezcan brotes largos o textura muy blanda.", "Although they are often cooked together, storing potatoes and onions together can speed sprouting and deterioration. Use separate zones or baskets and buy amounts that can be used before long sprouts or severe softening develop."],
+      ["La refrigeración cambia textura y cocción", "Refrigeration can change texture and cooking behavior", "El frío del refrigerador puede convertir parte del almidón en azúcares y alterar color al cocinar. Para almacenamiento doméstico normal, usa un lugar fresco fuera del frigorífico salvo que una recomendación específica para tu producto indique otra cosa.", "Refrigerator temperatures can convert some starch to sugars and change cooking color. For routine home storage, use a cool place outside the refrigerator unless specific guidance for the product says otherwise."]
+    ],
+    "faq_es": ["¿Por qué las patatas deben guardarse a oscuras?", "¿Qué ocurre si una patata empieza a pudrirse en la cesta?", "¿Conviene guardar patatas y cebollas juntas?"],
+    "faq_en": ["Why should potatoes be stored in the dark?", "What should I do when one potato starts rotting in storage?", "Should potatoes and onions be stored together?"],
+    "faq_sections": [0, 1, 2]
+  },
+  {
+    "n": 596,
+    "es_title": "Cómo guardar ajo para que dure más",
+    "en_title": "How to Store Garlic So It Lasts Longer",
+    "family": "food-storage",
+    "kind": "how-to",
+    "source": "food",
+    "intro_es": "Las cabezas de ajo enteras duran más cuando se mantienen secas, ventiladas y alejadas de calor y luz directa. Una vez pelado o cortado, el ajo necesita refrigeración; el ajo sumergido en aceite no debe guardarse a temperatura ambiente por riesgo de crecimiento de bacterias peligrosas.",
+    "intro_en": "Whole garlic bulbs last longer when kept dry, ventilated, and away from heat and direct light. Once peeled or cut, garlic needs refrigeration; garlic stored in oil should not be kept at room temperature because dangerous bacterial growth can occur.",
+    "sections": [
+      ["Guarda cabezas enteras con circulación de aire", "Store whole bulbs with airflow", "Una cesta, malla o recipiente perforado permite que salga humedad. Evita bolsas de plástico cerradas y zonas junto a cocina o lavavajillas donde calor y vapor pueden favorecer brotes, moho y ablandamiento.", "A basket, mesh bag, or perforated container lets moisture escape. Avoid sealed plastic bags and locations beside the stove or dishwasher where heat and steam can encourage sprouting, mold, and softening."],
+      ["Separa los dientes solo cuando vayas a usarlos", "Separate cloves only as needed", "La piel de la cabeza protege los dientes y ayuda a conservar humedad adecuada. Una vez separados, revisa antes de usar y descarta dientes con moho, zonas viscosas o deterioro claro.", "The bulb wrapper protects cloves and helps maintain appropriate moisture. Once cloves are separated, inspect before use and discard any with mold, sliminess, or obvious spoilage."],
+      ["Refrigera ajo pelado o picado", "Refrigerate peeled or chopped garlic", "Guárdalo en un recipiente cerrado para limitar olor y deshidratación y mantén el frigorífico a 4 °C (40 °F) o menos. Prepara cantidades pequeñas para no conservar durante demasiado tiempo un alimento ya manipulado.", "Keep peeled or chopped garlic in a sealed container to limit odor and drying and maintain the refrigerator at 40°F (4°C) or below. Prepare small amounts so handled garlic is not stored for unnecessarily long periods."],
+      ["Ajo en aceite necesita controles de seguridad específicos", "Garlic in oil needs specific safety controls", "No dejes mezclas caseras de ajo y aceite a temperatura ambiente. Refrigera según una receta o guía de seguridad fiable y usa dentro del plazo indicado; para almacenamiento prolongado, utiliza un método validado en vez de improvisar conservas.", "Do not leave homemade garlic-and-oil mixtures at room temperature. Refrigerate according to a reliable food-safety recipe or guide and use within the specified time; for long storage, use a validated method rather than improvising preservation."]
+    ],
+    "faq_es": ["¿Qué recipiente funciona bien para cabezas de ajo enteras?", "¿Dónde debe guardarse el ajo después de pelarlo?", "¿Se puede dejar ajo casero en aceite a temperatura ambiente?"],
+    "faq_en": ["What kind of container works well for whole garlic bulbs?", "Where should garlic be stored after it is peeled?", "Can homemade garlic in oil be left at room temperature?"],
+    "faq_sections": [0, 2, 3]
+  },
+  {
+    "n": 597,
+    "es_title": "¿Se puede conectar un alargador a otro alargador?",
+    "en_title": "Can You Plug One Extension Cord Into Another?",
+    "family": "electrical",
+    "kind": "safety-guide",
+    "source": "electrical",
+    "intro_es": "Conectar un alargador a otro aumenta longitud, conexiones y posibilidades de sobrecarga, calentamiento o daño y no es una solución recomendada para ampliar una instalación. La opción segura es usar un solo cable del calibre y longitud adecuados o instalar una toma donde realmente se necesita alimentación.",
+    "intro_en": "Plugging one extension cord into another increases length, connections, voltage drop, and opportunities for overload, heating, or damage and is not a recommended way to extend permanent wiring. Use one cord of the correct gauge and length or provide an outlet where power is actually needed.",
+    "sections": [
+      ["Usa un solo alargador con capacidad suficiente", "Use one extension cord with adequate capacity", "Comprueba amperaje o potencia del aparato y la capacidad marcada del cable. Un cable más largo y fino puede calentarse más; no elijas capacidad sumando regletas o alargadores para conseguir más tomas.", "Check the appliance current or wattage and the cord's marked rating. A longer, thinner cord can heat more; do not try to create capacity by combining strips or extension cords to gain more outlets."],
+      ["No conviertas alargadores en instalación permanente", "Do not turn extension cords into permanent wiring", "Un cable temporal no debe pasar bajo alfombras, puertas, paredes o zonas donde quede pinzado. Si siempre necesitas el mismo alargador, la solución es una toma instalada correctamente, no una cadena permanente.", "A temporary cord should not run under rugs, through doors or walls, or where it is pinched. If the same extension is always needed, the solution is a properly installed receptacle rather than a permanent cord chain."],
+      ["Cada conexión adicional puede calentarse o aflojarse", "Every added connection can heat or loosen", "Enchufes flojos, adaptadores y uniones en el suelo son puntos de resistencia y daño. Si una clavija o toma está caliente, decolorada, chisporrotea o huele a quemado, deja de usarla y desconecta desde un punto seguro.", "Loose plugs, adapters, and connections on the floor are points where resistance and damage can develop. If a plug or receptacle becomes hot, discolored, crackles, or smells burned, stop using it and disconnect from a safe location."],
+      ["Aparatos de alta potencia necesitan una solución más directa", "High-power appliances need a more direct solution", "Calefactores, aires portátiles y otros equipos de alta carga suelen requerir conexión directa a pared según fabricante. No uses una cadena de alargadores para acercar estos aparatos a una toma distante.", "Space heaters, portable air conditioners, and other high-load equipment often require direct wall connection according to the manufacturer. Do not use chained extension cords to reach a distant outlet for these loads."]
+    ],
+    "faq_es": ["¿Por qué no conviene encadenar dos alargadores?", "¿Qué indica que un alargador debería sustituirse por una toma fija?", "¿Qué señales muestran que una conexión se está calentando?"],
+    "faq_en": ["Why shouldn't two extension cords be chained together?", "What suggests an extension cord should be replaced with a permanent outlet?", "Which signs show that a cord connection is overheating?"],
+    "faq_sections": [0, 1, 2]
+  },
+  {
+    "n": 598,
+    "es_title": "¿Se puede conectar un refrigerador a un alargador?",
+    "en_title": "Can You Plug a Refrigerator Into an Extension Cord?",
+    "family": "electrical",
+    "kind": "safety-guide",
+    "source": "electrical",
+    "intro_es": "Un refrigerador funciona mejor conectado directamente a una toma de pared con puesta a tierra y capacidad adecuada. Un alargador añade una conexión y puede provocar caída de tensión o calentamiento, sobre todo durante el arranque del compresor; solo debería contemplarse de forma excepcional si el fabricante lo permite y el cable está dimensionado para esa carga.",
+    "intro_en": "A refrigerator is best connected directly to a properly grounded wall receptacle with adequate circuit capacity. An extension cord adds another connection and can create voltage drop or heating, especially during compressor startup; it should be considered only as an exceptional temporary measure if the manufacturer allows it and the cord is sized for the load.",
+    "sections": [
+      ["La conexión normal debe ser directa a pared", "The normal connection should be directly to the wall", "Usa la toma y circuito que exija el manual, con la clavija completamente insertada. No uses regletas, adaptadores múltiples ni cables enrollados detrás del aparato donde no puedas detectar calor o daño.", "Use the receptacle and circuit specified by the manual with the plug fully seated. Do not use power strips, multi-outlet adapters, or coiled cords behind the appliance where heating or damage may go unnoticed."],
+      ["El compresor tiene picos de arranque", "The compressor draws startup current", "Aunque el consumo medio parezca bajo, el motor puede demandar más corriente al arrancar. Un cable fino o muy largo aumenta caída de tensión y puede hacer que clavijas y conexiones se calienten.", "Even when average power use seems modest, the compressor can draw higher current while starting. A thin or very long cord increases voltage drop and can cause plugs and connections to heat."],
+      ["Si no hay otra opción temporal, sigue la especificación del fabricante", "If a temporary cord is unavoidable, follow manufacturer requirements", "Usa un solo alargador corto, con tierra y calibre/capacidad iguales o superiores a lo exigido, solo si el manual lo permite. No lo pases bajo alfombras, no lo encadenes y revisa que clavijas permanezcan frías y firmes.", "Use one short grounded cord with gauge and rating at least as large as required only when the appliance instructions permit it. Do not run it under rugs, do not chain cords, and make sure plugs remain cool and firmly seated."],
+      ["Para uso continuo, instala una toma adecuada", "For ongoing use, install a proper receptacle", "Si el refrigerador necesita siempre un alargador para llegar a corriente, la ubicación o instalación eléctrica debe corregirse. Una toma fija adecuada reduce conexiones temporales y permite seguir las instrucciones de seguridad del aparato.", "If the refrigerator always needs an extension cord to reach power, the appliance location or electrical installation should be corrected. A proper permanent receptacle removes temporary connections and follows the appliance safety instructions."]
+    ],
+    "faq_es": ["¿Cuál es la conexión recomendada para un refrigerador?", "¿Por qué importa el pico de arranque del compresor?", "¿Qué requisitos tendría que cumplir un alargador temporal?"],
+    "faq_en": ["What is the recommended way to power a refrigerator?", "Why does refrigerator compressor startup current matter?", "What requirements would a temporary extension cord need to meet?"],
+    "faq_sections": [0, 1, 2]
+  },
+  {
+    "n": 599,
+    "es_title": "Cómo limpiar paneles solares",
+    "en_title": "How to Clean Solar Panels",
+    "family": "energy",
+    "kind": "how-to",
+    "source": "energy",
+    "intro_es": "Muchos paneles solares se mantienen razonablemente limpios con lluvia, pero polvo, polen, excrementos o suciedad persistente pueden justificar una limpieza. El método debe priorizar seguridad y las instrucciones del fabricante: no hace falta subir a un tejado inseguro ni usar alta presión o abrasivos para conseguir un vidrio brillante.",
+    "intro_en": "Many solar panels stay reasonably clean with rain, but dust, pollen, bird droppings, or persistent soiling can justify cleaning. The method should prioritize safety and manufacturer instructions: there is no need to climb an unsafe roof or use high pressure or abrasives to make the glass shine.",
+    "sections": [
+      ["Comprueba primero si la suciedad realmente justifica limpiar", "First decide whether the soiling actually warrants cleaning", "Observa desde el suelo o una ubicación segura y compara producción con condiciones habituales. Una ligera película uniforme puede tener poco efecto, mientras excrementos o suciedad localizada pueden bloquear más luz.", "Inspect from the ground or another safe location and compare output with normal conditions. A light uniform film may have little effect, while bird droppings or localized debris can block more light."],
+      ["Limpia cuando los paneles estén frescos", "Clean when panels are cool", "Trabaja temprano o en condiciones suaves según la guía del fabricante. Echar agua fría sobre vidrio muy caliente puede crear choque térmico, y limpiar con sol intenso aumenta evaporación y manchas.", "Work early or in mild conditions according to manufacturer guidance. Applying cold water to very hot glass can create thermal stress, and cleaning in strong sun speeds evaporation and spotting."],
+      ["Usa agua y herramientas suaves compatibles", "Use water and soft compatible tools", "Una manguera de baja presión desde el suelo y una herramienta telescópica suave pueden ser suficientes. Evita estropajos, detergentes no autorizados y chorros de alta presión que puedan dañar sellos, recubrimientos o conexiones.", "Low-pressure water from the ground and a soft telescoping tool may be enough. Avoid abrasive pads, unapproved detergents, and pressure-washer jets that can damage seals, coatings, or connections."],
+      ["No conviertas la limpieza en un trabajo de tejado arriesgado", "Do not turn cleaning into unsafe roof work", "Si para acceder necesitas caminar sobre una cubierta inclinada, trabajar cerca de bordes o tocar cableado, contrata un profesional preparado. No desconectes conectores solares ni abras cajas eléctricas como parte de una limpieza doméstica.", "If access requires walking on a steep roof, working near edges, or touching wiring, hire a properly equipped professional. Do not disconnect solar connectors or open electrical boxes as part of household cleaning."]
+    ],
+    "faq_es": ["¿Hay que limpiar los paneles solares aunque llueva?", "¿Por qué conviene limpiar cuando los paneles están frescos?", "¿Se puede usar una hidrolimpiadora en paneles solares?"],
+    "faq_en": ["Do solar panels need cleaning even when it rains?", "Why should solar panels be cleaned while cool?", "Can a pressure washer be used on solar panels?"],
+    "faq_sections": [0, 1, 2]
+  },
+  {
+    "n": 600,
+    "es_title": "¿Cada cuánto hay que limpiar los paneles solares?",
+    "en_title": "How Often Should Solar Panels Be Cleaned?",
+    "family": "energy",
+    "kind": "decision-guide",
+    "source": "energy",
+    "intro_es": "No hay un calendario universal para limpiar paneles solares. Lluvia, polvo, polen, aves, inclinación del tejado y caída real de producción cambian mucho la necesidad; una inspección segura y los datos del sistema son mejores que limpiar cada pocos meses por costumbre.",
+    "intro_en": "There is no universal solar-panel cleaning schedule. Rainfall, dust, pollen, birds, roof pitch, and actual production loss change the need substantially; safe inspection and system data are better guides than cleaning every few months by habit.",
+    "sections": [
+      ["Usa producción e inspección como señales", "Use production and inspection as triggers", "Compara energía generada con días similares y corrige primero sombras nuevas, fallos del inversor o cambios meteorológicos. Si hay suciedad visible y una caída persistente que no se explica por clima, la limpieza gana sentido.", "Compare energy production with similar days and first account for new shade, inverter faults, or weather changes. When visible soiling coincides with a persistent unexplained output drop, cleaning becomes more justified."],
+      ["Climas secos y polvo pueden necesitar revisiones más frecuentes", "Dry, dusty locations may need more frequent checks", "Cerca de caminos de tierra, agricultura o largos periodos sin lluvia puede acumularse polvo más rápido. Aun así, revisa efecto real antes de fijar una frecuencia rígida y sigue la guía de garantía del fabricante.", "Near dirt roads, agriculture, or during long rainless periods, dust can build faster. Even then, check actual effect before setting a rigid schedule and follow manufacturer warranty guidance."],
+      ["Aves y árboles crean suciedad localizada", "Birds and trees create localized soiling", "Excrementos, savia y hojas pueden requerir atención antes que una película general de polvo. Mantén también canalones y drenajes despejados desde un acceso seguro para que residuos no se acumulen alrededor del sistema.", "Bird droppings, sap, and leaves may deserve attention sooner than a uniform dust film. Keep nearby gutters and drainage clear from a safe access point so debris does not collect around the array."],
+      ["La seguridad puede justificar pagar una limpieza profesional", "Access risk can make professional cleaning the right choice", "Aunque la suciedad justifique actuar, no compensa una caída desde tejado. Si el sistema no puede limpiarse desde el suelo o una plataforma segura, usa un profesional con protección de caídas y experiencia alrededor de equipos eléctricos.", "Even when cleaning is justified, it is not worth a roof fall. If the array cannot be cleaned from the ground or a safe platform, use a professional with fall protection and experience around electrical equipment."]
+    ],
+    "faq_es": ["¿Existe una frecuencia fija para limpiar paneles solares?", "¿Qué lugares pueden necesitar revisiones más frecuentes?", "¿Qué tipo de suciedad puede justificar limpiar antes?"],
+    "faq_en": ["Is there a fixed schedule for cleaning solar panels?", "Which locations may need more frequent checks?", "What kind of soiling can justify earlier cleaning?"],
+    "faq_sections": [0, 1, 2]
+  }
+]
