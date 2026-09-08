@@ -1,0 +1,46 @@
+name: Finalize HOME articles 151-230
+
+on:
+  push:
+    branches:
+      - quality-audit-151-230
+
+permissions:
+  contents: write
+
+jobs:
+  generate-and-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: quality-audit-151-230
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate articles 151-230
+        run: |
+          python content/tools/generate-151-170.py
+          python content/tools/generate-171-190.py
+          python content/tools/generate-191-210.py
+          python content/tools/generate-211-230.py
+
+      - name: Apply final editorial fixes and validate
+        run: python content/tools/finalize-151-230.py --apply
+
+      - name: Commit generated articles and audit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/articles/es content/articles/en content/articles/QUALITY-AUDIT-151-230.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Generate and validate HOME articles 151-230 [skip ci]"
+          git push origin HEAD:quality-audit-151-230
+
+      - name: Re-run validator on committed state
+        run: python content/tools/finalize-151-230.py
