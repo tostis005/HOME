@@ -33,6 +33,9 @@ jobs:
       - name: Deepen compact article versions
         run: python content/tools/editorial-uplift-151-230.py
 
+      - name: Audit Spanish acronym expansion
+        run: python content/tools/scan-spanish-acronyms-151-230.py
+
       - name: Apply final editorial fixes and validate
         run: python content/tools/finalize-151-230.py --apply
 
@@ -46,4 +49,6 @@ jobs:
           git push origin HEAD:quality-audit-151-230
 
       - name: Re-run validator on committed state
-        run: python content/tools/finalize-151-230.py
+        run: |
+          python content/tools/scan-spanish-acronyms-151-230.py
+          python content/tools/finalize-151-230.py
