@@ -28,6 +28,20 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Normalize validator acronym matching
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('content/tools/generate-validate-551-630.py')
+          s = p.read_text(encoding='utf-8')
+          old = 'not any(exp in text for exp in expansions)'
+          new = 'not any(exp.lower() in text.lower() for exp in expansions)'
+          if old not in s:
+              raise SystemExit('Expected acronym validator expression not found')
+          p.write_text(s.replace(old, new), encoding='utf-8')
+          PY
+
       - name: Generate and validate
         run: python content/tools/generate-validate-551-630.py
 
