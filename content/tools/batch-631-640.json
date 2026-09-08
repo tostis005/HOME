@@ -1,0 +1,173 @@
+[
+  {
+    "n": 631,
+    "es_title": "¿Se pueden lavar toallas con ropa?",
+    "en_title": "Can You Wash Towels with Clothes?",
+    "family": "laundry",
+    "kind": "decision-guide",
+    "source": "laundry",
+    "intro_es": "Sí, algunas toallas pueden lavarse con ropa, pero no siempre conviene mezclarlo todo. El problema suele ser la combinación de pelusa, peso, color y necesidades de lavado: una toalla nueva o muy gruesa puede dejar fibras sobre prendas oscuras o delicadas y hacer que una carga quede mal equilibrada.",
+    "intro_en": "Some towels can be washed with clothes, but mixing every item in one load is not always a good idea. Lint, weight, color, and wash requirements matter: a new or heavy towel can shed fibers onto dark or delicate clothing and can make a load harder to balance.",
+    "sections": [
+      ["Separa toallas nuevas o que sueltan mucha pelusa", "Separate new or lint-shedding towels", "Las toallas nuevas suelen liberar más fibras durante los primeros lavados. Si una prenda atrae pelusa, como algunos tejidos oscuros o sintéticos, lávala aparte hasta que la toalla deje de desprender tanto material.", "New towels often shed more fibers during their first washes. If clothing attracts lint, such as some dark or synthetic fabrics, keep it separate until the towel sheds less."],
+      ["Combina colores y temperaturas compatibles", "Match colors and compatible wash temperatures", "No mezcles una toalla oscura nueva con ropa clara si todavía puede desteñir. Revisa además las etiquetas: una camiseta delicada que pide ciclo suave no debería compartir carga con toallas pesadas que necesitan más movimiento.", "Do not mix a new dark towel with light clothing if dye transfer is still possible. Check care labels too: a delicate shirt that needs a gentle cycle is a poor match for heavy towels that need more movement."],
+      ["Evita cargas demasiado pesadas o compactas", "Avoid loads that are too heavy or tightly packed", "Las toallas absorben mucha agua y pesan bastante mojadas. Deja espacio para que el tambor mueva la carga; una mezcla apretada puede aclarar peor, centrifugar con dificultad y dejar prendas enredadas.", "Towels hold a lot of water and become heavy when wet. Leave enough room for the drum to move the load; a packed mix can rinse poorly, spin unevenly, and leave clothes tangled."],
+      ["No uses suavizante por costumbre si afecta a la absorción", "Do not add fabric softener automatically", "Algunos suavizantes pueden reducir la capacidad de absorción de las toallas con el uso repetido. Si mezclas toallas y ropa, decide el producto según las etiquetas y el resultado que necesitas, no solo porque sea una carga mixta.", "Repeated use of some fabric softeners can reduce towel absorbency. When towels and clothes share a load, choose products based on care labels and the result you need rather than automatically treating every mixed load the same." ]
+    ],
+    "faq_es": ["¿Qué toallas conviene lavar aparte de la ropa?", "¿Por qué una carga con muchas toallas puede centrifugar mal?", "¿Es buena idea usar suavizante cuando lavo toallas con ropa?"],
+    "faq_en": ["Which towels are better washed separately from clothes?", "Why can a load with many towels spin poorly?", "Should I use fabric softener when washing towels with clothes?"],
+    "faq_sections": [0, 2, 3]
+  },
+  {
+    "n": 632,
+    "es_title": "Cómo quitar manchas de chocolate de la ropa",
+    "en_title": "How to Remove Chocolate Stains from Clothes",
+    "family": "laundry",
+    "kind": "how-to",
+    "source": "laundry",
+    "intro_es": "El chocolate combina grasa, azúcar, cacao y a veces leche, así que una mancha puede necesitar más que un simple aclarado. Lo más útil es retirar el exceso sin extenderlo, trabajar desde frío y comprobar que la marca ha desaparecido antes de aplicar calor de secadora o plancha.",
+    "intro_en": "Chocolate combines fat, sugar, cocoa, and sometimes milk, so a stain may need more than a quick rinse. The practical approach is to remove excess without spreading it, work with cool water, and make sure the mark is gone before using dryer or iron heat.",
+    "sections": [
+      ["Retira el exceso sin frotarlo dentro de las fibras", "Lift off excess chocolate without rubbing it in", "Si el chocolate está sólido, levántalo con una cuchara o borde romo. Si está blando, retira lo que puedas desde fuera hacia dentro para no agrandar la zona manchada.", "If the chocolate is solid, lift it with a spoon or dull edge. If it is soft, remove as much as possible from the outside toward the center so the stained area does not spread."],
+      ["Aclara por el reverso con agua fría o templada", "Rinse from the back with cool or lukewarm water", "Coloca la parte manchada del revés bajo el agua para empujar residuos hacia fuera de la tela. Evita empezar con agua muy caliente, que puede complicar manchas que contienen leche o proteínas.", "Hold the back of the stained area under water so residue is pushed out of the fabric. Avoid starting with very hot water, which can make stains containing milk or protein harder to remove."],
+      ["Pretrata con detergente compatible y deja actuar", "Pretreat with a compatible laundry detergent", "Aplica una pequeña cantidad de detergente líquido o quitamanchas apto para la prenda y respeta el tiempo de contacto de la etiqueta. En tejidos delicados, prueba primero en una zona poco visible.", "Apply a small amount of liquid detergent or stain remover that is safe for the garment and follow the label contact time. On delicate fabrics, test first in an inconspicuous area."],
+      ["Comprueba antes de secar", "Check the stain before drying", "Lava según la etiqueta y revisa la zona con buena luz antes de meter la prenda en la secadora. Si queda sombra, repite el pretratamiento; el calor puede fijar restos que todavía podrían salir con otro lavado.", "Wash according to the care label and inspect the area in good light before using the dryer. If a shadow remains, repeat pretreatment; heat can set residue that another wash might otherwise remove." ]
+    ],
+    "faq_es": ["¿Debo raspar el chocolate antes de mojar la prenda?", "¿Por qué conviene aclarar la mancha por el reverso?", "¿Se puede meter la prenda en la secadora si aún se ve una sombra?"],
+    "faq_en": ["Should I scrape off chocolate before wetting the garment?", "Why rinse a chocolate stain from the back?", "Can I put the garment in the dryer if a faint stain remains?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 633,
+    "es_title": "Cómo quitar manchas de óxido de la ropa",
+    "en_title": "How to Remove Rust Stains from Clothes",
+    "family": "laundry",
+    "kind": "how-to",
+    "source": "laundry",
+    "intro_es": "Una mancha de óxido necesita un enfoque distinto de muchas manchas orgánicas. El hierro puede reaccionar mal con productos con cloro y oscurecer la marca, por lo que conviene identificar el tejido, usar un quitamanchas específico para óxido apto para ropa y aclarar muy bien antes de lavar.",
+    "intro_en": "Rust stains need a different approach from many food or body stains. Iron can react badly with chlorine bleach and make discoloration worse, so identify the fabric, use a laundry-safe rust remover when appropriate, and rinse thoroughly before washing.",
+    "sections": [
+      ["No empieces con lejía o blanqueador con cloro", "Do not start with chlorine bleach", "Los productos con hipoclorito pueden intensificar algunas manchas de hierro. Si no sabes qué causó la marca, evita mezclar productos y revisa la etiqueta del tejido antes de aplicar un tratamiento específico.", "Hypochlorite bleach can intensify some iron stains. If you are unsure what caused the mark, do not mix products and check the fabric care label before applying a specialized treatment."],
+      ["Usa un producto indicado para óxido y tejidos", "Use a rust remover labeled for fabrics", "Los quitamanchas de óxido pueden ser ácidos y no todos sirven para todas las fibras. Sigue exactamente dosis, tiempo y aclarado del envase y usa guantes cuando la etiqueta lo indique.", "Rust removers can be acidic, and not every formula is safe for every fiber. Follow the product directions for amount, contact time, and rinsing, and wear gloves when the label calls for them."],
+      ["Aclara por completo antes de añadir otros productos", "Rinse completely before adding other products", "No combines el quitamanchas de óxido con lejía, amoníaco u otros limpiadores. Aclara la zona hasta eliminar el producto de tratamiento y solo después lava con detergente según la etiqueta de la prenda.", "Do not combine rust remover with bleach, ammonia, or other cleaners. Rinse the treated area thoroughly, then wash with detergent according to the garment care label."],
+      ["Busca la fuente si las manchas reaparecen", "Investigate the source if stains keep returning", "Si varias prendas aparecen con puntos marrones, puede haber hierro en el agua, corrosión en una pieza de la lavadora o contacto con metal oxidado. Resolver el origen evita repetir tratamientos que pueden desgastar la ropa.", "If several garments develop brown spots, iron in the water, corrosion in part of the washer, or contact with rusty metal may be involved. Fixing the source prevents repeated treatments that can wear fabric." ]
+    ],
+    "faq_es": ["¿Por qué no conviene usar lejía con cloro sobre una mancha de óxido?", "¿Puedo mezclar un quitamanchas de óxido con otros limpiadores?", "¿Qué significa que varias prendas salgan con manchas marrones nuevas?"],
+    "faq_en": ["Why shouldn't chlorine bleach be used on a rust stain?", "Can rust remover be mixed with other cleaners?", "What does it mean if several garments develop new brown stains?"],
+    "faq_sections": [0, 2, 3]
+  },
+  {
+    "n": 634,
+    "es_title": "Cómo lavar seda en casa",
+    "en_title": "How to Wash Silk at Home",
+    "family": "laundry",
+    "kind": "how-to",
+    "source": "fabric-care",
+    "intro_es": "Algunas prendas de seda pueden lavarse en casa y otras están etiquetadas solo para limpieza profesional. Antes de mojarla, manda la etiqueta de cuidado: si permite lavado, trabaja con agua fresca, poco movimiento y un detergente suave, evitando retorcer o secar con calor directo.",
+    "intro_en": "Some silk garments can be washed at home, while others are labeled for professional cleaning only. Let the care label decide: if washing is allowed, use cool water, gentle movement, and a mild detergent, and avoid wringing or direct heat while drying.",
+    "sections": [
+      ["Comprueba etiqueta, adornos y solidez del color", "Check the care label, trims, and colorfastness", "Una seda con estructura, forro, bordados o tinte inestable puede necesitar limpieza profesional aunque la fibra parezca lavable. Si el color te preocupa, prueba una zona interior con un paño húmedo antes de sumergirla.", "A structured silk garment, lining, embellishment, or unstable dye may require professional cleaning even when the fiber itself seems washable. If color transfer is a concern, test an inside area with a damp cloth before immersion."],
+      ["Lava a mano con movimientos suaves si la etiqueta lo permite", "Hand wash gently when the label permits it", "Usa agua fría o ligeramente templada y una pequeña cantidad de detergente apto para delicados. Mueve la prenda suavemente durante poco tiempo; no frotes zonas entre sí ni la dejes horas en remojo.", "Use cool or slightly lukewarm water and a small amount of detergent intended for delicates. Move the garment gently for a short time; do not scrub sections together or leave it soaking for hours."],
+      ["Aclara sin retorcer", "Rinse without wringing", "Cambia el agua hasta que salga limpia y presiona con suavidad para expulsar líquido. Para retirar más agua, enrolla la prenda en una toalla limpia; retorcer puede marcar o deformar la seda mojada.", "Change the water until it runs clear and press gently to release liquid. To remove more water, roll the garment in a clean towel; wringing can crease or distort wet silk."],
+      ["Seca lejos de sol intenso y calor", "Dry away from strong sun and heat", "Da forma a la prenda y sécala como indique la etiqueta, normalmente en plano o colgada con buen soporte. Evita radiadores, secadoras calientes y sol fuerte, que pueden encoger, decolorar o debilitar el tejido.", "Reshape the garment and dry it as the label directs, often flat or on a supportive hanger. Avoid radiators, hot dryers, and strong sun, which can shrink, fade, or weaken the fabric." ]
+    ],
+    "faq_es": ["¿Cómo sé si una prenda de seda se puede lavar en casa?", "¿Se puede retorcer la seda para quitarle agua?", "¿Conviene secar seda al sol para que seque rápido?"],
+    "faq_en": ["How can I tell whether a silk garment can be washed at home?", "Can silk be wrung out to remove water?", "Should silk be dried in direct sun to speed drying?"],
+    "faq_sections": [0, 2, 3]
+  },
+  {
+    "n": 636,
+    "es_title": "Cómo evitar que salgan bolitas en la ropa",
+    "en_title": "How to Prevent Pilling on Clothes",
+    "family": "laundry",
+    "kind": "how-to",
+    "source": "fabric-care",
+    "intro_es": "Las bolitas aparecen cuando fibras sueltas se rozan, se enredan y quedan adheridas a la superficie del tejido. No siempre pueden evitarse por completo, pero reducir fricción, elegir un ciclo adecuado y controlar el calor puede ralentizar mucho su aparición, especialmente en prendas de punto y mezclas sintéticas.",
+    "intro_en": "Pilling happens when loose fibers rub, tangle, and remain attached to the fabric surface. It cannot always be prevented completely, but reducing friction, choosing an appropriate cycle, and limiting unnecessary heat can slow it significantly, especially on knits and synthetic blends.",
+    "sections": [
+      ["Separa prendas ásperas de tejidos que forman bolitas", "Separate abrasive items from pill-prone fabrics", "Vaqueros, cierres, velcros y prendas pesadas aumentan el roce. Lava jerséis, punto fino y tejidos delicados con cargas de textura similar y cierra cremalleras o ganchos que puedan enganchar fibras.", "Jeans, fasteners, hook-and-loop strips, and heavy garments increase abrasion. Wash sweaters, fine knits, and delicate fabrics with similar textures, and close zippers or hooks that could catch fibers."],
+      ["Da la vuelta a las prendas sensibles", "Turn pill-prone garments inside out", "Lavar del revés reduce parte del roce visible sobre la cara exterior. También protege estampados y superficies cepilladas, aunque no elimina el desgaste que ocurre dentro de la estructura del tejido.", "Washing inside out reduces some visible abrasion on the outer surface. It can also protect prints and brushed finishes, although it cannot eliminate wear occurring within the fabric structure."],
+      ["Elige un ciclo que no castigue más de lo necesario", "Use no more agitation than the fabric needs", "Sigue la etiqueta y usa ciclo suave cuando corresponda. Sobrecargar el tambor no protege la ropa: puede aumentar el roce y además impedir que agua y detergente circulen bien.", "Follow the care label and use a gentle cycle when appropriate. Overloading does not protect clothes; it can increase rubbing and also prevent water and detergent from circulating properly."],
+      ["Reduce calor y tiempo de secado innecesarios", "Limit unnecessary dryer heat and time", "El calor alto y el movimiento prolongado pueden acelerar el desgaste de ciertas fibras. Retira la ropa cuando esté seca y usa secado suave o al aire cuando la etiqueta y el tejido lo aconsejen.", "High heat and prolonged tumbling can speed wear in some fibers. Remove clothing when dry and use low heat or air drying when the care label and fabric call for it." ]
+    ],
+    "faq_es": ["¿Qué prendas conviene separar para reducir las bolitas?", "¿Lavar la ropa del revés ayuda contra el pilling?", "¿La secadora puede favorecer que salgan bolitas?"],
+    "faq_en": ["Which garments should be separated to reduce pilling?", "Does washing clothes inside out help prevent pilling?", "Can the dryer contribute to pilling?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 637,
+    "es_title": "Cómo quitar las bolitas de la ropa",
+    "en_title": "How to Remove Pilling from Clothes",
+    "family": "laundry",
+    "kind": "how-to",
+    "source": "fabric-care",
+    "intro_es": "Las bolitas pueden retirarse sin arrancar fibras sanas si la prenda está extendida y se usa una herramienta adecuada. Una afeitadora de tejidos o peine específico suele ser más controlable que tirar con los dedos; la prioridad es trabajar poco a poco y detenerse si la tela empieza a adelgazar.",
+    "intro_en": "Pills can be removed without pulling healthy fibers when the garment is laid flat and the right tool is used. A fabric shaver or purpose-made comb is usually more controlled than picking by hand; work gradually and stop if the fabric begins to thin.",
+    "sections": [
+      ["Extiende la prenda y tensa la superficie suavemente", "Lay the garment flat and smooth the surface", "Trabaja sobre una mesa limpia con la tela seca y sin arrugas. No estires con fuerza un punto fino, porque una tensión excesiva puede deformar la prenda mientras cortas las bolitas.", "Work on a clean table with the fabric dry and smooth. Do not pull a fine knit tight, because excessive tension can distort the garment while pills are being cut away."],
+      ["Usa una afeitadora o peine diseñado para tejidos", "Use a fabric shaver or garment comb", "Pasa la herramienta con poca presión y en zonas pequeñas. En tejidos delicados, prueba primero en un área discreta para comprobar que no engancha bucles ni corta el pelo superficial de forma desigual.", "Move the tool with light pressure over small areas. On delicate fabrics, test an inconspicuous spot first to make sure it does not snag loops or cut surface fibers unevenly."],
+      ["No arranques bolitas con los dedos", "Do not pull pills off with your fingers", "Tirar puede extraer fibras que todavía forman parte del tejido y dejar hilos largos o zonas debilitadas. Si una bolita no sale con una herramienta segura, córtala con mucho control sin levantar la tela.", "Pulling can draw out fibers that still belong to the fabric and leave long threads or weakened spots. If a pill does not release with a safe tool, trim it carefully without lifting the fabric."],
+      ["Detén el proceso si la superficie se vuelve fina", "Stop if the surface begins to look thin", "Cada afeitado elimina algo de fibra. Si ves transparencia, zonas lisas o puntos abiertos, no sigas intentando dejar la prenda como nueva; en ese momento el problema ya es desgaste del tejido, no solo bolitas superficiales.", "Every shaving pass removes some fiber. If you see thinning, shiny patches, or open spots, stop trying to make the garment look new; the issue has become fabric wear rather than surface pilling alone." ]
+    ],
+    "faq_es": ["¿Qué herramienta es más segura para quitar bolitas?", "¿Por qué no conviene arrancar las bolitas con los dedos?", "¿Cuándo debo dejar de usar la afeitadora de tejidos?"],
+    "faq_en": ["What tool is safest for removing pills?", "Why shouldn't pills be pulled off by hand?", "When should I stop using a fabric shaver?"],
+    "faq_sections": [1, 2, 3]
+  },
+  {
+    "n": 638,
+    "es_title": "Cómo arreglar una puerta de armario que no cierra",
+    "en_title": "How to Fix a Cabinet Door That Won't Close",
+    "family": "cabinets",
+    "kind": "diagnostics-how-to",
+    "source": "",
+    "intro_es": "Una puerta de armario que no cierra puede estar desalineada, rozar con otra puerta, tener una bisagra floja o quedar bloqueada por un estante, cajón o cierre. Antes de mover tornillos, mira exactamente dónde se detiene: esa pista evita ajustar una bisagra que en realidad está bien.",
+    "intro_en": "A cabinet door that will not close may be misaligned, rubbing another door, have a loose hinge, or be blocked by a shelf, drawer, or catch. Before turning adjustment screws, watch exactly where it stops; that clue prevents changing a hinge that was already set correctly.",
+    "sections": [
+      ["Comprueba si algo bloquea físicamente la puerta", "Check for a physical obstruction first", "Retira objetos que sobresalgan y confirma que cajones y estantes estén completamente asentados. Si el problema apareció después de reorganizar el armario, una obstrucción es más probable que una bisagra desajustada.", "Remove items that protrude and make sure drawers and shelves are fully seated. If the problem began after reorganizing the cabinet, an obstruction is more likely than a hinge adjustment issue."],
+      ["Aprieta tornillos flojos antes de ajustar geometría", "Tighten loose screws before changing alignment", "Sujeta la puerta para quitar peso de la bisagra y aprieta tornillos que estén claramente flojos sin pasarlos de rosca. Si un tornillo gira sin agarrar, el agujero puede estar dañado y necesita reparación antes de seguir ajustando.", "Support the door to take weight off the hinge and snug any clearly loose screws without stripping them. If a screw spins without tightening, the hole may be damaged and should be repaired before further alignment work."],
+      ["Identifica si roza arriba, abajo o con la puerta vecina", "Identify whether it rubs at the top, bottom, or side", "Las bisagras europeas suelen permitir pequeños ajustes lateral, vertical y de profundidad. Haz un cambio mínimo cada vez y comprueba el cierre, porque mover dos ejes a la vez puede empeorar la alineación.", "European-style hinges often allow small side, height, and depth adjustments. Make one small change at a time and test the door, because changing two directions at once can make alignment worse."],
+      ["Revisa cierre y bisagra si la puerta queda rebotando", "Check the catch and hinge if the door springs back open", "Un imán, pestillo o mecanismo de cierre suave mal colocado puede impedir que la puerta llegue a su posición. Si la bisagra está doblada o el mecanismo tiene holgura interna, sustituir la pieza suele ser más estable que forzar el ajuste.", "A magnet, latch, or soft-close mechanism that is out of position can keep the door from seating. If the hinge is bent or has internal play, replacement is usually more reliable than forcing additional adjustment." ]
+    ],
+    "faq_es": ["¿Qué debo comprobar antes de tocar las bisagras?", "¿Qué significa que un tornillo de la bisagra gire sin apretar?", "¿Cómo conviene ajustar una bisagra regulable?"],
+    "faq_en": ["What should I check before adjusting cabinet hinges?", "What does it mean if a hinge screw spins without tightening?", "How should an adjustable cabinet hinge be tuned?"],
+    "faq_sections": [0, 1, 2]
+  },
+  {
+    "n": 639,
+    "es_title": "Cómo ajustar bisagras de cierre suave",
+    "en_title": "How to Adjust Soft-Close Hinges",
+    "family": "cabinets",
+    "kind": "how-to",
+    "source": "",
+    "intro_es": "Una bisagra de cierre suave puede necesitar dos ajustes distintos: la posición de la puerta y la velocidad o fuerza del amortiguador. Primero deja la puerta alineada y sin roces; después regula el cierre suave si el modelo lo permite. Intentar compensar una puerta torcida con el amortiguador no resuelve la causa.",
+    "intro_en": "A soft-close hinge may need two different adjustments: door alignment and the damping force or speed. First get the door aligned and free of rubbing; then adjust the soft-close feature if the model allows it. Using the damper to compensate for a crooked door does not fix the cause.",
+    "sections": [
+      ["Alinea la puerta antes de tocar el amortiguador", "Align the door before adjusting the damper", "Comprueba separaciones uniformes y que la puerta no roce. Usa los tornillos de ajuste de la bisagra en movimientos pequeños; el cierre suave debe trabajar sobre una puerta que ya se mueve libremente.", "Check that gaps are even and the door does not rub. Use the hinge alignment screws in small increments; the soft-close mechanism should work on a door that already moves freely."],
+      ["Localiza el selector o tornillo específico de cierre suave", "Find the dedicated soft-close control", "Algunos modelos tienen una palanca con varias posiciones y otros un pequeño tornillo; muchos no son regulables. No fuerces una pieza sin identificar: busca la marca o referencia de la bisagra si el control no es evidente.", "Some models use a multi-position lever and others a small screw, while many are not adjustable at all. Do not force an unidentified part; look for the hinge brand or model if the control is not obvious."],
+      ["Ajusta una bisagra cada vez y prueba varias aperturas", "Adjust one hinge at a time and test several cycles", "Una puerta con dos o tres amortiguadores puede cerrar demasiado despacio si todos están al máximo. Cambia una posición, abre completamente y prueba varias veces antes de decidir si hace falta otro ajuste.", "A door with two or three damped hinges can close too slowly if every damper is at maximum. Change one setting, open the door fully, and test several cycles before making another adjustment."],
+      ["Sustituye la bisagra si pierde aceite, se traba o no amortigua", "Replace a hinge that leaks, binds, or no longer damps", "El mecanismo interno no suele ser reparable en casa. Si una bisagra se queda frenada, tiene holgura excesiva o deja de amortiguar aunque esté bien montada, una pieza compatible nueva evita forzar la puerta y los tornillos del mueble.", "The internal damper is usually not a practical home repair. If a hinge binds, has excessive play, or no longer slows the door despite correct installation, a compatible replacement avoids stressing the door and cabinet screws." ]
+    ],
+    "faq_es": ["¿Se ajusta primero la alineación o el cierre suave?", "¿Todas las bisagras de cierre suave tienen regulación?", "¿Qué señales indican que la bisagra debe sustituirse?"],
+    "faq_en": ["Should alignment or the soft-close setting be adjusted first?", "Are all soft-close hinges adjustable?", "What signs indicate a soft-close hinge should be replaced?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 640,
+    "es_title": "Cómo arreglar una puerta de armario descolgada",
+    "en_title": "How to Fix a Sagging Cabinet Door",
+    "family": "cabinets",
+    "kind": "how-to",
+    "source": "",
+    "intro_es": "Una puerta de armario descolgada suele mostrar una separación desigual y rozar en la esquina opuesta a las bisagras. A menudo basta con recuperar fijación y reajustar, pero si el tablero donde atornilla la bisagra está deshecho, seguir apretando solo agranda el daño.",
+    "intro_en": "A sagging cabinet door usually shows an uneven gap and rubs at the corner opposite the hinges. Often the fix is to restore secure fastening and realign it, but if the cabinet material around the hinge screws is damaged, repeated tightening only makes the problem worse.",
+    "sections": [
+      ["Sujeta la puerta y comprueba qué bisagra ha cedido", "Support the door and identify which hinge has moved", "Con la puerta abierta, levántala suavemente hasta su posición y observa si alguna placa o tornillo se desplaza. No dejes que el peso de una puerta pesada cuelgue de una sola bisagra mientras trabajas.", "With the door open, lift it gently toward its correct position and watch for a mounting plate or screw that moves. Do not let a heavy door hang from one hinge while you work."],
+      ["Aprieta fijaciones firmes sin pasar la rosca", "Tighten sound fasteners without stripping them", "Si los tornillos todavía agarran bien, apriétalos con control y vuelve a comprobar la altura. Un tornillo que ya no muerde necesita reparar el agujero o usar la solución de fijación adecuada al material, no un tornillo cada vez más grande a ciegas.", "If the screws still grip securely, snug them and recheck door height. A screw that no longer bites needs a proper hole repair or a fastening solution suited to the cabinet material, not an increasingly oversized screw chosen blindly."],
+      ["Reajusta altura y lateral después de recuperar la fijación", "Realign height and side position after restoring the mount", "En bisagras regulables, corrige primero la caída y después iguala la separación con las puertas vecinas. Haz cambios pequeños y reparte el ajuste entre bisagra superior e inferior cuando corresponda.", "On adjustable hinges, correct the sag first and then even the gap with neighboring doors. Make small changes and share the adjustment between upper and lower hinges when appropriate."],
+      ["Revisa deformación si vuelve a descolgarse", "Check for warping if the sag keeps returning", "Una puerta hinchada por humedad, muy pesada o deformada puede volver a caer aunque los tornillos estén firmes. Si el panel o el lateral del mueble están dañados, reparar la estructura es más importante que seguir ajustando la bisagra.", "A moisture-swollen, unusually heavy, or warped door can sag again even with tight screws. If the door panel or cabinet side is damaged, repairing the structure matters more than continuing to adjust the hinge." ]
+    ],
+    "faq_es": ["¿Cómo sé qué bisagra está provocando que la puerta caiga?", "¿Qué hago si el tornillo de la bisagra ya no agarra?", "¿Por qué una puerta puede volver a descolgarse después de ajustarla?"],
+    "faq_en": ["How can I tell which hinge is causing the door to sag?", "What should I do if a hinge screw no longer grips?", "Why can a cabinet door sag again after adjustment?"],
+    "faq_sections": [0, 1, 3]
+  }
+]
