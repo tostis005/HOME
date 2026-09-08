@@ -35,10 +35,14 @@ jobs:
       - name: Apply final natural-language polish
         run: python content/tools/final-polish-231-310.py
 
+      - name: Refine search intent and accessibility metadata
+        run: python content/tools/refine-metadata-231-310.py
+
       - name: Validate polished output
         run: |
           python content/tools/validate-output-231-310.py
           python content/tools/scan-final-language-231-310.py
+          python content/tools/scan-metadata-231-310.py
 
       - name: Commit generated articles and report
         run: |
@@ -53,3 +57,4 @@ jobs:
         run: |
           python content/tools/validate-output-231-310.py
           python content/tools/scan-final-language-231-310.py
+          python content/tools/scan-metadata-231-310.py
