@@ -18,9 +18,13 @@ for lang in ('es','en'):
         if word_count(o.get('content_html',''))<145: errs.append(f'{lang} #{n}: content below depth floor')
         if o.get('content_html','').count('<h2>')!=4: errs.append(f'{lang} #{n}: expected 4 H2')
         if len(o.get('faq',[]))!=3: errs.append(f'{lang} #{n}: expected 3 FAQ')
-        seo=o.get('seo',{})
+        seo=o.get('seo',{}); intent=seo.get('search_intent','')
         if not all(seo.get(k) for k in ('title','meta_description','search_intent')): errs.append(f'{lang} #{n}: incomplete SEO')
         if '…' in seo.get('title','') or seo.get('title','').endswith('...'): errs.append(f'{lang} #{n}: truncated SEO title')
+        if lang=='es' and ('para cómo ' in intent.lower() or intent.startswith('Seguir un método práctico para ')):
+            errs.append(f'ES #{n}: artificial search-intent syntax: {intent}')
+        if lang=='en' and (intent.startswith('Use a practical method for ') or re.search(r'\bfor (?:how to|how often should|where should|which way should|can you)\b',intent,re.I)):
+            errs.append(f'EN #{n}: artificial search-intent syntax: {intent}')
         raw=json.dumps(o,ensure_ascii=False)
         for bad in ('HOME prioriza','HOME prioritizes','En este artículo hemos decidido'):
             if bad in raw: errs.append(f'{lang} #{n}: editorial metadiscourse')
@@ -44,6 +48,9 @@ for n,terms in risk.items():
     o=by.get(('es',n)); raw=(o.get('excerpt','')+' '+o.get('content_html','')).lower() if o else ''
     for t in terms:
         if t not in raw: errs.append(f'ES #{n}: safety concept missing: {t}')
+report=(ART/'QUALITY-AUDIT-311-390.md').read_text(encoding='utf-8')
+if '## Final FAQ editorial pass' not in report: errs.append('audit report missing final FAQ pass')
+if '## Final metadata-language pass' not in report: errs.append('audit report missing final metadata-language pass')
 print(f'Full final-state audit: articles={len(by)} errors={len(errs)}')
 for e in errs: print('ERROR:',e)
 if errs: raise SystemExit(1)
