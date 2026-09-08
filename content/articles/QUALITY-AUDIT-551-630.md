@@ -32,9 +32,9 @@
 
 ## Sources
 
-- Topic pairs whose source key resolved to a structured reference: **67**.
-- Topic pairs intentionally published without a structured source because the editorial source field was blank or unmapped: **12**.
-- Unmapped non-empty source keys observed: **gas, water_softener**. These articles retain an empty `sources` array rather than inventing a citation.
+- Topic pairs whose source key resolved to a structured reference: **70**.
+- Topic pairs intentionally published without a structured source because the editorial source field was blank or unmapped: **9**.
+- No unmapped non-empty source keys were observed.
 
 ## Final editorial safeguards
 
