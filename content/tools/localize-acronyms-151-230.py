@@ -14,6 +14,10 @@ FIXES={
    ('automáticos y GFCI. Luces','automáticos y protección diferencial. Luces'),
    ('<h2>Busca un GFCI disparado en circuitos de zonas húmedas</h2><p>Un dispositivo GFCI puede desconectar','<h2>Busca un interruptor de circuito por falla a tierra (GFCI) disparado</h2><p>En instalaciones de Estados Unidos y Canadá, un GFCI puede desconectar')
   ],
+ 230:[
+   ('Un colchón “flippable” o de doble cara','Un colchón de doble cara (a veces etiquetado como “flippable” en modelos norteamericanos)'),
+   ('<h2>No voltees un pillow-top unilateral</h2>','<h2>No voltees un colchón con acolchado superior de una sola cara</h2>')
+  ],
 }
 
 for n,repls in FIXES.items():
@@ -27,4 +31,4 @@ for n,repls in FIXES.items():
         elif new not in raw:
             raise SystemExit(f'Expected phrase not found in ES #{n}: {old}')
     if changed:
-        p.write_text(raw+'\n',encoding='utf-8'); print(f'Localized acronyms ES #{n}')
+        p.write_text(raw+'\n',encoding='utf-8'); print(f'Localized Spanish terminology #{n}')
