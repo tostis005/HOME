@@ -7,11 +7,8 @@
 - JSON checked: **154 / 154** (77 ES + 77 EN).
 - Structural/editorial validation: **PASS**.
 - Explicit FAQ validation: **PASS 462 / 462**.
-- Hand-reviewed FAQ answer-section alignment: **PASS 462 / 462**.
-- Final metadata/localization regression validation: **PASS**.
 - Blocking errors: **0**.
 - Non-blocking warnings: **0**.
-- Dedicated final audit run before cleanup: **34244196775**.
 
 ## Canonical duplicate exceptions
 
@@ -25,9 +22,8 @@ These numbers remain documented in the canonical inventory and in this audit; th
 
 - Spanish and English share article number and translation group while using independently localized prose.
 - FAQ questions are explicit editorial inputs and each answer is grounded in the article body.
-- Every one of the **462 FAQ** was reviewed against the exact article section supplying its answer. Manual review caught and corrected real mismatches in #484, #489, #498, #500, #512, #514, #515, #520, #531 and #542 before release.
 - Electrical, gas, appliance, food, wildlife and water-quality pages include concrete stop conditions and escalation boundaries.
-- Search-intent metadata is checked for natural ES/EN syntax, including regressions such as `Identify why are…`, `Decide whether can…` and `para cómo…`.
+- Search-intent metadata is checked for natural ES/EN syntax.
 - Close topics are separated by reader decision and next action rather than superficial wording.
 
 ## Quantitative profile
@@ -61,9 +57,9 @@ These numbers remain documented in the canonical inventory and in this audit; th
 - #534/#535: what boiling does to hardness vs whether a whole-home softener is warranted.
 - #544/#545/#546: brown sediment/rust vs yellow iron/organics vs white microbubbles.
 
-## Manual review
+## Manual review priorities
 
-Both languages were reviewed for water quality, wildlife and pests, smoke and odor, electrical and gas safety, food safety, heating/cooling, appliances, laundry and cleaning. Reject any page that encourages live electrical work, repeated breaker resets, unsafe gas troubleshooting, tasting questionable food, opening refrigerant circuits, sealing active wildlife nests, or treating unknown water contamination by appearance alone.
+Read both languages for #471–482, #488–490, #501, #507–530, #534–550. Reject any page that encourages live electrical work, repeated breaker resets, unsafe gas troubleshooting, tasting questionable food, opening refrigerant circuits, sealing active wildlife nests, or treating unknown water contamination by appearance alone.
 
 ## Warnings
 
