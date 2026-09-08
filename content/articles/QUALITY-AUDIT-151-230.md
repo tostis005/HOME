@@ -21,7 +21,7 @@
 | 151–170 | 235.8 | 5.0 | 3.0 | 1.1 | 232.5 | 5.0 | 3.0 | 1.1 |
 | 171–190 | 207.5 | 5.0 | 3.0 | 1.0 | 203.4 | 5.0 | 3.0 | 1.0 |
 | 191–210 | 201.5 | 5.0 | 3.0 | 1.4 | 199.4 | 5.0 | 3.0 | 1.4 |
-| 211–230 | 198.2 | 4.6 | 3.0 | 1.1 | 195.2 | 4.7 | 3.0 | 1.1 |
+| 211–230 | 198.8 | 4.6 | 3.0 | 1.1 | 195.2 | 4.7 | 3.0 | 1.1 |
 
 ## Cannibalization / overlap review
 
@@ -50,8 +50,8 @@ Similarity numbers are diagnostics only. The editorial decision is based on whet
 | #223/#144 | eggs left out vs egg refrigerator storage | 0.022 | 0.181 | 0.015 | 0.250 |
 | #223/#145 | eggs left out vs bad eggs | 0.030 | 0.150 | 0.032 | 0.192 |
 | #226/#227 | dead outlet vs partial house power loss | 0.095 | 0.172 | 0.014 | 0.227 |
-| #230/#158 | flip mattress vs rotate mattress | 0.043 | 0.153 | 0.022 | 0.207 |
-| #230/#95 | flip mattress vs replace mattress | 0.037 | 0.122 | 0.005 | 0.152 |
+| #230/#158 | flip mattress vs rotate mattress | 0.055 | 0.155 | 0.022 | 0.207 |
+| #230/#95 | flip mattress vs replace mattress | 0.037 | 0.129 | 0.005 | 0.152 |
 
 ### Editorial overlap conclusions
 
