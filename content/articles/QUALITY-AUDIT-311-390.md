@@ -101,3 +101,9 @@ Reject safety-sensitive pages if they encourage flame on frozen pipes, live elec
 - All **480 FAQ questions** were rewritten as topic-specific reader questions after PR review exposed grammatical and template-like transformations.
 - Existing validated FAQ answers were preserved in their original slots so each question remains tied to the supporting article section.
 - Final FAQ-map validation checks exact ES/EN coverage, uniqueness, grammar-pattern regressions and committed-state consistency.
+
+
+## Final metadata-language pass
+
+- Search-intent metadata was normalized so how-to and maintenance pages use natural ES/EN syntax rather than constructions such as `para cómo...` or `for how to...`.
+- Final manual language review also normalized the Spanish cheese wording in #387.
