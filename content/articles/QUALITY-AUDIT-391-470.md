@@ -5,6 +5,7 @@
 - JSON checked: **160 / 160** (80 ES + 80 EN expected).
 - Structural/editorial validation: **PASS**.
 - Explicit FAQ validation: **PASS 480 / 480**.
+- Hand-reviewed FAQ answer-section alignment: **PASS 480 / 480**.
 - Blocking errors: **0**.
 - Non-blocking warnings: **0**.
 
@@ -13,6 +14,7 @@
 - Canonical topics 391–470 preserved exactly from `content/topics/`.
 - Spanish and English share article number and translation group while using independently written prose.
 - FAQ questions are explicit editorial inputs, never transformed automatically from H2 headings.
+- Every FAQ answer was checked against a hand-reviewed section map so the answer responds to the actual question rather than merely appearing somewhere in the article.
 - Safety-sensitive roof, plumbing, electrical, appliance, chemical and food topics include stop conditions and professional boundaries.
 - Search-intent metadata is checked for natural ES/EN syntax and prior template regressions.
 - Close topics are reviewed by reader decision and next action, not word similarity alone.
