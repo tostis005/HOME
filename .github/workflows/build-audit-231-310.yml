@@ -23,6 +23,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Deepen compact article variants
+        run: python content/tools/uplift-231-310.py
+
       - name: Generate and validate articles
         run: python content/tools/build-231-310.py
 
@@ -36,4 +39,6 @@ jobs:
           git push origin HEAD:quality-audit-231-310
 
       - name: Re-run validator on committed state
-        run: python content/tools/build-231-310.py
+        run: |
+          python content/tools/uplift-231-310.py
+          python content/tools/build-231-310.py
