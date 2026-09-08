@@ -28,13 +28,19 @@ jobs:
         run: sed -i "s/'desenchúfalo'/'desenchufa'/g" content/tools/generate-validate-471-550.py
       - name: Generate and validate article JSON
         run: python content/tools/generate-validate-471-550.py
+      - name: Polish final metadata
+        run: python content/tools/polish-final-471-550.py
+      - name: Validate final published state
+        run: python content/tools/validate-final-471-550.py
       - name: Commit generated articles and report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content/articles/es content/articles/en content/articles/QUALITY-AUDIT-471-550.md
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Generate and validate HOME articles 471-550 [skip ci]"
+          git commit -m "Finalize and validate HOME articles 471-550 [skip ci]"
           git push origin HEAD:quality-audit-471-550
       - name: Revalidate committed article state
-        run: python content/tools/generate-validate-471-550.py --validate-only --no-report
+        run: |
+          python content/tools/generate-validate-471-550.py --validate-only --no-report
+          python content/tools/validate-final-471-550.py
