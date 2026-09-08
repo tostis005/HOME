@@ -1,0 +1,192 @@
+[
+  {
+    "n": 581,
+    "es_title": "¿Por qué mi lavadora hace mucho ruido? Causas comunes y soluciones",
+    "en_title": "Why Is My Washing Machine So Loud? Common Causes and Fixes",
+    "family": "appliances",
+    "kind": "diagnostics",
+    "source": "cleaning",
+    "intro_es": "Una lavadora puede sonar mucho por una carga desequilibrada, patas mal niveladas, objetos sueltos, una bomba obstruida o componentes mecánicos desgastados. El momento del ruido —llenado, lavado, desagüe o centrifugado— ayuda a separar una corrección sencilla de una avería que necesita servicio.",
+    "intro_en": "A washer can become very loud because of an unbalanced load, poor leveling, loose objects, a blocked pump, or worn mechanical parts. When the noise occurs—fill, wash, drain, or spin—helps separate a simple correction from a fault that needs service.",
+    "sections": [
+      ["Si golpea al centrifugar, revisa carga y nivelación", "If it bangs during spin, check the load and leveling", "Pausa el ciclo, distribuye prendas pesadas y comprueba que las cuatro patas apoyen firmemente. Una sola manta o alfombra puede concentrar peso en un lado; no sigas dejando que la máquina se desplace por el suelo.", "Pause the cycle, redistribute heavy items, and make sure all four feet are firmly supported. A single blanket or rug can put most of the weight on one side; do not keep letting the machine walk across the floor."],
+      ["Traqueteo metálico puede venir de objetos sueltos", "Metallic rattling can come from loose objects", "Monedas, cierres, hebillas o pequeños objetos pueden golpear tambor, filtro o bomba. Revisa bolsillos y las zonas de acceso previstas por el fabricante antes de asumir que hay un rodamiento dañado.", "Coins, zippers, buckles, or small objects can strike the drum, filter, or pump. Check pockets and manufacturer-approved access points before assuming a bearing has failed."],
+      ["Ruido al desaguar orienta hacia bomba o filtro", "Noise during draining points toward the pump or filter", "Un zumbido fuerte, raspado o desagüe lento al mismo tiempo puede indicar un objeto en el filtro accesible o la bomba. Desenchufa antes de abrir un filtro de servicio y prepara agua residual según el manual.", "A loud hum, scraping, or slow draining at the same time can indicate debris in an accessible filter or the pump. Unplug before opening a service filter and prepare for residual water according to the manual."],
+      ["Rugido, chirrido o olor a quemado requieren parar", "Roaring, grinding, or a burning smell are stop conditions", "Un ruido grave que aumenta con velocidad, rozamiento persistente, humo u olor eléctrico puede indicar rodamiento, motor, correa o pieza interna. Detén la máquina y solicita diagnóstico; no retires paneles con el equipo conectado.", "A deep roar that rises with speed, persistent grinding, smoke, or electrical odor can indicate a bearing, motor, belt, or internal component. Stop the washer and arrange diagnosis; do not remove panels while the appliance is connected."]
+    ],
+    "faq_es": ["¿Qué debo revisar si la lavadora golpea durante el centrifugado?", "¿Qué puede causar un traqueteo metálico dentro de la lavadora?", "¿Qué ruidos indican que conviene parar la máquina?"],
+    "faq_en": ["What should I check if the washer bangs during spin?", "What can cause metallic rattling inside a washer?", "Which washer noises mean the machine should be stopped?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 582,
+    "es_title": "¿Por qué mi lavadora deja la ropa empapada? Causas comunes y soluciones",
+    "en_title": "Why Does My Washer Leave Clothes Soaking Wet? Common Causes and Fixes",
+    "family": "appliances",
+    "kind": "diagnostics",
+    "source": "cleaning",
+    "intro_es": "Ropa empapada al final del ciclo significa que la lavadora no centrifugó con eficacia o no eliminó el agua correctamente. Una carga desequilibrada, exceso de prendas, filtro o manguera de desagüe obstruidos y fallos de bomba o giro son causas comunes; conviene comprobar primero si queda agua visible en el tambor.",
+    "intro_en": "Soaking-wet clothes at the end of a cycle mean the washer did not spin effectively or did not remove water correctly. An unbalanced load, overloading, a blocked drain filter or hose, and pump or drive faults are common causes; first check whether visible water remains in the drum.",
+    "sections": [
+      ["Si queda agua en el tambor, empieza por el desagüe", "If water remains in the drum, start with drainage", "Selecciona un ciclo de desagüe o centrifugado solo una vez y escucha si la bomba funciona. Revisa manguera doblada y filtro accesible con la máquina desenchufada; no sigas reiniciando si la bomba zumba sin sacar agua.", "Run a drain or spin cycle once and listen for pump operation. Check for a kinked hose and an accessible filter with the washer unplugged; do not keep restarting if the pump hums without moving water."],
+      ["Si no queda agua, revisa equilibrio y tamaño de carga", "If the drum is empty, check balance and load size", "Una sola prenda pesada o un tambor demasiado lleno puede hacer que el control reduzca o cancele centrifugado. Redistribuye la carga y prueba con una cantidad normal, no añadas más prendas para compensar.", "A single heavy item or an overfilled drum can cause the control to reduce or cancel spin speed. Redistribute the load and test with a normal amount rather than adding more items to compensate."],
+      ["Exceso de espuma también puede limitar el centrifugado", "Excess suds can also interfere with spinning", "Demasiado detergente o un producto no adecuado para la máquina puede mantener espuma y provocar aclarados adicionales. Ajusta la dosis a carga, dureza del agua y concentración; no añadas suavizante para intentar cortar la espuma.", "Too much detergent or the wrong product for the washer can leave excessive suds and trigger extra rinsing. Adjust the dose for load size, water hardness, and concentration; do not add fabric softener in an attempt to break the suds."],
+      ["Si el tambor no alcanza velocidad, necesita diagnóstico", "If the drum cannot reach spin speed, it needs diagnosis", "Un motor, correa, sensor, bloqueo de puerta o conjunto de giro defectuoso puede impedir centrifugado aunque el agua salga. Si la puerta bloquea correctamente pero el problema persiste con carga normal, solicita servicio sin abrir paneles energizados.", "A motor, belt, sensor, door lock, or drive fault can prevent spinning even when water drains. If the door locks normally but the problem persists with a normal load, arrange service rather than opening energized panels."]
+    ],
+    "faq_es": ["¿Qué debo revisar primero si queda agua dentro de la lavadora?", "¿Puede una carga desequilibrada dejar la ropa empapada?", "¿Qué significa que la lavadora desagüe pero no centrifugue bien?"],
+    "faq_en": ["What should I check first if water remains in the washer?", "Can an unbalanced load leave clothes soaking wet?", "What does it mean if the washer drains but still will not spin properly?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 583,
+    "es_title": "¿Por qué mi secadora no arranca? Causas comunes y soluciones",
+    "en_title": "Why Won't My Dryer Start? Common Causes and Fixes",
+    "family": "appliances",
+    "kind": "safety-diagnostics",
+    "source": "electrical",
+    "intro_es": "Una secadora que no arranca puede tener la puerta sin detectar, un ajuste que impide inicio, falta de alimentación, un automático disparado o un componente interno de seguridad abierto. Empieza por controles externos; no hagas pruebas con tensión ni puentes interruptores térmicos o de puerta.",
+    "intro_en": "A dryer that will not start may have an unrecognized door, a setting that prevents starting, loss of power, a tripped breaker, or an open internal safety component. Start with external checks; do not perform live-voltage tests or bypass thermal or door switches.",
+    "sections": [
+      ["Confirma puerta, botón de inicio y ajustes", "Confirm the door, start control, and settings", "Cierra la puerta hasta oír o sentir el enganche y revisa bloqueo infantil, inicio diferido y selección de ciclo. Algunos modelos requieren mantener pulsado Inicio varios segundos; usa el manual antes de asumir una avería.", "Close the door until the latch engages and check child lock, delayed start, and cycle selection. Some models require holding Start for several seconds; use the manual before assuming a fault."],
+      ["Comprueba alimentación desde fuera", "Check power from outside the appliance", "Verifica que el enchufe esté firme y que el circuito no haya saltado. En secadoras eléctricas de alta potencia puede haber un interruptor bipolar; rearma una sola vez desde apagado completo y no sigas si vuelve a dispararse.", "Make sure the plug is secure and the circuit has not tripped. High-power electric dryers may use a double-pole breaker; reset it only once from fully off and do not keep resetting it if it trips again."],
+      ["Una puerta que no activa el seguro puede impedir arranque", "A door that does not engage the switch can prevent starting", "Si la puerta no cierra, la pestaña está rota o el equipo no detecta el cierre, limpia la zona y revisa piezas visibles. No mantengas pulsado ni puentes el interruptor de puerta para hacer funcionar la máquina.", "If the door will not latch, the striker is broken, or the appliance does not detect closure, clean the area and inspect visible parts. Do not hold or bypass the door switch to make the dryer run."],
+      ["Fusible térmico o fallo interno requiere reparar la causa", "A thermal fuse or internal fault requires fixing the cause", "Un fusible térmico puede abrirse por sobrecalentamiento debido a flujo de aire deficiente u otra avería. Sustituirlo sin revisar conducto, filtro y causa de temperatura puede repetir el fallo; el diagnóstico interno corresponde a servicio con alimentación desconectada.", "A thermal fuse can open after overheating from poor airflow or another fault. Replacing it without checking the vent, lint filter, and overheating cause can lead to another failure; internal diagnosis belongs to service work with power isolated."]
+    ],
+    "faq_es": ["¿Qué ajustes pueden impedir que una secadora arranque?", "¿Cuántas veces conviene rearmar un automático que ha saltado?", "¿Por qué no se debe puentear el interruptor de puerta?"],
+    "faq_en": ["Which settings can keep a dryer from starting?", "How many times should a tripped dryer breaker be reset?", "Why shouldn't a dryer door switch be bypassed?"],
+    "faq_sections": [0, 1, 2]
+  },
+  {
+    "n": 584,
+    "es_title": "¿Por qué mi lavavajillas deja los platos mojados? Causas comunes y soluciones",
+    "en_title": "Why Does My Dishwasher Leave Dishes Wet? Common Causes and Fixes",
+    "family": "appliances",
+    "kind": "diagnostics",
+    "source": "cleaning",
+    "intro_es": "Platos mojados al terminar no siempre significan que el lavavajillas esté averiado. Plástico que no retiene calor, falta de abrillantador, una carga que acumula agua, un ciclo sin secado o un problema real del sistema de calentamiento pueden producir resultados parecidos.",
+    "intro_en": "Wet dishes at the end of a cycle do not always mean the dishwasher has failed. Plastic that does not retain heat, low rinse aid, loading that traps water, an air-dry cycle, or a real heating-system problem can all produce similar results.",
+    "sections": [
+      ["Comprueba si el problema afecta sobre todo al plástico", "Check whether the problem is mostly plastic", "Cerámica, vidrio y metal retienen más calor y evaporan agua mejor. Recipientes plásticos pueden seguir mojados incluso cuando el secado funciona; inclínalos para que no formen charcos en bases y rebordes.", "Ceramic, glass, and metal hold more heat and evaporate water more effectively. Plastic containers may remain wet even when drying works; angle them so water does not pool on bases and rims."],
+      ["Revisa abrillantador y opción de secado", "Check rinse aid and the selected drying option", "El abrillantador ayuda a que el agua forme una película fina en vez de gotas. Comprueba depósito y ajuste según fabricante y confirma que no hayas elegido ahorro o secado al aire cuando esperabas calor adicional.", "Rinse aid helps water sheet off instead of forming droplets. Check the dispenser and setting according to the manufacturer, and confirm that an energy-saving or air-dry option was not selected when heated drying was expected."],
+      ["Carga los recipientes para que puedan escurrir", "Load items so they can drain", "Tazas, boles y piezas cóncavas necesitan inclinación y separación. Si una pieza toca otra o bloquea el brazo rociador, además de quedar mojada puede no lavarse bien; evita que objetos ligeros se den la vuelta durante el ciclo.", "Cups, bowls, and concave pieces need an angle and spacing that lets water drain. Items touching or blocking a spray arm may also wash poorly; secure lightweight pieces so they do not flip over during the cycle."],
+      ["Falta de calor en todas las cargas puede indicar avería", "A consistent lack of heat can indicate a fault", "Si platos de vidrio y metal también salen fríos y mojados, el agua no parece calentarse o el ciclo tarda de forma anormal, puede haber un elemento, sensor o control defectuoso. No abras paneles energizados para comprobarlo.", "If glass and metal also come out cold and wet, the wash water does not seem to heat, or cycle behavior changes significantly, a heater, sensor, or control fault may be involved. Do not open energized panels to test it."]
+    ],
+    "faq_es": ["¿Por qué los recipientes de plástico quedan más mojados que el vidrio?", "¿Cómo ayuda el abrillantador al secado?", "¿Qué señales sugieren un fallo real del sistema de secado?"],
+    "faq_en": ["Why do plastic dishes stay wetter than glass?", "How does rinse aid help dishwasher drying?", "What signs suggest an actual dishwasher drying fault?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 585,
+    "es_title": "Cómo cargar el lavavajillas correctamente",
+    "en_title": "How to Load a Dishwasher Correctly",
+    "family": "appliances",
+    "kind": "how-to",
+    "source": "cleaning",
+    "intro_es": "Cargar bien el lavavajillas significa dejar que agua y detergente alcancen las superficies sin bloquear brazos rociadores ni acumular agua en recipientes. No hace falta prelavar hasta dejar los platos limpios, pero sí retirar restos grandes y colocar cada pieza de forma estable.",
+    "intro_en": "Loading a dishwasher well means allowing water and detergent to reach surfaces without blocking spray arms or trapping water in containers. Dishes do not need to be prewashed until clean, but large scraps should be removed and every item should be positioned securely.",
+    "sections": [
+      ["Raspa restos grandes sin hacer un prelavado completo", "Scrape off large scraps without fully prewashing", "Retira huesos, cáscaras, papel y restos que puedan obstruir filtro o bomba. Si el fabricante del detergente y lavavajillas no exige aclarado, dejar suciedad normal permite que el ciclo y sensores trabajen como están diseñados.", "Remove bones, peels, paper, and debris that could clog the filter or pump. If the dishwasher and detergent instructions do not require rinsing, normal food soil can remain for the cycle and sensors to handle as designed."],
+      ["Orienta las caras sucias hacia los rociadores", "Face dirty surfaces toward the spray", "Platos y bandejas necesitan separación para que el agua pase entre ellos. Bolos y recipientes van inclinados hacia abajo; no coloques piezas grandes delante del dispensador de detergente ni sobre el recorrido de los brazos.", "Plates and trays need spacing so water can pass between them. Bowls and containers should angle downward; do not place large items in front of the detergent dispenser or in the path of the spray arms."],
+      ["Asegura piezas ligeras y utensilios", "Secure lightweight items and utensils", "Plásticos pequeños pueden volcarse y llenarse de agua o caer sobre un elemento caliente. Colócalos donde el fabricante indique; separa cucharas para que no se aniden y carga cuchillos con una orientación segura para las manos.", "Small plastics can flip over, fill with water, or fall onto a hot component. Put them where the manufacturer specifies; separate spoons so they do not nest and load knives in a way that reduces hand injury risk."],
+      ["Gira los brazos antes de arrancar", "Spin the spray arms before starting", "Con el equipo apagado, gira manualmente los brazos accesibles para confirmar que ninguna bandeja, mango o utensilio los toca. Esta comprobación rápida evita ciclos con zonas sin lavar y golpes repetidos dentro de la cuba.", "With the dishwasher off, manually rotate accessible spray arms to confirm that no tray, handle, or utensil touches them. This quick check prevents poorly washed zones and repeated impacts inside the tub."]
+    ],
+    "faq_es": ["¿Hace falta prelavar los platos antes del lavavajillas?", "¿Hacia dónde deben mirar las caras sucias?", "¿Qué conviene comprobar antes de iniciar el ciclo?"],
+    "faq_en": ["Do dishes need to be prewashed before loading the dishwasher?", "Which way should dirty surfaces face in a dishwasher?", "What should I check before starting the cycle?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 586,
+    "es_title": "Cómo limpiar una placa de vitrocerámica sin rayarla",
+    "en_title": "How to Clean a Glass Cooktop Without Scratching It",
+    "family": "cleaning",
+    "kind": "how-to",
+    "source": "cleaning",
+    "intro_es": "Una placa de vitrocerámica se raya con abrasivos, partículas arrastradas y herramientas mal usadas. La limpieza más segura empieza cuando la superficie está a la temperatura indicada por el fabricante, retira suciedad suelta y usa un limpiador y raspador aprobados sin ejercer presión innecesaria.",
+    "intro_en": "A glass cooktop scratches from abrasives, dragged particles, and incorrectly used tools. The safest cleaning starts when the surface is at the manufacturer-approved temperature, removes loose debris first, and uses approved cleaner and scraper techniques without unnecessary pressure.",
+    "sections": [
+      ["Deja enfriar salvo que el fabricante indique otra cosa", "Let the surface cool unless the manufacturer says otherwise", "La mayoría de limpiezas rutinarias se hacen con la placa fría para evitar quemaduras y que el producto se queme sobre el vidrio. Un derrame de azúcar fundido puede tener instrucciones especiales, así que consulta el manual para ese caso.", "Most routine cleaning is done with the cooktop cool to prevent burns and cleaner from baking onto the glass. Melted sugar spills may have special instructions, so follow the manual for that specific situation."],
+      ["Retira polvo y granos antes de frotar", "Remove grit before wiping", "Sal, arena y restos duros pueden actuar como lija si se arrastran bajo una esponja. Levántalos con un paño húmedo suave y cambia de cara cuando recoja partículas.", "Salt, sand, and hard crumbs can act like sandpaper when dragged under a sponge. Lift them with a soft damp cloth and switch to a clean area of the cloth as particles are collected."],
+      ["Usa limpiador no abrasivo y el raspador en el ángulo indicado", "Use nonabrasive cleaner and an approved scraper angle", "Aplica poca cantidad del producto recomendado. Si hace falta raspador de cuchilla para residuo adherido y el fabricante lo autoriza, mantenlo casi plano y desliza, sin clavar la esquina ni usarlo sobre zonas dañadas.", "Use a small amount of the recommended cleaner. If a blade scraper is approved for stuck residue, hold it at the specified shallow angle and slide it without digging in a corner or using it on damaged glass."],
+      ["Evita estropajo metálico, polvos abrasivos y utensilios sucios", "Avoid steel wool, abrasive powders, and dirty cookware bottoms", "Una vez limpia, seca la placa y limpia también bases de ollas antes de cocinar. Un arañazo profundo, grieta o desconchado no se pule de forma segura en casa; deja de usar la zona dañada y sigue la guía del fabricante.", "After cleaning, dry the cooktop and keep pan bottoms clean before cooking. A deep scratch, crack, or chip cannot be safely polished away at home; stop using a damaged area and follow manufacturer guidance."]
+    ],
+    "faq_es": ["¿Hay que dejar enfriar la vitrocerámica antes de limpiarla?", "¿Por qué conviene retirar granos y suciedad suelta antes de frotar?", "¿Qué productos o herramientas pueden rayar una placa de vidrio?"],
+    "faq_en": ["Should a glass cooktop cool before cleaning?", "Why should loose grit be removed before wiping?", "Which cleaners or tools can scratch a glass cooktop?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 587,
+    "es_title": "¿Por qué mi triturador de basura del fregadero pierde agua? Causas comunes y soluciones",
+    "en_title": "Why Is My Garbage Disposal Leaking? Common Causes and Fixes",
+    "family": "appliances",
+    "kind": "safety-diagnostics",
+    "source": "water",
+    "intro_es": "Un triturador puede perder por la brida superior, la conexión del lavavajillas, el tubo de descarga o la carcasa inferior. Secar el conjunto y observar desde dónde reaparece la primera gota suele localizar la zona; antes de tocar conexiones, corta alimentación del aparato y controla el agua.",
+    "intro_en": "A garbage disposal can leak from the sink flange, dishwasher connection, discharge pipe, or lower housing. Drying the assembly and watching where the first drop returns usually identifies the area; before touching connections, disconnect appliance power and control the water.",
+    "sections": [
+      ["Seca el conjunto y localiza la primera gota", "Dry the unit and find the first returning drop", "Coloca papel o una bandeja debajo, seca conexiones y deja correr poca agua con el triturador apagado. Una gota que empieza arriba puede recorrer la carcasa y parecer una fuga inferior, así que sigue el agua hasta el punto más alto húmedo.", "Place paper or a tray below, dry the connections, and run a small amount of water with the disposal off. A drop beginning at the top can travel down the housing and look like a bottom leak, so trace moisture to the highest wet point."],
+      ["Fuga en la brida aparece alrededor de la unión con el fregadero", "A flange leak appears at the sink connection", "Si el agua nace en el borde donde el triturador se une al fregadero, el sellado o montaje de la brida puede haber fallado. La reparación exige desmontar y volver a sellar correctamente; no añadas silicona por fuera como parche permanente.", "If water starts where the disposal meets the sink, the flange seal or mounting may have failed. A proper repair requires disassembly and resealing; smearing caulk around the outside is not a durable fix."],
+      ["Manguera del lavavajillas y tubo de descarga tienen sellos propios", "The dishwasher hose and discharge pipe have their own seals", "Comprueba abrazadera, junta y tornillos visibles con alimentación desconectada. Una manguera agrietada o junta deformada se sustituye; apretar en exceso una conexión plástica puede abrir otra fuga.", "With power disconnected, inspect visible clamps, gaskets, and screws. Replace a cracked hose or distorted gasket; overtightening a plastic connection can create another leak."],
+      ["Agua desde la carcasa inferior suele significar sustitución", "Water from the lower housing often means replacement", "Si la primera humedad sale de una unión sellada del cuerpo o del fondo y no de tuberías externas, la carcasa puede estar corroída o agrietada. No abras el motor ni intentes sellar una fuga interna cerca de componentes eléctricos.", "If the first moisture comes from a sealed body seam or the bottom rather than external plumbing, the housing may be corroded or cracked. Do not open the motor or try to seal an internal leak near electrical components."]
+    ],
+    "faq_es": ["¿Cómo puedo localizar exactamente por dónde pierde el triturador?", "¿Qué indica una fuga alrededor de la brida del fregadero?", "¿Qué suele significar agua saliendo del fondo del triturador?"],
+    "faq_en": ["How can I locate exactly where a garbage disposal is leaking?", "What does a leak around the sink flange indicate?", "What does water coming from the bottom of the disposal usually mean?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 588,
+    "es_title": "Cómo limpiar un triturador de basura que huele mal",
+    "en_title": "How to Clean a Smelly Garbage Disposal",
+    "family": "cleaning",
+    "kind": "how-to",
+    "source": "cleaning",
+    "intro_es": "El mal olor de un triturador suele venir de residuos atrapados en el protector de goma, paredes de la cámara o desagüe cercano. La limpieza debe hacerse con el motor sin posibilidad de arrancar; meter la mano o verter limpiadores cáusticos no es una forma segura de desodorizarlo.",
+    "intro_en": "Garbage-disposal odor usually comes from residue on the rubber splash guard, chamber walls, or nearby drain. Cleaning should be done with the motor unable to start; reaching inside by hand or pouring caustic drain cleaner into it is not a safe deodorizing method.",
+    "sections": [
+      ["Corta alimentación antes de limpiar piezas accesibles", "Disconnect power before cleaning accessible parts", "Desenchufa el triturador si tiene enchufe accesible o corta su circuito identificado. No confíes solo en el interruptor de pared; verifica que no pueda arrancar mientras limpias el protector o retiras residuos visibles.", "Unplug the disposal if its plug is accessible or switch off its identified circuit. Do not rely only on the wall switch; make sure it cannot start while cleaning the splash guard or removing visible debris."],
+      ["Limpia ambas caras del protector de goma", "Clean both sides of the splash guard", "La parte inferior del protector acumula una película que no se ve desde arriba. Si el diseño permite levantarlo sin desmontar el equipo, usa cepillo y detergente suave; nunca introduzcas dedos en la cámara de molienda.", "The underside of the splash guard can collect film that is not visible from above. If the design allows it to be lifted without disassembly, use a brush and mild detergent; never put fingers into the grinding chamber."],
+      ["Aclara con agua y una limpieza mecánica suave", "Rinse with water and gentle mechanical cleaning", "Con el equipo montado y alimentación restablecida solo para la prueba, deja correr agua fría y sigue el procedimiento del fabricante. Hielo u otros métodos solo deben usarse si el manual los admite; no viertas lejía concentrada ni desatascadores cáusticos.", "With the unit reassembled and power restored only for testing, run cold water and follow the manufacturer procedure. Ice or other methods should be used only if the manual allows them; do not pour concentrated bleach or caustic drain opener into the disposal."],
+      ["Olor que vuelve puede venir del desagüe, no del triturador", "Recurring odor may come from the drain rather than the disposal", "Si el protector y cámara están limpios pero el olor reaparece, revisa sifón, rebosadero y desagüe del fregadero. Un atasco parcial o materia orgánica en otra zona no se resuelve limpiando repetidamente el motor.", "If the splash guard and chamber are clean but odor returns, inspect the sink trap, overflow, and drain. A partial clog or organic buildup elsewhere is not fixed by repeatedly cleaning the disposal motor area."]
+    ],
+    "faq_es": ["¿Por qué hay que cortar alimentación antes de limpiar el triturador?", "¿Dónde suele acumularse suciedad que causa olor?", "¿Qué significa que el olor vuelva aunque el triturador esté limpio?"],
+    "faq_en": ["Why should power be disconnected before cleaning a disposal?", "Where does odor-causing residue often collect?", "What does it mean if odor returns after the disposal is clean?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 589,
+    "es_title": "Cómo descalcificar una cafetera",
+    "en_title": "How to Descale a Coffee Maker",
+    "family": "appliances",
+    "kind": "how-to",
+    "source": "water",
+    "intro_es": "La cal se acumula en conductos y elementos que calientan agua, reduciendo caudal y alterando temperatura. Para descalcificar una cafetera hay que usar el producto y ciclo que admite el fabricante; el vinagre no es universalmente compatible y no debe mezclarse con otros limpiadores.",
+    "intro_en": "Mineral scale builds up in water pathways and heating components, reducing flow and affecting temperature. Descaling a coffee maker should use the product and cycle approved by the manufacturer; vinegar is not universally compatible and should never be mixed with other cleaners.",
+    "sections": [
+      ["Consulta qué descalcificador admite el modelo", "Check which descaler the model allows", "El manual puede pedir una solución comercial específica, ácido cítrico o, en algunos modelos, vinagre diluido. Usar un ácido no autorizado puede atacar juntas, metales o sensores; no improvises concentración.", "The manual may call for a specific commercial solution, citric acid, or in some models diluted vinegar. An unapproved acid can attack seals, metals, or sensors; do not improvise concentration."],
+      ["Retira café y filtros antes del ciclo", "Remove coffee and filters before the cycle", "Vacía depósito de granos o café molido cuando corresponda y retira filtros desechables o accesorios que el manual indique. Llena el depósito con la mezcla exacta y coloca una jarra suficientemente grande.", "Empty beans or grounds as applicable and remove disposable filters or accessories identified by the manual. Fill the reservoir with the exact mixture and place a large enough carafe under the outlet."],
+      ["Completa el ciclo sin interrumpir el tiempo de contacto indicado", "Complete the cycle with the specified contact time", "Algunos equipos pausan para que el ácido actúe y otros tienen programa automático. No aumentes el tiempo pensando que limpiará mejor; sigue el ciclo para evitar que la solución permanezca innecesariamente en piezas internas.", "Some machines pause to let the acid work while others have an automatic program. Do not extend the contact time in the hope of better cleaning; follow the cycle so solution does not remain unnecessarily in internal parts."],
+      ["Aclara hasta retirar por completo el producto", "Rinse until all descaling solution is removed", "Vacía y aclara el depósito y ejecuta el número de ciclos con agua limpia que indique el fabricante. No prepares café hasta que no quede olor ni residuo de la solución y todos los accesorios estén recolocados.", "Empty and rinse the reservoir and run the number of clean-water cycles specified by the manufacturer. Do not brew coffee until no solution odor or residue remains and all accessories are back in place."]
+    ],
+    "faq_es": ["¿Se puede usar vinagre para descalcificar cualquier cafetera?", "¿Qué hay que retirar antes del ciclo de descalcificación?", "¿Cuántos aclarados necesita la cafetera después?"],
+    "faq_en": ["Can vinegar be used to descale every coffee maker?", "What should be removed before a descaling cycle?", "How much rinsing is needed after descaling?"],
+    "faq_sections": [0, 1, 3]
+  },
+  {
+    "n": 590,
+    "es_title": "Cómo limpiar una freidora de aire sin dañar el revestimiento",
+    "en_title": "How to Clean an Air Fryer Without Damaging the Coating",
+    "family": "appliances",
+    "kind": "how-to",
+    "source": "cleaning",
+    "intro_es": "La cesta y bandeja de una freidora de aire suelen llevar revestimientos que pueden rayarse con metal, estropajo abrasivo o limpiadores fuertes. La limpieza segura empieza con el aparato desenchufado y frío, separa piezas desmontables y evita sumergir la base donde están ventilador y electrónica.",
+    "intro_en": "Air-fryer baskets and trays often have coatings that can be scratched by metal tools, abrasive pads, or harsh cleaners. Safe cleaning starts with the appliance unplugged and cool, separates removable parts, and keeps the base containing the fan and electronics out of water.",
+    "sections": [
+      ["Desenchufa y deja enfriar antes de sacar la cesta", "Unplug and let the appliance cool before removing the basket", "La grasa puede seguir muy caliente después de apagar. Espera hasta que piezas sean manejables, retira cesta y bandeja y vacía migas sin volcarlas dentro de las entradas de aire.", "Grease can remain very hot after the appliance is switched off. Wait until parts are safe to handle, remove the basket and tray, and discard crumbs without tipping them into air openings."],
+      ["Lava piezas desmontables con utensilios no abrasivos", "Wash removable parts with nonabrasive tools", "Usa agua templada, detergente suave y esponja blanda si el fabricante lo permite. Deja en remojo solo piezas compatibles; no rasques grasa quemada con cuchillo, lana de acero ni estropajo duro.", "Use warm water, mild dish soap, and a soft sponge when the manufacturer allows it. Soak only compatible removable parts; do not scrape baked-on grease with a knife, steel wool, or harsh pad."],
+      ["Limpia la cavidad sin mojar ventilador ni resistencias", "Clean the cavity without soaking the fan or heating area", "Con el equipo frío y desenchufado, pasa un paño apenas húmedo por superficies accesibles. No rocíes limpiador hacia ventilador, conexiones o elemento calefactor y no sumerjas la base del aparato.", "With the appliance cool and unplugged, wipe accessible surfaces with a barely damp cloth. Do not spray cleaner toward the fan, connections, or heating element and never immerse the appliance base."],
+      ["Seca por completo antes de montar y calentar", "Dry completely before reassembly and heating", "Agua atrapada bajo la cesta puede producir vapor y deteriorar acabados. Revisa que no queden restos de jabón, monta cuando todo esté seco y detén el uso si el revestimiento se está descascarando o hay daño eléctrico.", "Water trapped under the basket can create steam and damage finishes. Make sure no soap residue remains, reassemble only when dry, and stop using the appliance if the coating is peeling or electrical damage is visible."]
+    ],
+    "faq_es": ["¿Cuándo se puede empezar a limpiar una freidora de aire?", "¿Qué utensilios pueden dañar el revestimiento de la cesta?", "¿Se puede sumergir la base de una freidora de aire?"],
+    "faq_en": ["When is it safe to start cleaning an air fryer?", "Which tools can damage an air-fryer basket coating?", "Can the base of an air fryer be immersed in water?"],
+    "faq_sections": [0, 1, 2]
+  }
+]
