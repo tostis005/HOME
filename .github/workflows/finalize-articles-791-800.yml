@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Apply manual QA fixes to editorial source
+      - name: Apply manual QA fixes to editorial source and validator
         run: |
           python - <<'PY'
           import json
@@ -35,7 +35,15 @@ jobs:
               if e['n']==798:
                   e['sections'][3][2]='Vuelve a guardar la ropa solo cuando el armario y los objetos estén completamente secos. No presiones prendas contra una pared fría ni llenes cada hueco; deja circulación y controla la humedad durante las semanas siguientes para confirmar que el olor no regresa.'
                   e['sections'][3][3]='Return clothes only when both the closet and the items are completely dry. Do not press clothing against a cold wall or fill every gap; leave airflow and monitor humidity over the following weeks to confirm the odor does not return.'
+              if e['n']==800:
+                  e['kind']='identification-guide'
           p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          g=Path('content/tools/generate-validate-791-800.py')
+          text=g.read_text(encoding='utf-8')
+          text=text.replace("if lang=='es':\n  if e['kind']=='diagnostics':", "if lang=='es':\n  if e['kind']=='identification-guide': return f'Reconocer si «{q}» está presente mediante señales observables, comprobarlo de forma segura y saber qué hacer después.'\n  if e['kind']=='diagnostics':")
+          text=text.replace("if e['kind']=='diagnostics': return f'Identify the most likely causes behind “{q},” use distinguishing clues, and decide what to check first and when to get help.'", "if e['kind']=='identification-guide': return f'Determine whether “{q}” applies using observable signs, check safely, and know what to do next.'\n if e['kind']=='diagnostics': return f'Identify the most likely causes behind “{q},” use distinguishing clues, and decide what to check first and when to get help.'")
+          g.write_text(text,encoding='utf-8')
           PY
       - name: Generate and validate
         run: python content/tools/generate-validate-791-800.py
@@ -47,7 +55,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content/tools/batch-791-800.json content/articles/es content/articles/en content/articles/QUALITY-AUDIT-791-800.md
           if ! git diff --cached --quiet; then
-            git commit -m "Refine and validate HOME articles 791-800"
+            git commit -m "Finalize HOME articles 791-800"
             git push origin HEAD:quality-audit-791-800
           fi
       - name: Validate committed working tree again
