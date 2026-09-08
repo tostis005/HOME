@@ -29,6 +29,9 @@ jobs:
       - name: Apply editorial polish
         run: python content/tools/polish-391-470.py
 
+      - name: Audit FAQ semantic alignment
+        run: python content/tools/audit-faq-alignment-391-470.py
+
       - name: Validate article state
         run: python content/tools/validate-391-470.py
 
