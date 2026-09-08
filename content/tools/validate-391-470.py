@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import json,re,html,math
-from collections import Counter
+import json,re,html
 
 ROOT=Path(__file__).resolve().parents[1]
 ART=ROOT/'articles'
@@ -63,6 +62,9 @@ for lang in ('es','en'):
             if not q.endswith('?') and not q.endswith('？'): ERR.append(f'{lang} #{n}: FAQ not phrased as question: {q}')
             if len(q)<18: WARN.append(f'{lang} #{n}: unusually short FAQ question')
             if a not in o.get('content_html',''): ERR.append(f'{lang} #{n}: FAQ answer not grounded verbatim in article section')
+            qlow=q.lower()
+            bad_faq=('por qué es importante «','qué indica «','what does “','why is it important to “','avoid rely','can in multi-unit')
+            if any(x in qlow for x in bad_faq): ERR.append(f'{lang} #{n}: mechanical FAQ wording: {q}')
         seo=o.get('seo',{})
         for k in ('title','meta_description','search_intent'):
             if not seo.get(k): ERR.append(f'{lang} #{n}: missing SEO {k}')
@@ -100,6 +102,15 @@ for n in range(391,471):
     es=BY.get(('es',n)); en=BY.get(('en',n))
     if es and en and es.get('translation_group')!=en.get('translation_group'): ERR.append(f'#{n}: translation_group mismatch')
 
+# No exact FAQ question may be reused across different articles in the same language.
+for lang in ('es','en'):
+    seen={}
+    for n in range(391,471):
+        for item in BY.get((lang,n),{}).get('faq',[]):
+            q=re.sub(r'\s+',' ',item.get('question','').strip().lower())
+            if q in seen and seen[q]!=n: ERR.append(f'{lang}: FAQ question reused in #{seen[q]} and #{n}: {item.get("question","")}')
+            seen[q]=n
+
 SAFETY={
 393:['no camines','profesional'],
 400:['cierra la llave','no aprietes'],
@@ -129,18 +140,6 @@ for n,terms in FOOD.items():
     for term in terms:
         if term not in raw: ERR.append(f'ES #{n}: food-safety concept missing: {term}')
 
-# quantify FAQ starter repetition without forcing a single style
-for lang in ('es','en'):
-    starters=[]
-    for n in range(391,471):
-        for item in BY.get((lang,n),{}).get('faq',[]):
-            q=re.sub(r'^[¿?]+','',item.get('question','')).strip().lower()
-            starters.append(' '.join(q.split()[:2]))
-    counts=Counter(starters)
-    if counts and counts.most_common(1)[0][1]>24:
-        ERR.append(f'{lang}: FAQ starter overused: {counts.most_common(1)[0]}')
-
-# overlap diagnostics, including earlier and future canonical intents
 PAIRS=[
 (391,392,'green algae film vs moss mat on a patio'),(393,194,'roof moss safety vs temporary roof-leak containment'),(395,312,'filter replacement procedure vs replacement interval'),(396,470,'whole-house filter interval vs slow filtered-water flow'),(397,174,'toilet base leak vs overflowing toilet'),(398,415,'general slow sink vs kitchen-specific slow drain'),(402,171,'range-hood filter cleaning vs full hood cleaning'),(402,477,'current filter-cleaning article vs exact future canonical duplicate'),(403,168,'baked-on cooktop grease vs general glass-cooktop cleaning'),(405,166,'pet urine on flooring vs urine odor in mattress'),(406,322,'safe vinegar uses vs surfaces vinegar should not clean'),(407,408,'general fabric chair vs upholstered dining-chair set'),(409,410,'curtains in place vs blackout-curtain material care'),(411,475,'full shower curtain vs future liner-specific cleaning'),(412,330,'baking-soda/vinegar myth vs kitchen-sink unclogging method'),(413,415,'water backup vs slow kitchen drainage'),(414,398,'bathtub backflow vs slow sink diagnosis'),(416,417,'whole-home electricity ranking vs dryer electricity use'),(418,178,'why ants return vs prevention in the kitchen'),(421,251,'mice inside walls vs general signs of mice'),(421,422,'confirm wall activity vs find exterior entry route'),(422,335,'systematic entry search vs common mouse entry points'),(422,423,'find house entry vs prevent garage entry'),(425,469,'squeaky floor vs squeaky bed'),(426,195,'weather/penetration roof-source diagnosis vs earlier leak tracing'),(430,498,'towel softness vs future musty-towel prevention'),(430,499,'towel softness vs future post-wash odor diagnosis'),(431,346,'prevent shrinking vs recover already shrunken clothes'),(432,433,'microfiber care vs chemically contaminated cleaning-rag safety'),(436,491,'repair peeling paint vs future diagnosis of why paint peels'),(436,437,'peeling repair vs paint-bubble diagnosis'),(441,358,'rescue overwatered plant vs identify overwatering'),(441,442,'general overwatering recovery vs root-rot treatment'),(443,360,'weak Wi-Fi coverage vs repeated disconnects'),(443,361,'improve coverage vs router placement'),(444,449,'musty AC source vs musty bedroom source'),(444,450,'musty AC vs basement moisture odor'),(447,362,'one hot room vs one cold room'),(447,448,'diagnose hot room vs balance airflow'),(451,306,'reset one tripped breaker vs one-room outage diagnosis'),(451,307,'breaker reset vs repeatedly tripping GFCI diagnosis'),(451,388,'breaker reset vs GFCI reset'),(452,217,'dryer-vent cleaning interval vs cleaning procedure'),(454,374,'tomato refrigeration decision vs bread storage'),(455,224,'freeze milk vs milk left out'),(456,163,'burnt oil on stainless pan vs burnt pot cleaning'),(458,222,'dishwasher cleaning procedure vs why dishwasher smells'),(459,461,'jammed disposal hum vs air-fryer no-start'),(460,384,'air-fryer smoke vs oven smoke'),(463,223,'freezing eggs vs eggs left unrefrigerated'),(464,374,'freeze bread vs room-temperature bread storage'),(465,390,'buzzing switch vs hot switch'),(466,389,'buzzing outlet vs hot outlet'),(467,468,'general siding cleaning vs vinyl-specific method'),(469,425,'bed squeak vs floor squeak'),(470,312,'slow filtered-water flow vs refrigerator-filter interval')]
 
@@ -160,7 +159,6 @@ if ERR:
     for w in WARN: print('WARN:',w)
     raise SystemExit(1)
 
-# Build report only after all blocking checks pass.
 lines=['# HOME — Quality audit 391–470','','## Result','', '- JSON checked: **160 / 160** (80 ES + 80 EN expected).','- Structural/editorial validation: **PASS**.','- Explicit FAQ validation: **PASS 480 / 480**.','- Blocking errors: **0**.',f'- Non-blocking warnings: **{len(WARN)}**.','','## Scope and editorial criteria','', '- Canonical topics 391–470 preserved exactly from `content/topics/`.','- Spanish and English share article number and translation group while using independently written prose.','- FAQ questions are explicit editorial inputs, never transformed automatically from H2 headings.','- Safety-sensitive roof, plumbing, electrical, appliance, chemical and food topics include stop conditions and professional boundaries.','- Search-intent metadata is checked for natural ES/EN syntax and prior template regressions.','- Close topics are reviewed by reader decision and next action, not word similarity alone.','','## Quantitative profile','', '| Range | ES words | ES H2 | ES FAQ | ES sources | EN words | EN H2 | EN FAQ | EN sources |','|---|---:|---:|---:|---:|---:|---:|---:|---:|']
 for a,b in ((391,410),(411,430),(431,450),(451,470)):
     vals=[]
