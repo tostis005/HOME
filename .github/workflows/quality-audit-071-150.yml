@@ -1,0 +1,22 @@
+name: Quality audit HOME 071-150
+
+on:
+  push:
+    branches:
+      - quality-audit-071-150
+    paths:
+      - 'content/tools/quality-audit-071-150.py'
+      - '.github/workflows/quality-audit-071-150.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run quality audit
+        run: python3 content/tools/quality-audit-071-150.py
