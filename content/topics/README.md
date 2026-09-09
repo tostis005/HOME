@@ -16,6 +16,16 @@ The inventory is split into numbered ranges so it can grow without mixing topic 
 - `TOPICS-701-800.md` — approved topics 701–800.
 - `TOPICS-801-900.md` — approved topics 801–900.
 - `TOPICS-901-1000.md` — approved topics 901–1000.
+- `TOPICS-1001-1100.md` — approved topics 1001–1100.
+- `TOPICS-1101-1200.md` — approved topics 1101–1200.
+- `TOPICS-1201-1300.md` — approved topics 1201–1300.
+- `TOPICS-1301-1400.md` — approved topics 1301–1400.
+- `TOPICS-1401-1500.md` — approved topics 1401–1500.
+- `TOPICS-1501-1600.md` — approved topics 1501–1600.
+- `TOPICS-1601-1700.md` — approved topics 1601–1700.
+- `TOPICS-1701-1800.md` — approved topics 1701–1800.
+- `TOPICS-1801-1900.md` — approved topics 1801–1900.
+- `TOPICS-1901-2000.md` — approved topics 1901–2000.
 
 Future approved batches must be added to this folder as a new non-overlapping numbered range.
 
