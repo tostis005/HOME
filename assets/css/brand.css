@@ -1,0 +1,13 @@
+/* DomstIQ corporate identity layer. Loaded after the existing HOME visual CSS. */
+.domstiq-brand{gap:0}
+.domstiq-brand-copy{gap:1px}
+.domstiq-logo-image{display:block;width:164px;height:auto;max-width:none}
+.domstiq-brand-copy .home-v2-brand-tagline{padding-left:1px;margin-top:1px}
+.domstiq-text{font-family:var(--home2-serif,Georgia,"Times New Roman",serif);font-weight:650;letter-spacing:-.035em;text-transform:none}
+.domstiq-text>span{font-family:var(--home2-sans,Inter,ui-sans-serif,system-ui,sans-serif);font-weight:850;letter-spacing:.015em;color:var(--home2-sage-dark,#496048)}
+.home-language-kicker.domstiq-text{font-size:16px;letter-spacing:-.035em}
+.home-overlay-brand.domstiq-text{font-size:25px;line-height:1}
+@media (max-width:640px){
+  .domstiq-logo-image{width:148px}
+  .domstiq-brand-copy .home-v2-brand-tagline{display:none}
+}

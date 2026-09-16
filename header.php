@@ -6,22 +6,16 @@
     <?php wp_head(); ?>
     <link rel="stylesheet" href="/wp-content/themes/home/assets/css/home-v2.css?v=4.1.0">
     <link rel="stylesheet" href="/wp-content/themes/home/assets/css/home-premium.css?v=1.2.0">
+    <link rel="stylesheet" href="/wp-content/themes/home/assets/css/brand.css?v=1.0.0">
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div class="site-shell home-v2-shell">
 <header class="site-header home-v2-header">
     <div class="container header-inner home-v2-header-inner">
-        <a class="brand home-v2-brand" href="<?php echo esc_url(home_localized_home_url()); ?>" aria-label="<?php esc_attr_e('HOME homepage', 'home'); ?>">
-            <span class="home-v2-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" focusable="false">
-                    <path d="M8 30.5 32 10l24 20.5v23A4.5 4.5 0 0 1 51.5 58h-39A4.5 4.5 0 0 1 8 53.5v-23Z" fill="currentColor" opacity=".96"/>
-                    <path d="M20 44c8-1 13-6 15-15-9 1-14 6-15 15Zm25 2c-7-1-11-5-13-12 8 1 12 5 13 12Z" fill="#fbf8f1"/>
-                    <path d="M27 48c2-9 6-15 13-19" fill="none" stroke="#fbf8f1" stroke-width="2.6" stroke-linecap="round"/>
-                </svg>
-            </span>
-            <span class="home-v2-brand-copy">
-                <span class="home-v2-brand-word">HOME</span>
+        <a class="brand home-v2-brand domstiq-brand" href="<?php echo esc_url(home_localized_home_url()); ?>" aria-label="<?php esc_attr_e('HOME homepage', 'home'); ?>">
+            <span class="home-v2-brand-copy domstiq-brand-copy">
+                <img class="domstiq-logo-image" src="<?php echo esc_url(home_brand_asset_url('domstiq-logo.svg')); ?>" alt="DomstIQ" width="210" height="64">
                 <span class="home-v2-brand-tagline"><?php esc_html_e('Practical advice for real life', 'home'); ?></span>
             </span>
         </a>
@@ -48,7 +42,7 @@
         <button class="home-overlay-close" type="button" data-home-close aria-label="<?php esc_attr_e('Close language selector', 'home'); ?>"><span></span><span></span></button>
     </div>
     <div class="home-language-panel">
-        <p class="home-language-kicker">HOME</p>
+        <p class="home-language-kicker domstiq-text">Domst<span>IQ</span></p>
         <h2><?php esc_html_e('Choose language', 'home'); ?></h2>
         <div class="home-language-options">
             <a class="home-language-option<?php echo home_is_english() ? '' : ' is-current'; ?>" href="<?php echo esc_url(home_language_url('es')); ?>"<?php echo home_is_english() ? '' : ' aria-current="page"'; ?>>
@@ -63,7 +57,7 @@
 
 <div class="home-fullscreen-overlay home-mobile-overlay" id="home-mobile-overlay" data-home-overlay="menu" aria-hidden="true">
     <div class="home-overlay-topbar">
-        <a class="home-overlay-brand" href="<?php echo esc_url(home_localized_home_url()); ?>">HOME</a>
+        <a class="home-overlay-brand domstiq-text" href="<?php echo esc_url(home_localized_home_url()); ?>">Domst<span>IQ</span></a>
         <button class="home-overlay-close" type="button" data-home-close aria-label="<?php esc_attr_e('Close menu', 'home'); ?>"><span></span><span></span></button>
     </div>
     <div class="home-mobile-panel">

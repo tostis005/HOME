@@ -1,5 +1,5 @@
 <?php
-/** HOME theme functions. */
+/** DomstIQ theme functions. */
 if (!defined('ABSPATH')) { exit; }
 
 require_once get_template_directory() . '/inc/bilingual.php';
@@ -40,8 +40,54 @@ add_filter('excerpt_length', static fn(int $length): int => 24, 999);
 add_filter('excerpt_more', static fn(string $more): string => '…');
 
 /**
+ * Public-facing DomstIQ identity. Technical `home_*` identifiers are intentionally
+ * preserved so the existing theme, content importers and bilingual routing remain stable.
+ */
+function home_brand_name(): string {
+    return 'DomstIQ';
+}
+
+function home_brand_asset_url(string $filename): string {
+    return get_template_directory_uri() . '/assets/branding/' . ltrim($filename, '/');
+}
+
+function home_brand_legacy_name(string $translation, string $text, string $domain): string {
+    if ($domain !== 'home') {
+        return $translation;
+    }
+
+    return str_replace('HOME', home_brand_name(), $translation);
+}
+add_filter('gettext', 'home_brand_legacy_name', 20, 3);
+
+function home_brand_bloginfo(string $output, string $show): string {
+    if ($show === 'name' && !is_admin()) {
+        return home_brand_name();
+    }
+
+    return $output;
+}
+add_filter('bloginfo', 'home_brand_bloginfo', 10, 2);
+
+function home_brand_document_title(array $title): array {
+    if (isset($title['site'])) {
+        $title['site'] = home_brand_name();
+    }
+
+    return $title;
+}
+add_filter('document_title_parts', 'home_brand_document_title');
+
+function home_brand_head_assets(): void {
+    $favicon = home_brand_asset_url('favicon.svg');
+    echo '<link rel="icon" href="' . esc_url($favicon) . '" type="image/svg+xml">' . "\n";
+    echo '<meta name="theme-color" content="#496048">' . "\n";
+}
+add_action('wp_head', 'home_brand_head_assets', 100);
+
+/**
  * Theme-owned premium image pack helpers.
- * Root-relative URLs are intentional while HOME is served on :8081.
+ * Root-relative URLs are intentional while DomstIQ is served on :8081.
  */
 function home_theme_image_exists(string $relative_path): bool {
     $relative_path = ltrim($relative_path, '/');
