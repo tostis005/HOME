@@ -10,6 +10,7 @@ require_once get_template_directory() . '/inc/root-url.php';
 require_once get_template_directory() . '/inc/content-curation.php';
 require_once get_template_directory() . '/inc/publication-guard.php';
 require_once get_template_directory() . '/inc/pagination.php';
+require_once get_template_directory() . '/inc/sitemap.php';
 
 function home_theme_setup(): void {
     load_theme_textdomain('home', get_template_directory() . '/languages');
