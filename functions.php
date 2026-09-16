@@ -79,8 +79,8 @@ function home_brand_document_title(array $title): array {
 add_filter('document_title_parts', 'home_brand_document_title');
 
 function home_brand_head_assets(): void {
-    $favicon = home_brand_asset_url('favicon.svg');
-    echo '<link rel="icon" href="' . esc_url($favicon) . '" type="image/svg+xml">' . "\n";
+    $favicon = home_brand_asset_url('favicon.png');
+    echo '<link rel="icon" href="' . esc_url($favicon) . '" type="image/png" sizes="128x128">' . "\n";
     echo '<meta name="theme-color" content="#496048">' . "\n";
 }
 add_action('wp_head', 'home_brand_head_assets', 100);
