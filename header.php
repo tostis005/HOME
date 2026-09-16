@@ -15,7 +15,7 @@
     <div class="container header-inner home-v2-header-inner">
         <a class="brand home-v2-brand domstiq-brand" href="<?php echo esc_url(home_localized_home_url()); ?>" aria-label="<?php esc_attr_e('HOME homepage', 'home'); ?>">
             <span class="home-v2-brand-copy domstiq-brand-copy">
-                <img class="domstiq-logo-image" src="<?php echo esc_url(home_brand_asset_url('domstiq-logo.svg')); ?>" alt="DomstIQ" width="210" height="64">
+                <img class="domstiq-logo-image" src="<?php echo esc_url(home_brand_asset_url('domstiq-logo.png')); ?>" alt="DomstIQ" width="600" height="150">
                 <span class="home-v2-brand-tagline"><?php esc_html_e('Practical advice for real life', 'home'); ?></span>
             </span>
         </a>
