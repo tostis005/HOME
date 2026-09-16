@@ -5,7 +5,7 @@
             <div class="home-v2-footer-brand-block">
                 <a class="brand home-v2-brand home-v2-footer-brand domstiq-brand" href="<?php echo esc_url(home_url('/')); ?>">
                     <span class="home-v2-brand-copy domstiq-brand-copy">
-                        <img class="domstiq-logo-image" src="<?php echo esc_url(home_brand_asset_url('domstiq-logo.svg')); ?>" alt="DomstIQ" width="210" height="64" loading="lazy" decoding="async">
+                        <img class="domstiq-logo-image" src="<?php echo esc_url(home_brand_asset_url('domstiq-logo.png')); ?>" alt="DomstIQ" width="600" height="150" loading="lazy" decoding="async">
                         <span class="home-v2-brand-tagline"><?php esc_html_e('A calmer home starts with a clear answer', 'home'); ?></span>
                     </span>
                 </a>
