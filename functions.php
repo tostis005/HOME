@@ -49,7 +49,18 @@ function home_brand_name(): string {
 }
 
 function home_brand_asset_url(string $filename): string {
-    return get_template_directory_uri() . '/assets/branding/' . ltrim($filename, '/');
+    $filename = ltrim($filename, '/');
+    $absolute_path = get_template_directory() . '/assets/branding/' . $filename;
+    $url = get_template_directory_uri() . '/assets/branding/' . $filename;
+
+    if (is_file($absolute_path)) {
+        $version = (string) filemtime($absolute_path);
+        if ($version !== '') {
+            $url .= '?v=' . rawurlencode($version);
+        }
+    }
+
+    return $url;
 }
 
 function home_brand_legacy_name(string $translation, string $text, string $domain): string {
