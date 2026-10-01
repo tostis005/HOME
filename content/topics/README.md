@@ -26,6 +26,7 @@ The inventory is split into numbered ranges so it can grow without mixing topic 
 - `TOPICS-1701-1800.md` — approved topics 1701–1800.
 - `TOPICS-1801-1900.md` — approved topics 1801–1900.
 - `TOPICS-1901-2000.md` — approved topics 1901–2000.
+- `TOPICS-2001-2100.md` — approved SEO growth topics 2001–2100.
 
 Future approved batches must be added to this folder as a new non-overlapping numbered range.
 
